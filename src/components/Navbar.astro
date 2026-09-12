@@ -13,12 +13,12 @@ const { variant = 'light', active = '' } = Astro.props;
   variant === 'dark' ? (
     <nav class="bg-[#0A1128] text-white py-4 px-8 relative z-50">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <img src="/images/logo/s-synvora-logo.png" alt="" class="h-7 w-7 object-contain" />
-            <span class="font-extrabold text-xl tracking-wider text-white">SYNVORA</span>
-          </div>
-          <span class="text-[9px] tracking-[0.2em] text-gray-400 -mt-1 ml-9">TEKNOLOGI INDONESIA</span>
+        <a href="/" class="flex items-center">
+          <img
+            src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png"
+            alt="SYNVORA Teknologi Indonesia"
+            class="h-9 w-auto max-w-[220px] object-contain"
+          />
         </a>
 
         <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
@@ -50,12 +50,17 @@ const { variant = 'light', active = '' } = Astro.props;
   ) : (
     <nav class="bg-white dark:bg-synvora-dark border-b border-gray-100 dark:border-white/10 py-4 px-8 sticky top-0 z-50 shadow-sm transition-colors">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" class="flex flex-col cursor-pointer">
-          <div class="flex items-center gap-2">
-            <img src="/images/logo/s-synvora-logo.png" alt="" class="h-7 w-7 object-contain" />
-            <span class="font-extrabold text-xl tracking-wider text-gray-900 dark:text-white">SYNVORA</span>
-          </div>
-          <span class="text-[9px] tracking-[0.2em] text-gray-400 -mt-1 ml-9">TEKNOLOGI INDONESIA</span>
+        <a href="/" class="flex items-center cursor-pointer">
+          <img
+            src="/images/logo/synvora-teknologi-indonesia-logo-bluetext.png"
+            alt="SYNVORA Teknologi Indonesia"
+            class="h-9 w-auto max-w-[220px] object-contain dark:hidden"
+          />
+          <img
+            src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png"
+            alt="SYNVORA Teknologi Indonesia"
+            class="hidden dark:block h-9 w-auto max-w-[220px] object-contain"
+          />
         </a>
 
         <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
