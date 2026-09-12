@@ -1,0 +1,408 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Layanan - SYNVORA Teknologi Indonesia" navVariant="light" footerVariant="default" active="layanan" bodyClass="bg-white">
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        /* Placeholder image: Menyesuaikan dengan gambar kantor/meja kerja */
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.8) 40%, rgba(10, 17, 40, 0.3) 100%),
+          url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border: 1px solid #f3f4f6;
+      }
+      .card-img-overlay {
+        background: linear-gradient(to top, rgba(10, 17, 40, 0.9) 0%, rgba(10, 17, 40, 0.2) 100%);
+      }
+      .cta-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .workflow-line {
+        position: absolute;
+        top: 24px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background-color: #e5e7eb;
+        z-index: 0;
+      }
+      .workflow-arrow {
+        position: absolute;
+        top: 20px;
+        right: -10px;
+        color: #9ca3af;
+        font-size: 14px;
+        z-index: 1;
+        background: white;
+        padding: 0 4px;
+      }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <!-- Breadcrumb -->
+      <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+        <a href="/" class="hover:text-white cursor-pointer">Beranda</a>
+        <i class="fa-solid fa-chevron-right text-[8px]"></i>
+        <span class="text-white">Layanan</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+        Layanan <span class="text-primary">Kami</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-gray-300 text-sm md:text-base mb-10 max-w-2xl leading-relaxed">
+        Solusi teknologi yang dirancang untuk menjawab kebutuhan organisasi Anda, dari perencanaan hingga implementasi, dengan hasil nyata dan berkelanjutan.
+      </p>
+
+      <!-- Tagline -->
+      <div class="border-l-4 border-primary pl-4">
+        <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">
+          SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
+        </div>
+        <div class="text-xs text-gray-400">
+          A Better Tomorrow Through Technology
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN SERVICES SECTION ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header Row -->
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div class="max-w-2xl">
+          <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 bg-primary rounded-full"></span> LAYANAN UNGGULAN
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+            Solusi Lengkap untuk Transformasi Digital Anda
+          </h2>
+          <p class="text-sm text-gray-500">
+            Kami menyediakan berbagai layanan teknologi informasi yang dapat disesuaikan dengan kebutuhan dan tujuan organisasi Anda.
+          </p>
+        </div>
+        <div class="max-w-md mt-6 md:mt-0">
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Dari sistem informasi, aplikasi mobile, hingga konsultasi IT, SYNVORA siap menjadi mitra terpercaya dalam setiap langkah transformasi digital Anda.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+          <div class="h-40 relative">
+            <!-- Ganti dengan gambar coding/laptop -->
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600" alt="Pengembangan Sistem" class="w-full h-full object-cover">
+            <div class="absolute inset-0 card-img-overlay"></div>
+            <!-- Icon Overlay -->
+            <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+              <i class="fa-solid fa-code"></i>
+            </div>
+          </div>
+          <div class="p-6 pt-10 flex-1 flex flex-col">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Pengembangan Sistem Informasi</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">Custom software yang dirancang sesuai kebutuhan bisnis, untuk meningkatkan efisiensi dan produktivitas organisasi.</p>
+            <ul class="space-y-2 mb-6 flex-1">
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Sistem berbasis web</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Sistem berbasis desktop</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Integrasi sistem</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Pemeliharaan dan pengembangan</li>
+            </ul>
+            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+          <div class="h-40 relative">
+            <!-- Ganti dengan gambar server/network -->
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=600" alt="Integrasi Sistem" class="w-full h-full object-cover">
+            <div class="absolute inset-0 card-img-overlay"></div>
+            <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+              <i class="fa-solid fa-cloud"></i>
+            </div>
+          </div>
+          <div class="p-6 pt-10 flex-1 flex flex-col">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Integrasi & Modernisasi Sistem</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">Menghubungkan sistem lama dengan teknologi terbaru agar lebih efisien, aman, dan scalable.</p>
+            <ul class="space-y-2 mb-6 flex-1">
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Integrasi data antar sistem</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Migrasi sistem legacy</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> API development</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Optimalisasi infrastruktur</li>
+            </ul>
+            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+          <div class="h-40 relative">
+            <!-- Ganti dengan gambar mobile app -->
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600" alt="Aplikasi Mobile" class="w-full h-full object-cover">
+            <div class="absolute inset-0 card-img-overlay"></div>
+            <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+              <i class="fa-solid fa-mobile-screen"></i>
+            </div>
+          </div>
+          <div class="p-6 pt-10 flex-1 flex flex-col">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Aplikasi Web & Mobile</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">Solusi lintas platform yang responsif, modern, dan user-friendly untuk menjangkau lebih banyak pengguna.</p>
+            <ul class="space-y-2 mb-6 flex-1">
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Aplikasi mobile (Android & iOS)</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Progressive Web App (PWA)</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Sistem berbasis cloud</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> UI/UX modern dan intuitif</li>
+            </ul>
+            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+          <div class="h-40 relative">
+            <!-- Ganti dengan gambar meeting/konsultasi -->
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Konsultasi IT" class="w-full h-full object-cover">
+            <div class="absolute inset-0 card-img-overlay"></div>
+            <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+              <i class="fa-solid fa-gear"></i>
+            </div>
+          </div>
+          <div class="p-6 pt-10 flex-1 flex flex-col">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Konsultasi IT</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">Pendampingan strategis untuk membantu organisasi merancang dan menerapkan solusi teknologi yang tepat.</p>
+            <ul class="space-y-2 mb-6 flex-1">
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Audit dan analisis kebutuhan</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Perencanaan strategi IT</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Rekomendasi teknologi</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Pelatihan dan transfer knowledge</li>
+            </ul>
+            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+          <div class="h-40 relative">
+            <!-- Ganti dengan gambar dashboard/data -->
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Business Intelligence" class="w-full h-full object-cover">
+            <div class="absolute inset-0 card-img-overlay"></div>
+            <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+              <i class="fa-solid fa-chart-simple"></i>
+            </div>
+          </div>
+          <div class="p-6 pt-10 flex-1 flex flex-col">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Business Intelligence & Data Analytics</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">Ubah data menjadi insight berharga untuk mendukung pengambilan keputusan yang lebih cepat dan tepat.</p>
+            <ul class="space-y-2 mb-6 flex-1">
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Dashboard interaktif</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Visualisasi data</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Analisis prediktif</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Integrasi berbagai sumber data</li>
+            </ul>
+            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+          <div class="h-40 relative">
+            <!-- Ganti dengan gambar security/lock -->
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=600" alt="Keamanan Sistem" class="w-full h-full object-cover">
+            <div class="absolute inset-0 card-img-overlay"></div>
+            <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+          </div>
+          <div class="p-6 pt-10 flex-1 flex flex-col">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Keamanan Sistem & Infrastruktur</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">Melindungi aset digital organisasi dengan standar keamanan terkini.</p>
+            <ul class="space-y-2 mb-6 flex-1">
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Security assessment</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Implementasi keamanan sistem</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Backup & disaster recovery</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Monitoring dan support</li>
+            </ul>
+            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+          <div class="h-40 relative">
+            <!-- Ganti dengan gambar cloud/network -->
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=600" alt="Layanan Cloud" class="w-full h-full object-cover">
+            <div class="absolute inset-0 card-img-overlay"></div>
+            <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+          </div>
+          <div class="p-6 pt-10 flex-1 flex flex-col">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Layanan Cloud & Infrastruktur</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">Solusi infrastruktur yang fleksibel, aman, dan hemat biaya untuk mendukung pertumbuhan organisasi.</p>
+            <ul class="space-y-2 mb-6 flex-1">
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Cloud deployment</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Server management</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Scalability & high availability</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Optimalisasi biaya infrastruktur</li>
+            </ul>
+            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+          <div class="h-40 relative">
+            <!-- Ganti dengan gambar training/presentation -->
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600" alt="Pelatihan SDM" class="w-full h-full object-cover">
+            <div class="absolute inset-0 card-img-overlay"></div>
+            <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+              <i class="fa-solid fa-users-gear"></i>
+            </div>
+          </div>
+          <div class="p-6 pt-10 flex-1 flex flex-col">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">Pelatihan & Pengembangan SDM</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">Meningkatkan kompetensi tim Anda melalui pelatihan teknologi yang relevan dan aplikatif.</p>
+            <ul class="space-y-2 mb-6 flex-1">
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Pelatihan penggunaan sistem</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Pelatihan teknis IT</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Workshop digital transformation</li>
+              <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> Sertifikasi dan mentoring</li>
+            </ul>
+            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKFLOW SECTION ================= -->
+  <section class="py-24 bg-white px-8 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+        <div class="max-w-2xl">
+          <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 bg-primary rounded-full"></span> PROSES KERJA KAMI
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+            Dari Kebutuhan<br>Hingga Solusi Nyata
+          </h2>
+        </div>
+        <div class="max-w-md mt-6 md:mt-0 flex flex-col items-start md:items-end">
+          <p class="text-sm text-gray-500 text-left md:text-right mb-4">
+            Kami menerapkan proses kerja yang terstruktur dan kolaboratif untuk memastikan setiap solusi memberikan hasil maksimal.
+          </p>
+          <a href="/konsultasi-gratis" class="text-primary text-sm font-semibold flex items-center gap-2 hover:underline">
+            Tanya Proses Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div class="relative">
+        <!-- Connecting Line -->
+        <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-gray-200 z-0"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+          <!-- Step 1 -->
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+              01
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Diskusi Kebutuhan</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Memahami tujuan dan tantangan Anda.</p>
+            <!-- Arrow -->
+            <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20">
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+              02
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Perancangan Solusi</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Menyusun strategi dan desain sistem.</p>
+            <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20">
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+              03
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Pengembangan</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Membangun dengan standar kualitas tinggi.</p>
+            <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20">
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+              04
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Implementasi</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Uji coba, peluncuran, dan pendampingan.</p>
+            <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20">
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+          </div>
+          <!-- Step 5 -->
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+              05
+            </div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Dukungan Berkelanjutan</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Pemeliharaan dan pengembangan lanjutan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <!-- Background glow -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+
+      <div class="z-10 mb-8 md:mb-0 max-w-xl">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">MARI BERKOLABORASI</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">
+          Wujudkan Solusi Teknologi<br>untuk Masa Depan yang Lebih Baik.
+        </h2>
+        <p class="text-sm text-gray-300">
+          Diskusikan kebutuhan Anda bersama tim ahli kami dan temukan solusi terbaik untuk organisasi Anda.
+        </p>
+      </div>
+
+      <div class="flex gap-4 z-10">
+        <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

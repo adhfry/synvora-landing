@@ -1,0 +1,392 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Tentang Kami - SYNVORA Teknologi Indonesia" navVariant="light" footerVariant="default" active="tentang-kami" bodyClass="bg-white">
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.8) 50%, rgba(10, 17, 40, 0.4) 100%),
+          url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border: 1px solid #f3f4f6;
+      }
+      .timeline-line {
+        position: absolute;
+        top: 24px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background-color: #e5e7eb;
+        z-index: 0;
+      }
+      .timeline-dot {
+        position: relative;
+        z-index: 10;
+        background: white;
+        border: 2px solid #e5e7eb;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px auto;
+      }
+      .timeline-dot.active {
+        border-color: #0066ff;
+        background-color: #0066ff;
+        color: white;
+      }
+      .timeline-dot.active i {
+        color: white;
+      }
+      .timeline-dot i {
+        color: #6b7280;
+      }
+      .stat-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .custom-quote::before {
+        content: '\201C';
+        font-size: 4rem;
+        line-height: 1;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        color: rgba(255, 255, 255, 0.2);
+        font-family: serif;
+      }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <!-- Left Content -->
+      <div>
+        <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+          <a href="/" class="hover:text-white cursor-pointer">Beranda</a>
+          <i class="fa-solid fa-chevron-right text-[8px]"></i>
+          <span class="text-white">Tentang Kami</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+          Tentang <span class="text-primary">Kami</span>
+        </h1>
+        <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+          Mengenal lebih dekat SYNVORA Teknologi Indonesia, perjalanan, nilai, dan komitmen kami untuk menghadirkan solusi teknologi yang berdampak nyata.
+        </p>
+
+        <div class="border-l-4 border-primary pl-4">
+          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">
+            SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
+          </div>
+          <div class="text-xs text-gray-400">
+            A Better Tomorrow Through Technology
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Image (Placeholder) -->
+      <div class="hidden lg:block relative">
+        <div class="rounded-xl overflow-hidden shadow-2xl border border-white/10">
+          <!-- Replace this URL with your actual office wall image -->
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="SYNVORA Office Wall" class="w-full h-[400px] object-cover opacity-80">
+          <!-- Overlay Text to mimic the image -->
+          <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8 bg-black/40">
+            <div class="flex items-center gap-3 mb-6">
+              <i class="fa-solid fa-cube text-white text-4xl"></i>
+              <div class="text-left">
+                <div class="font-extrabold text-3xl tracking-wider text-white">SYNVORA</div>
+                <div class="text-[10px] tracking-[0.3em] text-gray-300">TEKNOLOGI INDONESIA</div>
+              </div>
+            </div>
+            <div class="text-white text-lg font-light tracking-wide space-y-2">
+              <div>Ideas</div>
+              <div>Systems</div>
+              <div>People</div>
+              <div class="font-bold">A Better Tomorrow</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SIAPA KAMI ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <!-- Left Image -->
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <!-- Replace with building image -->
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="Gedung SYNVORA" class="w-full h-[400px] object-cover">
+        </div>
+        <!-- Floating text box -->
+        <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg max-w-[200px] border-l-4 border-primary">
+          <div class="font-bold text-gray-900 text-lg leading-tight">Teknologi Hari Ini,</div>
+          <div class="font-bold text-gray-900 text-lg leading-tight">Untuk Indonesia Esok</div>
+          <div class="w-8 h-0.5 bg-primary mt-3"></div>
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div>
+        <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> SIAPA KAMI
+        </div>
+        <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">SYNVORA Teknologi Indonesia</h2>
+        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+          SYNVORA Teknologi Indonesia adalah perusahaan teknologi dan sistem informasi yang berfokus pada pengembangan solusi digital yang inovatif, andal, dan berdampak nyata bagi organisasi di berbagai sektor.
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Kami lahir dari semangat sekelompok individu yang percaya bahwa teknologi dapat menjadi katalis perubahan. Dengan menggabungkan pengalaman, kreativitas, dan keahlian, kami hadir untuk membantu organisasi menghadapi tantangan era digital dan meraih peluang masa depan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VISI, MISI, NILAI ================= -->
+  <section class="py-16 bg-gray-50 px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Visi -->
+      <div class="bg-white p-8 rounded-2xl card-shadow">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+          <i class="fa-regular fa-eye"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-lg mb-4">Visi</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          Menjadi perusahaan teknologi terdepan yang dikenal sebagai mitra utama dalam pembuatan sistem informasi di Indonesia.
+        </p>
+      </div>
+
+      <!-- Misi -->
+      <div class="bg-white p-8 rounded-2xl card-shadow">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-lg mb-4">Misi</h3>
+        <ul class="space-y-4 text-sm text-gray-500">
+          <li class="flex gap-3">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0">1</span>
+            Mengembangkan solusi teknologi berkualitas dan relevan.
+          </li>
+          <li class="flex gap-3">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0">2</span>
+            Memberikan layanan profesional dan berorientasi pada kepuasan klien.
+          </li>
+          <li class="flex gap-3">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0">3</span>
+            Mendorong inovasi berkelanjutan di setiap lini bisnis.
+          </li>
+          <li class="flex gap-3">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0">4</span>
+            Berkontribusi pada transformasi digital untuk Indonesia yang lebih maju.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Nilai-Nilai -->
+      <div class="bg-white p-8 rounded-2xl card-shadow">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+          <i class="fa-solid fa-gem"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-lg mb-4">Nilai-Nilai Kami</h3>
+        <div class="space-y-4 text-sm text-gray-500">
+          <div class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">S</span>
+            <div>
+              <div class="font-semibold text-gray-800">Synchronous</div>
+              <div class="text-xs">Selaras dalam tujuan dan langkah.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">I</span>
+            <div>
+              <div class="font-semibold text-gray-800">Innovation</div>
+              <div class="text-xs">Selalu mencari cara yang lebih baik.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">E</span>
+            <div>
+              <div class="font-semibold text-gray-800">Evolution</div>
+              <div class="text-xs">Terus berkembang mengikuti perubahan.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">E</span>
+            <div>
+              <div class="font-semibold text-gray-800">Era</div>
+              <div class="text-xs">Membangun masa depan yang lebih baik.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DALAM ANGKA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto stat-bg rounded-3xl p-12 text-white flex flex-col lg:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-2/3 mb-12 lg:mb-0">
+        <!-- Stat 1 -->
+        <div class="flex flex-col items-center lg:items-start">
+          <i class="fa-solid fa-users text-3xl text-blue-300 mb-4"></i>
+          <div class="text-3xl font-extrabold mb-1">20+</div>
+          <div class="text-xs text-gray-300 text-center lg:text-left">Klien Dipercaya</div>
+        </div>
+        <!-- Stat 2 -->
+        <div class="flex flex-col items-center lg:items-start">
+          <i class="fa-solid fa-box text-3xl text-blue-300 mb-4"></i>
+          <div class="text-3xl font-extrabold mb-1">50+</div>
+          <div class="text-xs text-gray-300 text-center lg:text-left">Proyek Diselesaikan</div>
+        </div>
+        <!-- Stat 3 -->
+        <div class="flex flex-col items-center lg:items-start">
+          <i class="fa-regular fa-clock text-3xl text-blue-300 mb-4"></i>
+          <div class="text-3xl font-extrabold mb-1">2+</div>
+          <div class="text-xs text-gray-300 text-center lg:text-left">Tahun Perjalanan</div>
+        </div>
+        <!-- Stat 4 -->
+        <div class="flex flex-col items-center lg:items-start">
+          <i class="fa-regular fa-star text-3xl text-blue-300 mb-4"></i>
+          <div class="text-3xl font-extrabold mb-1">100%</div>
+          <div class="text-xs text-gray-300 text-center lg:text-left">Komitmen untuk Dampak Nyata</div>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div class="w-full lg:w-1/3 relative pl-8 border-l border-white/20">
+        <div class="relative">
+          <i class="fa-solid fa-quote-left text-4xl text-white/20 absolute -top-4 -left-4"></i>
+          <p class="text-sm text-gray-200 italic leading-relaxed relative z-10 mb-4">
+            "Inovasi bukan hanya tentang teknologi, tetapi tentang manusia dan masa depan yang lebih baik."
+          </p>
+          <div class="w-12 h-0.5 bg-primary mb-3"></div>
+          <div class="text-xs font-bold tracking-widest text-gray-400">SYNVORA TEKNOLOGI INDONESIA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BUDAYA KAMI ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <!-- Left Content -->
+      <div>
+        <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> BUDAYA KAMI
+        </div>
+        <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">Berkembang Bersama<br>dengan Nilai yang Kuat</h2>
+        <p class="text-sm text-gray-600 leading-relaxed mb-8">
+          Kami percaya bahwa hasil terbaik lahir dari kolaborasi, kepercayaan, dan lingkungan kerja yang positif. SYNVORA adalah tempat di mana ide dihargai, inovasi didorong, dan setiap individu memiliki peran berarti dalam menciptakan dampak.
+        </p>
+        <a href="/karier" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition">
+          Bergabung Bersama Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Right Image Grid -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="col-span-2 relative rounded-2xl overflow-hidden shadow-lg h-64">
+          <!-- Replace with team image -->
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Tim SYNVORA" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+            <div class="text-white">
+              <div class="text-lg font-bold leading-tight">Great<br>People<br>Build<br>Great<br>Solutions</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-2 relative rounded-2xl overflow-hidden shadow-lg h-40 bg-[#0A1128] p-6 flex items-center">
+          <div>
+            <i class="fa-solid fa-quote-left text-2xl text-primary mb-2"></i>
+            <p class="text-xs text-gray-300 italic mb-2">"Tim yang solid adalah fondasi dari setiap inovasi besar."</p>
+            <div class="w-6 h-0.5 bg-primary"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PERJALANAN KAMI ================= -->
+  <section class="py-24 bg-gray-50 px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> PERJALANAN KAMI
+      </div>
+      <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-16">Tonggak Penting</h2>
+
+      <div class="relative">
+        <!-- Line -->
+        <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-gray-200 z-0"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+          <!-- 2024 -->
+          <div class="text-center">
+            <div class="timeline-dot active">
+              <i class="fa-solid fa-flag text-sm"></i>
+            </div>
+            <div class="text-primary font-bold text-lg mb-2">2024</div>
+            <div class="font-bold text-gray-900 mb-1">Awal Ide</div>
+            <div class="text-xs text-gray-500">Gagasan dan visi SYNVORA lahir.</div>
+          </div>
+          <!-- 2025 -->
+          <div class="text-center">
+            <div class="timeline-dot">
+              <i class="fa-regular fa-file-lines text-sm"></i>
+            </div>
+            <div class="text-primary font-bold text-lg mb-2">2025</div>
+            <div class="font-bold text-gray-900 mb-1">Persiapan</div>
+            <div class="text-xs text-gray-500">Tim terbentuk dan strategi disusun.</div>
+          </div>
+          <!-- 2026 -->
+          <div class="text-center">
+            <div class="timeline-dot">
+              <i class="fa-solid fa-rocket text-sm"></i>
+            </div>
+            <div class="text-primary font-bold text-lg mb-2">2026</div>
+            <div class="font-bold text-gray-900 mb-1">Resmi Berdiri</div>
+            <div class="text-xs text-gray-500">SYNVORA Teknologi Indonesia didirikan.</div>
+          </div>
+          <!-- Masa Depan -->
+          <div class="text-center">
+            <div class="timeline-dot">
+              <i class="fa-solid fa-chart-line text-sm"></i>
+            </div>
+            <div class="text-primary font-bold text-lg mb-2">Masa Depan</div>
+            <div class="font-bold text-gray-900 mb-1">Terus Bertumbuh</div>
+            <div class="text-xs text-gray-500">Menjadi perusahaan teknologi terdepan di Indonesia.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto bg-[#0A1128] rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+
+      <div class="z-10 mb-8 md:mb-0">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">MARI BERKOLABORASI</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight">Bersama SYNVORA, Kita Wujudkan<br>Solusi Teknologi untuk Masa Depan yang Lebih Baik.</h2>
+      </div>
+
+      <div class="flex gap-4 z-10">
+        <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

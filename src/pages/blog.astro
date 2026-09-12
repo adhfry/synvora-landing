@@ -1,0 +1,523 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Blog & Insight - SYNVORA Teknologi Indonesia"
+  navVariant="light"
+  footerVariant="default"
+  active="blog"
+  bodyClass="bg-[#F8FAFC] dark:bg-synvora-dark"
+>
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        /* Placeholder image: Menyesuaikan dengan gambar kantor/meja kerja */
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.85) 40%, rgba(10, 17, 40, 0.5) 100%),
+          url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .filter-btn {
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+      .filter-btn.active {
+        background-color: #0066ff;
+        color: white;
+        border-color: #0066ff;
+      }
+      .filter-btn:not(.active):hover {
+        border-color: #0066ff;
+        color: #0066ff;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        border: 1px solid #f3f4f6;
+        background: white;
+      }
+      .sidebar-card {
+        background: white;
+        border: 1px solid #f3f4f6;
+        border-radius: 16px;
+        padding: 24px;
+      }
+      .cta-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .hero-mockup-laptop {
+        width: 100%;
+        height: 200px;
+        background: #0d1b3e;
+        border: 2px solid #1e3a8a;
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+      .hero-mockup-screen {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0d1b3e 0%, #1e3a8a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+      }
+      .hero-mockup-card {
+        position: absolute;
+        right: -20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 8px 16px;
+        border-radius: 8px;
+        color: white;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <!-- Left Content -->
+      <div>
+        <!-- Breadcrumb -->
+        <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+          <a href="/" class="hover:text-white cursor-pointer">Beranda</a>
+          <i class="fa-solid fa-chevron-right text-[8px]"></i>
+          <span class="text-white">Blog</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+          Blog & <span class="text-primary">Insight</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+          Artikel, berita, dan wawasan seputar teknologi, inovasi digital, dan transformasi organisasi untuk masa depan yang lebih baik.
+        </p>
+
+        <!-- Tagline -->
+        <div class="border-l-4 border-primary pl-4">
+          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">
+            SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
+          </div>
+          <div class="text-xs text-gray-400">
+            A Better Tomorrow Through Technology
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Mockup (Placeholder for the laptop and cards in the image) -->
+      <div class="hidden lg:flex justify-end relative items-center">
+        <div class="relative w-80">
+          <div class="hero-mockup-laptop">
+            <div class="hero-mockup-screen">
+              Ideas<br>Insights<br>Impact
+            </div>
+          </div>
+          <!-- Floating Cards -->
+          <div class="absolute top-10 -left-12 flex flex-col gap-2">
+            <div class="hero-mockup-card" style="top: 0; right: 0;"><i class="fa-solid fa-microchip text-primary"></i> Technology</div>
+            <div class="hero-mockup-card" style="top: 30px; right: 0;"><i class="fa-solid fa-arrows-spin text-primary"></i> Innovation</div>
+            <div class="hero-mockup-card" style="top: 60px; right: 0;"><i class="fa-solid fa-users text-primary"></i> People</div>
+            <div class="hero-mockup-card" style="top: 90px; right: 0;"><i class="fa-solid fa-arrow-right text-primary"></i> A Better Tomorrow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT SECTION ================= -->
+  <section class="py-16 px-8 -mt-16 relative z-20">
+    <div class="max-w-7xl mx-auto">
+      <!-- Filter & Search Row -->
+      <div class="flex flex-col lg:flex-row justify-between items-center gap-4 mb-10 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <!-- Filters -->
+        <div class="flex flex-wrap gap-2 w-full lg:w-auto">
+          <button class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-xs font-semibold border border-primary">Semua</button>
+          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Teknologi</button>
+          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Transformasi Digital</button>
+          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Sistem Informasi</button>
+          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Kesehatan</button>
+          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Pemerintahan</button>
+          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Tips & Tutorial</button>
+          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Berita</button>
+          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Karier</button>
+        </div>
+
+        <!-- Search -->
+        <div class="relative w-full lg:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+          <input type="text" placeholder="Cari artikel..." class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-full text-xs focus:outline-none focus:border-primary">
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+        <!-- MAIN BLOG POSTS -->
+        <div class="lg:col-span-3 space-y-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Post 1 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" alt="AI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Teknologi</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">12 September 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">Peran AI dalam Transformasi Digital Organisasi</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Kecerdasan buatan bukan lagi sekadar tren, tetapi sudah menjadi kebutuhan strategis dalam meningkatkan efisiensi dan kualitas layanan.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Author" class="w-6 h-6 rounded-full object-cover">
+                    <div class="text-[9px] font-semibold text-gray-700">Ahda Fity Barori</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 5 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Sistem Informasi" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Sistem Informasi</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">8 September 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">Membangun Sistem Informasi yang Berkelanjutan</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Keberhasilan sistem informasi tidak hanya ditentukan oleh teknologi, tetapi juga oleh strategi, SDM, dan komitmen berkelanjutan.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[8px] font-bold">S</div>
+                    <div class="text-[9px] font-semibold text-gray-700">Tim SYNVORA</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 4 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" alt="Kesehatan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Kesehatan</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">5 September 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">Digitalisasi Layanan Laboratorium: Lebih Cepat, Lebih Akurat</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Transformasi digital di laboratorium membantu meningkatkan akurasi hasil, efisiensi proses, dan kepuasan pengguna layanan.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[8px] font-bold">S</div>
+                    <div class="text-[9px] font-semibold text-gray-700">Tim SYNVORA</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 6 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 4 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" alt="Pemerintahan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Pemerintahan</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">1 September 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">Solusi Digital untuk Pemerintahan yang Lebih Transparan</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Teknologi informasi berperan penting dalam mewujudkan tata kelola pemerintahan yang efektif, transparan, dan berorientasi pada masyarakat.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Author" class="w-6 h-6 rounded-full object-cover">
+                    <div class="text-[9px] font-semibold text-gray-700">Ahda Fity Barori</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 5 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 5 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600" alt="Tips" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Tips & Tutorial</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">28 Agustus 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">5 Tips Membangun Aplikasi Web yang User-Friendly</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Pengalaman pengguna (UX) yang baik adalah kunci keberhasilan sebuah aplikasi. Berikut beberapa hal yang perlu diperhatikan.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[8px] font-bold">T</div>
+                    <div class="text-[9px] font-semibold text-gray-700">Tim Pengembang</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 7 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 6 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Karier" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Karier</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">20 Agustus 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">Berkembang Bersama: Budaya Kerja di SYNVORA</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Di SYNVORA, kami percaya bahwa lingkungan kerja yang positif mendorong lahirnya inovasi. Kenali lebih dekat budaya kerja kami.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[8px] font-bold">S</div>
+                    <div class="text-[9px] font-semibold text-gray-700">Tim SYNVORA</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 4 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 7 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600" alt="Berita" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Berita</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">15 Agustus 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">SYNVORA Teknologi Indonesia Resmi Berdiri</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Dengan semangat Synchronous, Innovation, Evolution, Era, SYNVORA hadir untuk menjadi mitra terpercaya dalam solusi teknologi informasi.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Author" class="w-6 h-6 rounded-full object-cover">
+                    <div class="text-[9px] font-semibold text-gray-700">Ahda Fity Barori</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 5 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 8 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Transformasi Digital" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Transformasi Digital</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">10 Agustus 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">Data Driven Decision Making: Langkah Menuju Organisasi Modern</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Pengambilan keputusan berbasis data membantu organisasi menjadi lebih adaptif, efisien, dan siap menghadapi perubahan.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[8px] font-bold">S</div>
+                    <div class="text-[9px] font-semibold text-gray-700">Tim SYNVORA</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 6 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 9 -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+              <div class="h-44 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600" alt="Tips" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Tips & Tutorial</div>
+              </div>
+              <div class="p-5 flex-1 flex flex-col">
+                <div class="text-[10px] text-gray-400 mb-2">5 Agustus 2026</div>
+                <h3 class="font-bold text-gray-900 text-sm mb-2 leading-tight">Progressive Web App (PWA): Solusi Aplikasi Modern</h3>
+                <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">PWA menjadi alternatif tepat untuk mengurangi hambatan pengelolaan aplikasi yang cepat, ringan, dan dapat diakses di berbagai perangkat.</p>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[8px] font-bold">T</div>
+                    <div class="text-[9px] font-semibold text-gray-700">Tim Pengembang</div>
+                  </div>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> 5 menit baca</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center items-center gap-2 mt-12">
+            <button class="w-8 h-8 rounded border border-gray-300 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+            <button class="w-8 h-8 rounded border border-gray-300 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition">1</button>
+            <button class="w-8 h-8 rounded bg-primary border border-primary flex items-center justify-center text-white font-bold text-sm">2</button>
+            <button class="w-8 h-8 rounded border border-gray-300 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition">3</button>
+            <span class="text-gray-400 text-xs px-1">...</span>
+            <button class="w-8 h-8 rounded border border-gray-300 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition">10</button>
+            <button class="w-8 h-8 rounded border border-gray-300 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="lg:col-span-1 space-y-8">
+
+          <!-- Kategori -->
+          <div class="sidebar-card">
+            <h3 class="font-bold text-gray-900 text-base mb-4">Kategori</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg bg-blue-50 text-primary font-semibold">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-check"></i> Semua
+                </div>
+                <span>32</span>
+              </li>
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-microchip text-gray-400"></i> Teknologi
+                </div>
+                <span>8</span>
+              </li>
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-arrows-spin text-gray-400"></i> Transformasi Digital
+                </div>
+                <span>6</span>
+              </li>
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-database text-gray-400"></i> Sistem Informasi
+                </div>
+                <span>5</span>
+              </li>
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-heart-pulse text-gray-400"></i> Kesehatan
+                </div>
+                <span>4</span>
+              </li>
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-building-columns text-gray-400"></i> Pemerintahan
+                </div>
+                <span>4</span>
+              </li>
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-lightbulb text-gray-400"></i> Tips & Tutorial
+                </div>
+                <span>4</span>
+              </li>
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <i class="fa-regular fa-newspaper text-gray-400"></i> Berita
+                </div>
+                <span>3</span>
+              </li>
+              <li class="flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 hover:bg-gray-50 transition cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-briefcase text-gray-400"></i> Karier
+                </div>
+                <span>2</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Artikel Populer -->
+          <div class="sidebar-card">
+            <h3 class="font-bold text-gray-900 text-base mb-4">Artikel Populer</h3>
+            <div class="space-y-4">
+              <!-- Pop 1 -->
+              <div class="flex gap-3 cursor-pointer group">
+                <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=150" alt="AI" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900 leading-tight mb-1 group-hover:text-primary transition">Peran AI dalam Transformasi Digital Organisasi</h4>
+                  <div class="text-[9px] text-gray-400">12 Sep 2026</div>
+                </div>
+              </div>
+              <!-- Pop 2 -->
+              <div class="flex gap-3 cursor-pointer group">
+                <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=150" alt="Lab" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900 leading-tight mb-1 group-hover:text-primary transition">Digitalisasi Layanan Laboratorium: Lebih Cepat, Lebih Akurat</h4>
+                  <div class="text-[9px] text-gray-400">5 Sep 2026</div>
+                </div>
+              </div>
+              <!-- Pop 3 -->
+              <div class="flex gap-3 cursor-pointer group">
+                <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=150" alt="Web" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900 leading-tight mb-1 group-hover:text-primary transition">5 Tips Membangun Aplikasi Web yang User-Friendly</h4>
+                  <div class="text-[9px] text-gray-400">28 Agu 2026</div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-center">
+              <a href="#" class="text-primary text-xs font-semibold flex items-center justify-center gap-2 hover:underline">
+                Lihat Semua Artikel Populer <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="sidebar-card bg-blue-50 border-blue-100">
+            <div class="w-12 h-12 bg-white text-primary rounded-xl flex items-center justify-center text-xl mb-4 shadow-sm">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <h3 class="font-bold text-gray-900 text-base mb-2">Berlangganan Newsletter</h3>
+            <p class="text-xs text-gray-500 mb-6 leading-relaxed">Dapatkan artikel terbaru, insight teknologi, dan kabar dari SYNVORA langsung ke email Anda.</p>
+            <div class="relative mb-3">
+              <input type="email" placeholder="Masukkan email Anda" class="w-full pl-4 pr-4 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-primary">
+            </div>
+            <button class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
+              Berlangganan <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+            <div class="flex items-center gap-2 mt-4 text-[9px] text-gray-400">
+              <i class="fa-solid fa-lock"></i> Kami menghargai privasi Anda. Tidak ada spam, hanya konten berkualitas.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <!-- Background glow -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+
+      <div class="z-10 mb-8 md:mb-0 max-w-2xl">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">MARI BERKOLABORASI</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">
+          Wujudkan Ide, Sebarkan Inspirasi
+        </h2>
+        <p class="text-sm text-gray-300">
+          Punya topik menarik yang ingin dibahas? Mari berbagi cerita dan wawasan bersama SYNVORA untuk Indonesia yang lebih baik.
+        </p>
+      </div>
+
+      <div class="flex gap-4 z-10">
+        <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

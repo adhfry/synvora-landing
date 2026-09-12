@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - SYNVORA Teknologi Indonesia</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hero-bg {
+            background-color: #0A1128;
+            /* Placeholder image: Menyesuaikan dengan gambar kantor/meja kerja */
+            background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.8) 40%, rgba(10, 17, 40, 0.4) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+        .text-primary {
+            color: #0055FF;
+        }
+        .bg-primary {
+            background-color: #0055FF;
+        }
+        .btn-primary {
+            background-color: #0055FF;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0044cc;
+            transform: translateY(-2px);
+        }
+        .filter-btn {
+            transition: all 0.2s ease;
+        }
+        .filter-btn.active {
+            background-color: #0055FF;
+            color: white;
+            border-color: #0055FF;
+        }
+        .filter-btn:not(.active):hover {
+            border-color: #0055FF;
+            color: #0055FF;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f3f4f6;
+        }
+        .stat-bg {
+            background-color: #F0F7FF;
+            border: 1px solid #E0EFFF;
+        }
+        .cta-bg {
+            background-color: #0A1128;
+            background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+        .case-study-stat {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-800 bg-white antialiased">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="bg-white border-b border-gray-100 py-4 px-8 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex flex-col cursor-pointer">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cube text-primary text-xl"></i>
+                    <span class="font-extrabold text-xl tracking-wider text-gray-900">SYNVORA</span>
+                </div>
+                <span class="text-[9px] tracking-[0.2em] text-gray-400 -mt-1 ml-7">TEKNOLOGI INDONESIA</span>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+                <a href="#" class="hover:text-primary transition">Beranda</a>
+                <a href="#" class="hover:text-primary transition">Tentang Kami</a>
+                <a href="#" class="hover:text-primary transition">Layanan</a>
+                <a href="#" class="text-primary font-bold border-b-2 border-primary pb-1">Portfolio</a>
+                <a href="#" class="hover:text-primary transition">Karier</a>
+                <a href="#" class="hover:text-primary transition">Blog</a>
+            </div>
+
+            <!-- CTA -->
+            <a href="#" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+                Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <!-- Left Content -->
+            <div>
+                <!-- Breadcrumb -->
+                <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+                    <span class="hover:text-white cursor-pointer">Beranda</span>
+                    <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                    <span class="text-white">Portfolio</span>
+                </div>
+                
+                <!-- Title -->
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                    Portofolio <span class="text-primary">Kami</span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+                    Berbagai solusi digital yang telah kami kembangkan untuk membantu organisasi bekerja lebih efektif, efisien, dan berdampak nyata.
+                </p>
+                
+                <!-- Tagline -->
+                <div class="border-l-4 border-primary pl-4">
+                    <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">
+                        SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
+                    </div>
+                    <div class="text-xs text-gray-400">
+                        A Better Tomorrow Through Technology
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Floating Card -->
+            <div class="hidden lg:flex justify-end relative">
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl max-w-sm relative z-20">
+                    <div class="text-3xl font-extrabold text-white leading-tight mb-4">
+                        Great<br>Solutions<br>Create<br>Greater<br>Impact
+                    </div>
+                    <div class="w-12 h-1 bg-primary mb-6"></div>
+                    
+                    <!-- Inner Card -->
+                    <div class="bg-[#0A1128]/80 p-4 rounded-xl border border-white/10 flex items-start gap-3">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-lightbulb text-white"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-white mb-1">Dari Ide Menjadi Solusi Nyata</div>
+                            <div class="text-[10px] text-gray-400 leading-tight">Setiap proyek adalah langkah menuju masa depan yang lebih baik.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PORTFOLIO SECTION ================= -->
+    <section class="py-24 bg-white px-8">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header Row -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+                <div class="max-w-2xl">
+                    <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-primary rounded-full"></span> KARYA NYATA
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+                        Proyek yang Memberikan Dampak
+                    </h2>
+                    <p class="text-sm text-gray-500 max-w-xl">
+                        Kami bangga dapat berkolaborasi dengan berbagai instansi dan organisasi dalam menghadirkan solusi teknologi yang relevan dan berkualitas.
+                    </p>
+                </div>
+                <!-- Quote -->
+                <div class="mt-6 md:mt-0 max-w-sm relative pl-6 border-l-2 border-primary">
+                    <i class="fa-solid fa-quote-left text-2xl text-blue-100 absolute -top-2 left-2"></i>
+                    <p class="text-xs text-gray-500 italic relative z-10 mb-2">"Kepercayaan klien adalah bukti komitmen kami untuk selalu memberikan yang terbaik."</p>
+                    <div class="text-[10px] font-bold tracking-widest text-primary">SYNVORA TEKNOLOGI INDONESIA</div>
+                </div>
+            </div>
+
+            <!-- Filter & Search Row -->
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-4 mb-10">
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-2 w-full lg:w-auto">
+                    <button class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-xs font-semibold border border-primary">Semua</button>
+                    <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Pemerintahan</button>
+                    <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Kesehatan</button>
+                    <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Pendidikan</button>
+                    <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Perusahaan</button>
+                    <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Aplikasi Mobile</button>
+                    <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Website</button>
+                    <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Sistem Informasi</button>
+                </div>
+                
+                <!-- Search & Sort -->
+                <div class="flex gap-3 w-full lg:w-auto">
+                    <div class="relative flex-1 lg:flex-none lg:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                        <input type="text" placeholder="Cari proyek..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-full text-xs focus:outline-none focus:border-primary">
+                    </div>
+                    <div class="relative">
+                        <select class="appearance-none bg-white border border-gray-200 rounded-full px-6 py-2 text-xs font-semibold text-gray-600 focus:outline-none focus:border-primary pr-8 cursor-pointer">
+                            <option>Urutkan</option>
+                            <option>Terbaru</option>
+                            <option>Terlama</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+                    <div class="h-44 relative overflow-hidden">
+                        <!-- Ganti dengan gambar Laboratorium -->
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" alt="Sistem Informasi Laboratorium" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Kesehatan</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Sistem Informasi Laboratorium</h3>
+                        <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Digitalisasi alur kerja laboratorium untuk pelayanan yang lebih cepat dan akurat.</p>
+                        <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+                    <div class="h-44 relative overflow-hidden">
+                        <!-- Ganti dengan gambar Gedung Pemerintahan -->
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" alt="Sistem Manajemen Layanan Publik" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Pemerintahan</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Sistem Manajemen Layanan Publik</h3>
+                        <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Meningkatkan transparansi dan efisiensi layanan pemerintah daerah.</p>
+                        <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+                    <div class="h-44 relative overflow-hidden">
+                        <!-- Ganti dengan gambar Mobile App -->
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600" alt="Aplikasi Layanan Masyarakat" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Mobile App</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Aplikasi Layanan Masyarakat</h3>
+                        <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Akses informasi dan layanan lebih mudah melalui perangkat mobile.</p>
+                        <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+                    <div class="h-44 relative overflow-hidden">
+                        <!-- Ganti dengan gambar Pendidikan/Laptop -->
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" alt="Sistem Akademik Terpadu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Pendidikan</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Sistem Akademik Terpadu</h3>
+                        <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Mendukung pengelolaan data akademik secara terintegrasi dan modern.</p>
+                        <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+                    <div class="h-44 relative overflow-hidden">
+                        <!-- Ganti dengan gambar HR/Portal -->
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=600" alt="Portal Manajemen SDM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Perusahaan</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Portal Manajemen SDM</h3>
+                        <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Solusi pengelolaan sumber daya manusia yang lebih efektif dan terukur.</p>
+                        <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+                    <div class="h-44 relative overflow-hidden">
+                        <!-- Ganti dengan gambar Website -->
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" alt="Website Profil Instansi" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Website</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Website Profil Instansi</h3>
+                        <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Representasi digital yang profesional dan informatif.</p>
+                        <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+                    <div class="h-44 relative overflow-hidden">
+                        <!-- Ganti dengan gambar Dashboard -->
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Dashboard Monitoring Program" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Pemerintahan</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Dashboard Monitoring Program</h3>
+                        <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Memantau capaian program secara real-time dan berbasis data.</p>
+                        <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+                    <div class="h-44 relative overflow-hidden">
+                        <!-- Ganti dengan gambar Survey App -->
+                        <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=600" alt="Aplikasi Survei & Monitoring" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Mobile App</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Aplikasi Survei & Monitoring</h3>
+                        <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Memudahkan penghimpunan data lapangan secara cepat dan akurat.</p>
+                        <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATS SECTION ================= -->
+    <section class="py-16 px-8">
+        <div class="max-w-7xl mx-auto stat-bg rounded-2xl p-10 flex flex-col lg:flex-row justify-between items-center">
+            <!-- Title -->
+            <div class="w-full lg:w-1/4 mb-8 lg:mb-0">
+                <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-primary rounded-full"></span> DALAM ANGKA
+                </div>
+                <h3 class="text-2xl font-extrabold text-gray-900 leading-tight">Hasil yang<br>Berbicara</h3>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-3/4 text-center">
+                <div class="flex flex-col items-center">
+                    <i class="fa-solid fa-cube text-2xl text-primary mb-3"></i>
+                    <div class="text-3xl font-extrabold text-gray-900 mb-1">50+</div>
+                    <div class="text-xs text-gray-500">Proyek Diselesaikan</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fa-regular fa-handshake text-2xl text-primary mb-3"></i>
+                    <div class="text-3xl font-extrabold text-gray-900 mb-1">30+</div>
+                    <div class="text-xs text-gray-500">Klien Terpercaya</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fa-regular fa-star text-2xl text-primary mb-3"></i>
+                    <div class="text-3xl font-extrabold text-gray-900 mb-1">5+</div>
+                    <div class="text-xs text-gray-500">Tahun Pengalaman</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fa-solid fa-users text-2xl text-primary mb-3"></i>
+                    <div class="text-3xl font-extrabold text-gray-900 mb-1">100%</div>
+                    <div class="text-xs text-gray-500">Komitmen pada Kualitas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CASE STUDY SECTION ================= -->
+    <section class="py-16 bg-white px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Image -->
+            <div class="relative">
+                <div class="rounded-2xl overflow-hidden shadow-xl">
+                    <!-- Ganti dengan gambar dashboard/laptop -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Case Study Dashboard" class="w-full h-[400px] object-cover">
+                </div>
+                <!-- Play Button Overlay -->
+                <div class="absolute bottom-6 left-6 bg-primary text-white px-5 py-2.5 rounded-full text-xs font-semibold flex items-center gap-2 shadow-lg cursor-pointer hover:bg-blue-700 transition">
+                    <i class="fa-solid fa-play"></i> Lihat Demo
+                </div>
+                <!-- Phone Mockup Overlay (Simplified) -->
+                <div class="absolute bottom-0 right-10 w-32 h-64 bg-white rounded-t-xl shadow-2xl border-4 border-gray-800 overflow-hidden">
+                    <div class="h-full bg-gray-50 p-2 flex flex-col gap-2">
+                        <div class="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+                        <div class="h-20 bg-blue-100 rounded"></div>
+                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                        <div class="h-10 bg-blue-100 rounded mt-auto"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div>
+                <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> STUDI KASUS
+                </div>
+                <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">Digitalisasi Laboratorium untuk Pelayanan yang Lebih Cepat</h2>
+                <p class="text-sm text-gray-500 leading-relaxed mb-8">
+                    Implementasi sistem informasi laboratorium yang berhasil meningkatkan efisiensi kerja hingga 70% dan mempercepat waktu pelayanan hasil pemeriksaan.
+                </p>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="case-study-stat">
+                        <div class="text-xl font-extrabold text-primary mb-1">70%</div>
+                        <div class="text-[10px] text-gray-500">Peningkatan Efisiensi</div>
+                    </div>
+                    <div class="case-study-stat">
+                        <div class="text-xl font-extrabold text-primary mb-1">50%</div>
+                        <div class="text-[10px] text-gray-500">Pengurangan Waktu Pelayanan</div>
+                    </div>
+                    <div class="case-study-stat">
+                        <div class="text-xl font-extrabold text-primary mb-1">100%</div>
+                        <div class="text-[10px] text-gray-500">Kepuasan Pengguna</div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <a href="#" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition">
+                        Lihat Studi Kasus Lengkap <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <!-- Navigation Arrows -->
+                    <div class="flex gap-3">
+                        <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition">
+                            <i class="fa-solid fa-arrow-left text-sm"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition">
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BOTTOM CTA ================= -->
+    <section class="py-16 px-8">
+        <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+            <!-- Background glow -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+            
+            <div class="z-10 mb-8 md:mb-0 max-w-2xl">
+                <div class="text-xs font-bold text-primary tracking-widest mb-2">MARI BERKOLABORASI</div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">
+                    Punya Ide Proyek?<br>Wujudkan Bersama SYNVORA
+                </h2>
+                <p class="text-sm text-gray-300">
+                    Diskusikan kebutuhan Anda dan temukan solusi terbaik untuk organisasi Anda.
+                </p>
+            </div>
+            
+            <div class="flex gap-4 z-10">
+                <a href="#" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+                    Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-white pt-20 pb-10 px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+            <!-- Brand -->
+            <div class="lg:col-span-2">
+                <div class="flex flex-col mb-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-cube text-primary text-xl"></i>
+                        <span class="font-extrabold text-xl tracking-wider text-gray-900">SYNVORA</span>
+                    </div>
+                    <span class="text-[9px] tracking-[0.2em] text-gray-400 -mt-1 ml-7">TEKNOLOGI INDONESIA</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-6 max-w-sm">Teknologi yang menyatukan, menginspirasi, dan menciptakan masa depan yang lebih baik.</p>
+                <div class="flex gap-4 text-gray-400">
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6 text-sm">Navigasi</h4>
+                <ul class="space-y-3 text-xs text-gray-500">
+                    <li><a href="#" class="hover:text-primary transition">Beranda</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Layanan</a></li>
+                    <li><a href="#" class="text-primary font-semibold">Portfolio</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Karier</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Layanan -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6 text-sm">Layanan</h4>
+                <ul class="space-y-3 text-xs text-gray-500">
+                    <li><a href="#" class="hover:text-primary transition">Sistem Informasi</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Integrasi Sistem</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Aplikasi Web & Mobile</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Konsultasi IT</a></li>
+                </ul>
+            </div>
+
+            <!-- Kontak -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6 text-sm">Kontak</h4>
+                <ul class="space-y-4 text-xs text-gray-500">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot text-primary mt-0.5"></i>
+                        <span>Indonesia</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-regular fa-envelope text-primary mt-0.5"></i>
+                        <span>hello@synvora.id</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-primary mt-0.5"></i>
+                        <span>+62 811 234 567</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-regular fa-clock text-primary mt-0.5"></i>
+                        <span>Senin - Jumat<br>08.00 - 17.00 WIB</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400">
+            <div class="mb-4 md:mb-0">
+                &copy; 2026 SYNVORA Teknologi Indonesia. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-primary transition">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-primary transition">Syarat & Ketentuan</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

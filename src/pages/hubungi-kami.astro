@@ -1,0 +1,319 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Hubungi Kami - SYNVORA Teknologi Indonesia"
+  navVariant="light"
+  footerVariant="default"
+  active="hubungi-kami"
+  bodyClass="bg-[#F8FAFC] dark:bg-synvora-dark"
+>
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        /* Placeholder image: Menyesuaikan dengan gambar kantor/meja kerja */
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.85) 40%, rgba(10, 17, 40, 0.4) 100%),
+          url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .form-input {
+        width: 100%;
+        background-color: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 12px;
+        color: #374151;
+        transition: all 0.2s ease;
+      }
+      .form-input:focus {
+        outline: none;
+        border-color: #0066ff;
+        box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+      }
+      .form-input::placeholder {
+        color: #9ca3af;
+      }
+      .cta-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .map-container {
+        position: relative;
+        height: 250px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .map-overlay-card {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        background: white;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <!-- Left Content -->
+      <div>
+        <!-- Breadcrumb -->
+        <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+          <a href="/" class="hover:text-white cursor-pointer">Beranda</a>
+          <i class="fa-solid fa-chevron-right text-[8px]"></i>
+          <span class="text-white">Hubungi Kami</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+          Hubungi <span class="text-primary">Kami</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+          Mari diskusikan kebutuhan Anda. Tim kami siap membantu memberikan solusi terbaik untuk organisasi Anda.
+        </p>
+
+        <!-- Tagline -->
+        <div class="border-l-4 border-primary pl-4">
+          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">
+            SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
+          </div>
+          <div class="text-xs text-gray-400">
+            A Better Tomorrow Through Technology
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Text Overlay -->
+      <div class="hidden lg:flex justify-end relative">
+        <div class="text-right">
+          <div class="text-4xl font-extrabold text-white leading-tight mb-2">
+            Good<br>Ideas<br>Better<br>Tomorrows
+          </div>
+          <div class="w-12 h-1 bg-primary ml-auto"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURE HIGHLIGHTS ================= -->
+  <section class="py-16 bg-white px-8 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+      <!-- Highlight 1 -->
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">Respons Cepat</h3>
+        <p class="text-[11px] text-gray-500">&lt; 1x24 jam</p>
+      </div>
+      <!-- Highlight 2 -->
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4">
+          <i class="fa-solid fa-user-tie"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">Tim Profesional</h3>
+        <p class="text-[11px] text-gray-500">Siap Membantu</p>
+      </div>
+      <!-- Highlight 3 -->
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4">
+          <i class="fa-solid fa-gear"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">Solusi Sesuai Kebutuhan</h3>
+        <p class="text-[11px] text-gray-500">Custom dan Fleksibel</p>
+      </div>
+      <!-- Highlight 4 -->
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4">
+          <i class="fa-solid fa-handshake"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">Komitmen Jangka Panjang</h3>
+        <p class="text-[11px] text-gray-500">Mitra untuk Tumbuh Bersama</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT (CONTACT & FORM) ================= -->
+  <section class="py-24 px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+      <!-- LEFT COLUMN: CONTACT INFO & MAP -->
+      <div class="lg:col-span-1 space-y-8">
+
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-xl font-extrabold text-gray-900 mb-2">Informasi Kontak</h2>
+          <p class="text-xs text-gray-500 mb-6 leading-relaxed">Anda dapat menghubungi kami melalui berbagai kanal berikut.</p>
+
+          <ul class="space-y-6">
+            <li class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm shrink-0 mt-0.5">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-900 text-sm mb-1">Alamat</div>
+                <div class="text-xs text-gray-500 leading-relaxed">Yogyakarta, Indonesia<br>(Detail alamat dapat diberikan melalui kontak resmi)</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm shrink-0 mt-0.5">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-900 text-sm mb-1">Telepon</div>
+                <div class="text-xs text-gray-500">+62 811 234 567</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm shrink-0 mt-0.5">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-900 text-sm mb-1">Email</div>
+                <div class="text-xs text-gray-500">hello@synvora.id</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm shrink-0 mt-0.5">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-900 text-sm mb-1">Jam Operasional</div>
+                <div class="text-xs text-gray-500">Senin - Jumat<br>08.00 - 17.00 WIB</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div>
+          <div class="font-bold text-gray-900 text-sm mb-3">Ikuti Kami</div>
+          <div class="flex gap-4 text-gray-400">
+            <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Map Card -->
+        <div class="map-container">
+          <!-- Placeholder Map Image -->
+          <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=600" alt="Peta Lokasi" class="w-full h-full object-cover">
+          <div class="map-overlay-card">
+            <div class="w-8 h-8 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-sm shrink-0">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="flex-1">
+              <div class="font-bold text-gray-900 text-xs mb-1">Lokasi Kami</div>
+              <div class="text-[10px] text-gray-500 mb-2 leading-tight">Yogyakarta, Indonesia<br>Kami terbuka untuk berdiskusi langsung di kantor kami. Silakan hubungi terlebih dahulu untuk menjadwalkan.</div>
+              <a href="#" class="text-[10px] font-bold text-primary flex items-center gap-1 hover:underline">Buka di Google Maps <i class="fa-solid fa-arrow-right text-[8px]"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: CONTACT FORM -->
+      <div class="lg:col-span-2">
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+          <h2 class="text-xl font-extrabold text-gray-900 mb-2">Kirim Pesan untuk Kami</h2>
+          <p class="text-xs text-gray-500 mb-8">Isi formulir berikut dan tim kami akan segera menghubungi Anda.</p>
+
+          <form class="space-y-6">
+            <!-- Row 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                <input type="text" placeholder="Masukkan nama lengkap Anda" class="form-input">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-2">Email <span class="text-red-500">*</span></label>
+                <input type="email" placeholder="nama@perusahaan.com" class="form-input">
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-2">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                <input type="tel" placeholder="Contoh: 0811 234 567" class="form-input">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-2">Nama Perusahaan / Instansi</label>
+                <input type="text" placeholder="Masukkan nama perusahaan" class="form-input">
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-2">Topik Pesan <span class="text-red-500">*</span></label>
+              <div class="relative">
+                <select class="form-input appearance-none cursor-pointer">
+                  <option value="" disabled selected>Pilih topik pesan</option>
+                  <option>Pengembangan Sistem Informasi</option>
+                  <option>Integrasi & Modernisasi Sistem</option>
+                  <option>Aplikasi Web & Mobile</option>
+                  <option>Konsultasi IT</option>
+                  <option>Lainnya</option>
+                </select>
+                <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+              </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-2">Pesan <span class="text-red-500">*</span></label>
+              <textarea rows="5" placeholder="Ceritakan kebutuhan atau pertanyaan Anda..." class="form-input resize-none"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+              <button type="submit" class="w-full btn-primary py-3.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+                Kirim Pesan <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <!-- Background glow -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+
+      <div class="z-10 mb-8 md:mb-0 max-w-2xl">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">SIAP BERKOLABORASI?</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">
+          Wujudkan Solusi Teknologi<br>untuk Masa Depan yang Lebih Baik.
+        </h2>
+      </div>
+
+      <div class="flex gap-4 z-10">
+        <a href="/konsultasi-gratis" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

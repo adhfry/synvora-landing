@@ -1,0 +1,39 @@
+@config "../../tailwind.config.mjs";
+@import "tailwindcss";
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Shared brand utility classes (unified across all pages, sourced from the SYNVORA logo palette) */
+.text-primary {
+  color: #0066FF;
+}
+.bg-primary {
+  background-color: #0066FF;
+}
+.border-primary {
+  border-color: #0066FF;
+}
+.btn-primary {
+  background-color: #0066FF;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #0052cc;
+}
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  border-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

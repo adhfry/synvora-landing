@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konsultasi Gratis - SYNVORA Teknologi Indonesia</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+        }
+        .hero-bg {
+            background-color: #0A1128;
+            /* Placeholder image: Menyesuaikan dengan gambar tim berkolaborasi */
+            background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.85) 40%, rgba(10, 17, 40, 0.4) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+        .text-primary {
+            color: #0055FF;
+        }
+        .bg-primary {
+            background-color: #0055FF;
+        }
+        .btn-primary {
+            background-color: #0055FF;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0044cc;
+        }
+        .form-input {
+            width: 100%;
+            background-color: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 12px;
+            color: #374151;
+            transition: all 0.2s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #0055FF;
+            box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.1);
+        }
+        .form-input::placeholder {
+            color: #9CA3AF;
+        }
+        .cta-bg {
+            background-color: #0A1128;
+            background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+        .workflow-arrow {
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            color: #9ca3af;
+            font-size: 14px;
+            z-index: 1;
+            background: #F8FAFC;
+            padding: 0 4px;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="bg-white border-b border-gray-100 py-4 px-8 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex flex-col cursor-pointer">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cube text-primary text-xl"></i>
+                    <span class="font-extrabold text-xl tracking-wider text-gray-900">SYNVORA</span>
+                </div>
+                <span class="text-[9px] tracking-[0.2em] text-gray-400 -mt-1 ml-7">TEKNOLOGI INDONESIA</span>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+                <a href="#" class="hover:text-primary transition">Beranda</a>
+                <a href="#" class="hover:text-primary transition">Tentang Kami</a>
+                <a href="#" class="hover:text-primary transition">Layanan</a>
+                <a href="#" class="hover:text-primary transition">Portfolio</a>
+                <a href="#" class="hover:text-primary transition">Karier</a>
+                <a href="#" class="hover:text-primary transition">Blog</a>
+            </div>
+
+            <!-- CTA -->
+            <a href="#" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+                Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <!-- Left Content -->
+            <div>
+                <!-- Breadcrumb -->
+                <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+                    <span class="hover:text-white cursor-pointer">Beranda</span>
+                    <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                    <span class="text-white">Konsultasi Gratis</span>
+                </div>
+                
+                <!-- Title -->
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                    Konsultasi <span class="text-primary">Gratis</span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+                    Diskusikan kebutuhan teknologi Anda dengan tim ahli kami, tanpa biaya dan tanpa komitmen.
+                </p>
+                
+                <!-- Tagline -->
+                <div class="border-l-4 border-primary pl-4">
+                    <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">
+                        SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
+                    </div>
+                    <div class="text-xs text-gray-400">
+                        A Better Tomorrow Through Technology
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Text Overlay -->
+            <div class="hidden lg:flex justify-end relative">
+                <div class="text-right">
+                    <div class="text-4xl font-extrabold text-white leading-tight mb-2">
+                        Great<br>People<br>Build<br>Great<br>Solutions
+                    </div>
+                    <div class="w-12 h-1 bg-primary ml-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURE HIGHLIGHTS ================= -->
+    <section class="py-16 bg-white px-8 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Highlight 1 -->
+            <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">Diskusi Langsung dengan Ahli</h3>
+            </div>
+            <!-- Highlight 2 -->
+            <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-regular fa-lightbulb"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">Rekomendasi Solusi Sesuai Kebutuhan</h3>
+            </div>
+            <!-- Highlight 3 -->
+            <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">Tanpa Biaya dan Tanpa Komitmen</h3>
+            </div>
+            <!-- Highlight 4 -->
+            <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">Langkah Awal Menuju Transformasi</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MAIN CONTENT (FORM & SIDEBAR) ================= -->
+    <section class="py-24 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            <!-- LEFT COLUMN: CONSULTATION FORM -->
+            <div class="lg:col-span-2">
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-xl font-extrabold text-gray-900 mb-2">Jadwalkan Konsultasi Gratis</h2>
+                    <p class="text-xs text-gray-500 mb-8">Isi formulir berikut dan pilih waktu yang sesuai. Tim kami akan mengonfirmasi jadwal melalui email atau WhatsApp.</p>
+
+                    <form class="space-y-6">
+                        <!-- Row 1 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Masukkan nama lengkap Anda" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">Email <span class="text-red-500">*</span></label>
+                                <input type="email" placeholder="nama@perusahaan.com" class="form-input">
+                            </div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                                <input type="tel" placeholder="Contoh: 0811 234 567" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">Nama Perusahaan / Instansi</label>
+                                <input type="text" placeholder="Masukkan nama perusahaan" class="form-input">
+                            </div>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">Jenis Kebutuhan <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <select class="form-input appearance-none cursor-pointer">
+                                        <option value="" disabled selected>Pilih jenis kebutuhan</option>
+                                        <option>Pengembangan Sistem Informasi</option>
+                                        <option>Integrasi & Modernisasi Sistem</option>
+                                        <option>Aplikasi Web & Mobile</option>
+                                        <option>Konsultasi IT</option>
+                                        <option>Lainnya</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">Pilih Tanggal Konsultasi <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <input type="date" class="form-input cursor-pointer">
+                                    <i class="fa-regular fa-calendar absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-2">Pilih Waktu <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <select class="form-input appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Pilih waktu</option>
+                                    <option>09:00 - 10:00 WIB</option>
+                                    <option>10:00 - 11:00 WIB</option>
+                                    <option>13:00 - 14:00 WIB</option>
+                                    <option>14:00 - 15:00 WIB</option>
+                                    <option>15:00 - 16:00 WIB</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-2">Ceritakan Kebutuhan Anda <span class="text-red-500">*</span></label>
+                            <textarea rows="5" placeholder="Jelaskan secara singkat kebutuhan atau tantangan yang ingin Anda diskusikan..." class="form-input resize-none"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div>
+                            <button type="submit" class="w-full btn-primary py-3.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+                                Ajukan Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Privacy Note -->
+                        <div class="flex items-center justify-center gap-2 text-[10px] text-gray-400 mt-4">
+                            <i class="fa-solid fa-lock"></i> Data Anda aman dan hanya digunakan untuk keperluan konsultasi.
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: SIDEBAR -->
+            <div class="lg:col-span-1 space-y-8">
+                
+                <!-- What You Will Get Card -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-900 text-base mb-6">Apa yang Akan Anda Dapatkan?</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-primary mt-0.5 text-sm"></i>
+                            <span class="text-xs text-gray-600">Diskusi langsung dengan tim ahli</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-primary mt-0.5 text-sm"></i>
+                            <span class="text-xs text-gray-600">Analisis kebutuhan awal</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-primary mt-0.5 text-sm"></i>
+                            <span class="text-xs text-gray-600">Rekomendasi solusi yang relevan</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-primary mt-0.5 text-sm"></i>
+                            <span class="text-xs text-gray-600">Estimasi ruang lingkup dan waktu</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-primary mt-0.5 text-sm"></i>
+                            <span class="text-xs text-gray-600">Tanpa biaya dan tanpa komitmen</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Testimonial Card -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 relative">
+                    <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
+                    <p class="text-xs text-gray-600 italic relative z-10 mb-6 pl-4 pt-6">"Konsultasi dengan tim SYNVORA sangat membantu kami memahami kebutuhan sistem yang tepat. Penjelasannya jelas dan profesional."</p>
+                    <div class="flex items-center gap-3 border-t border-gray-200 pt-4 pl-4">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=150" alt="dr. Andi Pratama" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <div class="font-bold text-xs text-gray-900">dr. Andi Pratama</div>
+                            <div class="text-[10px] text-gray-500">Kepala Instansi Kesehatan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact/Help Card -->
+                <div class="bg-[#0A1128] p-8 rounded-2xl shadow-lg relative overflow-hidden">
+                    <!-- Background Glow -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary rounded-full filter blur-[50px] opacity-30"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="text-xs font-bold text-primary tracking-widest mb-2">PUNYA PERTANYAAN?</div>
+                        <h3 class="font-bold text-white text-base mb-6">Tim kami siap membantu kapan saja.</h3>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-xs text-gray-300">
+                                <i class="fa-solid fa-phone text-primary w-4"></i>
+                                <span>+62 811 234 567</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-xs text-gray-300">
+                                <i class="fa-regular fa-envelope text-primary w-4"></i>
+                                <span>hello@synvora.id</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-xs text-gray-300">
+                                <i class="fa-regular fa-clock text-primary w-4 mt-0.5"></i>
+                                <span>Senin - Jumat<br>08.00 - 17.00 WIB</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= WORKFLOW SECTION ================= -->
+    <section class="py-16 bg-white px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-extrabold text-gray-900 leading-tight mb-2">Bagaimana Prosesnya?</h2>
+                <p class="text-sm text-gray-500">Hanya beberapa langkah untuk memulai konsultasi.</p>
+            </div>
+
+            <!-- Steps -->
+            <div class="relative">
+                <!-- Connecting Line -->
+                <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-gray-200 z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="relative text-center md:text-left">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+                            01
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Isi Formulir</h3>
+                        <p class="text-[11px] text-gray-500 leading-relaxed">Lengkapi data dan kebutuhan Anda.</p>
+                        <!-- Arrow -->
+                        <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative text-center md:text-left">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+                            02
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Konfirmasi Jadwal</h3>
+                        <p class="text-[11px] text-gray-500 leading-relaxed">Tim kami akan menghubungi untuk konfirmasi.</p>
+                        <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative text-center md:text-left">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+                            03
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Sesi Konsultasi</h3>
+                        <p class="text-[11px] text-gray-500 leading-relaxed">Diskusi langsung dengan tim ahli kami.</p>
+                        <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="relative text-center md:text-left">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-sm font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">
+                            04
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mb-2">Dapatkan Rekomendasi</h3>
+                        <p class="text-[11px] text-gray-500 leading-relaxed">Terima insight dan solusi terbaik untuk Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BOTTOM CTA ================= -->
+    <section class="py-16 px-8 bg-white">
+        <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+            <!-- Background glow -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+            
+            <div class="z-10 mb-8 md:mb-0 max-w-2xl">
+                <div class="text-xs font-bold text-primary tracking-widest mb-2">SIAP BERKOLABORASI?</div>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">
+                    Wujudkan Solusi Teknologi<br>untuk Masa Depan yang Lebih Baik.
+                </h2>
+            </div>
+            
+            <div class="flex gap-4 z-10">
+                <a href="#" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+                    Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-white pt-20 pb-10 px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+            <!-- Brand -->
+            <div class="lg:col-span-2">
+                <div class="flex flex-col mb-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-cube text-primary text-xl"></i>
+                        <span class="font-extrabold text-xl tracking-wider text-gray-900">SYNVORA</span>
+                    </div>
+                    <span class="text-[9px] tracking-[0.2em] text-gray-400 -mt-1 ml-7">TEKNOLOGI INDONESIA</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-6 max-w-sm">Teknologi yang menyatukan, menginspirasi, dan menciptakan masa depan yang lebih baik.</p>
+                <div class="flex gap-4 text-gray-400">
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6 text-sm">Navigasi</h4>
+                <ul class="space-y-3 text-xs text-gray-500">
+                    <li><a href="#" class="hover:text-primary transition">Beranda</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Layanan</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Portfolio</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Karier</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Layanan -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6 text-sm">Layanan</h4>
+                <ul class="space-y-3 text-xs text-gray-500">
+                    <li><a href="#" class="hover:text-primary transition">Sistem Informasi</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Integrasi Sistem</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Aplikasi Web & Mobile</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Konsultasi IT</a></li>
+                </ul>
+            </div>
+
+            <!-- Kontak -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6 text-sm">Kontak</h4>
+                <ul class="space-y-4 text-xs text-gray-500">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot text-primary mt-0.5"></i>
+                        <span>Indonesia</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-regular fa-envelope text-primary mt-0.5"></i>
+                        <span>hello@synvora.id</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-primary mt-0.5"></i>
+                        <span>+62 811 234 567</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-regular fa-clock text-primary mt-0.5"></i>
+                        <span>Senin - Jumat<br>08.00 - 17.00 WIB</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400">
+            <div class="mb-4 md:mb-0">
+                &copy; 2026 SYNVORA Teknologi Indonesia. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-primary transition">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-primary transition">Syarat & Ketentuan</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

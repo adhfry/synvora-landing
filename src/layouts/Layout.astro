@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  navVariant?: 'dark' | 'light';
+  footerVariant?: 'landing' | 'default';
+  active?: string;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description = 'SYNVORA Teknologi Indonesia adalah mitra terpercaya dalam pembuatan sistem informasi yang inovatif, andal, dan berdampak nyata bagi organisasi Anda.',
+  navVariant = 'light',
+  footerVariant = 'default',
+  active = '',
+  bodyClass = 'bg-white',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <script is:inline>
+      // Forced-light-by-default theme init. Must run before first paint to avoid a flash.
+      // Only ever switches to dark if the user explicitly chose it before (localStorage) -
+      // prefers-color-scheme is intentionally NOT consulted here.
+      (function () {
+        try {
+          if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <slot name="head" />
+  </head>
+  <body class:list={['text-gray-800 dark:text-gray-200 antialiased transition-colors', bodyClass]}>
+    <Navbar variant={navVariant} active={active} />
+    <slot />
+    <Footer active={active} variant={footerVariant} />
+  </body>
+</html>

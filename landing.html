@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNVORA Teknologi Indonesia</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .hero-bg {
+            background-color: #0A1128;
+            background-image: radial-gradient(circle at top right, rgba(0, 102, 255, 0.2), transparent 50%),
+                              radial-gradient(circle at bottom left, rgba(0, 102, 255, 0.1), transparent 50%);
+        }
+        .text-primary {
+            color: #0066FF;
+        }
+        .bg-primary {
+            background-color: #0066FF;
+        }
+        .btn-primary {
+            background-color: #0066FF;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0052cc;
+        }
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Custom styles for exact mockup positioning */
+        .mockup-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+        .laptop-mockup {
+            position: absolute;
+            right: 0;
+            top: 20px;
+            width: 80%;
+            height: 300px;
+            background: #0d1b3e;
+            border: 2px solid #1e3a8a;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        .laptop-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0d1b3e 0%, #1e3a8a 100%);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .phone-mockup {
+            position: absolute;
+            left: 10%;
+            bottom: 0;
+            width: 120px;
+            height: 240px;
+            background: #0A1128;
+            border: 3px solid #1e3a8a;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            z-index: 10;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .floating-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            z-index: 20;
+        }
+    </style>
+</head>
+<body class="text-gray-800 bg-white antialiased">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="bg-[#0A1128] text-white py-4 px-8 relative z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex flex-col">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cube text-primary text-xl"></i>
+                    <span class="font-extrabold text-xl tracking-wider">SYNVORA</span>
+                </div>
+                <span class="text-[9px] tracking-[0.2em] text-gray-400 -mt-1 ml-7">TEKNOLOGI INDONESIA</span>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#" class="text-white relative">
+                    Beranda
+                    <span class="absolute bottom-[-22px] left-0 w-full h-0.5 bg-primary"></span>
+                </a>
+                <a href="#" class="hover:text-white transition">Tentang Kami</a>
+                <a href="#" class="hover:text-white transition">Layanan</a>
+                <a href="#" class="hover:text-white transition">Portfolio</a>
+                <a href="#" class="hover:text-white transition">Karier</a>
+                <a href="#" class="hover:text-white transition">Blog</a>
+            </div>
+
+            <!-- CTA -->
+            <a href="#" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+                Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="z-10">
+                <div class="text-xs tracking-[0.2em] font-semibold text-primary mb-4 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-primary rounded-full"></span> SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                    Teknologi untuk<br>Masa Depan yang<br><span class="text-primary">Lebih Baik</span>
+                </h1>
+                <p class="text-gray-400 text-sm md:text-base mb-8 max-w-lg leading-relaxed">
+                    SYNVORA Teknologi Indonesia adalah mitra terpercaya dalam pembuatan sistem informasi yang inovatif, andal, dan berdampak nyata bagi organisasi Anda.
+                </p>
+                <div class="flex flex-wrap gap-4 mb-12">
+                    <a href="#" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold transition flex items-center gap-2">
+                        Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="#" class="btn-outline px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2">
+                        Lihat Portofolio <i class="fa-regular fa-circle-play"></i>
+                    </a>
+                </div>
+                <!-- Checkmarks -->
+                <div class="flex flex-wrap gap-6 text-xs text-gray-300">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bolt text-primary"></i> Solusi Terukur
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-user-tie text-primary"></i> Tim Profesional
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-headset text-primary"></i> Dukungan Berkelanjutan
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Mockups -->
+            <div class="relative hidden lg:block mockup-container">
+                <!-- Laptop -->
+                <div class="laptop-mockup">
+                    <div class="laptop-screen">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="text-[10px] text-gray-400">SYNVORA</div>
+                            <div class="flex gap-2">
+                                <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                                <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                            </div>
+                        </div>
+                        <div class="flex-1 flex gap-4">
+                            <div class="w-1/3 bg-white/5 rounded p-2 flex flex-col gap-2">
+                                <div class="h-2 bg-white/20 rounded w-3/4"></div>
+                                <div class="h-2 bg-white/20 rounded w-1/2"></div>
+                                <div class="h-2 bg-white/20 rounded w-full mt-2"></div>
+                                <div class="h-2 bg-white/20 rounded w-5/6"></div>
+                                <div class="h-2 bg-white/20 rounded w-2/3"></div>
+                            </div>
+                            <div class="w-2/3 bg-white/5 rounded p-2 flex flex-col justify-between">
+                                <div class="h-2 bg-white/20 rounded w-1/4"></div>
+                                <div class="h-12 bg-primary/20 rounded border border-primary/50 flex items-center justify-center">
+                                    <span class="text-[8px] text-primary">Dashboard Utama</span>
+                                </div>
+                                <div class="flex gap-2">
+                                    <div class="h-8 bg-white/5 rounded flex-1"></div>
+                                    <div class="h-8 bg-white/5 rounded flex-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Phone -->
+                <div class="phone-mockup">
+                    <div class="text-center">
+                        <div class="text-[8px] text-gray-400 mb-1">SYNVORA</div>
+                        <div class="text-xs font-bold text-white leading-tight">Build<br>Innovate<br>Evolve<br><span class="text-primary">Together</span></div>
+                        <div class="w-8 h-8 rounded-full bg-primary/20 mx-auto mt-4 flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-right text-primary text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Floating Badge -->
+                <div class="floating-badge">
+                    <div class="text-[10px] text-gray-500 font-semibold mb-1">Inovasi Hari Ini</div>
+                    <div class="text-xs font-bold text-gray-900">Untuk Indonesia Esok</div>
+                    <div class="w-8 h-0.5 bg-primary mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TRUSTED BY ================= -->
+    <section class="py-16 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-center text-sm font-bold text-gray-900 mb-10">Dipercaya oleh Organisasi di Berbagai Sektor</h2>
+            <div class="flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                <div class="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                    <i class="fa-solid fa-building-columns text-xl"></i> Pemerintahan
+                </div>
+                <div class="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                    <i class="fa-solid fa-heart-pulse text-xl"></i> Kesehatan
+                </div>
+                <div class="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i> Pendidikan
+                </div>
+                <div class="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                    <i class="fa-solid fa-building text-xl"></i> Perusahaan
+                </div>
+                <div class="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                    <i class="fa-solid fa-users text-xl"></i> Komunitas
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section class="py-24 bg-white px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> LAYANAN KAMI
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Solusi Digital untuk<br>Setiap Kebutuhan Anda</h2>
+                    <p class="text-sm text-gray-500 mt-4 max-w-xl">Kami menghadirkan layanan pengembangan sistem informasi yang disesuaikan dengan kebutuhan dan tujuan organisasi Anda.</p>
+                </div>
+                <a href="#" class="text-primary text-sm font-semibold hover:underline flex items-center gap-2 mt-4 md:mt-0">
+                    Lihat Semua Layanan <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-3">Pengembangan Sistem Informasi</h3>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Custom software yang sesuai dengan proses bisnis Anda.</p>
+                    <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-3">Integrasi & Modernisasi Sistem</h3>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Menghubungkan sistem lama dengan teknologi terbaru.</p>
+                    <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-3">Aplikasi Web & Mobile</h3>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Solusi lintas platform yang responsif dan user-friendly.</p>
+                    <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-3">Konsultasi IT</h3>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Pendampingan strategis untuk transformasi digital Anda.</p>
+                    <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="py-24 bg-gray-50 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Content -->
+            <div>
+                <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> TENTANG SYNVORA
+                </div>
+                <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">Dari Semangat Kelompok,<br>Untuk Dampak yang Lebih Besar</h2>
+                <p class="text-sm text-gray-500 leading-relaxed mb-8">
+                    SYNVORA Teknologi Indonesia lahir dari semangat sekelompok individu yang ingin membuat perubahan. Kami hadir sebagai perusahaan teknologi yang berfokus pada pengembangan sistem informasi, dengan misi menjadi top-of-mind ketika orang membutuhkan solusi digital.
+                </p>
+                
+                <!-- Features -->
+                <div class="flex flex-wrap gap-6 mb-10">
+                    <div class="flex items-center gap-3 text-sm font-semibold text-gray-800">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center text-xs"><i class="fa-solid fa-bolt"></i></div>
+                        Inovatif
+                    </div>
+                    <div class="flex items-center gap-3 text-sm font-semibold text-gray-800">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center text-xs"><i class="fa-solid fa-users"></i></div>
+                        Kolaboratif
+                    </div>
+                    <div class="flex items-center gap-3 text-sm font-semibold text-gray-800">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center text-xs"><i class="fa-solid fa-shield-halved"></i></div>
+                        Berintegritas
+                    </div>
+                    <div class="flex items-center gap-3 text-sm font-semibold text-gray-800">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center text-xs"><i class="fa-solid fa-heart"></i></div>
+                        Berdampak
+                    </div>
+                </div>
+
+                <a href="#" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition">
+                    Kenali Kami Lebih Dekat <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Right Image -->
+            <div class="relative">
+                <div class="rounded-2xl overflow-hidden shadow-xl">
+                    <!-- Placeholder for Office Image -->
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="SYNVORA Office" class="w-full h-[400px] object-cover">
+                </div>
+                <!-- Floating Badge -->
+                <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl max-w-[200px]">
+                    <div class="text-[10px] font-bold text-gray-900 mb-1">Synchronous</div>
+                    <div class="text-[10px] font-bold text-gray-900 mb-1">Innovation</div>
+                    <div class="text-[10px] font-bold text-gray-900 mb-1">Evolution</div>
+                    <div class="text-[10px] font-bold text-gray-900 mb-3">Era</div>
+                    <div class="w-6 h-0.5 bg-primary mb-3"></div>
+                    <div class="text-[9px] text-gray-500 leading-tight">Empowering progress through technology.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PORTFOLIO ================= -->
+    <section class="py-24 bg-white px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> PORTOFOLIO
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Karya Nyata, Dampak Nyata</h2>
+                    <p class="text-sm text-gray-500 mt-4 max-w-xl">Berbagai solusi digital yang telah kami kembangkan untuk membantu organisasi bekerja lebih efektif dan efisien.</p>
+                </div>
+                <a href="#" class="text-primary text-sm font-semibold hover:underline flex items-center gap-2 mt-4 md:mt-0">
+                    Lihat Semua Portofolio <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Portfolio 1 -->
+                <div class="group cursor-pointer">
+                    <div class="rounded-2xl overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" alt="Kesehatan" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Kesehatan</div>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Sistem Informasi Laboratorium</h3>
+                    <p class="text-xs text-gray-500 mb-3">Digitalisasi alur kerja laboratorium untuk pelayanan yang lebih cepat dan akurat.</p>
+                    <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Portfolio 2 -->
+                <div class="group cursor-pointer">
+                    <div class="rounded-2xl overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" alt="Pemerintahan" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Pemerintahan</div>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Sistem Manajemen Layanan Publik</h3>
+                    <p class="text-xs text-gray-500 mb-3">Meningkatkan transparansi dan efisiensi layanan pemerintah daerah.</p>
+                    <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Portfolio 3 -->
+                <div class="group cursor-pointer">
+                    <div class="rounded-2xl overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=600" alt="Mobile App" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Mobile App</div>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Aplikasi Layanan Masyarakat</h3>
+                    <p class="text-xs text-gray-500 mb-3">Akses informasi dan layanan lebih mudah melalui perangkat mobile.</p>
+                    <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= WORKFLOW ================= -->
+    <section class="py-24 bg-white px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> PROSES KERJA
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Langkah Terstruktur, Hasil Maksimal</h2>
+                </div>
+                <p class="text-sm text-gray-500 mt-4 md:mt-0 max-w-sm">Kami menerapkan proses pengembangan yang terstruktur dan transparan untuk memastikan setiap solusi memberikan nilai nyata.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm mb-6 z-10 relative">01</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Analisis Kebutuhan</h3>
+                    <p class="text-xs text-gray-500">Memahami kebutuhan dan tujuan Anda.</p>
+                    <!-- Arrow -->
+                    <div class="hidden md:block absolute top-5 left-12 w-full h-0.5 bg-gray-200">
+                        <i class="fa-solid fa-chevron-right text-gray-300 absolute right-0 top-[-6px] text-xs"></i>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm mb-6 z-10 relative">02</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Perancangan Solusi</h3>
+                    <p class="text-xs text-gray-500">Merancang arsitektur dan desain sistem.</p>
+                    <div class="hidden md:block absolute top-5 left-12 w-full h-0.5 bg-gray-200">
+                        <i class="fa-solid fa-chevron-right text-gray-300 absolute right-0 top-[-6px] text-xs"></i>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm mb-6 z-10 relative">03</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Pengembangan</h3>
+                    <p class="text-xs text-gray-500">Membangun dengan standar kualitas tinggi.</p>
+                    <div class="hidden md:block absolute top-5 left-12 w-full h-0.5 bg-gray-200">
+                        <i class="fa-solid fa-chevron-right text-gray-300 absolute right-0 top-[-6px] text-xs"></i>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm mb-6 z-10 relative">04</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Implementasi & Dukungan</h3>
+                    <p class="text-xs text-gray-500">Peluncuran sistem dan dukungan berkelanjutan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="py-24 bg-gray-50 px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> TESTIMONI
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Apa Kata Mereka?</h2>
+                </div>
+                <p class="text-sm text-gray-500 mt-4 md:mt-0 max-w-sm">Kepercayaan klien adalah motivasi kami untuk terus berinovasi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
+                    <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">SYNVORA membantu kami membangun sistem yang benar-benar sesuai dengan kebutuhan. Profesional dan responsif!</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=150" alt="dr. Andini Putri" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <div class="font-bold text-sm text-gray-900">dr. Andini Putri</div>
+                            <div class="text-[10px] text-gray-500">Kepala Labkesda</div>
+                            <div class="text-yellow-400 text-[10px] mt-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
+                    <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">Proses pengembangan sangat terstruktur dan komunikatif. Hasilnya melebihi ekspektasi kami.</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=150" alt="Budi Santoso" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <div class="font-bold text-sm text-gray-900">Budi Santoso</div>
+                            <div class="text-[10px] text-gray-500">Kepala Dinas</div>
+                            <div class="text-yellow-400 text-[10px] mt-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
+                    <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">Tim SYNVORA sangat memahami kebutuhan kami dan memberikan solusi yang inovatif dan mudah digunakan.</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150" alt="Rina Meliani" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <div class="font-bold text-sm text-gray-900">Rina Meliani</div>
+                            <div class="text-[10px] text-gray-500">Manajer Operasional</div>
+                            <div class="text-yellow-400 text-[10px] mt-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BOTTOM CTA ================= -->
+    <section class="py-16 px-8">
+        <div class="max-w-7xl mx-auto bg-[#0A1128] rounded-3xl p-12 md:p-16 flex flex-col md:flex-row justify-between items-center relative overflow-hidden">
+            <!-- Background Glow -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+            
+            <div class="z-10 mb-8 md:mb-0">
+                <div class="text-xs font-bold text-primary tracking-widest mb-2">SIAP BERKOLABORASI?</div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4">Wujudkan Ide Anda<br>Bersama SYNVORA</h2>
+                <p class="text-sm text-gray-400 max-w-md">Mari diskusikan kebutuhan Anda dan temukan solusi terbaik untuk masa depan organisasi Anda.</p>
+            </div>
+            
+            <div class="flex flex-wrap gap-4 z-10">
+                <a href="#" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+                    Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="#" class="border border-white/30 hover:border-white text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+                    Jadwalkan Meeting <i class="fa-regular fa-calendar"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-white pt-20 pb-10 px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+            <!-- Brand -->
+            <div class="lg:col-span-2">
+                <div class="flex flex-col mb-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-cube text-primary text-xl"></i>
+                        <span class="font-extrabold text-xl tracking-wider text-gray-900">SYNVORA</span>
+                    </div>
+                    <span class="text-[9px] tracking-[0.2em] text-gray-400 -mt-1 ml-7">TEKNOLOGI INDONESIA</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-6 max-w-sm">Teknologi yang menyatukan, menginspirasi, dan menciptakan masa depan yang lebih baik.</p>
+                <div class="flex gap-4 text-gray-400">
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-primary transition"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6">Navigasi</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li><a href="#" class="hover:text-primary transition">Beranda</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Layanan</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Portfolio</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Karier</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Layanan -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6">Layanan</h4>
+                <ul class="space-y-3 text-sm text-gray-500">
+                    <li><a href="#" class="hover:text-primary transition">Sistem Informasi</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Integrasi Sistem</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Aplikasi Web & Mobile</a></li>
+                    <li><a href="#" class="hover:text-primary transition">Konsultasi IT</a></li>
+                </ul>
+            </div>
+
+            <!-- Kontak -->
+            <div>
+                <h4 class="font-bold text-gray-900 mb-6">Kontak</h4>
+                <ul class="space-y-4 text-sm text-gray-500">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot text-primary mt-1"></i>
+                        <span>Indonesia</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-regular fa-envelope text-primary mt-1"></i>
+                        <span>hello@synvora.id</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-primary mt-1"></i>
+                        <span>+62 811 234 567</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-regular fa-clock text-primary mt-1"></i>
+                        <span>Senin - Jumat<br>08.00 - 17.00 WIB</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="max-w-7xl mx-auto border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+            <div class="mb-4 md:mb-0">
+                &copy; 2026 SYNVORA Teknologi Indonesia. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-primary transition">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-primary transition">Syarat & Ketentuan</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+---
+interface Props {
+  intervalMs?: number;
+}
+const { intervalMs = 5000 } = Astro.props;
+
+const images = [
+  '/images/hero/hero-tim-rapat.jpg',
+  '/images/hero/hero-kerja-laptop-1.jpg',
+  '/images/hero/hero-rancang-sistem.jpg',
+  '/images/hero/hero-tim-kode.jpg',
+  '/images/hero/hero-kerja-laptop-2.jpg',
+  '/images/hero/hero-dashboard-kerja.jpg',
+];
+---
+
+<div class="hero-slider absolute inset-0 z-0" data-interval={intervalMs}>
+  {
+    images.map((src, i) => (
+      <div
+        class="hero-slide absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] ease-in-out"
+        class:list={[i === 0 ? 'opacity-100' : 'opacity-0']}
+        style={`background-image:url('${src}')`}
+      />
+    ))
+  }
+  <!-- Overlay: reproduces the original hero-bg navy wash + radial gradients so text stays readable -->
+  <div class="absolute inset-0" style="background-color:#0A1128; opacity:0.82;" />
+  <div
+    class="absolute inset-0"
+    style="background-image: radial-gradient(circle at top right, rgba(0, 102, 255, 0.25), transparent 50%), radial-gradient(circle at bottom left, rgba(0, 102, 255, 0.15), transparent 50%);"
+  />
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.hero-slider').forEach((slider) => {
+    const slides = Array.from(slider.querySelectorAll<HTMLElement>('.hero-slide'));
+    if (slides.length < 2) return;
+    const interval = Number(slider.dataset.interval) || 5000;
+    let current = 0;
+    setInterval(() => {
+      const next = (current + 1) % slides.length;
+      slides[current].classList.remove('opacity-100');
+      slides[current].classList.add('opacity-0');
+      slides[next].classList.remove('opacity-0');
+      slides[next].classList.add('opacity-100');
+      current = next;
+    }, interval);
+  });
+</script>

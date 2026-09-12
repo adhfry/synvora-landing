@@ -1,0 +1,29 @@
+---
+interface Props {
+  variant?: 'onLight' | 'onDark';
+}
+const { variant = 'onLight' } = Astro.props;
+
+const btnClass =
+  variant === 'onDark'
+    ? 'w-9 h-9 rounded-full flex items-center justify-center border border-white/20 text-gray-300 hover:border-primary hover:text-primary transition shrink-0'
+    : 'w-9 h-9 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/20 text-gray-600 dark:text-gray-300 hover:border-primary hover:text-primary transition shrink-0';
+---
+
+<button id="theme-toggle" type="button" aria-label="Ubah tema terang/gelap" class={btnClass}>
+  <i class="fa-solid fa-sun text-sm dark:hidden"></i>
+  <i class="fa-solid fa-moon text-sm hidden dark:block"></i>
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const isDark = root.classList.toggle('dark');
+    try {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch (e) {
+      /* localStorage unavailable */
+    }
+  });
+</script>
