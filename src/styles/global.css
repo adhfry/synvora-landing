@@ -37,3 +37,77 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/*
+  Site-wide dark mode adaptation.
+  These pages were authored as light-only designs, so instead of hand-adding
+  `dark:` variants to every element, the recurring "page surface" utility
+  classes are retargeted here for any element under `.dark`. This file is
+  unlayered CSS (outside @layer), so it wins over Tailwind's own utilities
+  layer regardless of source order - same mechanism used for .text-primary etc. above.
+
+  Deliberately NOT included: text-gray-800 and text-gray-400/300/white, and
+  bg-white/NN, bg-black/NN (opacity-modified) variants. Those are the classes
+  used by the small "light chip over a photo" badges (portfolio/blog category
+  tags, floating quote cards, map pins) and by text that already lives inside
+  permanently-dark hero/CTA sections - flipping them would either break
+  contrast against their own fixed-light chip background or double-invert
+  text that's already correct. The few page-flow exceptions that DO sit
+  inside such a chip are pinned with an inline `style` in their .astro file
+  instead of relying on the class, so they opt out of this block on purpose.
+*/
+.dark body {
+  background-color: #0a1128;
+}
+
+.dark .bg-white {
+  background-color: #0f1a3d;
+}
+.dark .bg-gray-50 {
+  background-color: #0a1128;
+}
+.dark .bg-gray-100 {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.dark .bg-blue-50 {
+  background-color: rgba(0, 102, 255, 0.12);
+}
+.dark .bg-blue-100 {
+  background-color: rgba(0, 102, 255, 0.2);
+}
+
+.dark .border-gray-100 {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.dark .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.dark .border-gray-300 {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.dark .border-blue-100 {
+  border-color: rgba(0, 102, 255, 0.25);
+}
+
+.dark .text-gray-900 {
+  color: #f3f4f6;
+}
+.dark .text-gray-700 {
+  color: #d1d5db;
+}
+.dark .text-gray-600 {
+  color: #9ca3af;
+}
+.dark .text-gray-500 {
+  color: #9ca3af;
+}
+
+.dark .hover\:bg-gray-50:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.dark .hover\:bg-gray-100:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.dark .hover\:bg-primary:hover {
+  background-color: #0066ff;
+}

@@ -65,6 +65,19 @@ import Layout from '../layouts/Layout.astro';
         color: rgba(255, 255, 255, 0.2);
         font-family: serif;
       }
+      .dark .card-shadow {
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      .dark .timeline-dot {
+        background: #0f1a3d;
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+      .dark .timeline-dot i {
+        color: #9ca3af;
+      }
+      .dark .timeline-line {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
     </style>
   </Fragment>
 
@@ -132,8 +145,8 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <!-- Floating text box -->
         <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg max-w-[200px] border-l-4 border-primary">
-          <div class="font-bold text-gray-900 text-lg leading-tight">Teknologi Hari Ini,</div>
-          <div class="font-bold text-gray-900 text-lg leading-tight">Untuk Indonesia Esok</div>
+          <div class="font-bold text-lg leading-tight" style="color:#111827">Teknologi Hari Ini,</div>
+          <div class="font-bold text-lg leading-tight" style="color:#111827">Untuk Indonesia Esok</div>
           <div class="w-8 h-0.5 bg-primary mt-3"></div>
         </div>
       </div>
@@ -204,28 +217,28 @@ import Layout from '../layouts/Layout.astro';
           <div class="flex items-start gap-3">
             <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">S</span>
             <div>
-              <div class="font-semibold text-gray-800">Synchronous</div>
+              <div class="font-semibold text-gray-800 dark:text-gray-200">Synchronous</div>
               <div class="text-xs">Selaras dalam tujuan dan langkah.</div>
             </div>
           </div>
           <div class="flex items-start gap-3">
             <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">I</span>
             <div>
-              <div class="font-semibold text-gray-800">Innovation</div>
+              <div class="font-semibold text-gray-800 dark:text-gray-200">Innovation</div>
               <div class="text-xs">Selalu mencari cara yang lebih baik.</div>
             </div>
           </div>
           <div class="flex items-start gap-3">
             <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">E</span>
             <div>
-              <div class="font-semibold text-gray-800">Evolution</div>
+              <div class="font-semibold text-gray-800 dark:text-gray-200">Evolution</div>
               <div class="text-xs">Terus berkembang mengikuti perubahan.</div>
             </div>
           </div>
           <div class="flex items-start gap-3">
             <span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">E</span>
             <div>
-              <div class="font-semibold text-gray-800">Era</div>
+              <div class="font-semibold text-gray-800 dark:text-gray-200">Era</div>
               <div class="text-xs">Membangun masa depan yang lebih baik.</div>
             </div>
           </div>

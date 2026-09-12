@@ -63,6 +63,14 @@ import Layout from '../layouts/Layout.astro';
         align-items: flex-start;
         gap: 12px;
       }
+      .dark .form-input {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.12);
+        color: #e5e7eb;
+      }
+      .dark .form-input::placeholder {
+        color: #6b7280;
+      }
     </style>
   </Fragment>
 
@@ -221,8 +229,8 @@ import Layout from '../layouts/Layout.astro';
               <i class="fa-solid fa-location-dot"></i>
             </div>
             <div class="flex-1">
-              <div class="font-bold text-gray-900 text-xs mb-1">Lokasi Kami</div>
-              <div class="text-[10px] text-gray-500 mb-2 leading-tight">Yogyakarta, Indonesia<br>Kami terbuka untuk berdiskusi langsung di kantor kami. Silakan hubungi terlebih dahulu untuk menjadwalkan.</div>
+              <div class="font-bold text-xs mb-1" style="color:#111827">Lokasi Kami</div>
+              <div class="text-[10px] mb-2 leading-tight" style="color:#6B7280">Yogyakarta, Indonesia<br>Kami terbuka untuk berdiskusi langsung di kantor kami. Silakan hubungi terlebih dahulu untuk menjadwalkan.</div>
               <a href="#" class="text-[10px] font-bold text-primary flex items-center gap-1 hover:underline">Buka di Google Maps <i class="fa-solid fa-arrow-right text-[8px]"></i></a>
             </div>
           </div>
