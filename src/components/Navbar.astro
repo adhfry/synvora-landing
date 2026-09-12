@@ -11,13 +11,13 @@ const { variant = 'light', active = '' } = Astro.props;
 
 {
   variant === 'dark' ? (
-    <nav class="bg-[#0A1128] text-white py-4 px-8 relative z-50">
+    <nav class="bg-[#0A1128] text-white py-4 px-4 sm:px-6 lg:px-8 relative z-50">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" class="flex items-center">
+        <a href="/" class="flex items-center shrink-0">
           <img
             src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png"
             alt="SYNVORA Teknologi Indonesia"
-            class="h-9 w-auto max-w-[220px] object-contain"
+            class="h-9 sm:h-10 lg:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain"
           />
         </a>
 
@@ -36,30 +36,58 @@ const { variant = 'light', active = '' } = Astro.props;
           )}
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 sm:gap-4">
           <ThemeToggle variant="onDark" />
           <a
             href="/hubungi-kami"
-            class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition"
+            class="hidden md:flex bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold items-center gap-2 transition"
           >
             Hubungi Kami <i class="fa-solid fa-arrow-right text-xs" />
           </a>
+          <button
+            id="mobile-menu-toggle"
+            type="button"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            class="md:hidden w-9 h-9 rounded-full flex items-center justify-center border border-white/20 text-white shrink-0"
+          >
+            <i class="fa-solid fa-bars text-base" />
+          </button>
         </div>
+      </div>
+
+      <div id="mobile-menu-panel" class="hidden md:hidden mt-4 pt-4 border-t border-white/10">
+        <div class="flex flex-col gap-1 text-sm font-medium">
+          {NAV_ITEMS.map((item) => (
+            <a
+              href={item.href}
+              class={item.key === active ? 'py-2.5 px-2 rounded-lg text-primary font-bold bg-white/5' : 'py-2.5 px-2 rounded-lg text-gray-300 hover:bg-white/5 hover:text-white transition'}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+        <a
+          href="/hubungi-kami"
+          class="mt-4 bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 transition"
+        >
+          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs" />
+        </a>
       </div>
     </nav>
   ) : (
-    <nav class="bg-white dark:bg-synvora-dark border-b border-gray-100 dark:border-white/10 py-4 px-8 sticky top-0 z-50 shadow-sm transition-colors">
+    <nav class="bg-white dark:bg-synvora-dark border-b border-gray-100 dark:border-white/10 py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 shadow-sm transition-colors">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" class="flex items-center cursor-pointer">
+        <a href="/" class="flex items-center cursor-pointer shrink-0">
           <img
             src="/images/logo/synvora-teknologi-indonesia-logo-bluetext.png"
             alt="SYNVORA Teknologi Indonesia"
-            class="h-9 w-auto max-w-[220px] object-contain dark:hidden"
+            class="h-9 sm:h-10 lg:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain dark:hidden"
           />
           <img
             src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png"
             alt="SYNVORA Teknologi Indonesia"
-            class="hidden dark:block h-9 w-auto max-w-[220px] object-contain"
+            class="hidden dark:block h-9 sm:h-10 lg:h-11 w-auto max-w-[220px] sm:max-w-[260px] object-contain"
           />
         </a>
 
@@ -77,16 +105,74 @@ const { variant = 'light', active = '' } = Astro.props;
           )}
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 sm:gap-4">
           <ThemeToggle variant="onLight" />
           <a
             href="/hubungi-kami"
-            class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 transition"
+            class="hidden md:flex bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold items-center gap-2 transition"
           >
             Hubungi Kami <i class="fa-solid fa-arrow-right text-xs" />
           </a>
+          <button
+            id="mobile-menu-toggle"
+            type="button"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            class="md:hidden w-9 h-9 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/20 text-gray-700 dark:text-gray-200 shrink-0"
+          >
+            <i class="fa-solid fa-bars text-base" />
+          </button>
         </div>
+      </div>
+
+      <div id="mobile-menu-panel" class="hidden md:hidden mt-4 pt-4 border-t border-gray-100 dark:border-white/10">
+        <div class="flex flex-col gap-1 text-sm font-medium">
+          {NAV_ITEMS.map((item) => (
+            <a
+              href={item.href}
+              class={
+                item.key === active
+                  ? 'py-2.5 px-2 rounded-lg text-primary font-bold bg-blue-50 dark:bg-white/5'
+                  : 'py-2.5 px-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary transition'
+              }
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+        <a
+          href="/hubungi-kami"
+          class="mt-4 bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 transition"
+        >
+          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs" />
+        </a>
       </div>
     </nav>
   )
 }
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const panel = document.getElementById('mobile-menu-panel');
+  const icon = toggle?.querySelector('i');
+
+  toggle?.addEventListener('click', () => {
+    const isHidden = panel?.classList.contains('hidden');
+    panel?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!!isHidden));
+    icon?.classList.toggle('fa-bars');
+    icon?.classList.toggle('fa-xmark');
+  });
+
+  // Close the mobile menu automatically if the viewport grows past the
+  // mobile breakpoint (e.g. rotating a tablet or resizing a window).
+  const mq = window.matchMedia('(min-width: 768px)');
+  mq.addEventListener('change', (e) => {
+    if (e.matches && panel && !panel.classList.contains('hidden')) {
+      panel.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+      icon?.classList.add('fa-bars');
+      icon?.classList.remove('fa-xmark');
+    }
+  });
+</script>
