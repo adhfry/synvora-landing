@@ -2,6 +2,10 @@ export interface BlogPostMeta {
   slug: string;
   title: string;
   excerpt: string;
+  // Optional shorter, search-result-friendly description (~155 chars) for
+  // <meta name="description">, og:description, and twitter:description.
+  // Falls back to excerpt when omitted - only needed when excerpt runs long.
+  metaDescription?: string;
   image: string;
   category: string;
   tags: string[];
@@ -21,6 +25,8 @@ export const blogPosts: BlogPostMeta[] = [
     title: 'Kenalkan BBM: Inovasi Kedua SYNVORA yang Bawa Bahasa Madura ke Era Digital',
     excerpt:
       'Setelah SEP, SYNVORA menghadirkan inovasi kedua: BBM (Belajar Bahasa Madura), platform kamus, penerjemah, dan modul belajar berjenjang yang sudah dipakai puluhan siswa, guru, hingga dosen, sekaligus membangun fondasi text-to-speech Bahasa Madura pertama.',
+    metaDescription:
+      'BBM: platform kamus, penerjemah, dan modul belajar Bahasa Madura berjenjang dari SYNVORA, dipakai puluhan siswa hingga dosen di Sumenep.',
     image: '/images/blog/Landing-BBM.png',
     category: 'Berita',
     tags: ['Berita', 'Pendidikan', 'Bahasa Daerah', 'BBM', 'Inovasi'],
@@ -35,6 +41,8 @@ export const blogPosts: BlogPostMeta[] = [
     title: 'SYNVORA Wakili Kategori Masyarakat di Anugerah Inovasi Daerah 2026, Perkenalkan SEP',
     excerpt:
       'Tim SYNVORA resmi mengikuti Anugerah Inovasi Daerah (AID) 2026 yang digelar BRIDA Kabupaten Sumenep lewat kategori masyarakat. Inovasi pertama yang diusung: SEP (Smart Event Sumenep), platform cerdas yang mengubah cara daerah memantau dampak setiap event budaya dan pariwisata.',
+    metaDescription:
+      'SYNVORA ikut Anugerah Inovasi Daerah 2026 BRIDA Sumenep lewat SEP (Smart Event Sumenep), platform pemantau dampak event budaya dan pariwisata.',
     image: '/images/blog/Madura-Night-Vaganza.jpg',
     category: 'Berita',
     tags: ['Berita', 'Inovasi Daerah', 'SEP', 'BRIDA', 'Sistem Informasi'],
@@ -49,7 +57,7 @@ export const blogPosts: BlogPostMeta[] = [
     title: '5 Tips Membangun Aplikasi Web yang User-Friendly',
     excerpt:
       'Pengalaman pengguna (UX) yang baik adalah kunci keberhasilan sebuah aplikasi. Berikut beberapa hal yang perlu diperhatikan.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200&h=630',
     category: 'Tips & Tutorial',
     tags: ['UX/UI', 'Aplikasi Web', 'Tips & Tutorial', 'Pengembangan Produk'],
     author: 'Tim Pengembang',
@@ -62,7 +70,7 @@ export const blogPosts: BlogPostMeta[] = [
     title: 'Digitalisasi Layanan Laboratorium: Lebih Cepat, Lebih Akurat',
     excerpt:
       'Transformasi digital di laboratorium membantu meningkatkan akurasi hasil, efisiensi proses, dan kepuasan pengguna layanan.',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200&h=630',
     category: 'Kesehatan',
     tags: ['Kesehatan', 'Laboratorium', 'Digitalisasi', 'Sistem Informasi'],
     author: 'Tim SYNVORA',
@@ -75,7 +83,7 @@ export const blogPosts: BlogPostMeta[] = [
     title: 'Solusi Digital untuk Pemerintahan yang Lebih Transparan',
     excerpt:
       'Teknologi informasi berperan penting dalam mewujudkan tata kelola pemerintahan yang efektif, transparan, dan berorientasi pada masyarakat.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200&h=630',
     category: 'Pemerintahan',
     tags: ['Pemerintahan', 'Transparansi', 'Sistem Informasi', 'Tata Kelola Digital'],
     author: 'Ahda Firly Barori',
@@ -89,7 +97,7 @@ export const blogPosts: BlogPostMeta[] = [
     title: 'Berkembang Bersama: Budaya Kerja di SYNVORA',
     excerpt:
       'Di SYNVORA, kami percaya bahwa lingkungan kerja yang positif mendorong lahirnya inovasi. Kenali lebih dekat budaya kerja kami.',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200&h=630',
     category: 'Karier',
     tags: ['Karier', 'Budaya Kerja', 'SYNVORA', 'Tim'],
     author: 'Tim SYNVORA',
@@ -102,7 +110,7 @@ export const blogPosts: BlogPostMeta[] = [
     title: 'Peran AI dalam Transformasi Digital Organisasi',
     excerpt:
       'Kecerdasan buatan bukan lagi sekadar tren, tetapi sudah menjadi kebutuhan strategis dalam meningkatkan efisiensi dan kualitas layanan publik maupun bisnis.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200&h=630',
     category: 'Teknologi',
     tags: ['Artificial Intelligence', 'Transformasi Digital', 'Inovasi', 'Teknologi', 'Organisasi'],
     author: 'Ahda Firly Barori',
@@ -116,7 +124,7 @@ export const blogPosts: BlogPostMeta[] = [
     title: 'Membangun Sistem Informasi yang Berkelanjutan',
     excerpt:
       'Keberhasilan sistem informasi tidak hanya ditentukan oleh teknologi, tetapi juga oleh strategi, SDM, dan komitmen berkelanjutan.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200&h=630',
     category: 'Sistem Informasi',
     tags: ['Sistem Informasi', 'Arsitektur', 'Tata Kelola TI', 'Keberlanjutan'],
     author: 'Tim SYNVORA',
@@ -129,7 +137,7 @@ export const blogPosts: BlogPostMeta[] = [
     title: 'SYNVORA Teknologi Indonesia Resmi Berdiri',
     excerpt:
       'Dengan semangat Synchronous, Innovation, Evolution, Era, SYNVORA hadir untuk menjadi mitra terpercaya dalam solusi teknologi informasi.',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200&h=630',
     category: 'Berita',
     tags: ['Berita', 'SYNVORA', 'Peluncuran', 'Perusahaan'],
     author: 'Ahda Firly Barori',

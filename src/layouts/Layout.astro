@@ -12,6 +12,7 @@ interface Props {
   active?: string;
   bodyClass?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
 }
 
@@ -23,11 +24,19 @@ const {
   active = '',
   bodyClass = 'bg-white',
   ogImage = '/og-image.png',
+  ogImageAlt = SITE.name,
   ogType = 'website',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const absoluteOgImage = new URL(ogImage, Astro.site);
+const ogImageType = /\.png$/i.test(ogImage)
+  ? 'image/png'
+  : /\.(jpe?g)$/i.test(ogImage)
+    ? 'image/jpeg'
+    : /\.webp$/i.test(ogImage)
+      ? 'image/webp'
+      : undefined;
 const fullTitle = title.includes('SYNVORA') ? title : `${title} | ${SITE.name}`;
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
@@ -99,8 +108,8 @@ const websiteJsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={absoluteOgImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    {ogImageType && <meta property="og:image:type" content={ogImageType} />}
     <meta property="og:locale" content="id_ID" />
 
     <!-- Twitter Card -->
@@ -108,6 +117,7 @@ const websiteJsonLd = {
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

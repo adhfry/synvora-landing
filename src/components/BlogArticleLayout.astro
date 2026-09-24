@@ -31,13 +31,16 @@ const shareUrls = {
 const related = getRelatedPosts(post.slug, 3);
 
 const absoluteImage = new URL(post.image, SITE.url).toString();
+// Meta/OG description stays short for search-result and share-card display;
+// the full excerpt (which can run longer) is what actually renders on the page.
+const metaDescription = post.metaDescription ?? post.excerpt;
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': `${articleUrl}#article`,
   headline: post.title,
-  description: post.excerpt,
+  description: metaDescription,
   image: [absoluteImage],
   author: { '@type': 'Person', name: post.author },
   publisher: {
@@ -64,12 +67,13 @@ const breadcrumbJsonLd = {
 
 <Layout
   title={fullTitle}
-  description={post.excerpt}
+  description={metaDescription}
   navVariant="light"
   footerVariant="default"
   active="blog"
   ogType="article"
   ogImage={post.image}
+  ogImageAlt={post.title}
   bodyClass="bg-[#F8FAFC] dark:bg-synvora-dark"
 >
   <Fragment slot="head">
