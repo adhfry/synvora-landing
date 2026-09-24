@@ -1,0 +1,114 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'solusi-digital-untuk-pemerintahan-yang-lebih-transparan')!;
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="CEO & Founder SYNVORA"
+  overlayLines={['Open', 'Data,', 'Open', 'Trust']}
+  quote="Transparansi bukan sekadar keterbukaan informasi, tetapi fondasi kepercayaan antara pemerintah dan masyarakat yang dilayaninya."
+  tags={post.tags}
+  tocItems={[
+    'Mengapa Transparansi Digital Penting?',
+    'Contoh Implementasi Nyata',
+    'Tantangan dalam Penerapannya',
+    'Kesimpulan',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Mengapa Transparansi Digital Penting?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Teknologi informasi berperan penting dalam mewujudkan tata kelola pemerintahan yang efektif, transparan, dan berorientasi pada masyarakat. Ketika proses dan data pemerintahan dapat diakses secara digital, masyarakat dapat mengawasi, memberi masukan, dan lebih percaya terhadap layanan publik yang diberikan.</p>
+
+    <ul class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-database"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Data yang Dapat Diakses</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Informasi anggaran, program, dan capaian dapat dipantau publik secara real-time.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-scale-balanced"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Akuntabilitas Lebih Terjaga</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Jejak digital mempermudah audit dan pertanggungjawaban setiap keputusan.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-comments"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Partisipasi Masyarakat Meningkat</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Kanal digital memudahkan masyarakat memberi masukan dan pengaduan langsung.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Contoh Implementasi Nyata</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Beberapa bentuk solusi digital yang umum diterapkan instansi pemerintahan untuk mendukung transparansi:</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600" alt="Data Terbuka" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-chart-pie text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Dashboard Data Terbuka</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Visualisasi anggaran dan capaian program yang dapat diakses publik kapan saja.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" alt="Layanan Online" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-laptop text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Layanan Publik Online</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Perizinan dan administrasi kependudukan yang dapat diurus tanpa tatap muka.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&q=80&w=600" alt="Pengaduan" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-bullhorn text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Kanal Pengaduan Digital</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Masyarakat dapat melaporkan masalah dan memantau tindak lanjutnya secara transparan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Tantangan dalam Penerapannya</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Penerapan solusi digital di sektor pemerintahan memiliki tantangan tersendiri, di antaranya:</p>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Kesiapan infrastruktur teknologi di setiap daerah yang berbeda-beda.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Perubahan budaya kerja aparatur menuju berbasis data dan digital.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Keamanan data dan perlindungan informasi pribadi masyarakat.
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kesimpulan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Teknologi informasi berperan penting dalam mewujudkan tata kelola pemerintahan yang efektif, transparan, dan berorientasi pada masyarakat. Dengan perencanaan yang matang dan komitmen jangka panjang, transformasi digital di sektor pemerintahan dapat memberikan dampak nyata bagi kepercayaan publik.</p>
+  </div>
+</BlogArticleLayout>

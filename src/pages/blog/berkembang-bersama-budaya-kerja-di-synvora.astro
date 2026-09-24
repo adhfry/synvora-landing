@@ -1,0 +1,115 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'berkembang-bersama-budaya-kerja-di-synvora')!;
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="Tim SYNVORA"
+  overlayLines={['Grow', 'Together']}
+  quote="Budaya kerja yang sehat bukan tentang bebas dari tekanan, tetapi tentang saling percaya untuk tumbuh bersama menghadapi tantangan."
+  tags={post.tags}
+  tocItems={[
+    'Nilai-Nilai yang Kami Pegang',
+    'Apa yang Membuat SYNVORA Berbeda',
+    'Bergabung Bersama Kami',
+    'Kesimpulan',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Nilai-Nilai yang Kami Pegang</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Di SYNVORA, kami percaya bahwa lingkungan kerja yang positif mendorong lahirnya inovasi. Empat nilai berikut menjadi kompas dalam bekerja sehari-hari, sejalan dengan semangat <strong>Synchronous, Innovation, Evolution, Era</strong> yang menjadi identitas kami:</p>
+
+    <ul class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-people-arrows"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Kolaborasi Tanpa Sekat</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Setiap ide didengar, terlepas dari posisi atau lama bekerja di tim.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Pembelajaran Berkelanjutan</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Kami mendorong setiap anggota tim untuk terus belajar teknologi dan cara kerja baru.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-scale-unbalanced"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Keseimbangan Kerja dan Hidup</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Produktivitas yang sehat lahir dari waktu istirahat yang cukup, bukan lembur tanpa henti.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Berorientasi pada Dampak</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Setiap pekerjaan diukur dari nilai nyata yang diberikan ke klien dan masyarakat.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Apa yang Membuat SYNVORA Berbeda</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Sebagai perusahaan yang masih terus bertumbuh, SYNVORA menawarkan pengalaman kerja yang berbeda dari organisasi besar pada umumnya:</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600" alt="Kolaborasi" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-people-group text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Tim yang Kecil, Dampak Besar</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Setiap anggota tim berkontribusi langsung pada proyek nyata sejak hari pertama.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600" alt="Belajar" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-graduation-cap text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Ruang untuk Bereksperimen</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Kami terbuka mencoba teknologi dan pendekatan baru dalam setiap proyek.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=600" alt="Pertumbuhan" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-chart-line text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Bertumbuh Bersama Perusahaan</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Jenjang karier terbuka lebar seiring dengan pertumbuhan SYNVORA sendiri.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Bergabung Bersama Kami</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Jika Anda tertarik untuk menjadi bagian dari perjalanan SYNVORA membangun solusi teknologi yang berdampak, kami selalu terbuka untuk talenta baru yang memiliki semangat belajar dan kolaborasi yang sama.</p>
+    <a href="/karier" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+      Lihat Lowongan Karier <i class="fa-solid fa-arrow-right text-[10px]"></i>
+    </a>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kesimpulan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Di SYNVORA, kami percaya bahwa lingkungan kerja yang positif mendorong lahirnya inovasi. Budaya kerja yang kami bangun bukan sekadar slogan, tetapi praktik sehari-hari yang terus kami jaga seiring bertumbuhnya perusahaan.</p>
+  </div>
+</BlogArticleLayout>

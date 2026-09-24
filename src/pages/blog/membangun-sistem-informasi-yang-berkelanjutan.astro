@@ -1,0 +1,126 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'membangun-sistem-informasi-yang-berkelanjutan')!;
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="Tim SYNVORA"
+  overlayLines={['Built', 'to', 'Last']}
+  quote="Sistem informasi yang baik bukan yang paling canggih, tetapi yang paling siap dirawat, dikembangkan, dan diandalkan bertahun-tahun ke depan."
+  tags={post.tags}
+  tocItems={[
+    'Mengapa Keberlanjutan Itu Penting?',
+    'Pilar Sistem Informasi yang Berkelanjutan',
+    'Tantangan yang Sering Dihadapi',
+    'Kesimpulan',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Mengapa Keberlanjutan Itu Penting?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Banyak organisasi berinvestasi besar untuk membangun sistem informasi, namun tidak sedikit yang berhenti berfungsi optimal hanya dalam hitungan tahun. Penyebabnya jarang soal teknologi semata, lebih sering karena sistem dibangun tanpa mempertimbangkan bagaimana ia akan <strong>dirawat dan dikembangkan</strong> setelah peluncuran. Sistem informasi yang berkelanjutan memastikan:</p>
+
+    <ul class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Skalabilitas Jangka Panjang</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Sistem dapat tumbuh mengikuti kebutuhan organisasi tanpa harus dibangun ulang dari nol.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Keamanan yang Terjaga</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Pembaruan dan patch keamanan dapat diterapkan secara berkala tanpa mengganggu operasional.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-file-lines"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Dokumentasi yang Jelas</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Tim baru dapat memahami dan melanjutkan pengembangan tanpa bergantung pada satu orang saja.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Dukungan Berkelanjutan</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Ada proses dan tim yang bertanggung jawab menjaga sistem tetap berjalan setiap hari.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Pilar Sistem Informasi yang Berkelanjutan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Ada tiga pilar utama yang menentukan apakah sebuah sistem informasi akan bertahan lama atau justru menjadi beban di kemudian hari:</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600" alt="Arsitektur" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-diagram-project text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Arsitektur yang Rapi</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Struktur kode dan basis data yang modular memudahkan perubahan tanpa merusak bagian lain.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="SDM" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-users-gear text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">SDM yang Kompeten</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Tim internal maupun mitra yang memahami sistem secara menyeluruh, bukan hanya sepotong-sepotong.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600" alt="Tata Kelola" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-clipboard-check text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Tata Kelola yang Jelas</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Prosedur pemeliharaan, backup, dan eskalasi masalah yang terdefinisi dengan baik.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Tantangan yang Sering Dihadapi</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Dalam praktiknya, menjaga keberlanjutan sistem informasi bukan tanpa hambatan:</p>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Ketergantungan pada satu pengembang tanpa dokumentasi memadai.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Anggaran pemeliharaan yang sering dianggap tidak prioritas.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Perubahan kebutuhan bisnis yang tidak diikuti pembaruan sistem.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Minimnya rencana mitigasi risiko keamanan jangka panjang.
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kesimpulan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Keberhasilan sistem informasi tidak hanya ditentukan oleh teknologi, tetapi juga oleh strategi, SDM, dan komitmen berkelanjutan. Organisasi yang menginvestasikan waktu untuk membangun fondasi yang kokoh sejak awal akan jauh lebih siap menghadapi pertumbuhan dan perubahan di masa depan.</p>
+  </div>
+</BlogArticleLayout>

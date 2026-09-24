@@ -1,0 +1,184 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'bbm-belajar-bahasa-madura-inovasi-synvora')!;
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="CEO & Founder SYNVORA"
+  overlayLines={['Lestarikan', 'Bahasa', 'Madura']}
+  quote="Bahasa adalah rumah bagi budaya. Kalau generasi muda berhenti memakainya, rumah itu perlahan kosong. BBM adalah upaya kami menjaga rumah itu tetap dihuni, lewat cara yang akrab dengan cara belajar anak muda hari ini."
+  tags={post.tags}
+  tocItems={[
+    'Kenalkan BBM: Belajar Bahasa Madura',
+    'Kenapa Bahasa Madura Perlu Dijaga?',
+    'Fitur-Fitur Utama BBM',
+    'Jalur Belajar Berjenjang',
+    'Lab Bahasa: Fondasi Text-to-Speech Madura',
+    'Siapa yang Sudah Memakai BBM?',
+    'Langkah Selanjutnya',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenalkan BBM: Belajar Bahasa Madura</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4"><strong>SUMENEP, 24/09/2026</strong> - Setelah memperkenalkan SEP (Smart Event Sumenep), tim SYNVORA kembali membawa inovasi baru: <strong>BBM, Belajar Bahasa Madura</strong>. Kalau SEP lahir untuk membaca dampak event daerah, BBM lahir untuk menjaga sesuatu yang jauh lebih mendasar: bahasa ibu jutaan warga Madura.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">BBM adalah satu platform untuk belajar, mencari, dan menerjemahkan Bahasa Madura, dipakai bersama di sekolah maupun dipelajari sendiri di rumah. Semuanya dibungkus dalam satu aplikasi yang bisa dipasang di perangkat (PWA) dan tetap berfungsi <strong>tanpa koneksi internet</strong>, supaya sekolah dengan akses internet terbatas pun tetap bisa memakainya.</p>
+  </div>
+
+  <div class="mb-10">
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/Landing-BBM.png" alt="Halaman utama BBM, Belajar Bahasa Madura" class="w-full object-cover">
+    </div>
+    <p class="text-xs text-gray-400 text-center italic">Halaman utama BBM, lengkap dengan pencarian kata cepat dan sapaan aksara Carakan.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenapa Bahasa Madura Perlu Dijaga?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Bahasa Madura hidup dalam percakapan sehari-hari, tembang, dan tata krama berbahasa seperti tingkatan basa (Ondhâghen Basa), dari Enjâ'-Iyâ, Engghi-Enten, hingga Engghi-Bhunten, yang dipakai di berbagai wilayah penutur Madura. Namun seperti banyak bahasa daerah lain, semakin sedikit generasi muda yang memakainya secara aktif dalam keseharian. BBM hadir sebagai jembatan, bukan sekadar kamus digital biasa.</p>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Dalam praktiknya, tingkatan basa ini bukan sekadar teori di buku pelajaran. Ia menentukan cara bicara sehari-hari tergantung siapa lawan bicaranya. Ada ragam bahasa yang dipakai antar teman seumuran, ada ragam yang dipakai saat seseorang bicara kepada orang yang lebih tua, dan ada pula ragam yang dipakai orang yang lebih tua saat bicara kepada yang lebih muda. Ketiganya punya pilihan kata dan kehalusan yang berbeda, dan kepekaan membedakan ketiganya inilah yang perlahan mulai pudar di kalangan generasi muda saat ini.</p>
+
+    <div class="border-l-4 border-primary bg-[#F8FAFC] dark:bg-white/5 p-6 rounded-r-xl">
+      <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed"><strong>Tiga pendekatan yang membedakan BBM:</strong></p>
+      <ul class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300 list-disc pl-5">
+        <li><strong>Pemenggalan suku kata otomatis</strong>, membantu siswa mengeja dengan benar, bukan sekadar menghafal.</li>
+        <li><strong>Pengurai kata dasar otomatis</strong>, kata berimbuhan diuraikan menjadi kata dasar yang lebih mudah dipahami, tanpa perlu kamus statis.</li>
+        <li><strong>Akses untuk semua usia</strong>, area klik besar, kontras jelas, navigasi yang mudah dipahami dari siswa sekolah dasar hingga guru senior.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">Fitur-Fitur Utama BBM</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-book"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Kamus Digital</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Cari arti kata Indonesia-Madura lengkap dengan kelas kata dan contoh kalimat, ala KBBI.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-language"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Terjemahan Dua Arah</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Terjemahkan kalimat dari Bahasa Indonesia ke Bahasa Madura, dan sebaliknya.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-spell-check"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Pemenggalan Suku Kata</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Hasil pemenggalan suku kata otomatis untuk membantu eja dan baca.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Modul Belajar Bertahap</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Jalur belajar berjenjang dari huruf, suku kata, kata, hingga kalimat dan tingkatan basa.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-microphone"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Lab Bahasa (TTS)</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Alat admin untuk merekam dan mengurasi korpus suara Madura, fondasi menuju text-to-speech.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-wifi"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Bisa Dipakai Offline</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Dipasang sebagai aplikasi (PWA) dan tetap berfungsi tanpa koneksi internet.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Jalur Belajar Berjenjang</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Materi BBM disusun mengikuti struktur kurikulum bertahap, lengkap dengan kuis di setiap level dan progres yang terkunci sampai level sebelumnya selesai:</p>
+    <ol class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Huruf & Ejaan</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Pengenalan huruf dan cara mengeja yang benar sebagai fondasi paling dasar.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Suku Kata</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Latihan menyusun dan mengenali suku kata sebelum masuk ke kata utuh.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Kata</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Memperluas kosakata beserta makna dan penggunaannya dalam kalimat.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0"><i class="fa-solid fa-check text-xs"></i></div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Kalimat & Tingkatan Basa (Ondhâghen Basa)</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Level tertinggi, merangkai kalimat sekaligus memahami tata krama berbahasa Madura sesuai lawan bicara.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="mb-10">
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/Jalur-Belajar-BBM.png" alt="Jalur belajar berjenjang BBM dengan progres level yang terkunci bertahap" class="w-full object-cover">
+    </div>
+    <p class="text-xs text-gray-400 text-center italic">Setiap level terkunci sampai level sebelumnya selesai, progres belajar jadi jelas dan bertahap.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Siapa yang Sudah Memakai BBM?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">BBM bukan sekadar prototipe di atas kertas. Platform ini sudah dipakai puluhan pengguna nyata dari berbagai kalangan, mulai siswa, mahasiswa, guru, hingga dosen, selama masa pilot berjalan:</p>
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/Dashboard-BBM.png" alt="Dashboard admin BBM dengan statistik pengguna" class="w-full object-cover">
+    </div>
+    <p class="text-xs text-gray-400 text-center italic mb-6">Dashboard admin BBM, memantau siapa saja yang sudah belajar lewat platform ini.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="card-shadow rounded-2xl p-4 text-center">
+        <div class="text-2xl font-extrabold text-primary">76</div>
+        <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">Total Pengguna</div>
+      </div>
+      <div class="card-shadow rounded-2xl p-4 text-center">
+        <div class="text-2xl font-extrabold text-primary">31</div>
+        <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">Siswa & Mahasiswa</div>
+      </div>
+      <div class="card-shadow rounded-2xl p-4 text-center">
+        <div class="text-2xl font-extrabold text-primary">12</div>
+        <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">Guru</div>
+      </div>
+      <div class="card-shadow rounded-2xl p-4 text-center">
+        <div class="text-2xl font-extrabold text-primary">7</div>
+        <div class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">Dosen</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Lab Bahasa: Fondasi Text-to-Speech Madura</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Salah satu bagian paling ambisius dari BBM ada di balik layar: <strong>Lab Bahasa (TTS)</strong>. Ini adalah alat khusus admin untuk merekam dan mengurasi suara asli penutur Madura, per huruf, suku kata, kata, hingga kalimat, membangun korpus data suara yang nantinya jadi fondasi text-to-speech Bahasa Madura.</p>
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/Lab-Bahasa.png" alt="Lab Bahasa, alat perekam korpus TTS Bahasa Madura" class="w-full object-cover">
+    </div>
+    <p class="text-xs text-gray-400 text-center italic mb-6">Lab Bahasa: korpus rekaman yang terus bertambah setiap hari.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Sejauh ini, tim SYNVORA sudah mengumpulkan <strong>1.659 rekaman suara</strong>, mencakup seluruh 10 huruf dasar dan 1.649 suku kata. Ini baru permulaan. Begitu korpus kata dan kalimat lengkap, Bahasa Madura berpotensi jadi salah satu bahasa daerah pertama di Indonesia yang punya sistem text-to-speech sendiri.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Langkah Selanjutnya</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">BBM akan terus kami kembangkan bersama masukan dari para siswa, guru, dan dosen yang sudah memakainya lebih dulu, mulai dari memperkaya korpus Lab Bahasa, melengkapi modul belajar di tingkat lanjut, hingga membuka akses ke lebih banyak sekolah di Madura. Setelah SEP, BBM adalah bukti kedua bahwa teknologi dan budaya lokal bisa berjalan beriringan. Ikuti terus perjalanan SYNVORA membangun inovasi-inovasi berikutnya!</p>
+  </div>
+</BlogArticleLayout>

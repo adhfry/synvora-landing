@@ -1,0 +1,84 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'synvora-teknologi-indonesia-resmi-berdiri')!;
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="CEO & Founder SYNVORA"
+  overlayLines={['A', 'New', 'Beginning']}
+  quote="Setiap perjalanan besar dimulai dari langkah pertama yang berani, dan hari ini, langkah itu resmi kami ambil."
+  tags={post.tags}
+  tocItems={[
+    'Perjalanan Menuju Hari Ini',
+    'Apa yang Kami Tawarkan',
+    'Komitmen Kami',
+    'Kesimpulan',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Perjalanan Menuju Hari Ini</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed"><strong>SUMENEP, 01/09/2026</strong> - Dengan bangga kami mengumumkan bahwa <strong>SYNVORA Teknologi Indonesia</strong> resmi didirikan pada <strong>1 September 2026</strong> oleh <strong>Ahda Firly Barori</strong>. Berawal dari gagasan seorang individu yang percaya bahwa teknologi dapat menjadi katalis perubahan, SYNVORA lahir untuk menjawab kebutuhan organisasi (baik pemerintahan, kesehatan, maupun bisnis) akan solusi digital yang benar-benar dipahami konteksnya, bukan sekadar produk generik. Nama SYNVORA sendiri merepresentasikan semangat kami: <strong>Synchronous, Innovation, Evolution, Era</strong>, selaras dalam tujuan, terus berinovasi, senantiasa berevolusi, untuk membangun era yang lebih baik.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Apa yang Kami Tawarkan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Sejak awal berdiri, SYNVORA berfokus pada tiga lini layanan utama:</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Sistem Informasi" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-database text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Sistem Informasi</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Pengembangan sistem yang dirancang sesuai proses bisnis, bukan sebaliknya.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&q=80&w=600" alt="Integrasi" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-diagram-project text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Integrasi Sistem</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Menghubungkan sistem yang sudah ada agar bekerja sebagai satu ekosistem yang utuh.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600" alt="Aplikasi" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-mobile-screen text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Aplikasi Web & Mobile</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Membangun aplikasi yang mudah digunakan untuk menjangkau lebih banyak pengguna.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Komitmen Kami</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Berdirinya SYNVORA bukan garis akhir, melainkan titik awal dari komitmen jangka panjang kami:</p>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Menghadirkan solusi teknologi yang benar-benar relevan dengan kebutuhan klien.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Membangun tim yang terus belajar dan berkembang bersama industri.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Menjadi mitra jangka panjang, bukan sekadar penyedia jasa satu kali.
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kesimpulan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Dengan semangat Synchronous, Innovation, Evolution, Era, SYNVORA hadir untuk menjadi mitra terpercaya dalam solusi teknologi informasi. Kami mengundang organisasi dari berbagai sektor untuk berdiskusi dan membangun masa depan yang lebih baik bersama kami.</p>
+  </div>
+</BlogArticleLayout>

@@ -1,0 +1,114 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'digitalisasi-layanan-laboratorium-lebih-cepat-lebih-akurat')!;
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="Tim SYNVORA"
+  overlayLines={['Faster', 'Results', 'Better', 'Care']}
+  quote="Setiap detik yang dihemat dalam proses laboratorium adalah waktu lebih cepat bagi pasien untuk mendapatkan penanganan yang tepat."
+  tags={post.tags}
+  tocItems={[
+    'Mengapa Laboratorium Perlu Bertransformasi?',
+    'Manfaat Nyata Digitalisasi Laboratorium',
+    'Hal yang Perlu Diperhatikan',
+    'Kesimpulan',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Mengapa Laboratorium Perlu Bertransformasi?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Proses pencatatan manual di laboratorium, mulai dari pendaftaran sampel, pencatatan hasil, hingga pelaporan ke pasien, rentan terhadap keterlambatan dan kesalahan input. Digitalisasi layanan laboratorium hadir untuk menjawab kebutuhan ini melalui:</p>
+
+    <ul class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-vial-circle-check"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Pelacakan Sampel Real-Time</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Setiap sampel dapat dipantau statusnya dari penerimaan hingga hasil keluar.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-file-waveform"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Integrasi Alat Otomatis</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Hasil dari alat analisis terhubung langsung ke sistem, mengurangi input manual yang rawan salah.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+          <i class="fa-solid fa-mobile-screen"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Akses Hasil Digital</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Pasien dan tenaga medis dapat mengakses hasil laboratorium kapan saja secara online.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Manfaat Nyata Digitalisasi Laboratorium</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Dari pengalaman SYNVORA membantu digitalisasi layanan laboratorium kesehatan, tiga manfaat berikut yang paling terasa:</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=600" alt="Kecepatan" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-gauge-high text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Lebih Cepat</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Waktu tunggu hasil laboratorium berkurang signifikan berkat otomatisasi proses.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" alt="Akurasi" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-crosshairs text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Lebih Akurat</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Minim kesalahan pencatatan karena data mengalir otomatis dari alat ke sistem.</p>
+        </div>
+      </div>
+      <div class="card-shadow rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=600" alt="Kepuasan" class="w-full h-32 object-cover">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-face-smile text-primary text-sm"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white text-sm">Kepuasan Pengguna</h3>
+          </div>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">Pasien merasa lebih nyaman dengan transparansi status dan akses hasil yang mudah.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Hal yang Perlu Diperhatikan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Digitalisasi laboratorium juga membutuhkan perhatian khusus pada beberapa aspek berikut:</p>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Keamanan dan kerahasiaan data medis pasien.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Kompatibilitas sistem dengan berbagai jenis alat laboratorium.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> Pelatihan tenaga laboratorium agar terbiasa dengan sistem baru.
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kesimpulan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Transformasi digital di laboratorium membantu meningkatkan akurasi hasil, efisiensi proses, dan kepuasan pengguna layanan. Dengan pendekatan yang tepat, digitalisasi ini bukan hanya soal teknologi, tetapi juga soal kualitas layanan kesehatan yang lebih baik bagi masyarakat.</p>
+  </div>
+</BlogArticleLayout>

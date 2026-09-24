@@ -1,8 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { portfolioProjects, getAllPortfolioCategories, upcomingCategories } from '../data/portfolioProjects';
+import { teamMembers, founder } from '../data/team';
+
+const categories = getAllPortfolioCategories();
+const allPeople = [founder, ...teamMembers];
+function findPerson(name: string) {
+  return allPeople.find((p) => p.name === name);
+}
 ---
 
-<Layout title="Portofolio - SYNVORA Teknologi Indonesia" navVariant="light" footerVariant="default" active="portfolio" bodyClass="bg-white">
+<Layout
+  title="Portofolio - SYNVORA Teknologi Indonesia"
+  description="Jelajahi portofolio proyek SYNVORA Teknologi Indonesia di sektor kesehatan, pemerintahan, pendidikan, dan perusahaan, dari sistem informasi hingga aplikasi mobile."
+  navVariant="light"
+  footerVariant="default"
+  active="portfolio"
+  bodyClass="bg-white"
+>
   <Fragment slot="head">
     <style is:global>
       .hero-bg {
@@ -144,150 +159,262 @@ import Layout from '../layouts/Layout.astro';
       <!-- Filter & Search Row -->
       <div class="flex flex-col lg:flex-row justify-between items-center gap-4 mb-10">
         <!-- Filters -->
-        <div class="flex flex-wrap gap-2 w-full lg:w-auto">
-          <button class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-xs font-semibold border border-primary">Semua</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Pemerintahan</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Kesehatan</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Pendidikan</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Perusahaan</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Aplikasi Mobile</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Website</button>
-          <button class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">Sistem Informasi</button>
+        <div id="portfolio-filters" class="flex flex-wrap gap-2 w-full lg:w-auto">
+          <button type="button" data-filter="Semua" class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-xs font-semibold border border-primary">Semua</button>
+          {categories.map((cat) => (
+            <button
+              type="button"
+              data-filter={cat}
+              data-upcoming={upcomingCategories.includes(cat) ? 'true' : 'false'}
+              class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200 inline-flex items-center gap-1.5"
+            >
+              {cat}
+              {upcomingCategories.includes(cat) && <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>}
+            </button>
+          ))}
         </div>
 
-        <!-- Search & Sort -->
+        <!-- Search -->
         <div class="flex gap-3 w-full lg:w-auto">
           <div class="relative flex-1 lg:flex-none lg:w-64">
             <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-            <input type="text" placeholder="Cari proyek..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-full text-xs focus:outline-none focus:border-primary">
-          </div>
-          <div class="relative">
-            <select class="appearance-none bg-white border border-gray-200 rounded-full px-6 py-2 text-xs font-semibold text-gray-600 focus:outline-none focus:border-primary pr-8 cursor-pointer">
-              <option>Urutkan</option>
-              <option>Terbaru</option>
-              <option>Terlama</option>
-            </select>
-            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
+            <input id="portfolio-search" type="text" placeholder="Cari proyek..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-full text-xs focus:outline-none focus:border-primary">
           </div>
         </div>
       </div>
 
       <!-- Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Card 1 -->
-        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
-          <div class="h-44 relative overflow-hidden">
-            <!-- Ganti dengan gambar Laboratorium -->
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" alt="Sistem Informasi Laboratorium" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Kesehatan</div>
+      <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {portfolioProjects.map((project) => (
+          <div
+            class="portfolio-card bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group"
+            data-categories={project.categories.join('|')}
+            data-search={`${project.title} ${project.shortDescription} ${project.categories.join(' ')}`.toLowerCase()}
+          >
+            <div class="h-44 relative overflow-hidden">
+              <img src={project.image} alt={project.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500">
+              <div class="absolute bottom-3 left-3 flex flex-wrap gap-1.5">
+                {project.categories.map((cat) => (
+                  <span class="bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">{cat}</span>
+                ))}
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="font-bold text-gray-900 text-sm mb-2">{project.title}</h3>
+              <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">{project.shortDescription}</p>
+              <div class="flex items-center justify-between gap-3">
+                <button type="button" data-modal-target={project.id} class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                  Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition" aria-label="Kunjungi situs">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                  </a>
+                ) : (
+                  <span class="text-gray-400 text-[10px] font-semibold flex items-center gap-1.5" title="Studi Kasus Privat"><i class="fa-solid fa-lock"></i></span>
+                )}
+              </div>
+            </div>
           </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="font-bold text-gray-900 text-sm mb-2">Sistem Informasi Laboratorium</h3>
-            <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Digitalisasi alur kerja laboratorium untuk pelayanan yang lebih cepat dan akurat.</p>
-            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+        ))}
+      </div>
 
-        <!-- Card 2 -->
-        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
-          <div class="h-44 relative overflow-hidden">
-            <!-- Ganti dengan gambar Gedung Pemerintahan -->
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" alt="Sistem Manajemen Layanan Publik" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Pemerintahan</div>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="font-bold text-gray-900 text-sm mb-2">Sistem Manajemen Layanan Publik</h3>
-            <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Meningkatkan transparansi dan efisiensi layanan pemerintah daerah.</p>
-            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+      <p id="portfolio-no-results" class="hidden text-center text-sm text-gray-500 py-12">
+        Tidak ada proyek yang cocok dengan pencarian atau kategori ini.
+      </p>
 
-        <!-- Card 3 -->
-        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
-          <div class="h-44 relative overflow-hidden">
-            <!-- Ganti dengan gambar Mobile App -->
-            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600" alt="Aplikasi Layanan Masyarakat" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Mobile App</div>
+      <!-- Coming Soon panel - shown when a category filter has no case studies yet -->
+      <div id="portfolio-coming-soon" class="hidden">
+        <div class="bg-gradient-to-r from-[#F0F7FF] to-[#E0EFFF] rounded-3xl p-10 md:p-14 text-center max-w-2xl mx-auto">
+          <div class="inline-flex items-center gap-2 bg-white text-primary text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-full mb-6 shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> SEGERA HADIR
           </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="font-bold text-gray-900 text-sm mb-2">Aplikasi Layanan Masyarakat</h3>
-            <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Akses informasi dan layanan lebih mudah melalui perangkat mobile.</p>
-            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
-          <div class="h-44 relative overflow-hidden">
-            <!-- Ganti dengan gambar Pendidikan/Laptop -->
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" alt="Sistem Akademik Terpadu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Pendidikan</div>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="font-bold text-gray-900 text-sm mb-2">Sistem Akademik Terpadu</h3>
-            <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Mendukung pengelolaan data akademik secara terintegrasi dan modern.</p>
-            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
-          <div class="h-44 relative overflow-hidden">
-            <!-- Ganti dengan gambar HR/Portal -->
-            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=600" alt="Portal Manajemen SDM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Perusahaan</div>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="font-bold text-gray-900 text-sm mb-2">Portal Manajemen SDM</h3>
-            <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Solusi pengelolaan sumber daya manusia yang lebih efektif dan terukur.</p>
-            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
-          <div class="h-44 relative overflow-hidden">
-            <!-- Ganti dengan gambar Website -->
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" alt="Website Profil Instansi" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Website</div>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="font-bold text-gray-900 text-sm mb-2">Website Profil Instansi</h3>
-            <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Representasi digital yang profesional dan informatif.</p>
-            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
-          <div class="h-44 relative overflow-hidden">
-            <!-- Ganti dengan gambar Dashboard -->
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Dashboard Monitoring Program" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Pemerintahan</div>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="font-bold text-gray-900 text-sm mb-2">Dashboard Monitoring Program</h3>
-            <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Memantau capaian program secara real-time dan berbasis data.</p>
-            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
-          <div class="h-44 relative overflow-hidden">
-            <!-- Ganti dengan gambar Survey App -->
-            <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=600" alt="Aplikasi Survei & Monitoring" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">Mobile App</div>
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <h3 class="font-bold text-gray-900 text-sm mb-2">Aplikasi Survei & Monitoring</h3>
-            <p class="text-[11px] text-gray-500 mb-4 flex-1 leading-relaxed">Memudahkan penghimpunan data lapangan secara cepat dan akurat.</p>
-            <a href="#" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
+          <h3 class="text-2xl font-extrabold text-gray-900 mb-4">
+            Proyek <span id="coming-soon-category" class="text-primary">Kategori Ini</span> Sedang Kami Siapkan
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed mb-8 max-w-lg mx-auto">
+            Studi kasus publik untuk kategori ini belum tersedia, tapi bukan berarti kami belum siap. Ceritakan ide atau kebutuhan Anda kepada kami — siapa tahu proyek Anda yang tampil di sini berikutnya.
+          </p>
+          <a href="/konsultasi-gratis" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition">
+            Ceritakan Ide Anda <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ================= PROJECT DETAIL MODAL ================= -->
+  <div id="project-modal-overlay" class="hidden fixed inset-0 bg-black/60 z-[100] items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0f1a3d] rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto relative shadow-2xl">
+      <button type="button" class="modal-close-btn absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 dark:bg-white/10 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-white/20 transition z-10" aria-label="Tutup">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      {portfolioProjects.map((project) => (
+        <div class="project-modal-panel hidden" id={`modal-${project.id}`}>
+          <div class="h-56 relative overflow-hidden rounded-t-2xl">
+            <img src={project.image} alt={project.title} class="w-full h-full object-cover object-top">
+            <div class="absolute bottom-3 left-6 flex flex-wrap gap-1.5">
+              {project.categories.map((cat) => (
+                <span class="bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">{cat}</span>
+              ))}
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-3">{project.title}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">{project.overview}</p>
+
+            <div class="mb-6">
+              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-list-check"></i> FITUR UTAMA
+              </h4>
+              <ul class="space-y-2">
+                {project.features.map((f) => (
+                  <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300">
+                    <i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-thumbs-up"></i> KELEBIHAN
+              </h4>
+              <ul class="space-y-2">
+                {project.benefits.map((b) => (
+                  <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300">
+                    <i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-star"></i> FITUR UNGGULAN
+              </h4>
+              <ul class="space-y-2">
+                {project.coolFeatures.map((c) => (
+                  <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300">
+                    <i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {project.team && project.team.length > 0 && (
+              <div class="mb-8">
+                <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-users"></i> TIM PENGEMBANG
+                </h4>
+                <div class="flex flex-wrap gap-3">
+                  {project.team.map((name) => {
+                    const person = findPerson(name);
+                    return (
+                      <div class="flex items-center gap-2 bg-gray-50 dark:bg-white/5 rounded-full pl-1 pr-4 py-1">
+                        {person?.photo ? (
+                          <img src={person.photo} alt={name} class="w-7 h-7 rounded-full object-cover">
+                        ) : (
+                          <div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[9px] font-bold">{person?.initials ?? name.charAt(0)}</div>
+                        )}
+                        <span class="text-xs font-semibold text-gray-700 dark:text-gray-200">{name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {project.link ? (
+              <a href={project.link} target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+                Kunjungi Situs <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            ) : (
+              <span class="text-gray-400 text-xs font-semibold inline-flex items-center gap-2 border border-gray-200 dark:border-white/10 px-6 py-3 rounded-full">
+                <i class="fa-solid fa-lock text-[10px]"></i> Studi Kasus Privat
+              </span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      // ---- Filter & search ----
+      const filterButtons = document.querySelectorAll('#portfolio-filters .filter-btn');
+      const searchInput = document.getElementById('portfolio-search');
+      const cards = Array.from(document.querySelectorAll('.portfolio-card'));
+      const noResults = document.getElementById('portfolio-no-results');
+      const comingSoon = document.getElementById('portfolio-coming-soon');
+      const comingSoonCategory = document.getElementById('coming-soon-category');
+      let activeCategory = 'Semua';
+
+      function applyFilters() {
+        const query = (searchInput?.value || '').trim().toLowerCase();
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          const cardCategories = card.dataset.categories ? card.dataset.categories.split('|') : [];
+          const matchesCategory = activeCategory === 'Semua' || cardCategories.includes(activeCategory);
+          const matchesSearch = !query || card.dataset.search.includes(query);
+          const visible = matchesCategory && matchesSearch;
+          card.style.display = visible ? '' : 'none';
+          if (visible) visibleCount++;
+        });
+
+        if (visibleCount === 0 && !query && activeCategory !== 'Semua') {
+          // Category has no case studies at all (not a search miss) - invite instead of a dead end.
+          if (comingSoonCategory) comingSoonCategory.textContent = activeCategory;
+          comingSoon?.classList.remove('hidden');
+          noResults?.classList.add('hidden');
+        } else {
+          comingSoon?.classList.add('hidden');
+          noResults?.classList.toggle('hidden', visibleCount > 0);
+        }
+      }
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCategory = btn.dataset.filter || 'Semua';
+          applyFilters();
+        });
+      });
+
+      searchInput?.addEventListener('input', applyFilters);
+
+      // ---- Project detail modal ----
+      const overlay = document.getElementById('project-modal-overlay');
+      const panels = Array.from(document.querySelectorAll('.project-modal-panel'));
+
+      function openModal(id) {
+        panels.forEach((p) => p.classList.toggle('hidden', p.id !== `modal-${id}`));
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-modal-target]').forEach((btn) => {
+        btn.addEventListener('click', () => openModal(btn.dataset.modalTarget));
+      });
+
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
+      document.querySelectorAll('.modal-close-btn').forEach((btn) => btn.addEventListener('click', closeModal));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+    })();
+  </script>
 
   <!-- ================= STATS SECTION ================= -->
   <section class="py-16 px-8">

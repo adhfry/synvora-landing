@@ -1,0 +1,450 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogPosts, getTopics, getPostsByTag } from '../../data/blogPosts';
+
+const topics = getTopics();
+const topicsWithPosts = topics.map((t) => ({ ...t, posts: getPostsByTag(t.name) }));
+const latestOverall = blogPosts.slice(0, 4);
+---
+
+<Layout
+  title="Topik Populer"
+  description="Jelajahi topik yang paling banyak dibaca dan diminati oleh pembaca kami. Temukan wawasan, tips, dan cerita menarik seputar teknologi, inovasi, dan transformasi digital."
+  navVariant="light"
+  footerVariant="default"
+  active="blog"
+  bodyClass="bg-[#F8FAFC] dark:bg-synvora-dark"
+>
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.85) 50%, rgba(10, 17, 40, 0.4) 100%),
+          url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        border: 1px solid #f3f4f6;
+        background: white;
+      }
+      .sidebar-card {
+        background: white;
+        border: 1px solid #f3f4f6;
+        border-radius: 16px;
+        padding: 24px;
+      }
+      .cta-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .hero-mockup-laptop {
+        width: 100%;
+        height: 180px;
+        background: #0d1b3e;
+        border: 2px solid #1e3a8a;
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+      .hero-mockup-screen {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0d1b3e 0%, #1e3a8a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+      }
+      .hero-mockup-card {
+        position: absolute;
+        right: -20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 6px 12px;
+        border-radius: 6px;
+        color: white;
+        font-size: 9px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .topic-card {
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      .topic-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 102, 255, 0.1);
+        border-color: #0066ff;
+      }
+      .topic-card.active {
+        border-color: #0066ff;
+        box-shadow: 0 10px 25px rgba(0, 102, 255, 0.12);
+      }
+      .topic-icon-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0f7ff;
+        color: #0066ff;
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+      .tag-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(4px);
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 10px;
+        font-weight: bold;
+        color: #374151;
+      }
+      .topic-panel {
+        display: none;
+      }
+      .topic-panel.active {
+        display: block;
+      }
+      .dark .card-shadow {
+        background: #0f1a3d;
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      .dark .sidebar-card {
+        background: #0f1a3d;
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      .dark .topic-icon-box {
+        background-color: rgba(0, 102, 255, 0.15);
+      }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-16 pb-28 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+          <a href="/" class="hover:text-white cursor-pointer">Beranda</a>
+          <i class="fa-solid fa-chevron-right text-[8px]"></i>
+          <a href="/blog" class="hover:text-white cursor-pointer">Blog</a>
+          <i class="fa-solid fa-chevron-right text-[8px]"></i>
+          <span class="text-white">Topik Populer</span>
+        </div>
+
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+          Topik <span class="text-primary">Populer</span>
+        </h1>
+
+        <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+          Jelajahi topik yang paling banyak dibaca dan diminati oleh pembaca kami. Temukan wawasan, tips, dan cerita menarik seputar teknologi, inovasi, dan transformasi digital.
+        </p>
+
+        <div class="border-l-4 border-primary pl-4">
+          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">
+            SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
+          </div>
+          <div class="text-xs text-gray-400">
+            A Better Tomorrow Through Technology
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden lg:flex justify-end relative items-center">
+        <div class="relative w-80">
+          <div class="hero-mockup-laptop">
+            <div class="hero-mockup-screen">
+              Ideas<br>Insights<br>Impact
+            </div>
+          </div>
+          <div class="absolute top-10 -left-12 flex flex-col gap-2">
+            <div class="hero-mockup-card" style="top: 0; right: 0;"><i class="fa-solid fa-microchip text-primary"></i> Technology</div>
+            <div class="hero-mockup-card" style="top: 25px; right: 0;"><i class="fa-solid fa-arrows-spin text-primary"></i> Innovation</div>
+            <div class="hero-mockup-card" style="top: 50px; right: 0;"><i class="fa-solid fa-users text-primary"></i> People</div>
+            <div class="hero-mockup-card" style="top: 75px; right: 0;"><i class="fa-solid fa-arrow-right text-primary"></i> A Better Tomorrow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="max-w-7xl mx-auto px-8 -mt-16 relative z-20 pb-16">
+
+    <!-- Section 1: Pilih Topik -->
+    <div class="mb-12">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-8">
+        <div>
+          <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-2">Pilih Topik yang Anda Minati</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Jelajahi artikel berdasarkan kategori dan temukan insight yang relevan dengan kebutuhan Anda.</p>
+        </div>
+        <div class="relative w-full md:w-64 mt-4 md:mt-0">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+          <input id="topic-search" type="text" placeholder="Cari topik..." class="w-full pl-10 pr-4 py-2.5 border border-gray-200 dark:border-white/10 dark:bg-transparent rounded-xl text-xs focus:outline-none focus:border-primary">
+        </div>
+      </div>
+
+      <div id="topic-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {topicsWithPosts.map((topic, i) => (
+          <div
+            class:list={['topic-card card-shadow rounded-2xl p-4 bg-white flex flex-col justify-between', { active: i === 0 }]}
+            data-topic-target={topic.slug}
+            data-topic-name={topic.name.toLowerCase()}
+            id={`card-${topic.slug}`}
+          >
+            <div>
+              <div class="topic-icon-box"><i class={topic.icon}></i></div>
+              <h3 class="font-bold text-gray-900 dark:text-white text-xs mb-1">{topic.name}</h3>
+              <p class="text-[10px] text-gray-500 dark:text-gray-400 mb-2">{topic.count} artikel</p>
+            </div>
+            <div class="flex justify-end">
+              <i class="fa-solid fa-arrow-right text-primary text-xs"></i>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p id="topic-no-results" class="hidden text-center text-sm text-gray-500 dark:text-gray-400 py-8">Tidak ada topik yang cocok dengan pencarian.</p>
+    </div>
+
+    {topicsWithPosts.map((topic, i) => {
+      const heroPost = topic.posts[0];
+      return (
+        <div class:list={['topic-panel', { active: i === 0 }]} id={`panel-${topic.slug}`}>
+          <!-- Section 2: Featured Topic -->
+          <div class="mb-16">
+            <div class="bg-gradient-to-r from-[#F0F7FF] to-[#E0EFFF] dark:from-[#0f1a3d] dark:to-[#0f1a3d] rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+              <div class="w-full md:w-1/2 z-10">
+                <div class="flex items-center gap-2 mb-4">
+                  <i class="fa-solid fa-star text-yellow-400"></i>
+                  <span class="text-xs font-bold text-gray-600 dark:text-gray-300 tracking-widest">{i === 0 ? 'TOPIK PALING POPULER' : 'TOPIK'}</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">{topic.name}</h2>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-md">Jelajahi {topic.count} artikel seputar {topic.name.toLowerCase()} dan penerapannya dalam dunia nyata untuk berbagai sektor.</p>
+                {heroPost && (
+                  <a href={`/blog/${heroPost.slug}`} class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition">
+                    Lihat Artikel <i class="fa-solid fa-arrow-right text-xs"></i>
+                  </a>
+                )}
+              </div>
+              <div class="w-full md:w-1/2 flex justify-center z-10 relative">
+                {heroPost && <img src={heroPost.image} alt={topic.name} class="w-full max-w-sm object-cover rounded-2xl shadow-lg">}
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Artikel di Topik Ini -->
+          <div class="mb-4">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-xl font-extrabold text-gray-900 dark:text-white">Artikel di Topik {topic.name}</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {topic.posts.map((post) => (
+                <a href={`/blog/${post.slug}`} class="card-shadow rounded-2xl overflow-hidden flex flex-col group">
+                  <div class="h-40 relative overflow-hidden">
+                    <img src={post.image} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="tag-badge">{topic.name}</div>
+                  </div>
+                  <div class="p-5 flex-1 flex flex-col">
+                    <div class="text-[10px] text-gray-400 mb-2">{post.publishedDisplay}</div>
+                    <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-2 leading-tight">{post.title}</h3>
+                    <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-4 flex-1 leading-relaxed">{post.excerpt}</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-white/10 pt-3">
+                      <div class="flex items-center gap-2">
+                        {post.authorImage ? (
+                          <img src={post.authorImage} alt={post.author} class="w-5 h-5 rounded-full object-cover">
+                        ) : (
+                          <div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-white text-[7px] font-bold">{post.author.charAt(0)}</div>
+                        )}
+                        <div class="text-[9px] font-semibold text-gray-700 dark:text-gray-300">{post.author}</div>
+                      </div>
+                      <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> {post.readTime}</div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    })}
+
+    <!-- Main Grid Layout for Section 4 & Sidebar -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-12">
+
+      <!-- LEFT COLUMN (Articles) -->
+      <div class="lg:col-span-2 space-y-12">
+
+        <!-- Section 4: Artikel Terbaru dari Semua Topik -->
+        <div>
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-extrabold text-gray-900 dark:text-white">Artikel Terbaru dari Semua Topik</h2>
+            <a href="/blog" class="text-primary text-xs font-semibold hover:underline flex items-center gap-1">Lihat Semua <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {latestOverall.map((post) => (
+              <a href={`/blog/${post.slug}`} class="card-shadow rounded-2xl overflow-hidden flex flex-col group">
+                <div class="h-32 relative overflow-hidden">
+                  <img src={post.image} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  <div class="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[9px] font-bold text-gray-800">{post.category}</div>
+                </div>
+                <div class="p-4 flex-1 flex flex-col">
+                  <div class="text-[9px] text-gray-400 mb-1">{post.publishedDisplay}</div>
+                  <h3 class="font-bold text-gray-900 dark:text-white text-xs mb-2 leading-tight">{post.title}</h3>
+                  <div class="flex items-center justify-between border-t border-gray-100 dark:border-white/10 pt-3 mt-auto">
+                    <div class="flex items-center gap-1.5">
+                      {post.authorImage ? (
+                        <img src={post.authorImage} alt={post.author} class="w-4 h-4 rounded-full object-cover">
+                      ) : (
+                        <div class="w-4 h-4 rounded-full bg-primary flex items-center justify-center text-white text-[6px] font-bold">{post.author.charAt(0)}</div>
+                      )}
+                      <div class="text-[8px] font-semibold text-gray-700 dark:text-gray-300">{post.author}</div>
+                    </div>
+                    <div class="text-[8px] text-gray-400">{post.readTime}</div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN (SIDEBAR) -->
+      <div class="lg:col-span-1 space-y-8">
+
+        <!-- Newsletter -->
+        <div class="bg-[#0A1128] rounded-2xl p-8 text-white relative overflow-hidden shadow-lg">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-primary rounded-full filter blur-[50px] opacity-20"></div>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-primary rounded-full"></span> DAPATKAN ARTIKEL TERBARU
+            </div>
+            <h3 class="font-bold text-xl leading-tight mb-3">Berlangganan Newsletter</h3>
+            <p class="text-[11px] text-gray-300 mb-6 leading-relaxed">Dapatkan insight terbaru seputar teknologi, inovasi, dan transformasi digital langsung ke email Anda.</p>
+            <div class="relative mb-3">
+              <input type="email" placeholder="Masukkan email Anda" class="w-full pl-4 pr-4 py-3 border border-white/20 bg-white/10 rounded-xl text-xs text-white placeholder-gray-400 focus:outline-none focus:border-primary">
+            </div>
+            <button class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
+              Berlangganan <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+            <div class="flex items-center gap-2 mt-4 text-[9px] text-gray-400">
+              <i class="fa-solid fa-lock"></i> Kami tidak akan membagikan email Anda kepada pihak lain.
+            </div>
+          </div>
+        </div>
+
+        <!-- Topik Populer Lainnya -->
+        <div class="sidebar-card">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-bold text-gray-900 dark:text-white text-base flex items-center gap-2">
+              <i class="fa-solid fa-fire text-orange-500"></i> Topik Populer Lainnya
+            </h3>
+          </div>
+          <ul class="space-y-3">
+            {topicsWithPosts.map((topic) => (
+              <li>
+                <a
+                  href={`#${topic.slug}`}
+                  data-topic-target={topic.slug}
+                  class="sidebar-topic-link flex items-center justify-between text-xs p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition cursor-pointer"
+                >
+                  <div class="flex items-center gap-3">
+                    <i class={`${topic.icon} text-gray-400 w-4`}></i> {topic.name}
+                  </div>
+                  <span class="bg-gray-100 dark:bg-white/10 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full text-[10px]">{topic.count}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+      <div class="z-10 mb-8 md:mb-0 max-w-2xl">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+          <span class="w-2 h-2 bg-primary rounded-full"></span> MARI BERKOLABORASI
+        </div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">
+          Wujudkan Solusi Teknologi<br>untuk Masa Depan yang Lebih Baik.
+        </h2>
+        <p class="text-sm text-gray-300">
+          Kami siap menjadi mitra Anda dalam menghadirkan solusi digital yang berdampak nyata bagi organisasi dan masyarakat.
+        </p>
+      </div>
+      <div class="flex gap-4 z-10">
+        <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const topicCards = Array.from(document.querySelectorAll('.topic-card'));
+      const sidebarLinks = Array.from(document.querySelectorAll('.sidebar-topic-link'));
+      const panels = Array.from(document.querySelectorAll('.topic-panel'));
+      const searchInput = document.getElementById('topic-search');
+      const noResults = document.getElementById('topic-no-results');
+
+      function activateTopic(slug) {
+        topicCards.forEach((c) => c.classList.toggle('active', c.dataset.topicTarget === slug));
+        panels.forEach((p) => p.classList.toggle('active', p.id === `panel-${slug}`));
+      }
+
+      topicCards.forEach((card) => {
+        card.addEventListener('click', () => {
+          activateTopic(card.dataset.topicTarget);
+          document.getElementById(`panel-${card.dataset.topicTarget}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      sidebarLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          activateTopic(link.dataset.topicTarget);
+          document.getElementById(`panel-${link.dataset.topicTarget}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      searchInput?.addEventListener('input', () => {
+        const query = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+        topicCards.forEach((card) => {
+          const match = !query || card.dataset.topicName.includes(query);
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+        noResults?.classList.toggle('hidden', visible > 0);
+      });
+
+      // Jump straight to a topic if the URL carries a #<slug> anchor (from the blog sidebar link).
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(`panel-${hash}`)) {
+        activateTopic(hash);
+      }
+    })();
+  </script>
+</Layout>

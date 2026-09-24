@@ -1,0 +1,398 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../lib/site';
+import { getRelatedPosts, type BlogPostMeta } from '../data/blogPosts';
+
+interface Props {
+  post: BlogPostMeta;
+  authorRole: string;
+  overlayLines: string[];
+  quote: string;
+  tags: string[];
+  tocItems: string[];
+}
+
+const { post, authorRole, overlayLines, quote, tags, tocItems } = Astro.props;
+
+const articleUrl = `${SITE.url}/blog/${post.slug}`;
+const fullTitle = `${post.title} - SYNVORA Teknologi Indonesia`;
+const whatsappText = `${post.title}\n\n${post.excerpt}\n\nBaca selengkapnya: ${articleUrl}`;
+const tweetText = `${post.title} - ${post.excerpt}`;
+const shareUrls = {
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`,
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}`,
+  x: `https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(tweetText)}`,
+  whatsapp: `https://wa.me/?text=${encodeURIComponent(whatsappText)}`,
+};
+
+const related = getRelatedPosts(post.slug, 3);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.excerpt,
+  image: [post.image],
+  author: { '@type': 'Person', name: post.author },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    logo: { '@type': 'ImageObject', url: `${SITE.url}/images/logo/synvora-logo-email.png` },
+  },
+  datePublished: post.publishedAt,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+};
+---
+
+<Layout
+  title={fullTitle}
+  description={post.excerpt}
+  navVariant="light"
+  footerVariant="default"
+  active="blog"
+  ogType="article"
+  ogImage={post.image}
+  bodyClass="bg-[#F8FAFC] dark:bg-synvora-dark"
+>
+  <Fragment slot="head">
+    <style is:global>
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        border: 1px solid #f3f4f6;
+        background: white;
+      }
+      .sidebar-card {
+        background: white;
+        border: 1px solid #f3f4f6;
+        border-radius: 16px;
+        padding: 24px;
+      }
+      .toc-list {
+        position: relative;
+      }
+      .toc-list::before {
+        content: '';
+        position: absolute;
+        left: 7px;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        background-color: #e5e7eb;
+      }
+      .toc-item {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 16px;
+      }
+      .toc-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: white;
+        border: 2px solid #e5e7eb;
+        z-index: 1;
+      }
+      .toc-item.active::before {
+        background-color: #0066ff;
+        border-color: #0066ff;
+      }
+      .toc-item.active {
+        color: #0066ff;
+        font-weight: 600;
+      }
+      .share-btn {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid #e5e7eb;
+        color: #6b7280;
+        transition: all 0.2s ease;
+      }
+      .share-btn:hover {
+        border-color: #0066ff;
+        color: #0066ff;
+        background-color: #f0f7ff;
+      }
+      .share-icon-img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        display: block;
+      }
+      .tag-btn {
+        background-color: #f0f7ff;
+        color: #0066ff;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-size: 10px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+      .tag-btn:hover {
+        background-color: #0066ff;
+        color: white;
+      }
+      .dark .card-shadow {
+        background: #0f1a3d;
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      .dark .sidebar-card {
+        background: #0f1a3d;
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      .dark .toc-list::before {
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+      .dark .toc-item::before {
+        background-color: #0f1a3d;
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .dark .share-btn {
+        border-color: rgba(255, 255, 255, 0.15);
+        color: #9ca3af;
+      }
+    </style>
+    <meta property="article:published_time" content={post.publishedAt} />
+    <meta property="article:author" content={post.author} />
+    <meta property="article:section" content={post.category} />
+    {tags.map((tag) => <meta property="article:tag" content={tag} />)}
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="max-w-7xl mx-auto px-8 py-10">
+
+    <!-- Breadcrumb -->
+    <div class="text-xs font-semibold text-gray-400 mb-6 flex flex-wrap items-center gap-2">
+      <a href="/" class="hover:text-primary transition">Beranda</a>
+      <i class="fa-solid fa-chevron-right text-[8px]"></i>
+      <a href="/blog" class="hover:text-primary transition">Blog</a>
+      <i class="fa-solid fa-chevron-right text-[8px]"></i>
+      <span class="text-gray-500">{post.category}</span>
+      <i class="fa-solid fa-chevron-right text-[8px]"></i>
+      <span class="text-gray-800 dark:text-gray-200">{post.title}</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+      <!-- LEFT COLUMN: ARTICLE CONTENT -->
+      <div class="lg:col-span-2">
+
+        <!-- Featured Image -->
+        <div class="relative rounded-2xl overflow-hidden mb-6 shadow-md">
+          <img src={post.image} alt={post.title} class="w-full h-[400px] object-cover">
+          <div class="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-[11px] font-bold text-gray-800 shadow-sm">{post.category}</div>
+          <div class="absolute top-6 right-6 text-right">
+            <div class="text-white text-2xl font-extrabold leading-tight">
+              {overlayLines.map((line, i) => <>{line}{i < overlayLines.length - 1 && <br />}</>)}
+            </div>
+            <div class="w-12 h-1 bg-primary ml-auto mt-2"></div>
+          </div>
+        </div>
+
+        <!-- Article Header -->
+        <div class="mb-8">
+          <!-- Author & Meta -->
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div class="flex items-center gap-3">
+              {post.authorImage ? (
+                <img src={post.authorImage} alt={post.author} class="w-10 h-10 rounded-full object-cover">
+              ) : (
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">{post.author.charAt(0)}</div>
+              )}
+              <div>
+                <div class="text-xs font-bold text-gray-900 dark:text-white">{post.author}</div>
+                <div class="text-[10px] text-gray-500 dark:text-gray-400">{authorRole}</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 text-[10px] text-gray-500 dark:text-gray-400">
+              <span class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> {post.publishedDisplay}</span>
+              <span class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> {post.readTime}</span>
+              <span class="flex items-center gap-1"><i class="fa-regular fa-eye"></i> <span id="view-count-display">-</span> dilihat</span>
+            </div>
+            <div class="flex gap-2">
+              <a href={shareUrls.linkedin} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke LinkedIn"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+              <a href={shareUrls.facebook} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke Facebook"><img src="/icons/facebook-logo.png" alt="Facebook" class="share-icon-img"></a>
+              <a href={shareUrls.x} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke X"><img src="/icons/x-twitter-logo.webp" alt="X" class="share-icon-img"></a>
+              <a href={shareUrls.whatsapp} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke WhatsApp"><img src="/icons/whatsapp-logo.png" alt="WhatsApp" class="share-icon-img"></a>
+              <button class="share-btn copy-link-btn" type="button" aria-label="Bagikan halaman ini"><i class="fa-solid fa-share-nodes text-sm"></i></button>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">{post.title}</h1>
+
+          <!-- Excerpt -->
+          <p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">{post.excerpt}</p>
+        </div>
+
+        <!-- Quote Block -->
+        <div class="border-l-4 border-primary bg-[#F8FAFC] dark:bg-white/5 p-6 rounded-r-xl mb-10 relative">
+          <i class="fa-solid fa-quote-left text-4xl text-blue-100 dark:text-white/10 absolute top-4 left-4"></i>
+          <p class="text-sm text-gray-700 dark:text-gray-200 italic relative z-10 pl-6 leading-relaxed">{quote}</p>
+        </div>
+
+        <!-- Article body sections (per-article content) -->
+        <slot />
+
+        <!-- Tags & Share -->
+        <div class="flex flex-wrap items-center justify-between gap-4 border-t border-gray-200 dark:border-white/10 pt-6 mb-12">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-xs font-bold text-gray-900 dark:text-white mr-2">Tag:</span>
+            {tags.map((tag) => <a href="/blog" class="tag-btn">{tag}</a>)}
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold text-gray-900 dark:text-white">Bagikan:</span>
+            <a href={shareUrls.linkedin} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke LinkedIn"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+            <a href={shareUrls.facebook} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke Facebook"><img src="/icons/facebook-logo.png" alt="Facebook" class="share-icon-img"></a>
+            <a href={shareUrls.x} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke X"><img src="/icons/x-twitter-logo.webp" alt="X" class="share-icon-img"></a>
+            <a href={shareUrls.whatsapp} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke WhatsApp"><img src="/icons/whatsapp-logo.png" alt="WhatsApp" class="share-icon-img"></a>
+            <button class="share-btn copy-link-btn" type="button" aria-label="Bagikan halaman ini"><i class="fa-solid fa-share-nodes text-sm"></i></button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: SIDEBAR -->
+      <div class="lg:col-span-1 space-y-8">
+
+        <!-- Daftar Isi -->
+        <div class="sidebar-card">
+          <h3 class="font-bold text-gray-900 dark:text-white text-base mb-6">Daftar Isi</h3>
+          <div class="toc-list">
+            {tocItems.map((item, i) => (
+              <div class:list={['toc-item text-sm', i === 0 ? 'active' : 'text-gray-600 dark:text-gray-300']}>{item}</div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Promo Box -->
+        <div class="relative rounded-2xl overflow-hidden shadow-lg bg-[#0A1128] p-6 text-white">
+          <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center"></div>
+          <div class="relative z-10">
+            <div class="text-[10px] font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 bg-primary rounded-full"></span> KONSULTASI GRATIS
+            </div>
+            <h3 class="font-bold text-lg leading-tight mb-3">Diskusikan Kebutuhan Teknologi Anda</h3>
+            <p class="text-[11px] text-gray-300 mb-6">Temukan solusi terbaik bersama tim ahli SYNVORA.</p>
+            <a href="/konsultasi-gratis" class="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+              Konsultasi Sekarang <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Artikel Terkait -->
+        <div class="sidebar-card">
+          <h3 class="font-bold text-gray-900 dark:text-white text-base mb-6">Artikel Terkait</h3>
+          <div class="space-y-5">
+            {related.map((r) => (
+              <a href={`/blog/${r.slug}`} class="flex gap-4 cursor-pointer group">
+                <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0">
+                  <img src={r.image} alt={r.title} class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900 dark:text-white leading-tight mb-1 group-hover:text-primary transition">{r.title}</h4>
+                  <div class="text-[9px] text-gray-400 flex items-center gap-2">
+                    <span>{r.publishedDisplay}</span>
+                    <span class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> {r.readTime}</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="sidebar-card">
+          <div class="w-10 h-10 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-lg mb-4">
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 dark:text-white text-base mb-2">Newsletter</h3>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-3">Dapatkan Artikel Terbaru</h4>
+          <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">Berlangganan newsletter kami untuk mendapatkan insight teknologi, inovasi, dan berita terbaru langsung ke email Anda.</p>
+          <div class="relative mb-3">
+            <input type="email" placeholder="Masukkan email Anda" class="w-full pl-4 pr-4 py-3 border border-gray-200 dark:border-white/10 dark:bg-transparent rounded-xl text-xs focus:outline-none focus:border-primary">
+          </div>
+          <button class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
+            Berlangganan <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+          <div class="flex items-center gap-2 mt-4 text-[9px] text-gray-400">
+            <i class="fa-solid fa-lock"></i> Kami menghargai privasi Anda. Tidak ada spam, hanya konten berkualitas.
+          </div>
+        </div>
+
+        <!-- Quote Box -->
+        <div class="bg-gray-50 dark:bg-white/5 p-6 rounded-2xl border border-gray-100 dark:border-white/10 relative">
+          <i class="fa-solid fa-quote-left text-3xl text-blue-100 dark:text-white/10 absolute top-4 left-4"></i>
+          <p class="text-xs text-gray-600 dark:text-gray-300 italic relative z-10 mb-4 pl-4 pt-4">"Teknologi yang tepat bukan hanya menyelesaikan masalah saat ini, tetapi juga membuka peluang untuk masa depan yang lebih baik."</p>
+          <div class="w-8 h-0.5 bg-primary mb-2 ml-4"></div>
+          <div class="text-[9px] font-bold tracking-widest text-primary ml-4">SYNVORA TEKNOLOGI INDONESIA</div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script is:inline define:vars={{ slug: post.slug }}>
+    (function () {
+      const display = document.getElementById('view-count-display');
+      if (!display) return;
+      function formatCount(n) {
+        if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        return String(n);
+      }
+      fetch('/api/blog-view', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug }),
+      })
+        .then((res) => (res.ok ? res.json() : Promise.reject()))
+        .then((data) => {
+          display.textContent = formatCount(data.count);
+        })
+        .catch(() => {
+          display.textContent = '0';
+        });
+    })();
+  </script>
+
+  <script is:inline>
+    document.querySelectorAll('.copy-link-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const shareData = {
+          title: document.title,
+          text: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+          url: window.location.href,
+        };
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+            return;
+          } catch (err) {
+            if (err && err.name === 'AbortError') return;
+          }
+        }
+        try {
+          await navigator.clipboard.writeText(shareData.url);
+          const icon = btn.querySelector('i');
+          if (icon) {
+            const original = icon.className;
+            icon.className = 'fa-solid fa-check text-sm';
+            setTimeout(() => {
+              icon.className = original;
+            }, 1500);
+          }
+        } catch (err) {
+          console.error('Gagal menyalin tautan:', err);
+        }
+      });
+    });
+  </script>
+</Layout>

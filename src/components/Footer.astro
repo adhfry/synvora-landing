@@ -1,5 +1,6 @@
 ---
 import { NAV_ITEMS } from '../lib/nav';
+import { SITE } from '../lib/site';
 
 interface Props {
   active?: string;
@@ -26,9 +27,8 @@ const services = [
 ];
 
 const contactInfo = [
-  { icon: 'fa-solid fa-location-dot', text: 'Indonesia' },
-  { icon: 'fa-regular fa-envelope', text: 'hello@synvora.id' },
-  { icon: 'fa-solid fa-phone', text: '+62 811 234 567' },
+  { icon: 'fa-solid fa-location-dot', text: SITE.address },
+  { icon: 'fa-regular fa-envelope', text: SITE.email },
 ];
 ---
 
@@ -52,16 +52,12 @@ const contactInfo = [
         Teknologi yang menyatukan, menginspirasi, dan menciptakan masa depan yang lebih baik.
       </p>
       <div class="flex gap-4 text-gray-400">
-        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-linkedin-in" /></a>
-        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-instagram" /></a>
-        <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-youtube" /></a>
-        {
-          isLanding ? (
-            <a href="#" class="hover:text-primary transition"><i class="fa-regular fa-envelope" /></a>
-          ) : (
-            <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-github" /></a>
-          )
-        }
+        <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition"><i class="fa-brands fa-linkedin-in" /></a>
+        <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition"><i class="fa-brands fa-instagram" /></a>
+        {SITE.social.showYoutube && (
+          <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition"><i class="fa-brands fa-youtube" /></a>
+        )}
+        <a href={SITE.social.github} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition"><i class="fa-brands fa-github" /></a>
       </div>
     </div>
 
@@ -98,9 +94,13 @@ const contactInfo = [
         {contactInfo.map((c) => (
           <li class="flex items-start gap-3">
             <i class={`${c.icon} text-primary ${contactIconMt}`} />
-            <span>{c.text}</span>
+            <span class="leading-relaxed">{c.text}</span>
           </li>
         ))}
+        <li class="flex items-start gap-3">
+          <i class={`fa-brands fa-whatsapp text-primary ${contactIconMt}`} />
+          <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition">{SITE.phoneDisplay}</a>
+        </li>
         <li class="flex items-start gap-3">
           <i class={`fa-regular fa-clock text-primary ${contactIconMt}`} />
           <span>Senin - Jumat<br />08.00 - 17.00 WIB</span>

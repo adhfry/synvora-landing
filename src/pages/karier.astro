@@ -1,8 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { teamMembers } from '../data/team';
+
+const pyepit = teamMembers.find((m) => m.name === 'Pyepit Rineksoa Andriyanto')!;
+const danur = teamMembers.find((m) => m.name === 'Danur Wenda')!;
+const muqtafi = teamMembers.find((m) => m.name === 'Ahmad Muqtafi')!;
 ---
 
-<Layout title="Karir - SYNVORA Teknologi Indonesia" navVariant="light" footerVariant="default" active="karier" bodyClass="bg-white">
+<Layout
+  title="Karir - SYNVORA Teknologi Indonesia"
+  description="Kenali budaya kerja dan benefit di SYNVORA Teknologi Indonesia. Belum ada posisi terbuka saat ini, namun kami selalu terbuka untuk berkenalan dengan talenta terbaik."
+  navVariant="light"
+  footerVariant="default"
+  active="karier"
+  bodyClass="bg-white"
+>
   <Fragment slot="head">
     <style is:global>
       .hero-bg {
@@ -24,23 +36,6 @@ import Layout from '../layouts/Layout.astro';
         background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
         background-size: cover;
         background-position: center;
-      }
-      .job-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 10px;
-        color: #6b7280;
-        background-color: #f3f4f6;
-        padding: 2px 8px;
-        border-radius: 9999px;
-      }
-      .job-tag i {
-        color: #9ca3af;
-      }
-      .dark .job-tag {
-        background-color: rgba(255, 255, 255, 0.08);
-        color: #9ca3af;
       }
     </style>
   </Fragment>
@@ -182,144 +177,23 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <!-- Right Column: Search, Filters, and Job Cards -->
+      <!-- Right Column: Coming Soon -->
       <div class="lg:col-span-2">
-
-        <!-- Search & Filter Bar -->
-        <div class="flex flex-col md:flex-row gap-4 mb-8">
-          <div class="relative flex-1">
-            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-            <input type="text" placeholder="Cari posisi, misalnya Frontend..." class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-primary">
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-12 h-full flex flex-col items-center justify-center text-center">
+          <div class="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center text-3xl mb-6">
+            <i class="fa-regular fa-clock"></i>
           </div>
-          <div class="flex gap-2 w-full md:w-auto">
-            <select class="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold text-gray-600 focus:outline-none focus:border-primary flex-1 md:flex-none">
-              <option>Semua Divisi</option>
-              <option>Teknologi</option>
-              <option>Data & AI</option>
-              <option>Produk</option>
-              <option>Operasional</option>
-            </select>
-            <select class="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold text-gray-600 focus:outline-none focus:border-primary flex-1 md:flex-none">
-              <option>Semua Lokasi</option>
-              <option>Yogyakarta</option>
-              <option>Jakarta</option>
-            </select>
-            <select class="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold text-gray-600 focus:outline-none focus:border-primary flex-1 md:flex-none">
-              <option>Tipe Pekerjaan</option>
-              <option>Full Time</option>
-              <option>Kontrak</option>
-              <option>Internship</option>
-            </select>
+          <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 bg-primary rounded-full"></span> SEGERA HADIR
           </div>
-        </div>
-
-        <!-- Job Cards List -->
-        <div class="space-y-4">
-
-          <!-- Job 1 -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 hover:shadow-md transition">
-            <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl shrink-0">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-bold text-gray-900 text-base mb-2">Frontend Developer</h3>
-              <div class="flex flex-wrap gap-2 mb-3">
-                <span class="job-tag"><i class="fa-solid fa-briefcase"></i> Teknologi</span>
-                <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Yogyakarta (Hybrid)</span>
-                <span class="job-tag"><i class="fa-regular fa-clock"></i> Full Time</span>
-              </div>
-              <p class="text-xs text-gray-500 leading-relaxed">Mengembangkan antarmuka web yang modern, responsif, dan user-friendly untuk berbagai solusi digital.</p>
-            </div>
-            <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-xs font-semibold flex items-center gap-2 transition shrink-0 self-start md:self-center">
-              Lihat Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-
-          <!-- Job 2 -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 hover:shadow-md transition">
-            <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl shrink-0">
-              <i class="fa-solid fa-cloud"></i>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-bold text-gray-900 text-base mb-2">Backend Developer</h3>
-              <div class="flex flex-wrap gap-2 mb-3">
-                <span class="job-tag"><i class="fa-solid fa-briefcase"></i> Teknologi</span>
-                <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Yogyakarta (Hybrid)</span>
-                <span class="job-tag"><i class="fa-regular fa-clock"></i> Full Time</span>
-              </div>
-              <p class="text-xs text-gray-500 leading-relaxed">Membangun dan mengelola sistem backend yang andal, aman, dan scalable.</p>
-            </div>
-            <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-xs font-semibold flex items-center gap-2 transition shrink-0 self-start md:self-center">
-              Lihat Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-
-          <!-- Job 3 -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 hover:shadow-md transition">
-            <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl shrink-0">
-              <i class="fa-solid fa-chart-simple"></i>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-bold text-gray-900 text-base mb-2">Data Analyst</h3>
-              <div class="flex flex-wrap gap-2 mb-3">
-                <span class="job-tag"><i class="fa-solid fa-briefcase"></i> Data & AI</span>
-                <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Yogyakarta (Hybrid)</span>
-                <span class="job-tag"><i class="fa-regular fa-clock"></i> Full Time</span>
-              </div>
-              <p class="text-xs text-gray-500 leading-relaxed">Mengolah dan menganalisis data untuk mendukung pengambilan keputusan berbasis data.</p>
-            </div>
-            <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-xs font-semibold flex items-center gap-2 transition shrink-0 self-start md:self-center">
-              Lihat Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-
-          <!-- Job 4 -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 hover:shadow-md transition">
-            <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl shrink-0">
-              <i class="fa-solid fa-palette"></i>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-bold text-gray-900 text-base mb-2">UI/UX Designer</h3>
-              <div class="flex flex-wrap gap-2 mb-3">
-                <span class="job-tag"><i class="fa-solid fa-briefcase"></i> Produk</span>
-                <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Yogyakarta (Hybrid)</span>
-                <span class="job-tag"><i class="fa-regular fa-clock"></i> Full Time</span>
-              </div>
-              <p class="text-xs text-gray-500 leading-relaxed">Merancang pengalaman pengguna yang intuitif dan menarik untuk produk digital kami.</p>
-            </div>
-            <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-xs font-semibold flex items-center gap-2 transition shrink-0 self-start md:self-center">
-              Lihat Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-
-          <!-- Job 5 -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6 hover:shadow-md transition">
-            <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl shrink-0">
-              <i class="fa-solid fa-users"></i>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-bold text-gray-900 text-base mb-2">Project Manager</h3>
-              <div class="flex flex-wrap gap-2 mb-3">
-                <span class="job-tag"><i class="fa-solid fa-briefcase"></i> Operasional</span>
-                <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Yogyakarta (Hybrid)</span>
-                <span class="job-tag"><i class="fa-regular fa-clock"></i> Full Time</span>
-              </div>
-              <p class="text-xs text-gray-500 leading-relaxed">Memimpin proyek pengembangan sistem dari perencanaan hingga implementasi.</p>
-            </div>
-            <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-xs font-semibold flex items-center gap-2 transition shrink-0 self-start md:self-center">
-              Lihat Detail <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- See All Link -->
-        <div class="text-center mt-8">
-          <a href="#" class="text-primary text-sm font-semibold flex items-center justify-center gap-2 hover:underline">
-            Lihat Semua Lowongan <i class="fa-solid fa-arrow-right text-xs"></i>
+          <h3 class="text-2xl font-extrabold text-gray-900 mb-4">Belum Ada Posisi Terbuka Saat Ini</h3>
+          <p class="text-sm text-gray-500 max-w-md leading-relaxed mb-8">
+            Saat ini SYNVORA belum membuka lowongan baru. Kami selalu terbuka untuk berkenalan dengan talenta terbaik, jadi pantau halaman ini secara berkala untuk pembaruan.
+          </p>
+          <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+            Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
           </a>
         </div>
-
       </div>
     </div>
   </section>
@@ -421,10 +295,14 @@ import Layout from '../layouts/Layout.astro';
           <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
           <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">"Di SYNVORA, saya merasa didukung untuk terus belajar dan berkembang. Timnya solid dan visi perusahaannya sangat jelas."</p>
           <div class="flex items-center gap-4">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Ricky Pratama" class="w-12 h-12 rounded-full object-cover">
+            {pyepit.photo ? (
+              <img src={pyepit.photo} alt={pyepit.name} class="w-12 h-12 rounded-full object-cover">
+            ) : (
+              <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-sm">{pyepit.initials}</div>
+            )}
             <div>
-              <div class="font-bold text-sm text-gray-900">Ricky Pratama</div>
-              <div class="text-[10px] text-gray-500">Frontend Developer</div>
+              <div class="font-bold text-sm text-gray-900">{pyepit.name}</div>
+              <div class="text-[10px] text-gray-500">{pyepit.role}</div>
             </div>
           </div>
         </div>
@@ -434,10 +312,14 @@ import Layout from '../layouts/Layout.astro';
           <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
           <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">"Lingkungan kerja yang positif dan penuh kolaborasi membuat saya semakin termotivasi untuk memberikan hasil terbaik."</p>
           <div class="flex items-center gap-4">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150" alt="Salsabila A. Putri" class="w-12 h-12 rounded-full object-cover">
+            {danur.photo ? (
+              <img src={danur.photo} alt={danur.name} class="w-12 h-12 rounded-full object-cover">
+            ) : (
+              <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-sm">{danur.initials}</div>
+            )}
             <div>
-              <div class="font-bold text-sm text-gray-900">Salsabila A. Putri</div>
-              <div class="text-[10px] text-gray-500">UI/UX Designer</div>
+              <div class="font-bold text-sm text-gray-900">{danur.name}</div>
+              <div class="text-[10px] text-gray-500">{danur.role}</div>
             </div>
           </div>
         </div>
@@ -447,10 +329,14 @@ import Layout from '../layouts/Layout.astro';
           <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
           <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">"SYNVORA memberikan kesempatan untuk terlibat dalam proyek-proyek menarik yang berdampak langsung bagi masyarakat."</p>
           <div class="flex items-center gap-4">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=150" alt="Andi Kurniawan" class="w-12 h-12 rounded-full object-cover">
+            {muqtafi.photo ? (
+              <img src={muqtafi.photo} alt={muqtafi.name} class="w-12 h-12 rounded-full object-cover">
+            ) : (
+              <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-sm">{muqtafi.initials}</div>
+            )}
             <div>
-              <div class="font-bold text-sm text-gray-900">Andi Kurniawan</div>
-              <div class="text-[10px] text-gray-500">Project Manager</div>
+              <div class="font-bold text-sm text-gray-900">{muqtafi.name}</div>
+              <div class="text-[10px] text-gray-500">{muqtafi.role}</div>
             </div>
           </div>
         </div>
@@ -475,8 +361,8 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="flex gap-4 z-10">
-        <a href="#" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
-          Lihat Lowongan <i class="fa-solid fa-arrow-right text-xs"></i>
+        <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
       </div>
     </div>

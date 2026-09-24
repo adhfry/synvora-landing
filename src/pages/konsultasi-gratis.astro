@@ -1,15 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../lib/site';
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 
 <Layout
   title="Konsultasi Gratis - SYNVORA Teknologi Indonesia"
+  description="Jadwalkan konsultasi gratis dengan tim ahli SYNVORA Teknologi Indonesia. Diskusikan kebutuhan sistem informasi Anda tanpa biaya dan tanpa komitmen."
   navVariant="light"
   footerVariant="default"
   active=""
   bodyClass="bg-[#F8FAFC] dark:bg-synvora-dark"
 >
   <Fragment slot="head">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    {turnstileSiteKey && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
     <style is:global>
       .hero-bg {
         background-color: #0a1128;
@@ -63,6 +70,79 @@ import Layout from '../layouts/Layout.astro';
       }
       .dark .workflow-arrow {
         background: #0a1128;
+      }
+
+      /* Flatpickr theming - matches SYNVORA form-input styling */
+      .flatpickr-calendar {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(10, 17, 40, 0.12);
+        border: 1px solid #e5e7eb;
+      }
+      .flatpickr-day.selected,
+      .flatpickr-day.selected:hover,
+      .flatpickr-day.selected:focus {
+        background: #0066ff;
+        border-color: #0066ff;
+      }
+      .flatpickr-day.today {
+        border-color: #0066ff;
+      }
+      .flatpickr-day:hover {
+        background: #eff6ff;
+      }
+      .flatpickr-months .flatpickr-month,
+      .flatpickr-current-month .flatpickr-monthDropdown-months,
+      .flatpickr-weekdays,
+      span.flatpickr-weekday {
+        color: #0a1128;
+      }
+      .flatpickr-time input:hover,
+      .flatpickr-time .flatpickr-am-pm:hover {
+        background: #eff6ff;
+      }
+      .dark .flatpickr-calendar {
+        background: #0f1a3d;
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e5e7eb;
+      }
+      .dark .flatpickr-day {
+        color: #e5e7eb;
+      }
+      .dark .flatpickr-day.flatpickr-disabled,
+      .dark .flatpickr-day.prevMonthDay,
+      .dark .flatpickr-day.nextMonthDay {
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .dark .flatpickr-day:hover {
+        background: rgba(0, 102, 255, 0.15);
+      }
+      .dark .flatpickr-months .flatpickr-month,
+      .dark .flatpickr-weekdays,
+      .dark span.flatpickr-weekday,
+      .dark .flatpickr-current-month input.cur-year,
+      .dark .flatpickr-current-month .flatpickr-monthDropdown-months {
+        background: transparent;
+        color: #e5e7eb;
+      }
+      .dark .flatpickr-months .flatpickr-prev-month svg,
+      .dark .flatpickr-months .flatpickr-next-month svg {
+        fill: #e5e7eb;
+      }
+      .dark .flatpickr-time {
+        background: #0f1a3d;
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .dark .flatpickr-time input {
+        color: #e5e7eb;
+        background: transparent;
+      }
+      .dark .numInputWrapper span.arrowUp:after {
+        border-bottom-color: #e5e7eb;
+      }
+      .dark .numInputWrapper span.arrowDown:after {
+        border-top-color: #e5e7eb;
       }
     </style>
   </Fragment>
@@ -153,19 +233,40 @@ import Layout from '../layouts/Layout.astro';
       <!-- LEFT COLUMN: CONSULTATION FORM -->
       <div class="lg:col-span-2">
         <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+          <!-- Shown instead of the form once this visitor has already used their free consultation -->
+          <div id="consultation-quota-used" class="hidden text-center py-6">
+            <div class="w-16 h-16 rounded-full bg-blue-50 text-primary flex items-center justify-center text-2xl mx-auto mb-6">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 class="text-xl font-extrabold text-gray-900 mb-3">Anda Sudah Mengajukan Konsultasi Gratis</h2>
+            <p class="text-sm text-gray-500 max-w-md mx-auto mb-2 leading-relaxed">
+              Untuk menjaga kualitas layanan, setiap pengguna hanya dapat mengajukan konsultasi gratis satu kali.
+            </p>
+            <p class="text-sm text-gray-500 max-w-md mx-auto mb-8 leading-relaxed">
+              Jika Anda serius ingin membangun kerja sama dengan kami, jangan ragu untuk menghubungi kami langsung - tim kami akan dengan senang hati membantu.
+            </p>
+            <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition">
+              Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+
+          <div id="consultation-form-wrapper">
           <h2 class="text-xl font-extrabold text-gray-900 mb-2">Jadwalkan Konsultasi Gratis</h2>
           <p class="text-xs text-gray-500 mb-8">Isi formulir berikut dan pilih waktu yang sesuai. Tim kami akan mengonfirmasi jadwal melalui email atau WhatsApp.</p>
 
-          <form class="space-y-6">
+          <form id="consultation-form" class="space-y-6">
+            <!-- Honeypot - hidden from real visitors, catches basic bots -->
+            <input type="text" name="company_website" class="hidden" tabindex="-1" autocomplete="off">
+
             <!-- Row 1 -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label class="block text-xs font-bold text-gray-700 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
-                <input type="text" placeholder="Masukkan nama lengkap Anda" class="form-input">
+                <input type="text" name="name" required placeholder="Masukkan nama lengkap Anda" class="form-input">
               </div>
               <div>
                 <label class="block text-xs font-bold text-gray-700 mb-2">Email <span class="text-red-500">*</span></label>
-                <input type="email" placeholder="nama@perusahaan.com" class="form-input">
+                <input type="email" name="email" required placeholder="nama@perusahaan.com" class="form-input">
               </div>
             </div>
 
@@ -173,11 +274,11 @@ import Layout from '../layouts/Layout.astro';
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label class="block text-xs font-bold text-gray-700 mb-2">Nomor WhatsApp <span class="text-red-500">*</span></label>
-                <input type="tel" placeholder="Contoh: 0811 234 567" class="form-input">
+                <input type="tel" name="whatsapp" required placeholder="Contoh: 0811 234 567" class="form-input">
               </div>
               <div>
                 <label class="block text-xs font-bold text-gray-700 mb-2">Nama Perusahaan / Instansi</label>
-                <input type="text" placeholder="Masukkan nama perusahaan" class="form-input">
+                <input type="text" name="company" placeholder="Masukkan nama perusahaan" class="form-input">
               </div>
             </div>
 
@@ -186,7 +287,7 @@ import Layout from '../layouts/Layout.astro';
               <div>
                 <label class="block text-xs font-bold text-gray-700 mb-2">Jenis Kebutuhan <span class="text-red-500">*</span></label>
                 <div class="relative">
-                  <select class="form-input appearance-none cursor-pointer">
+                  <select name="needType" required class="form-input appearance-none cursor-pointer">
                     <option value="" disabled selected>Pilih jenis kebutuhan</option>
                     <option>Pengembangan Sistem Informasi</option>
                     <option>Integrasi & Modernisasi Sistem</option>
@@ -200,7 +301,7 @@ import Layout from '../layouts/Layout.astro';
               <div>
                 <label class="block text-xs font-bold text-gray-700 mb-2">Pilih Tanggal Konsultasi <span class="text-red-500">*</span></label>
                 <div class="relative">
-                  <input type="date" class="form-input cursor-pointer">
+                  <input type="text" id="consultation-date" name="date" required readonly placeholder="Pilih tanggal" class="form-input cursor-pointer">
                   <i class="fa-regular fa-calendar absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
                 </div>
               </div>
@@ -210,28 +311,28 @@ import Layout from '../layouts/Layout.astro';
             <div>
               <label class="block text-xs font-bold text-gray-700 mb-2">Pilih Waktu <span class="text-red-500">*</span></label>
               <div class="relative">
-                <select class="form-input appearance-none cursor-pointer">
-                  <option value="" disabled selected>Pilih waktu</option>
-                  <option>09:00 - 10:00 WIB</option>
-                  <option>10:00 - 11:00 WIB</option>
-                  <option>13:00 - 14:00 WIB</option>
-                  <option>14:00 - 15:00 WIB</option>
-                  <option>15:00 - 16:00 WIB</option>
-                </select>
-                <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                <input type="text" id="consultation-time" name="time" required readonly placeholder="Pilih waktu (09.00 - 16.00 WIB)" class="form-input cursor-pointer">
+                <i class="fa-regular fa-clock absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
               </div>
             </div>
 
             <!-- Row 5 -->
             <div>
               <label class="block text-xs font-bold text-gray-700 mb-2">Ceritakan Kebutuhan Anda <span class="text-red-500">*</span></label>
-              <textarea rows="5" placeholder="Jelaskan secara singkat kebutuhan atau tantangan yang ingin Anda diskusikan..." class="form-input resize-none"></textarea>
+              <textarea rows="5" name="details" required placeholder="Jelaskan secara singkat kebutuhan atau tantangan yang ingin Anda diskusikan..." class="form-input resize-none"></textarea>
             </div>
+
+            {turnstileSiteKey && (
+              <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-action="konsultasi-gratis" data-theme="light"></div>
+            )}
+
+            <!-- Status message -->
+            <div id="consultation-form-status" class="hidden text-xs font-semibold rounded-lg px-4 py-3"></div>
 
             <!-- Submit Button -->
             <div>
               <button type="submit" class="w-full btn-primary py-3.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
-                Ajukan Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+                <span class="submit-label">Ajukan Konsultasi Gratis</span> <i class="fa-solid fa-arrow-right text-xs submit-icon"></i>
               </button>
             </div>
 
@@ -240,6 +341,7 @@ import Layout from '../layouts/Layout.astro';
               <i class="fa-solid fa-lock"></i> Data Anda aman dan hanya digunakan untuk keperluan konsultasi.
             </div>
           </form>
+          </div>
         </div>
       </div>
 
@@ -297,12 +399,12 @@ import Layout from '../layouts/Layout.astro';
 
             <ul class="space-y-4">
               <li class="flex items-center gap-3 text-xs text-gray-300">
-                <i class="fa-solid fa-phone text-primary w-4"></i>
-                <span>+62 811 234 567</span>
+                <i class="fa-brands fa-whatsapp text-primary w-4"></i>
+                <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white transition">{SITE.phoneDisplay}</a>
               </li>
               <li class="flex items-center gap-3 text-xs text-gray-300">
                 <i class="fa-regular fa-envelope text-primary w-4"></i>
-                <span>hello@synvora.id</span>
+                <span>{SITE.email}</span>
               </li>
               <li class="flex items-start gap-3 text-xs text-gray-300">
                 <i class="fa-regular fa-clock text-primary w-4 mt-0.5"></i>
@@ -392,10 +494,150 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="flex gap-4 z-10">
-        <a href="#" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+        <a href="#consultation-form" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
           Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
       </div>
     </div>
   </section>
+
+  <script>
+    declare global {
+      interface Window {
+        turnstile?: { reset: (widget?: string | HTMLElement) => void };
+      }
+    }
+
+    // Business-hour consultation slots (Mon-Fri, with a lunch break 11.00-13.00).
+    const SLOTS = [
+      { start: '09:00', end: '10:00' },
+      { start: '10:00', end: '11:00' },
+      { start: '13:00', end: '14:00' },
+      { start: '14:00', end: '15:00' },
+      { start: '15:00', end: '16:00' },
+    ];
+    const VALID_HOURS = SLOTS.map((s) => Number(s.start.split(':')[0]));
+
+    function initFlatpickr() {
+      const fp = (window as any).flatpickr;
+      if (!fp) return;
+
+      const dateInput = document.getElementById('consultation-date');
+      if (dateInput) {
+        fp(dateInput, {
+          dateFormat: 'Y-m-d',
+          altInput: true,
+          altFormat: 'l, d F Y',
+          minDate: 'today',
+          locale: { firstDayOfWeek: 1 },
+          disable: [(date: Date) => date.getDay() === 0 || date.getDay() === 6], // weekends off
+        });
+      }
+
+      const timeInput = document.getElementById('consultation-time');
+      if (timeInput) {
+        fp(timeInput, {
+          noCalendar: true,
+          enableTime: true,
+          time_24hr: true,
+          dateFormat: 'H:i',
+          minTime: '09:00',
+          maxTime: '15:00',
+          minuteIncrement: 60,
+          onChange: (selectedDates: Date[], _dateStr: string, instance: any) => {
+            if (!selectedDates.length) return;
+            let hour = selectedDates[0].getHours();
+
+            // Skip the 11.00-13.00 lunch break by snapping forward to the next open slot.
+            if (!VALID_HOURS.includes(hour)) {
+              hour = VALID_HOURS.find((h) => h > hour) ?? VALID_HOURS[0];
+              const snapped = new Date(selectedDates[0]);
+              snapped.setHours(hour, 0, 0, 0);
+              instance.setDate(snapped, false);
+            }
+
+            const slot = SLOTS.find((s) => Number(s.start.split(':')[0]) === hour) ?? SLOTS[0];
+            const label = `${slot.start} - ${slot.end} WIB`;
+            instance.input.value = label;
+            if (instance.altInput) instance.altInput.value = label;
+          },
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFlatpickr);
+    } else {
+      initFlatpickr();
+    }
+
+    const form = document.getElementById('consultation-form') as HTMLFormElement | null;
+    const statusBox = document.getElementById('consultation-form-status');
+    const formWrapper = document.getElementById('consultation-form-wrapper');
+    const quotaUsedPanel = document.getElementById('consultation-quota-used');
+
+    function showQuotaUsed() {
+      formWrapper?.classList.add('hidden');
+      quotaUsedPanel?.classList.remove('hidden');
+    }
+
+    // Proactively check on page load so a repeat visitor sees the friendly
+    // "quota used" message right away instead of filling the whole form
+    // only to be turned away at submit time.
+    fetch('/api/consultation-status')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.limited) showQuotaUsed();
+      })
+      .catch(() => {
+        /* if the check itself fails, let them try submitting normally -
+           the server enforces the limit either way */
+      });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const label = button.querySelector('.submit-label');
+      const icon = button.querySelector('.submit-icon');
+
+      button.disabled = true;
+      if (label) label.textContent = 'Mengirim...';
+      icon?.classList.replace('fa-arrow-right', 'fa-spinner');
+      icon?.classList.add('fa-spin');
+      statusBox?.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/consultation', { method: 'POST', body: new FormData(form) });
+        const data = await res.json();
+
+        if (statusBox) {
+          statusBox.classList.remove('hidden');
+          if (data.ok) {
+            statusBox.className = 'text-xs font-semibold rounded-lg px-4 py-3 bg-green-50 text-green-700 border border-green-200';
+            statusBox.textContent = 'Permintaan konsultasi Anda berhasil terkirim. Tim kami akan segera mengonfirmasi jadwal.';
+            form.reset();
+            window.turnstile?.reset();
+          } else if (data.limited) {
+            showQuotaUsed();
+          } else {
+            statusBox.className = 'text-xs font-semibold rounded-lg px-4 py-3 bg-red-50 text-red-700 border border-red-200';
+            statusBox.textContent = data.error || 'Terjadi kesalahan. Silakan coba lagi.';
+            window.turnstile?.reset();
+          }
+        }
+      } catch {
+        if (statusBox) {
+          statusBox.classList.remove('hidden');
+          statusBox.className = 'text-xs font-semibold rounded-lg px-4 py-3 bg-red-50 text-red-700 border border-red-200';
+          statusBox.textContent = 'Gagal terhubung ke server. Periksa koneksi Anda dan coba lagi.';
+        }
+        window.turnstile?.reset();
+      } finally {
+        button.disabled = false;
+        if (label) label.textContent = 'Ajukan Konsultasi Gratis';
+        icon?.classList.replace('fa-spinner', 'fa-arrow-right');
+        icon?.classList.remove('fa-spin');
+      }
+    });
+  </script>
 </Layout>

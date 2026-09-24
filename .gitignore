@@ -16,9 +16,18 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.local
+.env.*.local
+
+# runtime data (e.g. consultation IP submission log) - never web-accessible,
+# never committed (can contain visitor IPs)
+/data/
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# claude code local session/tooling state
+.claude/

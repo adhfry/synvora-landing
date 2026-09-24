@@ -1,0 +1,210 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'synvora-anugerah-inovasi-daerah-2026-sep-smart-event-sumenep')!;
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="CEO & Founder SYNVORA"
+  overlayLines={['Inovasi', 'dari', 'Sumenep']}
+  quote="Sumenep punya banyak cerita dan perayaan besar sepanjang tahun. SEP lahir supaya setiap cerita itu punya data yang berbicara, bukan sekadar kenangan yang lewat begitu saja."
+  tags={post.tags}
+  tocItems={[
+    'AID 2026: Panggung Inovasi Daerah Sumenep',
+    'Kenalkan SEP: Smart Event Sumenep',
+    'Bagaimana SEP Bekerja?',
+    'Fitur-Fitur Andalan SEP',
+    'Dampak yang Diharapkan',
+    'Langkah Selanjutnya',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">AID 2026: Panggung Inovasi Daerah Sumenep</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4"><strong>SUMENEP, 24/09/2026</strong> - Kabar baik datang dari tim SYNVORA. Tahun ini, kami resmi mengambil bagian dalam <strong>Anugerah Inovasi Daerah (AID) 2026</strong> yang digelar oleh Badan Riset dan Inovasi Daerah (BRIDA) Kabupaten Sumenep, ajang tahunan yang mempertemukan gagasan-gagasan segar dari seluruh penjuru Sumenep untuk mendorong kemajuan daerah.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Bedanya, kami tidak mendaftar sebagai OPD, puskesmas, atau instansi pemerintah. SYNVORA maju lewat <strong>kategori masyarakat</strong>, jalur bagi warga dan pelaku non-pemerintahan yang percaya bahwa inovasi daerah bukan monopoli birokrasi. Dan inovasi pertama yang kami bawa ke panggung ini punya nama: <strong>SEP, Smart Event Sumenep</strong>.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenalkan SEP: Smart Event Sumenep</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Coba pikirkan berapa banyak event besar yang dimiliki Sumenep dalam setahun: Kerapan Sapi, Petik Laut atau Rokat Tasek, Festival Musik Tong-Tong, Festival Kuliner, Trail Run, Offroad, hingga Madura Culture Fest yang tahun ini sudah memasuki edisi ke-4. Setiap event punya cerita, keramaian, dan dampaknya masing-masing bagi warga sekitar dan UMKM lokal.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Masalahnya, dampak sebesar itu selama ini sulit dibandingkan secara konsisten. Pemerintah tidak punya cara mudah menilai event mana yang layak diperbesar dan mana yang perlu dievaluasi. Sementara di sisi masyarakat, informasi soal event kebanyakan tersebar lewat media sosial dan pesan berantai yang keabsahannya tidak terjamin. <strong>SEP hadir untuk menjembatani dua sisi ini sekaligus</strong>, satu basis data event dengan dua wajah: dashboard analitis untuk pemerintah dan admin, serta kalender publik yang informatif untuk masyarakat.</p>
+
+    <div class="border-l-4 border-primary bg-[#F8FAFC] dark:bg-white/5 p-6 rounded-r-xl">
+      <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed"><strong>Empat prinsip yang kami pegang dalam membangun SEP:</strong></p>
+      <ul class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300 list-disc pl-5">
+        <li><strong>Gambaran, bukan sensus:</strong> sistem memberi kategori, arah tren, dan tingkat keyakinan, bukan angka pasti yang menyesatkan.</li>
+        <li><strong>Arah, bukan vonis:</strong> rekomendasi berupa strategi, bukan ranking atau skor tunggal yang menghakimi.</li>
+        <li><strong>Jujur pada data:</strong> kalau data masih lemah, SEP akan berkata "evaluasi dulu", bukan memaksakan rekomendasi.</li>
+        <li><strong>Skor internal:</strong> seluruh skor dan confidence hanya untuk admin, supaya tidak menjadi stigma publik bagi penyelenggara.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/landing-page-sep.jpeg" alt="Tampilan kalender publik SEP, Smart Event Sumenep" class="w-full object-cover">
+    </div>
+    <p class="text-xs text-gray-400 text-center italic">Tampilan kalender publik SEP, satu sumber informasi resmi untuk seluruh event di Sumenep.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Bagaimana SEP Bekerja?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Di balik tampilan kalender yang sederhana, SEP menjalankan siklus pendukung keputusan yang cukup canggih. Tiga sumber data dikumpulkan dari setiap event, lalu diolah menjadi rekomendasi yang bisa dipertanggungjawabkan:</p>
+    <ol class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Video venue jadi estimasi pengunjung</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Operator merekam video singkat di titik-titik yang ditentukan, lalu AI penghitung objek (YOLOv8) memperkirakan jumlah pengunjung, tanpa pengenalan wajah, dan file mentah otomatis terhapus.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Survei QR mengukur dampak langsung</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Pengunjung dan pelaku UMKM mengisi survei singkat tanpa login. Dari sinilah data belanja, asal pengunjung, dan kenaikan omzet terkumpul.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Kurasi TikTok mengukur antusiasme digital</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Bukan pencarian keyword massal, tapi daftar link video pilihan operator yang dianalisis volume dan sentimennya, supaya satu video viral tidak mendominasi penilaian.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0"><i class="fa-solid fa-check text-xs"></i></div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Semua bermuara ke satu rekomendasi</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Ketiga data ini dipetakan ke matriks strategi, lengkap dengan tingkat keyakinan, dan setiap rekomendasi bisa dijawab "mengapa?" sampai ke sumber datanya.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="mb-10">
+    <h3 class="text-lg font-extrabold text-gray-900 dark:text-white mb-4">Matriks Strategi 3x3</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Setiap event dipetakan berdasarkan Skor Ekonomi dan Skor Antusiasme Digital-nya, lalu diberi arah strategi yang jelas:</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[11px] border-collapse">
+        <thead>
+          <tr>
+            <th class="p-2 border border-gray-200 dark:border-white/10"></th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300">Digital Rendah</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300">Digital Sedang</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300">Digital Tinggi</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 dark:text-gray-400">
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300">Ekonomi Tinggi</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Perkuat Promosi Digital</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Perkuat Promosi Bertahap</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10 bg-blue-50 dark:bg-primary/10 font-semibold text-primary">Pertahankan & Perbesar</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300">Ekonomi Sedang</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Evaluasi Terarah</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Pertahankan + Observasi</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Promosikan & Monetisasi Bertahap</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300">Ekonomi Rendah</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Evaluasi</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Evaluasi Terarah</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Promosikan & Monetisasi</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">Fitur-Fitur Andalan SEP</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Skor Ekonomi</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Gabungan volume kunjungan, belanja pengunjung luar daerah, dan kenaikan omzet UMKM, dampak ekonomi event dalam satu gambaran.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Skor Antusiasme Digital</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Mengukur konsistensi antusiasme publik dari kurasi TikTok, bukan sekadar hitungan viral sesaat.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-video"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Estimasi Video Venue</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Penghitungan pengunjung berbasis video singkat, didukung spot-check manual sebagai kalibrasi (counting-only, privasi terjaga).</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-qrcode"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Survei Publik via QR</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Form mandiri tanpa login, dilengkapi margin of error sebagai ukuran ketepatan data, bukan sekadar jumlah responden.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-diagram-project"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Rekomendasi yang Bisa Ditelusuri</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Setiap saran strategi bisa dijawab "Mengapa?", tertelusur sampai komponen skor, sumber data, dan tingkat keyakinannya.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-regular fa-calendar-check"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Kalender Publik + RSVP</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Bisa dicari dan difilter, lengkap lokasi, galeri, peta, dan tombol RSVP, tanpa login dan tanpa skor internal yang tampak ke publik.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Bayangkan setiap gemerlap panggung Madura Culture Fest atau riuhnya penonton Kerapan Sapi bukan cuma jadi kenangan yang berlalu, tapi juga data yang membantu daerah memahami dan merayakan warisannya dengan lebih baik setiap tahun.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="rounded-2xl overflow-hidden shadow-md">
+        <img src="/images/blog/Madura-Night-Vaganza-2.jpg" alt="Suasana Madura Night Vaganza" class="w-full h-56 object-cover">
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-md">
+        <img src="/images/blog/poster madura night vaganza.jpg" alt="Poster Madura Culture Fest #4 2026" class="w-full h-56 object-cover">
+      </div>
+    </div>
+    <p class="text-xs text-gray-400 text-center italic mt-2">Event budaya besar seperti Madura Culture Fest adalah contoh nyata event yang bisa dipantau dampaknya lewat SEP.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Dampak yang Diharapkan</h2>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>Pemerintah:</strong> evaluasi dampak antar-event yang konsisten dan dokumentasi historis sebagai portofolio pembangunan daerah.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>Penyelenggara event:</strong> media publikasi resmi, gambaran dampak, dan jalur klarifikasi yang adil.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>UMKM:</strong> gambaran kenaikan omzet per event dan arahan monetisasi tanpa merusak karakter acara.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>Masyarakat dan wisatawan:</strong> satu sumber info event resmi yang terpusat dan mudah dicari.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>Generasi muda:</strong> partisipasi yang lebih mudah lewat pencarian, RSVP, dan survei mandiri.
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Langkah Selanjutnya</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Saat ini, prototype SEP sudah rampung diuji secara lokal. Langkah berikutnya: uji coba pada event nyata, migrasi ke server produksi, integrasi dengan OPD terkait, hingga publikasi kalender publik untuk seluruh masyarakat Sumenep. Ini baru inovasi pertama yang kami unggah untuk AID 2026, dan kami tidak akan berhenti di sini. Ikuti terus perjalanan SYNVORA di kategori masyarakat Anugerah Inovasi Daerah 2026!</p>
+  </div>
+</BlogArticleLayout>

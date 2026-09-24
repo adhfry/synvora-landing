@@ -1,0 +1,70 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === '5-tips-membangun-aplikasi-web-yang-user-friendly')!;
+
+const tips = [
+  {
+    icon: 'fa-solid fa-compass',
+    title: '1. Sederhanakan Navigasi',
+    body: 'Pengguna harus bisa menemukan apa yang mereka cari dalam hitungan detik. Batasi jumlah menu utama dan gunakan label yang jelas, bukan istilah teknis.',
+  },
+  {
+    icon: 'fa-solid fa-gauge-high',
+    title: '2. Perhatikan Kecepatan Loading',
+    body: 'Setiap detik keterlambatan dapat meningkatkan angka pengguna yang meninggalkan halaman. Optimalkan gambar, kode, dan server response time.',
+  },
+  {
+    icon: 'fa-solid fa-mobile-screen-button',
+    title: '3. Desain Responsif di Semua Perangkat',
+    body: 'Mayoritas pengguna mengakses aplikasi dari ponsel. Pastikan tampilan tetap rapi dan mudah digunakan di layar kecil maupun besar.',
+  },
+  {
+    icon: 'fa-solid fa-hand-pointer',
+    title: '4. Beri Umpan Balik yang Jelas',
+    body: 'Setiap aksi pengguna, seperti klik tombol, submit form, atau unggah file, harus mendapat respons visual yang jelas agar mereka tahu prosesnya berhasil atau gagal.',
+  },
+  {
+    icon: 'fa-solid fa-universal-access',
+    title: '5. Rancang untuk Semua Orang',
+    body: 'Perhatikan aspek aksesibilitas seperti kontras warna, ukuran teks, dan dukungan pembaca layar agar aplikasi dapat digunakan oleh lebih banyak orang.',
+  },
+];
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="Tim Pengembang"
+  overlayLines={['Design', 'for', 'People']}
+  quote="Aplikasi yang hebat bukan yang punya fitur terbanyak, tetapi yang membuat penggunanya merasa aplikasi itu 'mengerti' mereka."
+  tags={post.tags}
+  tocItems={['Mengapa User Experience Penting?', '5 Tips Praktis', 'Kesimpulan']}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Mengapa User Experience Penting?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Sebuah aplikasi web bisa memiliki fitur paling lengkap, tetapi jika sulit digunakan, pengguna akan meninggalkannya. Pengalaman pengguna (UX) yang baik adalah kunci keberhasilan sebuah aplikasi, karena berdampak langsung pada tingkat adopsi, kepuasan, dan loyalitas pengguna. Berikut lima hal yang perlu diperhatikan saat membangun aplikasi web yang user-friendly.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">5 Tips Praktis</h2>
+    <div class="space-y-6">
+      {tips.map((tip) => (
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg shrink-0">
+            <i class={tip.icon}></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">{tip.title}</h4>
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">{tip.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kesimpulan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Pengalaman pengguna yang baik adalah kunci keberhasilan sebuah aplikasi. Lima prinsip di atas bukan aturan kaku, tetapi panduan dasar yang bisa disesuaikan dengan konteks produk masing-masing. Yang terpenting, selalu libatkan pengguna nyata dalam proses pengujian sebelum aplikasi diluncurkan secara luas.</p>
+  </div>
+</BlogArticleLayout>

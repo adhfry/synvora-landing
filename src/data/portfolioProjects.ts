@@ -1,0 +1,225 @@
+export interface PortfolioProject {
+  id: string;
+  title: string;
+  categories: string[];
+  image: string;
+  shortDescription: string;
+  link: string | null;
+  overview: string;
+  features: string[];
+  benefits: string[];
+  coolFeatures: string[];
+  // Names of the SYNVORA team members who built this project - not every
+  // project has this filled in yet, so it's optional.
+  team?: string[];
+}
+
+// Ordered with our flagship project first - BBM (Belajar Bahasa Madura) is
+// the one we're pushing hardest right now, so it leads the grid ahead of
+// SEP; the rest keep their original showcase order behind it.
+export const portfolioProjects: PortfolioProject[] = [
+  {
+    id: 'belajar-bahasa-madura',
+    title: 'BBM: Belajar Bahasa Madura',
+    categories: ['Website', 'Pendidikan'],
+    image: '/images/blog/Landing-BBM.png',
+    shortDescription:
+      'Platform edukasi digital untuk belajar, mencari, dan menerjemahkan Bahasa Madura secara berjenjang, bisa dipasang sebagai aplikasi dan dipakai tanpa koneksi internet.',
+    link: 'https://belajar-bahasa-madura.synvorateknologiindonesia.web.id/',
+    overview:
+      'BBM (Belajar Bahasa Madura) adalah satu platform untuk belajar, mencari, dan menerjemahkan Bahasa Madura, dipakai bersama di sekolah maupun dipelajari sendiri di rumah. Materinya disusun berjenjang mengikuti kurikulum asli: mulai dari huruf & ejaan, suku kata, kata, hingga kalimat dan tingkatan basa (Ondhâghen Basa, dari Enjâ\'-Iyâ, Engghi-Enten, sampai Engghi-Bhunten) yang jadi ciri khas tata krama berbahasa Madura. BBM bisa dipasang sebagai aplikasi (PWA) dan tetap dipakai tanpa koneksi internet, cocok untuk sekolah dengan akses internet terbatas.',
+    features: [
+      'Kamus digital Indonesia-Madura lengkap dengan kelas kata dan contoh kalimat, ala KBBI',
+      'Penerjemah dua arah Bahasa Indonesia-Madura',
+      'Pemenggalan suku kata otomatis untuk membantu eja dan baca',
+      'Pengurai kata dasar otomatis, kata berimbuhan diuraikan tanpa perlu kamus statis',
+      'Jalur belajar berjenjang (huruf, suku kata, kata, kalimat & tingkatan basa) lengkap dengan kuis dan progres yang terkunci bertahap',
+      'Lab Bahasa (TTS), alat admin untuk merekam dan mengurasi korpus suara Madura per huruf/suku kata/kata/kalimat',
+      'Manajemen pengguna multi-peran: siswa, mahasiswa, guru, dosen, hingga pengguna umum',
+    ],
+    benefits: [
+      'Mendukung pelestarian Bahasa Madura di tangan generasi muda',
+      'Bisa dipasang sebagai aplikasi dan tetap berfungsi tanpa koneksi internet',
+      'Akses untuk semua usia, area klik besar, kontras jelas, navigasi mudah dari siswa SD hingga guru senior',
+    ],
+    coolFeatures: [
+      'Lab Bahasa (TTS) membangun korpus suara Madura asli secara terstruktur, fondasi menuju text-to-speech Bahasa Madura',
+      'Pengurai kata dasar otomatis yang membedah kata berimbuhan secara mandiri, bukan sekadar mencocokkan ke daftar kata',
+    ],
+    team: ['Ahda Firly Barori'],
+  },
+  {
+    id: 'sep-smart-event-sumenep',
+    title: 'SEP: Smart Event Sumenep',
+    categories: ['Website', 'Pemerintahan', 'Sistem Informasi', 'AI'],
+    image: '/images/blog/landing-page-sep.jpeg',
+    shortDescription:
+      'Platform pendukung keputusan berbasis dampak sekaligus kalender publik resmi untuk event daerah Sumenep, inovasi SYNVORA di Anugerah Inovasi Daerah 2026.',
+    link: null,
+    overview:
+      'SEP (Smart Event Sumenep) adalah decision-support platform untuk event daerah yang sekaligus berfungsi sebagai kalender publik resmi. Setiap event, dari Kerapan Sapi, Petik Laut, Festival Musik Tong-Tong, hingga Madura Culture Fest, dicatat per penyelenggaraan tahunan agar dampaknya bisa dibandingkan secara konsisten, sementara masyarakat mendapat satu sumber informasi event yang resmi dan bisa diandalkan. SEP adalah inovasi masyarakat yang diusung SYNVORA di Anugerah Inovasi Daerah (AID) 2026 yang digelar BRIDA Kabupaten Sumenep.',
+    features: [
+      'Skor Ekonomi dari volume kunjungan, belanja pengunjung luar daerah, dan kenaikan omzet UMKM',
+      'Skor Antusiasme Digital dari kurasi TikTok operator (volume dan sentimen)',
+      'Estimasi pengunjung berbasis video venue dengan YOLOv8 (counting-only, tanpa face recognition)',
+      'Survei publik mandiri via QR code dengan margin of error sebagai ukuran ketepatan',
+      'Matriks strategi 3x3 dengan rekomendasi yang bisa ditelusuri sampai sumber datanya',
+      'Kalender publik resmi lengkap dengan detail agenda, galeri, peta, dan RSVP',
+    ],
+    benefits: [
+      'Evaluasi dampak antar-event yang konsisten dan berbasis data, bukan asumsi',
+      'Satu sumber informasi event resmi bagi masyarakat, menggantikan info berantai yang simpang siur',
+      'Jujur pada data, saat data lemah sistem menyatakan butuh evaluasi dulu, bukan memaksakan rekomendasi',
+    ],
+    coolFeatures: [
+      'Kombinasi computer vision (YOLOv8) dan analisis sentimen Bahasa Indonesia/Madura (IndoBERTweet) untuk membaca dampak event secara menyeluruh',
+      'Setiap rekomendasi bisa dijawab "Mengapa?", tertelusur sampai komponen skor dan sumber data aslinya',
+    ],
+    team: ['Ahmad Muqtafi', 'Abd. Rahman Siddik'],
+  },
+  {
+    id: 'labkesda-sumenep',
+    title: 'Website UPTD Labkesda Sumenep',
+    categories: ['Website', 'Pemerintahan'],
+    image: '/images/portfolio/labkesdasumenep[labkesdasumenep.id].png',
+    shortDescription:
+      'Website resmi UPTD Laboratorium Kesehatan Daerah Kabupaten Sumenep, lengkap dengan pendaftaran online dan informasi layanan.',
+    link: 'https://labkesdasumenep.id',
+    overview:
+      'Website resmi milik UPTD Laboratorium Kesehatan Daerah Kabupaten Sumenep, dirancang sebagai kanal utama informasi dan pendaftaran layanan pemeriksaan laboratorium bagi masyarakat.',
+    features: [
+      'Pendaftaran pemeriksaan laboratorium secara online',
+      'Informasi jenis layanan dan tarif pemeriksaan',
+      'Profil dan struktur organisasi instansi',
+      'Galeri kegiatan dan berita terbaru',
+      'Formulir kontak dan pengaduan masyarakat',
+    ],
+    benefits: [
+      'Desain responsif dan mudah diakses di semua perangkat',
+      'Navigasi informasi yang jelas dan terstruktur',
+      'Terintegrasi dengan identitas visual instansi resmi',
+    ],
+    coolFeatures: [
+      'Alur pendaftaran online yang memangkas antrean fisik',
+      'Update informasi layanan secara real-time',
+    ],
+  },
+  {
+    id: 'produli',
+    title: 'Produli (Prolanis Peduli)',
+    categories: ['Website', 'Kesehatan'],
+    image: '/images/portfolio/produli[produli.labkesdasumenep.id].png',
+    shortDescription:
+      'Platform kesehatan preventif berbasis data laboratorium dengan analisis risiko otomatis dan pemantauan kunjungan real-time.',
+    link: 'https://produli.labkesdasumenep.id',
+    overview:
+      'Platform kesehatan preventif yang membantu tenaga medis memantau peserta program pengelolaan penyakit kronis (Prolanis) berbasis data laboratorium.',
+    features: [
+      'Dashboard analisis risiko kesehatan otomatis',
+      'Pemantauan kunjungan peserta secara real-time',
+      'Riwayat pemeriksaan pasien yang terintegrasi',
+      'Notifikasi jadwal kontrol rutin',
+    ],
+    benefits: [
+      'Membantu deteksi dini risiko kesehatan peserta',
+      'Mengurangi pekerjaan pencatatan manual tenaga medis',
+      'Data terpusat dan mudah diakses oleh tim medis',
+    ],
+    coolFeatures: [
+      'Analisis risiko otomatis berbasis data laboratorium',
+      'Visualisasi tren kesehatan pasien dari waktu ke waktu',
+    ],
+  },
+  {
+    id: 'silacare',
+    title: 'SiLACARE',
+    categories: ['Website', 'Aplikasi Mobile'],
+    image: '/images/portfolio/silacare[silacare.labkesdasumenep.id].png',
+    shortDescription:
+      'Portal digital pasien (hybrid web app/PWA) untuk melihat riwayat pemeriksaan lab, antrean online, dan pendaftaran pemeriksaan gratis.',
+    link: 'https://silacare.labkesdasumenep.id',
+    overview:
+      'Portal digital pasien berbentuk hybrid web app/PWA yang memudahkan masyarakat mengakses layanan laboratorium kesehatan tanpa perlu datang langsung untuk sekadar bertanya atau mendaftar. Bisa dibuka langsung lewat browser maupun dipasang seperti aplikasi di ponsel.',
+    features: [
+      'Riwayat pemeriksaan laboratorium digital',
+      'Sistem antrean online',
+      'Pendaftaran pemeriksaan gratis',
+      'Notifikasi saat hasil pemeriksaan siap',
+    ],
+    benefits: [
+      'Mengurangi waktu tunggu di lokasi laboratorium',
+      'Akses riwayat kesehatan kapan saja diperlukan',
+      'Proses pendaftaran yang lebih cepat dan transparan',
+    ],
+    coolFeatures: [
+      'Antrean online yang terintegrasi langsung dengan jadwal laboratorium',
+      'Notifikasi otomatis begitu hasil pemeriksaan tersedia',
+    ],
+  },
+  {
+    id: 'agribunker',
+    title: 'AgriBunker',
+    categories: ['Website', 'Perusahaan'],
+    image: '/images/portfolio/agribunker[no-link].png',
+    shortDescription:
+      'Platform manajemen pertanian yang membantu petani mengoptimalkan hasil panen dengan teknologi dan kontrol jarak jauh.',
+    link: null,
+    overview:
+      'Platform manajemen pertanian yang membantu petani dan pengelola lahan memantau serta mengoptimalkan hasil panen menggunakan teknologi kontrol jarak jauh.',
+    features: [
+      'Monitoring kondisi lahan secara digital',
+      'Kontrol perangkat pertanian dari jarak jauh',
+      'Pencatatan siklus tanam dan panen',
+      'Laporan produktivitas lahan',
+    ],
+    benefits: [
+      'Efisiensi pengelolaan lahan yang lebih tinggi',
+      'Pengambilan keputusan berbasis data',
+      'Mengurangi kunjungan fisik yang tidak perlu ke lokasi lahan',
+    ],
+    coolFeatures: [
+      'Kontrol jarak jauh untuk operasional pertanian',
+      'Pemantauan kondisi lahan secara real-time',
+    ],
+  },
+  {
+    id: 'kancana-brida',
+    title: 'Kancana BRIDA',
+    categories: ['Website', 'Pemerintahan', 'AI'],
+    image: '/images/portfolio/chat-bot[brida.sumenepkab.go.id slash chatbot].png',
+    shortDescription:
+      'Chatbot AI untuk Badan Riset dan Inovasi Daerah (BRIDA) Kabupaten Sumenep, membantu masyarakat mendapatkan informasi riset dan inovasi daerah secara cepat.',
+    link: 'https://brida.sumenepkab.go.id/chatbot',
+    overview:
+      'Chatbot berbasis kecerdasan buatan untuk Badan Riset dan Inovasi Daerah (BRIDA) Kabupaten Sumenep, membantu masyarakat mendapatkan informasi riset dan inovasi daerah secara cepat dan interaktif.',
+    features: [
+      'Tanya jawab otomatis berbasis AI',
+      'Informasi program riset dan inovasi daerah',
+      'Respons real-time yang tersedia 24/7',
+      'Antarmuka percakapan yang mudah digunakan',
+    ],
+    benefits: [
+      'Mempercepat akses informasi publik',
+      'Mengurangi beban kerja layanan informasi manual',
+      'Tersedia kapan saja tanpa terikat jam operasional',
+    ],
+    coolFeatures: [
+      'Didukung kecerdasan buatan untuk memahami bahasa alami',
+      'Respons instan tanpa perlu menunggu petugas',
+    ],
+  },
+];
+
+export function getPortfolioCategories(): string[] {
+  return [...new Set(portfolioProjects.flatMap((p) => p.categories))];
+}
+
+// Categories we intend to showcase but don't have a public case study for
+// yet - shown in the filter so visitors know the scope of our work, with a
+// "coming soon" invitation instead of an empty grid. Empty for now since
+// every current category (including Website) already has real projects.
+export const upcomingCategories: string[] = [];
+
+export function getAllPortfolioCategories(): string[] {
+  return [...getPortfolioCategories(), ...upcomingCategories];
+}

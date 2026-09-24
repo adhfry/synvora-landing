@@ -3,7 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import HeroSlider from '../components/HeroSlider.astro';
 ---
 
-<Layout title="SYNVORA Teknologi Indonesia" navVariant="dark" footerVariant="landing" active="beranda" bodyClass="bg-white">
+<Layout
+  title="SYNVORA Teknologi Indonesia"
+  description="SYNVORA Teknologi Indonesia adalah mitra terpercaya dalam pengembangan sistem informasi, integrasi sistem, aplikasi web & mobile, hingga konsultasi IT untuk organisasi di seluruh Indonesia."
+  navVariant="dark"
+  footerVariant="landing"
+  active="beranda"
+  bodyClass="bg-white"
+>
   <Fragment slot="head">
     <style is:global>
       .mockup-container {
@@ -144,8 +151,8 @@ import HeroSlider from '../components/HeroSlider.astro';
         </div>
         <!-- Floating Badge -->
         <div class="floating-badge">
-          <div class="text-[10px] font-semibold mb-1" style="color:#6B7280">Inovasi Hari Ini</div>
-          <div class="text-xs font-bold" style="color:#111827">Untuk Indonesia Esok</div>
+          <div class="text-[10px] font-semibold mb-1" style="color:#6B7280">Technology Changing the Era,</div>
+          <div class="text-xs font-bold" style="color:#111827">Let's Build with Synvora</div>
           <div class="w-8 h-0.5 bg-primary mt-2"></div>
         </div>
       </div>
@@ -310,31 +317,31 @@ import HeroSlider from '../components/HeroSlider.astro';
         <!-- Portfolio 1 -->
         <div class="group cursor-pointer">
           <div class="rounded-2xl overflow-hidden mb-4 relative">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" alt="Kesehatan" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Kesehatan</div>
+            <img src="/images/portfolio/labkesdasumenep[labkesdasumenep.id].png" alt="Pemerintahan" class="w-full h-48 object-cover object-top group-hover:scale-105 transition duration-500">
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Pemerintahan</div>
           </div>
-          <h3 class="font-bold text-gray-900 mb-2">Sistem Informasi Laboratorium</h3>
-          <p class="text-xs text-gray-500 mb-3">Digitalisasi alur kerja laboratorium untuk pelayanan yang lebih cepat dan akurat.</p>
+          <h3 class="font-bold text-gray-900 mb-2">Website UPTD Labkesda Sumenep</h3>
+          <p class="text-xs text-gray-500 mb-3">Website resmi laboratorium kesehatan daerah dengan pendaftaran online dan informasi layanan.</p>
           <a href="/portfolio" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <!-- Portfolio 2 -->
         <div class="group cursor-pointer">
           <div class="rounded-2xl overflow-hidden mb-4 relative">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" alt="Pemerintahan" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Pemerintahan</div>
+            <img src="/images/portfolio/produli[produli.labkesdasumenep.id].png" alt="Kesehatan" class="w-full h-48 object-cover object-top group-hover:scale-105 transition duration-500">
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Kesehatan</div>
           </div>
-          <h3 class="font-bold text-gray-900 mb-2">Sistem Manajemen Layanan Publik</h3>
-          <p class="text-xs text-gray-500 mb-3">Meningkatkan transparansi dan efisiensi layanan pemerintah daerah.</p>
+          <h3 class="font-bold text-gray-900 mb-2">Produli <span class="text-gray-400 font-normal">(Prolanis Peduli)</span></h3>
+          <p class="text-xs text-gray-500 mb-3">Platform kesehatan preventif berbasis data laboratorium dengan analisis risiko otomatis.</p>
           <a href="/portfolio" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <!-- Portfolio 3 -->
         <div class="group cursor-pointer">
           <div class="rounded-2xl overflow-hidden mb-4 relative">
-            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=600" alt="Mobile App" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Mobile App</div>
+            <img src="/images/portfolio/silacare[silacare.labkesdasumenep.id].png" alt="Aplikasi Mobile" class="w-full h-48 object-cover object-top group-hover:scale-105 transition duration-500">
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Aplikasi Mobile</div>
           </div>
-          <h3 class="font-bold text-gray-900 mb-2">Aplikasi Layanan Masyarakat</h3>
-          <p class="text-xs text-gray-500 mb-3">Akses informasi dan layanan lebih mudah melalui perangkat mobile.</p>
+          <h3 class="font-bold text-gray-900 mb-2">SiLACARE</h3>
+          <p class="text-xs text-gray-500 mb-3">Portal digital pasien untuk riwayat pemeriksaan lab dan antrean online.</p>
           <a href="/portfolio" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
