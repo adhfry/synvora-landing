@@ -7,12 +7,15 @@ interface Props {
   post: BlogPostMeta;
   authorRole: string;
   overlayLines: string[];
+  // Featured images that are light/pale (like a light-themed app screenshot)
+  // need dark overlay text instead of the default white, or it disappears.
+  overlayDark?: boolean;
   quote: string;
   tags: string[];
   tocItems: string[];
 }
 
-const { post, authorRole, overlayLines, quote, tags, tocItems } = Astro.props;
+const { post, authorRole, overlayLines, overlayDark = false, quote, tags, tocItems } = Astro.props;
 
 const articleUrl = `${SITE.url}/blog/${post.slug}`;
 const fullTitle = `${post.title} - SYNVORA Teknologi Indonesia`;
@@ -206,7 +209,7 @@ const breadcrumbJsonLd = {
           <img src={post.image} alt={post.title} class="w-full h-[400px] object-cover">
           <div class="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-[11px] font-bold text-gray-800 shadow-sm">{post.category}</div>
           <div class="absolute top-6 right-6 text-right">
-            <div class="text-white text-2xl font-extrabold leading-tight">
+            <div class:list={['text-2xl font-extrabold leading-tight', overlayDark ? 'text-gray-900' : 'text-white']}>
               {overlayLines.map((line, i) => <>{line}{i < overlayLines.length - 1 && <br />}</>)}
             </div>
             <div class="w-12 h-1 bg-primary ml-auto mt-2"></div>
