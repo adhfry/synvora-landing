@@ -30,6 +30,42 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const absoluteOgImage = new URL(ogImage, Astro.site);
 const fullTitle = title.includes('SYNVORA') ? title : `${title} | ${SITE.name}`;
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+
+// Sitewide structured data - lets search engines show SYNVORA as a known
+// entity (knowledge panel eligibility) and surface accurate contact info.
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/images/logo/synvora-teknologi-indonesia-logo-bluetext.png`,
+  email: SITE.email,
+  telephone: SITE.phoneDisplay,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Jl. Diponegoro No.109 B, Pajinggaan, Bangselok',
+    addressLocality: 'Kabupaten Sumenep',
+    addressRegion: 'Jawa Timur',
+    postalCode: '69416',
+    addressCountry: 'ID',
+  },
+  sameAs: [
+    SITE.social.linkedin,
+    SITE.social.instagram,
+    SITE.social.github,
+    SITE.whatsappUrl,
+  ],
+};
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  url: SITE.url,
+  name: SITE.name,
+  publisher: { '@id': `${SITE.url}/#organization` },
+  inLanguage: 'id-ID',
+};
 ---
 
 <!doctype html>
@@ -96,6 +132,9 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         </script>
       </Fragment>
     )}
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
 
     <slot name="head" />
   </head>

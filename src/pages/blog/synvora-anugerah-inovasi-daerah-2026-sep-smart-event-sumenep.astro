@@ -1,8 +1,10 @@
 ---
 import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
 import { blogPosts } from '../../data/blogPosts';
+import { teamMembers } from '../../data/team';
 
 const post = blogPosts.find((p) => p.slug === 'synvora-anugerah-inovasi-daerah-2026-sep-smart-event-sumenep')!;
+const sepTeam = teamMembers.filter((m) => m.name === 'Ahmad Muqtafi' || m.name === 'Abd. Rahman Siddik');
 ---
 
 <BlogArticleLayout
@@ -17,6 +19,7 @@ const post = blogPosts.find((p) => p.slug === 'synvora-anugerah-inovasi-daerah-2
     'Bagaimana SEP Bekerja?',
     'Fitur-Fitur Andalan SEP',
     'Dampak yang Diharapkan',
+    'Tim di Balik SEP',
     'Langkah Selanjutnya',
   ]}
 >
@@ -201,6 +204,26 @@ const post = blogPosts.find((p) => p.slug === 'synvora-anugerah-inovasi-daerah-2
         <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>Generasi muda:</strong> partisipasi yang lebih mudah lewat pencarian, RSVP, dan survei mandiri.
       </li>
     </ul>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Tim di Balik SEP</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">SEP dikembangkan oleh <strong>Ahmad Muqtafi</strong> dan <strong>Abd. Rahman Siddik</strong> dari tim SYNVORA.</p>
+    <div class="flex flex-wrap gap-3">
+      {sepTeam.map((person) => (
+        <div class="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-2xl p-4">
+          {person.photo ? (
+            <img src={person.photo} alt={person.name} class="w-12 h-12 rounded-full object-cover">
+          ) : (
+            <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold">{person.initials}</div>
+          )}
+          <div>
+            <div class="font-bold text-sm text-gray-900 dark:text-white">{person.name}</div>
+            <div class="text-[11px] text-gray-500 dark:text-gray-400">{person.role}</div>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 
   <div class="mb-10">

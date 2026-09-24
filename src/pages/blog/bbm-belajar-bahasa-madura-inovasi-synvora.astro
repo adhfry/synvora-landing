@@ -1,6 +1,7 @@
 ---
 import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
 import { blogPosts } from '../../data/blogPosts';
+import { founder } from '../../data/team';
 
 const post = blogPosts.find((p) => p.slug === 'bbm-belajar-bahasa-madura-inovasi-synvora')!;
 ---
@@ -16,8 +17,9 @@ const post = blogPosts.find((p) => p.slug === 'bbm-belajar-bahasa-madura-inovasi
     'Kenapa Bahasa Madura Perlu Dijaga?',
     'Fitur-Fitur Utama BBM',
     'Jalur Belajar Berjenjang',
-    'Lab Bahasa: Fondasi Text-to-Speech Madura',
     'Siapa yang Sudah Memakai BBM?',
+    'Lab Bahasa: Fondasi Text-to-Speech Madura',
+    'Tim di Balik BBM',
     'Langkah Selanjutnya',
   ]}
 >
@@ -175,6 +177,18 @@ const post = blogPosts.find((p) => p.slug === 'bbm-belajar-bahasa-madura-inovasi
     </div>
     <p class="text-xs text-gray-400 text-center italic mb-6">Lab Bahasa: korpus rekaman yang terus bertambah setiap hari.</p>
     <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Sejauh ini, tim SYNVORA sudah mengumpulkan <strong>1.659 rekaman suara</strong>, mencakup seluruh 10 huruf dasar dan 1.649 suku kata. Ini baru permulaan. Begitu korpus kata dan kalimat lengkap, Bahasa Madura berpotensi jadi salah satu bahasa daerah pertama di Indonesia yang punya sistem text-to-speech sendiri.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Tim di Balik BBM</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">BBM dikembangkan langsung oleh <strong>Ahda Firly Barori</strong>, CEO & Founder SYNVORA, yang turun tangan sendiri membangun platform ini dari awal.</p>
+    <div class="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-2xl p-4 w-fit">
+      <img src={founder.photo} alt={founder.name} class="w-12 h-12 rounded-full object-cover">
+      <div>
+        <div class="font-bold text-sm text-gray-900 dark:text-white">{founder.name}</div>
+        <div class="text-[11px] text-gray-500 dark:text-gray-400">{founder.role}</div>
+      </div>
+    </div>
   </div>
 
   <div class="mb-10">

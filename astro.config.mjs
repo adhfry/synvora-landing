@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import node from '@astrojs/node';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
   // (the /api/* email endpoints) run through this adapter on the VPS's Node
   // process at request time.
   adapter: node({ mode: 'standalone' }),
+  integrations: [sitemap()],
   // The Node standalone server sits behind an nginx TLS-terminating reverse
   // proxy and has no way to see that the original request was HTTPS (the
   // @astrojs/node adapter derives protocol from the raw socket, not

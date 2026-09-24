@@ -27,20 +27,35 @@ const shareUrls = {
 
 const related = getRelatedPosts(post.slug, 3);
 
+const absoluteImage = new URL(post.image, SITE.url).toString();
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
+  '@id': `${articleUrl}#article`,
   headline: post.title,
   description: post.excerpt,
-  image: [post.image],
+  image: [absoluteImage],
   author: { '@type': 'Person', name: post.author },
   publisher: {
-    '@type': 'Organization',
-    name: SITE.name,
-    logo: { '@type': 'ImageObject', url: `${SITE.url}/images/logo/synvora-logo-email.png` },
+    '@id': `${SITE.url}/#organization`,
   },
   datePublished: post.publishedAt,
+  dateModified: post.publishedAt,
+  articleSection: post.category,
+  keywords: tags.join(', '),
+  inLanguage: 'id-ID',
   mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Beranda', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}/blog` },
+    { '@type': 'ListItem', position: 3, name: post.title, item: articleUrl },
+  ],
 };
 ---
 
@@ -164,6 +179,7 @@ const jsonLd = {
     <meta property="article:section" content={post.category} />
     {tags.map((tag) => <meta property="article:tag" content={tag} />)}
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   </Fragment>
 
   <!-- ================= MAIN CONTENT ================= -->
@@ -363,13 +379,13 @@ const jsonLd = {
     })();
   </script>
 
-  <script is:inline>
+  <script is:inline define:vars={{ postTitle: post.title, postExcerpt: post.excerpt, articleUrl }}>
     document.querySelectorAll('.copy-link-btn').forEach((btn) => {
       btn.addEventListener('click', async () => {
         const shareData = {
-          title: document.title,
-          text: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
-          url: window.location.href,
+          title: postTitle,
+          text: postExcerpt,
+          url: articleUrl,
         };
         if (navigator.share) {
           try {
@@ -380,7 +396,8 @@ const jsonLd = {
           }
         }
         try {
-          await navigator.clipboard.writeText(shareData.url);
+          const clipboardText = `${postTitle}\n\n${postExcerpt}\n\nBaca Selengkapnya di ${articleUrl}`;
+          await navigator.clipboard.writeText(clipboardText);
           const icon = btn.querySelector('i');
           if (icon) {
             const original = icon.className;
