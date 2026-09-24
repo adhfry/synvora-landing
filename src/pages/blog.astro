@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import { blogPosts, getCategories, getTopics } from '../data/blogPosts';
 import { SITE } from '../lib/site';
 
-const featured = blogPosts[0];
+// Featured article is pinned by slug (not just "newest") so it stays put
+// even as newer posts get added ahead of it in the array.
+const featured = blogPosts.find((p) => p.slug === 'bbm-belajar-bahasa-madura-inovasi-synvora')!;
 // The featured post is also kept in "Artikel Terbaru", it deserves the
 // extra visibility of showing up in both places, not just the hero slot.
 const rest = blogPosts;

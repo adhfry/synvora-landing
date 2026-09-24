@@ -21,8 +21,24 @@ export interface BlogPostMeta {
 // across the blog listing and the topics page.
 export const blogPosts: BlogPostMeta[] = [
   {
+    slug: 'jos-job-opportunity-sumenep-inovasi-synvora',
+    title: 'JOS, Portal Pencarian Lowongan Kerja Terpusat untuk Sumenep dan Madura',
+    excerpt:
+      'Setelah SEP dan BBM, SYNVORA menghadirkan inovasi ketiga: JOS (Job Opportunity Sumenep), platform agregator yang mengumpulkan lowongan pekerjaan dari berbagai sumber publik dan pemerintah ke satu portal, lengkap dengan rekomendasi kerja berbasis Rule-Based Matching yang transparan tanpa AI.',
+    metaDescription:
+      'JOS: portal agregator lowongan kerja untuk Sumenep dan Madura Raya dari SYNVORA, dengan rekomendasi Rule-Based Matching yang transparan.',
+    image: '/images/blog/Rekomendasi-Lowongan-Pengguna.png',
+    category: 'Berita',
+    tags: ['Berita', 'Ketenagakerjaan', 'JOS', 'Sistem Informasi', 'Inovasi'],
+    author: 'Ahda Firly Barori',
+    authorImage: '/images/team/Ahda-Jas.png',
+    publishedAt: '2026-09-24',
+    publishedDisplay: '24 September 2026',
+    readTime: '8 menit baca',
+  },
+  {
     slug: 'bbm-belajar-bahasa-madura-inovasi-synvora',
-    title: 'Kenalkan BBM: Inovasi Kedua SYNVORA yang Bawa Bahasa Madura ke Era Digital',
+    title: 'BBM, Aplikasi Kamus dan Belajar Bahasa Madura Online dari SYNVORA',
     excerpt:
       'Setelah SEP, SYNVORA menghadirkan inovasi kedua: BBM (Belajar Bahasa Madura), platform kamus, penerjemah, dan modul belajar berjenjang yang sudah dipakai puluhan siswa, guru, hingga dosen, sekaligus membangun fondasi text-to-speech Bahasa Madura pertama.',
     metaDescription:
@@ -38,7 +54,7 @@ export const blogPosts: BlogPostMeta[] = [
   },
   {
     slug: 'synvora-anugerah-inovasi-daerah-2026-sep-smart-event-sumenep',
-    title: 'SYNVORA Wakili Kategori Masyarakat di Anugerah Inovasi Daerah 2026, Perkenalkan SEP',
+    title: 'SYNVORA Bawa SEP ke Anugerah Inovasi Daerah 2026 Kabupaten Sumenep',
     excerpt:
       'Tim SYNVORA resmi mengikuti Anugerah Inovasi Daerah (AID) 2026 yang digelar BRIDA Kabupaten Sumenep lewat kategori masyarakat. Inovasi pertama yang diusung: SEP (Smart Event Sumenep), platform cerdas yang mengubah cara daerah memantau dampak setiap event budaya dan pariwisata.',
     metaDescription:
@@ -166,6 +182,7 @@ export const TOPIC_ICONS: Record<string, string> = {
   'Inovasi Daerah': 'fa-solid fa-trophy',
   Pendidikan: 'fa-solid fa-graduation-cap',
   'Bahasa Daerah': 'fa-solid fa-language',
+  Ketenagakerjaan: 'fa-solid fa-briefcase',
   'Tips & Tutorial': 'fa-solid fa-lightbulb',
   Karier: 'fa-solid fa-briefcase',
   Berita: 'fa-regular fa-newspaper',

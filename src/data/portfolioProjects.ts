@@ -14,10 +14,39 @@ export interface PortfolioProject {
   team?: string[];
 }
 
-// Ordered with our flagship project first - BBM (Belajar Bahasa Madura) is
-// the one we're pushing hardest right now, so it leads the grid ahead of
-// SEP; the rest keep their original showcase order behind it.
+// Ordered with the newest project first - JOS (Job Opportunity Sumenep) is
+// our latest launch, so it leads the grid ahead of BBM and SEP; the rest
+// keep their original showcase order behind it.
 export const portfolioProjects: PortfolioProject[] = [
+  {
+    id: 'jos-job-opportunity-sumenep',
+    title: 'JOS: Job Opportunity Sumenep',
+    categories: ['Website', 'Sistem Informasi', 'Masyarakat'],
+    image: '/images/blog/Rekomendasi-Lowongan-Pengguna.png',
+    shortDescription:
+      'Platform agregator lowongan pekerjaan publik terpusat untuk Kabupaten Sumenep dan Madura Raya, dilengkapi rekomendasi kerja Rule-Based Matching.',
+    link: 'https://jos.synvorateknologiindonesia.web.id',
+    overview:
+      'JOS (Job Opportunity Sumenep) adalah platform agregator lowongan pekerjaan berbasis web yang mengumpulkan informasi lowongan dari berbagai sumber publik (seperti Glints, JobStreet, KitaLulus, Pintarnya) dan sumber resmi pemerintah (Disnaker Sumenep), lalu menyajikannya dalam satu portal yang terstruktur dan mudah dicari khusus untuk warga Sumenep dan Madura Raya. JOS bukan marketplace lowongan: setiap lowongan tetap mengarahkan pelamar ke halaman sumber asli, JOS hanya berperan sebagai mesin pencari dan pengumpul informasi.',
+    features: [
+      'Web scraper otomatis berbasis Python yang menarik data dari 7 sumber publik dan pemerintah secara berkala',
+      'Pencarian dan filter lowongan berdasarkan lokasi, posisi, pendidikan, pengalaman, keahlian, jenis pekerjaan, dan sumber',
+      'Smart Job Matching: skor kecocokan transparan berbasis rumus rule-based (bukan AI/black box) dari skill, pendidikan, lokasi, pengalaman, minat, dan usia',
+      'Profil pencari kerja lengkap: pendidikan, pengalaman, keahlian, lokasi, dan preferensi pekerjaan',
+      'Saved Jobs untuk menyimpan lowongan menarik dan membukanya kembali tanpa mencari ulang',
+      'Dashboard administrator: statistik lowongan, kelola sumber scraping, sinkronisasi manual, dan log aktivitas sistem',
+    ],
+    benefits: [
+      'Memusatkan informasi lowongan yang sebelumnya tersebar di banyak situs ke dalam satu portal khusus Sumenep',
+      'Menjangkau pencari kerja di wilayah daratan maupun kepulauan Sumenep secara setara',
+      '100% gratis dan tanpa perantara, tetap mengarahkan pelamar langsung ke sumber resmi',
+    ],
+    coolFeatures: [
+      'Setiap skor kecocokan bisa dijawab "Mengapa?", rincian bobot per kriteria (skill 30%, pendidikan 20%, lokasi 20%, pengalaman 15%, minat 10%, usia 5%) ditampilkan transparan ke pengguna',
+      'Scraper modular per sumber sehingga sumber lowongan baru bisa ditambahkan tanpa mengubah sistem inti',
+    ],
+    team: ['Ahda Firly Barori', 'Danur Wenda'],
+  },
   {
     id: 'belajar-bahasa-madura',
     title: 'BBM: Belajar Bahasa Madura',
