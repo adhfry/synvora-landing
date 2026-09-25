@@ -1,0 +1,292 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+import { teamMembers } from '../../data/team';
+
+const post = blogPosts.find((p) => p.slug === 'aira-sistem-peringatan-dini-banjir-sumenep')!;
+const airaTeam = teamMembers.filter((m) =>
+  ['Danur Wenda', 'Ahmad Muqtafi', 'Ilham Maulana', 'Abd. Rahman Siddik'].includes(m.name)
+);
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="CEO & Founder SYNVORA"
+  overlayLines={['Peringatan Dini', 'Banjir', 'Sumenep']}
+  overlayDark={true}
+  quote="Banjir tidak selalu bisa dicegah, tapi keterlambatan informasi bisa. AIRA kami bangun supaya pemerintah, petugas lapangan, dan warga punya waktu lebih untuk bersiap, bukan sekadar bereaksi setelah air naik."
+  tags={post.tags}
+  tocItems={[
+    'Kenalkan AIRA: Artificial Intelligence Response Banjir',
+    'Kenapa Sumenep Butuh Sistem Peringatan Dini Banjir?',
+    'Arsitektur 5 Lapisan: Dari Sensor hingga Aksi',
+    'Fitur-Fitur Utama AIRA',
+    'Teknologi di Balik AIRA',
+    'Matriks Strategi 3x3: Manfaat di Setiap Fase',
+    'Data yang Bisa Dipertanggungjawabkan',
+    'Tim di Balik AIRA',
+    'Langkah Selanjutnya',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenalkan AIRA: Artificial Intelligence Response Banjir</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4"><strong>SUMENEP, 25/09/2026</strong> - Setelah SEP (Smart Event Sumenep), BBM (Belajar Bahasa Madura), dan JOS (Job Opportunity Sumenep), tim SYNVORA menghadirkan inovasi keempat sekaligus yang paling ambisius: <strong>AIRA, Artificial Intelligence Response Banjir</strong>. Kalau tiga inovasi sebelumnya menjawab kebutuhan event, bahasa, dan pekerjaan, AIRA hadir untuk urusan yang menyangkut keselamatan warga secara langsung: banjir.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AIRA adalah platform pemantauan, analisis risiko, dan peringatan dini banjir untuk Kabupaten Sumenep. Sistem ini memadukan Computer Vision pada CCTV, sensor IoT tinggi muka air dan curah hujan, data cuaca, serta sistem informasi geografis (GIS) ke dalam satu dashboard terintegrasi, sehingga pemerintah daerah, petugas lapangan, dan masyarakat bisa bergerak lebih cepat dan tepat, sebelum, saat, maupun setelah banjir terjadi.</p>
+    <a href="https://aira.synvorateknologiindonesia.web.id" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+      Kunjungi AIRA Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+    </a>
+  </div>
+
+  <div class="mb-10">
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/aira-sungai-meluap.jpg" alt="Kali Marengan meluap di Sumenep, salah satu indikator awal banjir" class="w-full h-72 object-cover">
+    </div>
+    <p class="text-xs text-gray-400 text-center italic">Kali Marengan meluap, salah satu titik pantau prioritas yang jadi fondasi data spasial AIRA.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenapa Sumenep Butuh Sistem Peringatan Dini Banjir?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Selama ini, informasi kondisi banjir di lapangan sering terlambat sampai ke pihak yang butuh mengambil keputusan. Titik rawan tidak bisa dipantau terus-menerus, kondisi air bisa berubah sangat cepat, dan data dari berbagai sumber (CCTV, laporan warga, kondisi cuaca) belum terintegrasi dalam satu tempat. Akibatnya, respons sering kali baru bergerak setelah genangan sudah meluas.</p>
+
+    <div class="border-l-4 border-primary bg-[#F8FAFC] dark:bg-white/5 p-6 rounded-r-xl">
+      <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed"><strong>Empat tantangan utama yang mendasari AIRA:</strong></p>
+      <ul class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300 list-disc pl-5">
+        <li>Informasi dari lapangan yang terbatas dan sering terlambat sampai ke pengambil keputusan.</li>
+        <li>Tidak semua titik rawan banjir bisa diawasi manusia secara terus-menerus.</li>
+        <li>Kondisi banjir bisa berubah sangat cepat dalam hitungan menit.</li>
+        <li>Data dari berbagai sumber (CCTV, sensor, cuaca, laporan petugas) belum terintegrasi.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Arsitektur 5 Lapisan: Dari Sensor hingga Aksi</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AIRA dibangun di atas lima lapisan yang saling terhubung, mulai dari sumber data di lapangan sampai tindakan nyata di lokasi kejadian:</p>
+    <ol class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Sumber Data</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">CCTV, sensor tinggi muka air, sensor curah hujan, data cuaca (API), data geospasial (GIS), dan laporan petugas lapangan.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Edge / IoT</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Akuisisi data real-time, pra-pemrosesan di lokasi, dan pengiriman ke cloud lewat koneksi 4G/LTE atau LoRa.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">AI Processing</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Computer Vision untuk deteksi genangan, Time-Series AI untuk tren tinggi air, Risk Analysis Engine untuk fusi multi-sumber data, dan Rule & Decision Engine untuk menentukan status peringatan.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">4</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Cloud / Application</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Database terpusat, GIS dan peta interaktif, manajemen perangkat, analitik dan visualisasi, API integrasi, hingga sistem notifikasi.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0"><i class="fa-solid fa-check text-xs"></i></div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Output & Aksi</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Peringatan dini real-time, verifikasi petugas di lapangan, respons dan penanganan, dokumentasi kejadian, hingga pembelajaran sistem untuk meningkatkan akurasi ke depan.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="mb-10">
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/aira-banjir-desa-aerial.jpg" alt="Foto udara desa yang terendam banjir di Sumenep" class="w-full h-72 object-cover">
+    </div>
+    <p class="text-xs text-gray-400 text-center italic">Foto udara kondisi banjir di permukiman, skenario yang jadi acuan simulasi AIRA.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">Fitur-Fitur Utama AIRA</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-video"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Pemantauan CCTV Berbasis AI</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Analisis visual real-time dengan Computer Vision untuk mendeteksi genangan, kenaikan muka air, dan perubahan kondisi lingkungan.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-wifi"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Integrasi Sensor IoT</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Terhubung dengan sensor tinggi muka air dan curah hujan, lengkap peringatan otomatis saat data perangkat tidak wajar.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-cloud-sun-rain"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Data Cuaca dan Analisis Prediksi</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Integrasi data cuaca dari sumber terpercaya dan model AI untuk memprediksi potensi risiko banjir beberapa jam ke depan.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-map-location-dot"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Peta Interaktif dan Analisis Risiko</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Visualisasi wilayah, titik pemantauan, dan tingkat risiko banjir dalam peta interaktif berbasis GIS.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-bell"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Peringatan Dini dan Notifikasi</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Notifikasi otomatis lewat dashboard, WhatsApp Gateway, email, hingga integrasi sirene publik.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-clipboard-list"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Manajemen Kejadian dan Laporan</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Pencatatan kejadian otomatis, verifikasi dan catatan respons petugas, hingga laporan statistik dan ekspor data.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Teknologi di Balik AIRA</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AIRA menggabungkan beberapa disiplin teknologi sekaligus, bukan cuma satu sistem sensor sederhana:</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[11px] border-collapse">
+        <thead>
+          <tr>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Komponen</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Teknologi</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 dark:text-gray-400">
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Computer Vision</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">YOLOv10, OpenCV, Python</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Time-Series AI</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">LSTM, PyTorch, Scikit-learn</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Geospasial (GIS)</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Leaflet, PostGIS, QGIS</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10">IoT & Edge Computing</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">ESP32, LoRa/4G, MQTT</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Data Cuaca</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">OpenWeather, BMKG API</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Frontend Dashboard</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Vue.js, TailwindCSS, Chart.js</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Notifikasi & Integrasi</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">WhatsApp API, Email, Webhook</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Matriks Strategi 3x3: Manfaat di Setiap Fase</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Manfaat AIRA dipetakan untuk tiga aktor utama, pemerintah daerah, petugas lapangan, dan masyarakat, pada tiga fase penanganan banjir: sebelum, saat, dan setelah banjir terjadi.</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[11px] border-collapse">
+        <thead>
+          <tr>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Aktor</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Sebelum Banjir</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Saat Banjir</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Setelah Banjir</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 dark:text-gray-400">
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Pemerintah Daerah</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Pemetaan Risiko:</strong> prioritas anggaran & infrastruktur berbasis peta risiko per kecamatan.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Komando Terpadu:</strong> satu dashboard untuk koordinasi BPBD, dinas, dan kecamatan.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Kebijakan Berbasis Data:</strong> evaluasi dampak & perencanaan tata ruang dari histori kejadian.</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Petugas Lapangan</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Pemeliharaan Terjadwal:</strong> notifikasi perangkat offline & titik sumbatan saluran.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Verifikasi Cepat:</strong> lokasi prioritas & rute menuju titik kritis secara real-time.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Laporan Digital:</strong> pencatatan tindakan dan dokumentasi lapangan terstruktur.</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Masyarakat</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Edukasi & Kesiapan:</strong> informasi status wilayah dan jalur evakuasi terdekat.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Peringatan Dini:</strong> notifikasi WhatsApp, sirene, dan dashboard publik.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10"><strong>Pemulihan Terarah:</strong> informasi bantuan & status normalisasi wilayah.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Data yang Bisa Dipertanggungjawabkan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Yang membedakan AIRA dari sekadar prototipe IoT, fondasi spasialnya bukan titik-titik yang digambar sembarangan di peta, melainkan berasal dari penelitian yang bisa ditelusuri sumbernya:</p>
+    <ul class="space-y-3">
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>BRIDA Sumenep bersama ITS (2026):</strong> survei lapangan yang memetakan 6 titik kritis dan 15 titik genangan setinggi 30-45 cm.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>Resmani, Andawayanti & Cahya (2017):</strong> kajian 8 outlet drainase, kapasitas saluran, dan status backwater yang jadi dasar model tinggi muka air AIRA.
+      </li>
+      <li class="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
+        <i class="fa-solid fa-circle-check text-primary mt-0.5 text-xs"></i> <strong>Prosiding PSPK 3 UKWMS (2024):</strong> koordinat hulu dan hilir Sungai Marengan.
+      </li>
+    </ul>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mt-6">Setiap titik pantau dalam AIRA punya label akurasi koordinat, apakah berasal dari data resmi instansi, publikasi penelitian, OpenStreetMap, atau geocode direktori, sehingga siapa pun bisa menelusuri dari mana data itu berasal. Nilai sensor, status, dan notifikasi yang tampil di dashboard saat ini adalah skenario simulasi hujan sangat lebat, sementara titik CCTV dan sensornya sendiri adalah titik pantau usulan AIRA pada lokasi yang sudah bersumber jelas.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Tim di Balik AIRA</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Sebagai inovasi keempat dan proyek besar SYNVORA, AIRA dikembangkan oleh tim lengkap: <strong>Ahda Firly Barori</strong>, <strong>Danur Wenda</strong>, <strong>Ahmad Muqtafi</strong>, <strong>Ilham Maulana</strong>, dan <strong>Abd. Rahman Siddik</strong>.</p>
+    <div class="flex flex-wrap gap-3">
+      <div class="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-2xl p-4">
+        <img src="/images/team/Ahda-Jas.png" alt="Ahda Firly Barori" class="w-12 h-12 rounded-full object-cover">
+        <div>
+          <div class="font-bold text-sm text-gray-900 dark:text-white">Ahda Firly Barori</div>
+          <div class="text-[11px] text-gray-500 dark:text-gray-400">CEO & Founder</div>
+        </div>
+      </div>
+      {airaTeam.map((person) => (
+        <div class="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-2xl p-4">
+          {person.photo ? (
+            <img src={person.photo} alt={person.name} class="w-12 h-12 rounded-full object-cover">
+          ) : (
+            <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold">{person.initials}</div>
+          )}
+          <div>
+            <div class="font-bold text-sm text-gray-900 dark:text-white">{person.name}</div>
+            <div class="text-[11px] text-gray-500 dark:text-gray-400">{person.role}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Langkah Selanjutnya</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AIRA akan terus dikembangkan secara bertahap, mulai dari menambah titik pantau CCTV dan sensor, menyempurnakan model prediksi risiko, hingga memperluas cakupan wilayah dari titik-titik prioritas menuju seluruh kecamatan rawan banjir di Kabupaten Sumenep. Setelah SEP, BBM, dan JOS, AIRA membuktikan bahwa teknologi SYNVORA bisa hadir untuk urusan yang menyangkut keselamatan warga secara langsung. Ikuti terus perjalanan SYNVORA membangun inovasi-inovasi berikutnya!</p>
+    <a href="https://aira.synvorateknologiindonesia.web.id" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+      Akses Dashboard AIRA <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+    </a>
+  </div>
+</BlogArticleLayout>

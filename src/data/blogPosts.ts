@@ -21,6 +21,38 @@ export interface BlogPostMeta {
 // across the blog listing and the topics page.
 export const blogPosts: BlogPostMeta[] = [
   {
+    slug: 'aira-sistem-peringatan-dini-banjir-sumenep',
+    title: 'AIRA, Sistem Peringatan Dini Banjir Berbasis AI dan IoT untuk Sumenep',
+    excerpt:
+      'Melengkapi SEP, BBM, dan JOS, SYNVORA menghadirkan AIRA (Artificial Intelligence Response Banjir): platform pemantauan, analisis risiko, dan peringatan dini banjir untuk Kabupaten Sumenep yang memadukan Computer Vision, sensor IoT, data cuaca, dan GIS dalam satu dashboard terintegrasi.',
+    metaDescription:
+      'AIRA: platform AI dan IoT untuk pemantauan, analisis risiko, dan peringatan dini banjir Kabupaten Sumenep dari SYNVORA.',
+    image: '/images/blog/aira-sumenep-drone.jpg',
+    category: 'Berita',
+    tags: ['Berita', 'Kebencanaan', 'AIRA', 'Artificial Intelligence', 'Inovasi'],
+    author: 'Ahda Firly Barori',
+    authorImage: '/images/team/Ahda-Jas.png',
+    publishedAt: '2026-09-25',
+    publishedDisplay: '25 September 2026',
+    readTime: '9 menit baca',
+  },
+  {
+    slug: 'agrivita-bunker-penyimpanan-cerdas-iot-petani-sumenep',
+    title: 'AgriVita, Bunker Penyimpanan Cerdas Berbasis IoT untuk Petani Sumenep',
+    excerpt:
+      'SYNVORA memperkenalkan AgriVita: sistem penyimpanan hasil panen cerdas berbasis IoT dan energi surya yang mengubah gudang pasif menjadi bunker terpantau sensor, dengan ventilasi otomatis dan peringatan dini kondisi penyimpanan, dirintis bersama petani Lenteng Timur, Sumenep.',
+    metaDescription:
+      'AgriVita: bunker penyimpanan cerdas berbasis IoT dan energi surya dari SYNVORA untuk menekan kehilangan hasil panen petani Sumenep.',
+    image: 'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&q=80&w=1200&h=630',
+    category: 'Berita',
+    tags: ['Berita', 'Pertanian', 'AgriVita', 'IoT', 'Inovasi'],
+    author: 'Ahda Firly Barori',
+    authorImage: '/images/team/Ahda-Jas.png',
+    publishedAt: '2026-09-25',
+    publishedDisplay: '25 September 2026',
+    readTime: '7 menit baca',
+  },
+  {
     slug: 'jos-job-opportunity-sumenep-inovasi-synvora',
     title: 'JOS, Portal Pencarian Lowongan Kerja Terpusat untuk Sumenep dan Madura',
     excerpt:
@@ -183,6 +215,9 @@ export const TOPIC_ICONS: Record<string, string> = {
   Pendidikan: 'fa-solid fa-graduation-cap',
   'Bahasa Daerah': 'fa-solid fa-language',
   Ketenagakerjaan: 'fa-solid fa-briefcase',
+  Kebencanaan: 'fa-solid fa-house-flood-water',
+  Pertanian: 'fa-solid fa-seedling',
+  IoT: 'fa-solid fa-satellite-dish',
   'Tips & Tutorial': 'fa-solid fa-lightbulb',
   Karier: 'fa-solid fa-briefcase',
   Berita: 'fa-regular fa-newspaper',

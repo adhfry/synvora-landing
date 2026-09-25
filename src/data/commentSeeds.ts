@@ -244,6 +244,156 @@ export const COMMENT_SEEDS: Record<string, CommentEntry[]> = {
     },
   ],
 
+  'aira-sistem-peringatan-dini-banjir-sumenep': [
+    {
+      id: 'aira-c1',
+      name: 'Suryani',
+      text: 'rumah saya deket kali marengan, tiap musim hujan was-was terus. semoga bener2 kepasang cepet di sini, kita butuh peringatan yg cepat',
+      rating: 5,
+      createdAt: '2026-09-25T09:15:00+07:00',
+    },
+    {
+      id: 'aira-c2',
+      name: 'Bambang',
+      text: 'sebagai yg sering bantu2 di lapangan pas banjir, dashboard kayak gini ngebantu banget buat koordinasi, gak perlu telpon sana sini lagi',
+      rating: 5,
+      createdAt: '2026-09-25T10:40:00+07:00',
+      replies: [
+        {
+          id: 'aira-c2-r1',
+          name: 'Danur Wenda',
+          text: 'Terima kasih pak Bambang, itu memang salah satu tujuan utama AIRA, biar semua pihak lihat data yang sama',
+          createdAt: '2026-09-25T11:05:00+07:00',
+        },
+      ],
+    },
+    {
+      id: 'aira-c3',
+      name: 'Nina',
+      text: 'anak saya sekolahnya lewat jalan yang suka tergenang, kalau ada peringatan dini kayak gini jadi bisa siap-siap lebih awal',
+      rating: 5,
+      createdAt: '2026-09-25T12:05:00+07:00',
+    },
+    {
+      id: 'aira-c4',
+      name: 'Yudi Prasetyo',
+      text: 'awalnya mikir ini cuma prototipe doang, pas baca sampe bagian sumber datanya ternyata beneran dari penelitian, jadi lebih percaya',
+      rating: 4,
+      createdAt: '2026-09-25T13:50:00+07:00',
+    },
+    {
+      id: 'aira-c5',
+      name: 'H. Sanusi',
+      text: 'mewakili warga kecamatan, semoga titik pantaunya bisa diperluas lagi, banyak daerah lain yang juga rawan',
+      rating: 5,
+      createdAt: '2026-09-25T15:20:00+07:00',
+      replies: [
+        {
+          id: 'aira-c5-r1',
+          name: 'Ahda Firly Barori',
+          text: 'Siap pak, rencananya memang bertahap menambah titik pantau ke kecamatan lain',
+          createdAt: '2026-09-25T15:45:00+07:00',
+        },
+      ],
+    },
+    {
+      id: 'aira-c6',
+      name: 'Devi',
+      text: 'keren bgt sih konsepnya, gabungan cctv ai sama sensor gini, semoga bisa terus dikembangin',
+      rating: 5,
+      createdAt: '2026-09-25T17:10:00+07:00',
+    },
+    {
+      id: 'aira-c7',
+      name: 'Matsahur',
+      text: 'moga2 cepet e pasang neng kampong kaule, langganan banjir soalnya',
+      rating: 5,
+      createdAt: '2026-09-25T18:30:00+07:00',
+    },
+    {
+      id: 'aira-c8',
+      name: 'Rina Wulandari',
+      text: 'suka bgt cara jelasinnya transparan, sampe dikasih tau darimana koordinatnya, jadi ga cuma janji doang',
+      rating: 5,
+      createdAt: '2026-09-25T20:00:00+07:00',
+    },
+  ],
+
+  'agrivita-bunker-penyimpanan-cerdas-iot-petani-sumenep': [
+    {
+      id: 'agv-c1',
+      name: 'Paiman',
+      text: 'saya petani, biasa nyimpen hasil panen di gudang biasa, sering rusak kena lembab. kalau ada yang kayak gini bisa lebih tenang',
+      rating: 5,
+      createdAt: '2026-09-25T09:20:00+07:00',
+    },
+    {
+      id: 'agv-c2',
+      name: 'Warsito',
+      text: 'energi suryanya itu yang penting, di kampung kami listrik suka byar pet, kalau pake surya kan lebih aman',
+      rating: 5,
+      createdAt: '2026-09-25T10:45:00+07:00',
+      replies: [
+        {
+          id: 'agv-c2-r1',
+          name: 'Danur Wenda',
+          text: 'Betul pak, makanya kami desain offline-first juga biar tetap jalan meski internet putus',
+          createdAt: '2026-09-25T11:10:00+07:00',
+        },
+      ],
+    },
+    {
+      id: 'agv-c3',
+      name: 'Sriyati',
+      text: 'dulu tiap minggu kudu ngecek manual ke gudang, capek. kalo bisa dipantau dari hp ya jelas lebih enak',
+      rating: 5,
+      createdAt: '2026-09-25T12:10:00+07:00',
+    },
+    {
+      id: 'agv-c4',
+      name: 'Karim',
+      text: 'bagus nih buat kelompok tani, jadi bisa gantian jaga tanpa harus bolak-balik ke lokasi tiap hari',
+      rating: 4,
+      createdAt: '2026-09-25T13:40:00+07:00',
+    },
+    {
+      id: 'agv-c5',
+      name: 'Bu Marni',
+      text: 'semoga harganya terjangkau buat petani kecil kayak kami, alatnya kedengerannya canggih banget',
+      rating: 4,
+      createdAt: '2026-09-25T15:05:00+07:00',
+      replies: [
+        {
+          id: 'agv-c5-r1',
+          name: 'Ahda Firly Barori',
+          text: 'Insya Allah bu, konsepnya memang dirancang bertahap biar bisa dijangkau kelompok tani',
+          createdAt: '2026-09-25T15:30:00+07:00',
+        },
+      ],
+    },
+    {
+      id: 'agv-c6',
+      name: 'Fauzan',
+      text: 'ide ventilasi otomatisnya mantap, ga perlu lagi manual buka tutup buat jaga sirkulasi udara',
+      rating: 5,
+      createdAt: '2026-09-25T17:00:00+07:00',
+    },
+    {
+      id: 'agv-c7',
+      name: 'Holila',
+      text: 'mator sakalangkong SYNVORA, lanjagi terros gebey petani',
+      rating: 5,
+      createdAt: '2026-09-25T18:20:00+07:00',
+    },
+    {
+      id: 'agv-c8',
+      name: 'Ahmad Zubairi',
+      text: 'hasil panen musim kemarin banyak yg rusak gara2 lembab, semoga tahun depan udah bisa pake yang kayak gini',
+      rating: 5,
+      createdAt: '2026-09-25T20:10:00+07:00',
+    },
+  ],
+
   'jos-job-opportunity-sumenep-inovasi-synvora': [
     {
       id: 'jos-c1',

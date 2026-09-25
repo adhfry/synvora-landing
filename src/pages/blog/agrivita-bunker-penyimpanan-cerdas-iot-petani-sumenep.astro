@@ -1,0 +1,265 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+import { teamMembers } from '../../data/team';
+
+const post = blogPosts.find((p) => p.slug === 'agrivita-bunker-penyimpanan-cerdas-iot-petani-sumenep')!;
+const agrivitaTeam = teamMembers.filter((m) => ['Ilham Maulana', 'Danur Wenda'].includes(m.name));
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="CEO & Founder SYNVORA"
+  overlayLines={['Bunker', 'Penyimpanan', 'Cerdas']}
+  overlayDark={true}
+  quote="Petani sudah bekerja keras di sawah dan ladang, jangan sampai hasilnya rusak begitu saja di gudang. AgriVita kami bangun supaya ruang simpan ikut bekerja, memantau kondisinya sendiri, tanpa harus bergantung pengecekan manual setiap hari."
+  tags={post.tags}
+  tocItems={[
+    'Kenalkan AgriVita: Bunker Penyimpanan Cerdas',
+    'Kenapa Ruang Simpan Hasil Panen Perlu Dipantau?',
+    'Bagaimana AgriVita Bekerja?',
+    'Fitur-Fitur Utama AgriVita',
+    'Lima Tingkat Kecerdasan Sistem',
+    'Matriks Strategi 3x3: Manfaat bagi Setiap Model Pengelolaan',
+    'Tim di Balik AgriVita',
+    'Langkah Selanjutnya',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenalkan AgriVita: Bunker Penyimpanan Cerdas</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4"><strong>SUMENEP, 25/09/2026</strong> - Melengkapi AIRA yang fokus pada peringatan dini banjir, SYNVORA sekaligus memperkenalkan inovasi kelima: <strong>AgriVita</strong>, sistem penyimpanan hasil panen cerdas berbasis IoT dan energi surya. Konsep ini dirintis bersama petani di Lenteng Timur, Sumenep, wilayah seluas kurang lebih 405 hektare dengan sekitar 7.315 jiwa penduduk yang mayoritas bekerja sebagai petani.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AgriVita mengubah gudang penyimpanan yang tadinya pasif menjadi bunker cerdas: dipantau sensor, dikendalikan otomatis, ditenagai panel surya, dan tercatat di cloud, semuanya untuk menekan kehilangan hasil panen setelah dipanen (pascapanen).</p>
+    <a href="https://agrivita.synvorateknologiindonesia.web.id" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+      Kunjungi AgriVita Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+    </a>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenapa Ruang Simpan Hasil Panen Perlu Dipantau?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Selama ini, gudang atau bunker penyimpanan hasil panen umumnya bersifat pasif: diperiksa sesekali secara manual, tanpa data yang kontinu dan terukur. Padahal ada banyak faktor yang bisa merusak komoditas selama masa simpan, dan sering kali baru diketahui setelah kerusakan terlihat kasat mata.</p>
+
+    <div class="border-l-4 border-primary bg-[#F8FAFC] dark:bg-white/5 p-6 rounded-r-xl">
+      <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed"><strong>Enam masalah utama ruang simpan pasif:</strong></p>
+      <ul class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300 list-disc pl-5">
+        <li>Kelembapan tinggi yang meningkatkan risiko jamur dan penurunan mutu komoditas.</li>
+        <li>Suhu tak terkendali yang mempercepat kerusakan pada komoditas tertentu.</li>
+        <li>Sirkulasi udara buruk sehingga mikroklimat ruang simpan tidak merata.</li>
+        <li>Hama yang bisa masuk dan merusak hasil panen tanpa terdeteksi lebih awal.</li>
+        <li>Pemeriksaan manual yang tidak memberikan data kontinu dan terukur.</li>
+        <li>Tidak adanya histori terstruktur, sehingga evaluasi penyimpanan sulit dilakukan secara objektif.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=1200&h=630" alt="Panel surya yang menenagai bunker penyimpanan AgriVita" class="w-full h-72 object-cover">
+    </div>
+    <p class="text-xs text-gray-400 text-center italic">Energi surya menjaga bunker tetap beroperasi meski jauh dari jaringan listrik yang stabil.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Bagaimana AgriVita Bekerja?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AgriVita dibangun di atas arsitektur 5 lapisan, dari fisik bunker sampai keputusan manusia di lapangan:</p>
+    <ol class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Physical: Bunker, Rak, Ventilasi</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Tempat penyimpanan fisik lengkap dengan pintu dan jalur ventilasi yang bisa dikendalikan otomatis.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Sensing: Membaca Kondisi</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Sensor DHT22 (suhu & kelembapan), MQ-135 (indikasi kualitas udara), dan HC-SR04 (estimasi level isi bunker) membaca kondisi secara periodik.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Edge / Control: Pemrosesan Lokal</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Raspberry Pi dan ESP32 memvalidasi data, memberi timestamp, mengirim ke server, sekaligus menjalankan rule engine dan mengaktifkan relay bila kondisi membutuhkan tindakan.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">4</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Cloud / Application: Data dan Dashboard</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Data, histori, alarm, dan dashboard web maupun mobile yang bisa diakses kapan saja.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0"><i class="fa-solid fa-check text-xs"></i></div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Human / Operational: Pengambilan Keputusan</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Petani, operator bunker, dan teknisi mengambil keputusan dan melakukan inspeksi berdasarkan data yang sudah tersaji.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">Fitur-Fitur Utama AgriVita</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-gauge"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Monitoring Real-Time</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Suhu, kelembapan, kualitas udara, dan level isi bunker tampil langsung di dashboard web & mobile.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-bell"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Peringatan Dini Bertingkat</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Alarm Info, Warning, dan Critical dengan debounce agar operator tidak dibanjiri notifikasi.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-fan"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Ventilasi Otomatis</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Rule engine menyalakan kipas saat kondisi melewati batas, atau dikendalikan manual sesuai hak akses.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Histori & Analitik</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Data time-series untuk melihat pola harian, frekuensi alarm, dan evaluasi kualitas penyimpanan.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-sun"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Energi Surya</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Panel surya dan baterai menjaga sistem tetap hidup, lengkap dengan pemantauan status energi.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-cloud-slash"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Offline-First</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Saat internet terputus, edge tetap membaca sensor dan menjalankan rule lokal, lalu sinkron saat koneksi pulih.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Lima Tingkat Kecerdasan Sistem</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AgriVita dirancang berkembang bertahap, dari sekadar menampilkan data hingga memprediksi risiko:</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[11px] border-collapse">
+        <thead>
+          <tr>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Level</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Nama</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Deskripsi</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 dark:text-gray-400">
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 text-center font-semibold">1</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Monitoring</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Membaca dan menampilkan data sensor.</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 text-center font-semibold">2</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Alert</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Mendeteksi kondisi yang melewati threshold.</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 text-center font-semibold">3</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Automation</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Mengaktifkan perangkat berdasarkan rule yang sudah ditentukan.</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 text-center font-semibold">4</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Analytics</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Menganalisis histori dan pola dari waktu ke waktu.</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 text-center font-semibold bg-blue-50 dark:bg-primary/10 text-primary">5</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Predictive</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Memprediksi risiko kondisi tertentu sebelum benar-benar terjadi.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Matriks Strategi 3x3: Manfaat bagi Setiap Model Pengelolaan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AgriVita dirancang fleksibel untuk berbagai model pengelolaan bunker, dari kelompok tani hingga koperasi, dengan manfaat yang berbeda pada tiap tahap penyimpanan:</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-[11px] border-collapse">
+        <thead>
+          <tr>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Model Pengelolaan</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Sebelum Panen</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Selama Penyimpanan</th>
+            <th class="p-2 border border-gray-200 dark:border-white/10 font-bold text-gray-700 dark:text-gray-300 text-left">Setelah Panen Keluar</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 dark:text-gray-400">
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Kelompok Tani</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Menyiapkan bunker bersama dan menjadwalkan siapa yang bertugas memantau dashboard.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Anggota kelompok memantau kondisi bunker bersama, alarm terbagi rata ke semua pihak terkait.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Histori penyimpanan jadi bahan evaluasi bersama untuk musim panen berikutnya.</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Desa / Koperasi</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Desa atau koperasi memfasilitasi infrastruktur bunker dan operasionalnya bagi anggota.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Operator bunker mengelola penyimpanan, alarm, dan aktivitas harian dari satu dashboard.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Pengelola desa atau institusi melihat kondisi agregat dan menyusun laporan operasional.</td>
+          </tr>
+          <tr>
+            <td class="p-2 border border-gray-200 dark:border-white/10 font-semibold text-gray-800 dark:text-gray-200">Kemitraan / Service Model</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Institusi atau mitra swasta mendukung penyediaan perangkat IoT dan operasional awal.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">Teknisi melakukan maintenance sensor, aktuator, jaringan, dan energi sesuai kebutuhan.</td>
+            <td class="p-2 border border-gray-200 dark:border-white/10">IoT dan dashboard dikelola sebagai layanan berkelanjutan, bukan proyek sekali pasang.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Tim di Balik AgriVita</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">AgriVita dikembangkan oleh <strong>Ilham Maulana</strong>, <strong>Danur Wenda</strong>, dan <strong>Ahda Firly Barori</strong>, dari tim SYNVORA.</p>
+    <div class="flex flex-wrap gap-3">
+      <div class="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-2xl p-4">
+        <img src="/images/team/Ahda-Jas.png" alt="Ahda Firly Barori" class="w-12 h-12 rounded-full object-cover">
+        <div>
+          <div class="font-bold text-sm text-gray-900 dark:text-white">Ahda Firly Barori</div>
+          <div class="text-[11px] text-gray-500 dark:text-gray-400">CEO & Founder</div>
+        </div>
+      </div>
+      {agrivitaTeam.map((person) => (
+        <div class="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-2xl p-4">
+          {person.photo ? (
+            <img src={person.photo} alt={person.name} class="w-12 h-12 rounded-full object-cover">
+          ) : (
+            <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold">{person.initials}</div>
+          )}
+          <div>
+            <div class="font-bold text-sm text-gray-900 dark:text-white">{person.name}</div>
+            <div class="text-[11px] text-gray-500 dark:text-gray-400">{person.role}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Langkah Selanjutnya</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">AgriVita akan terus dikembangkan bertahap, mulai dari memperluas jumlah bunker yang terhubung, menyempurnakan rule engine ventilasi, hingga membangun kemampuan prediktif begitu data historis sudah cukup memadai. Bersama AIRA, AgriVita menjadi bukti lain bahwa SYNVORA membangun teknologi yang benar-benar dipakai untuk kebutuhan nyata masyarakat Sumenep, kali ini untuk menjaga hasil panen para petani. Ikuti terus perjalanan SYNVORA membangun inovasi-inovasi berikutnya!</p>
+    <a href="https://agrivita.synvorateknologiindonesia.web.id" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+      Kunjungi AgriVita <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+    </a>
+  </div>
+</BlogArticleLayout>

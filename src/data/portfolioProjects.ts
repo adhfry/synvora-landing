@@ -14,10 +14,68 @@ export interface PortfolioProject {
   team?: string[];
 }
 
-// Ordered with the newest project first - JOS (Job Opportunity Sumenep) is
-// our latest launch, so it leads the grid ahead of BBM and SEP; the rest
-// keep their original showcase order behind it.
+// Ordered with the newest project first - AIRA and AgriVita are our latest
+// launches, so they lead the grid ahead of JOS, BBM, and SEP; the rest keep
+// their original showcase order behind it.
 export const portfolioProjects: PortfolioProject[] = [
+  {
+    id: 'aira-artificial-intelligence-response-banjir',
+    title: 'AIRA: Artificial Intelligence Response Banjir',
+    categories: ['Website', 'Sistem Informasi', 'AI', 'Pemerintahan'],
+    image: '/images/blog/aira-sumenep-drone.jpg',
+    shortDescription:
+      'Platform pemantauan, analisis risiko, dan peringatan dini banjir Kabupaten Sumenep berbasis Computer Vision, sensor IoT, data cuaca, dan GIS.',
+    link: 'https://aira.synvorateknologiindonesia.web.id',
+    overview:
+      'AIRA (Artificial Intelligence Response Banjir) adalah platform pemantauan, analisis risiko, dan peringatan dini banjir untuk Kabupaten Sumenep. AIRA memadukan lima lapisan sistem, mulai dari sumber data lapangan (CCTV, sensor tinggi muka air, sensor curah hujan, data cuaca, GIS, laporan petugas), edge/IoT untuk akuisisi data real-time, AI processing (Computer Vision, Time-Series AI, Risk Analysis Engine, Rule & Decision Engine), cloud platform untuk dashboard dan histori, hingga output berupa peringatan dini, verifikasi petugas, dan dokumentasi kejadian. Fondasi spasialnya berasal dari penelitian nyata: survei lapangan BRIDA Sumenep bersama ITS (2026), kajian drainase Resmani, Andawayanti & Cahya (2017), dan prosiding PSPK 3 UKWMS (2024), dengan akurasi koordinat yang tertelusur sampai sumbernya.',
+    features: [
+      'Pemantauan CCTV berbasis Computer Vision (YOLOv10) untuk mendeteksi genangan dan kenaikan muka air',
+      'Integrasi sensor IoT: tinggi muka air, curah hujan, dan pemantauan kondisi perangkat secara real-time',
+      'Data cuaca dan analisis prediksi risiko banjir berbasis AI (LSTM) untuk beberapa jam ke depan',
+      'Peta interaktif berbasis GIS dengan layer wilayah rawan dan analisis risiko multi-sumber data',
+      'Peringatan dini multi-kanal: dashboard, WhatsApp Gateway, email, dan integrasi sirene publik',
+      'Manajemen kejadian dan laporan: pencatatan otomatis, verifikasi petugas, hingga ekspor data',
+    ],
+    benefits: [
+      'Memberi pemerintah daerah satu dashboard komando terpadu untuk koordinasi BPBD, dinas, dan kecamatan saat banjir terjadi',
+      'Mempercepat verifikasi dan respons petugas lapangan lewat lokasi prioritas dan rute real-time',
+      'Memberi masyarakat peringatan dini dan jalur evakuasi lebih cepat, bukan sekadar informasi setelah banjir terjadi',
+    ],
+    coolFeatures: [
+      'Model TMA saluran vs sungai menghitung backwater (Δ = TMA sungai − TMA saluran) berdasarkan panjang pengaruh backwater hasil kajian 2017, bukan asumsi',
+      'Setiap koordinat titik pantau punya status akurasi tertelusur (data resmi, penelitian, OSM, atau direktori), bukan titik yang digambar sembarangan di peta',
+    ],
+    team: ['Ahda Firly Barori', 'Danur Wenda', 'Ahmad Muqtafi', 'Ilham Maulana', 'Abd. Rahman Siddik'],
+  },
+  {
+    id: 'agrivita-smart-storage',
+    title: 'AgriVita: Smart Agricultural Storage',
+    categories: ['Website', 'Pertanian', 'IoT'],
+    image: 'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&q=80&w=1200&h=630',
+    shortDescription:
+      'Bunker penyimpanan hasil panen cerdas berbasis IoT dan energi surya, mengubah gudang pasif menjadi ruang simpan yang terpantau dan berventilasi otomatis.',
+    link: 'https://agrivita.synvorateknologiindonesia.web.id',
+    overview:
+      'AgriVita mengubah gudang penyimpanan hasil panen yang pasif menjadi bunker cerdas yang dipantau sensor, dikendalikan otomatis, ditenagai panel surya, dan tercatat di cloud, untuk menekan kehilangan pascapanen. Konsep ini dirintis bersama petani di Lenteng Timur, Sumenep, wilayah dengan luas ±405 Ha dan sekitar 7.315 jiwa penduduk yang mayoritas bekerja sebagai petani. AgriVita dibangun di atas arsitektur 5 lapisan (Physical, Sensing, Edge/Control, Cloud/Application, Human/Operational) dengan sensor suhu-kelembapan (DHT22), indikasi kualitas udara (MQ-135), dan estimasi level isi bunker (HC-SR04).',
+    features: [
+      'Monitoring real-time suhu, kelembapan, kualitas udara, dan level isi bunker di dashboard web & mobile',
+      'Peringatan dini bertingkat (Info, Warning, Critical) dengan debounce agar notifikasi tidak berlebihan',
+      'Ventilasi otomatis: rule engine menyalakan kipas saat kondisi melewati batas, atau dikendalikan manual sesuai hak akses',
+      'Histori dan analitik time-series untuk pola harian, frekuensi alarm, dan evaluasi kualitas penyimpanan',
+      'Energi surya dengan panel, charge controller, dan baterai, lengkap pemantauan status energi',
+      'Offline-first: edge tetap membaca sensor dan menjalankan rule lokal saat internet terputus, lalu sinkron saat pulih',
+    ],
+    benefits: [
+      'Menekan kehilangan hasil panen akibat kelembapan, suhu tak terkendali, hama, dan sirkulasi udara buruk yang sebelumnya hanya diperiksa manual',
+      'Bunker tetap beroperasi meski jauh dari jaringan listrik yang stabil, berkat energi surya dan mode offline-first',
+      'Histori time-series memungkinkan evaluasi penyimpanan yang objektif, bukan lagi perkiraan dari pengecekan sesekali',
+    ],
+    coolFeatures: [
+      'Lima tingkat kecerdasan sistem dirancang bertahap, dari sekadar Monitoring hingga Predictive, sehingga bunker bisa berkembang seiring data historis yang terkumpul',
+      'Rule engine membedakan kegagalan sensor dari nilai ekstrem yang valid, agar alarm palsu tidak membanjiri operator',
+    ],
+    team: ['Ilham Maulana', 'Danur Wenda', 'Ahda Firly Barori'],
+  },
   {
     id: 'jos-job-opportunity-sumenep',
     title: 'JOS: Job Opportunity Sumenep',
@@ -183,32 +241,6 @@ export const portfolioProjects: PortfolioProject[] = [
     coolFeatures: [
       'Antrean online yang terintegrasi langsung dengan jadwal laboratorium',
       'Notifikasi otomatis begitu hasil pemeriksaan tersedia',
-    ],
-  },
-  {
-    id: 'agribunker',
-    title: 'AgriBunker',
-    categories: ['Website', 'Perusahaan'],
-    image: '/images/portfolio/agribunker[no-link].png',
-    shortDescription:
-      'Platform manajemen pertanian yang membantu petani mengoptimalkan hasil panen dengan teknologi dan kontrol jarak jauh.',
-    link: null,
-    overview:
-      'Platform manajemen pertanian yang membantu petani dan pengelola lahan memantau serta mengoptimalkan hasil panen menggunakan teknologi kontrol jarak jauh.',
-    features: [
-      'Monitoring kondisi lahan secara digital',
-      'Kontrol perangkat pertanian dari jarak jauh',
-      'Pencatatan siklus tanam dan panen',
-      'Laporan produktivitas lahan',
-    ],
-    benefits: [
-      'Efisiensi pengelolaan lahan yang lebih tinggi',
-      'Pengambilan keputusan berbasis data',
-      'Mengurangi kunjungan fisik yang tidak perlu ke lokasi lahan',
-    ],
-    coolFeatures: [
-      'Kontrol jarak jauh untuk operasional pertanian',
-      'Pemantauan kondisi lahan secara real-time',
     ],
   },
   {
