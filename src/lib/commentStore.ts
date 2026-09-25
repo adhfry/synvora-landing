@@ -44,11 +44,16 @@ export function getComments(slug: string): CommentEntry[] {
   return allTopLevel
     .map((c) => ({
       ...c,
+      // Replies stay oldest-first within a thread (natural conversation
+      // order).
       replies: [...(c.replies ?? []), ...(slugStore.replies[c.id] ?? [])].sort(
         (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       ),
     }))
-    .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+    // Top-level comments show newest-first, so a comment someone just
+    // submitted appears right away instead of being buried behind the
+    // "show more" pagination on the client.
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 }
 
 export function getRatingSummary(slug: string): { average: number; count: number } {
