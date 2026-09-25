@@ -51,12 +51,12 @@ export const portfolioProjects: PortfolioProject[] = [
     id: 'agrivita-smart-storage',
     title: 'AgriVita: Smart Agricultural Storage',
     categories: ['Website', 'Pertanian', 'IoT'],
-    image: 'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&q=80&w=1200&h=630',
+    image: '/images/blog/agrivita-penerapan-innovillage.jpg',
     shortDescription:
       'Bunker penyimpanan hasil panen cerdas berbasis IoT dan energi surya, mengubah gudang pasif menjadi ruang simpan yang terpantau dan berventilasi otomatis.',
     link: 'https://agrivita.synvorateknologiindonesia.web.id',
     overview:
-      'AgriVita mengubah gudang penyimpanan hasil panen yang pasif menjadi bunker cerdas yang dipantau sensor, dikendalikan otomatis, ditenagai panel surya, dan tercatat di cloud, untuk menekan kehilangan pascapanen. Konsep ini dirintis bersama petani di Lenteng Timur, Sumenep, wilayah dengan luas ±405 Ha dan sekitar 7.315 jiwa penduduk yang mayoritas bekerja sebagai petani. AgriVita dibangun di atas arsitektur 5 lapisan (Physical, Sensing, Edge/Control, Cloud/Application, Human/Operational) dengan sensor suhu-kelembapan (DHT22), indikasi kualitas udara (MQ-135), dan estimasi level isi bunker (HC-SR04).',
+      'AgriVita mengubah gudang penyimpanan hasil panen yang pasif menjadi bunker cerdas yang dipantau sensor, dikendalikan otomatis, ditenagai panel surya, dan tercatat di cloud, untuk menekan kehilangan pascapanen. Konsep ini dirintis bersama petani di Lenteng Timur, Sumenep, wilayah dengan luas ±405 Ha dan sekitar 7.315 jiwa penduduk yang mayoritas bekerja sebagai petani. AgriVita dibangun di atas arsitektur 5 lapisan (Physical, Sensing, Edge/Control, Cloud/Application, Human/Operational) dengan sensor suhu-kelembapan (DHT22), indikasi kualitas udara (MQ-135), dan estimasi level isi bunker (HC-SR04). Purwarupa fisiknya, AgriBunker, sudah pernah diterapkan langsung di lapangan pada 24 Februari 2025 oleh tim Innovillage dari Universitas Bahaudin Mudhary Madura (Uniba Madura).',
     features: [
       'Monitoring real-time suhu, kelembapan, kualitas udara, dan level isi bunker di dashboard web & mobile',
       'Peringatan dini bertingkat (Info, Warning, Critical) dengan debounce agar notifikasi tidak berlebihan',

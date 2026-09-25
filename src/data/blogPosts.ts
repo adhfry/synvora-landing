@@ -40,10 +40,10 @@ export const blogPosts: BlogPostMeta[] = [
     slug: 'agrivita-bunker-penyimpanan-cerdas-iot-petani-sumenep',
     title: 'AgriVita, Bunker Penyimpanan Cerdas Berbasis IoT untuk Petani Sumenep',
     excerpt:
-      'SYNVORA memperkenalkan AgriVita: sistem penyimpanan hasil panen cerdas berbasis IoT dan energi surya yang mengubah gudang pasif menjadi bunker terpantau sensor, dengan ventilasi otomatis dan peringatan dini kondisi penyimpanan, dirintis bersama petani Lenteng Timur, Sumenep.',
+      'SYNVORA memperkenalkan AgriVita: sistem penyimpanan hasil panen cerdas berbasis IoT dan energi surya yang mengubah gudang pasif menjadi bunker terpantau sensor, dengan ventilasi otomatis dan peringatan dini kondisi penyimpanan. Purwarupanya, AgriBunker, sudah diterapkan langsung di lapangan sejak 24 Februari 2025 oleh tim Innovillage Uniba Madura.',
     metaDescription:
-      'AgriVita: bunker penyimpanan cerdas berbasis IoT dan energi surya dari SYNVORA untuk menekan kehilangan hasil panen petani Sumenep.',
-    image: 'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&q=80&w=1200&h=630',
+      'AgriVita: bunker penyimpanan cerdas berbasis IoT dan energi surya dari SYNVORA, purwarupanya sudah diuji lapangan sejak Februari 2025.',
+    image: '/images/blog/agrivita-penerapan-innovillage.jpg',
     category: 'Berita',
     tags: ['Berita', 'Pertanian', 'AgriVita', 'IoT', 'Inovasi'],
     author: 'Ahda Firly Barori',
