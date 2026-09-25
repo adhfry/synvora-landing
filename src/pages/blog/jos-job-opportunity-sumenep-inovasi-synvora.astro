@@ -4,7 +4,7 @@ import { blogPosts } from '../../data/blogPosts';
 import { teamMembers } from '../../data/team';
 
 const post = blogPosts.find((p) => p.slug === 'jos-job-opportunity-sumenep-inovasi-synvora')!;
-const josTeam = teamMembers.filter((m) => m.name === 'Danur Wenda');
+const josTeam = teamMembers.filter((m) => m.name === 'Danur Wenda' || m.name === 'Ilham Maulana');
 ---
 
 <BlogArticleLayout
@@ -218,7 +218,7 @@ const josTeam = teamMembers.filter((m) => m.name === 'Danur Wenda');
 
   <div class="mb-10">
     <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Tim di Balik JOS</h2>
-    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">JOS dikembangkan oleh <strong>Ahda Firly Barori</strong> bersama <strong>Danur Wenda</strong> dari tim SYNVORA.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">JOS dikembangkan oleh <strong>Ahda Firly Barori</strong> bersama <strong>Danur Wenda</strong>, dengan <strong>Ilham Maulana</strong> sebagai pengembang sistemnya, dari tim SYNVORA.</p>
     <div class="flex flex-wrap gap-3">
       <div class="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-2xl p-4">
         <img src="/images/team/Ahda-Jas.png" alt="Ahda Firly Barori" class="w-12 h-12 rounded-full object-cover">

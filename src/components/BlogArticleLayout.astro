@@ -176,6 +176,155 @@ const breadcrumbJsonLd = {
         background-color: #0f1a3d;
         border-color: rgba(255, 255, 255, 0.2);
       }
+      .star-btn {
+        color: #d1d5db;
+        transition: color 0.15s ease, transform 0.15s ease;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 2px;
+        opacity: 0;
+        transform: translateY(6px) scale(0.6);
+        position: relative;
+      }
+      .star-btn.revealed {
+        animation: starReveal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+      .star-btn.active,
+      .star-btn.preview {
+        color: #f59e0b;
+      }
+      .star-btn.pop {
+        animation: starPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      @keyframes starReveal {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes starPop {
+        0% {
+          transform: scale(1) rotate(0deg);
+        }
+        35% {
+          transform: scale(1.45) rotate(-12deg);
+        }
+        65% {
+          transform: scale(0.9) rotate(8deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+      }
+      .sprinkle-dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: sprinkleFly 0.8s ease-out forwards;
+        z-index: 20;
+      }
+      @keyframes sprinkleFly {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0);
+          opacity: 0;
+        }
+      }
+      .comment-cta-card {
+        background: linear-gradient(120deg, #0066ff 0%, #4f46e5 50%, #0066ff 100%);
+        background-size: 200% 200%;
+        animation: ctaShimmer 6s ease infinite;
+      }
+      @keyframes ctaShimmer {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .comment-cta-glow {
+        position: absolute;
+        top: -30%;
+        right: -10%;
+        width: 140px;
+        height: 140px;
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        filter: blur(30px);
+        animation: ctaFloat 4s ease-in-out infinite;
+      }
+      @keyframes ctaFloat {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(-10px, 12px) scale(1.15);
+        }
+      }
+      .comment-cta-icon {
+        animation: ctaBounce 2.2s ease-in-out infinite;
+      }
+      @keyframes ctaBounce {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-3px) rotate(-6deg);
+        }
+        50% {
+          transform: translateY(0) rotate(0deg);
+        }
+        75% {
+          transform: translateY(-2px) rotate(6deg);
+        }
+      }
+      .comment-input {
+        width: 100%;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-size: 13px;
+        background: white;
+      }
+      .comment-input:focus {
+        outline: none;
+        border-color: #0066ff;
+      }
+      .dark .comment-input {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.12);
+        color: #e5e7eb;
+      }
+      .comment-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        background: #f0f7ff;
+        color: #0066ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .dark .comment-avatar {
+        background: rgba(0, 102, 255, 0.15);
+      }
       .dark .share-btn {
         border-color: rgba(255, 255, 255, 0.15);
         color: #9ca3af;
@@ -278,6 +427,82 @@ const breadcrumbJsonLd = {
             <a href={shareUrls.x} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke X"><img src="/icons/x-twitter-logo.webp" alt="X" class="share-icon-img"></a>
             <a href={shareUrls.whatsapp} target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="Bagikan ke WhatsApp"><img src="/icons/whatsapp-logo.png" alt="WhatsApp" class="share-icon-img"></a>
             <button class="share-btn copy-link-btn" type="button" aria-label="Bagikan halaman ini"><i class="fa-solid fa-share-nodes text-sm"></i></button>
+          </div>
+        </div>
+
+        <!-- Komentar -->
+        <div class="mb-12" id="comments-section" data-slug={post.slug}>
+          <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-6">
+            Komentar <span id="comment-count" class="text-primary"></span>
+          </h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <!-- Daftar komentar -->
+            <div class="lg:col-span-3">
+              <div id="comments-list" class="space-y-5">
+                <p class="text-xs text-gray-400">Memuat komentar...</p>
+              </div>
+            </div>
+
+            <!-- Rating + form, di sebelah kanan pada layar besar -->
+            <div class="lg:col-span-2">
+              <div class="lg:sticky lg:top-24 space-y-4">
+
+                <!-- Kartu ajakan -->
+                <div class="comment-cta-card relative overflow-hidden rounded-2xl p-5 text-white shadow-lg">
+                  <div class="comment-cta-glow"></div>
+                  <div class="relative z-10 flex items-center gap-3">
+                    <div class="comment-cta-icon w-11 h-11 rounded-full bg-white/15 flex items-center justify-center text-lg shrink-0">
+                      <i class="fa-solid fa-comment-dots"></i>
+                    </div>
+                    <div>
+                      <div class="font-bold text-sm leading-tight">Apa pendapatmu?</div>
+                      <div class="text-[11px] text-white/80 leading-relaxed mt-0.5">Yuk tulis komentar, pendapatmu bisa bantu pembaca lain juga!</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Rating pembaca -->
+                <div class="sidebar-card flex items-center justify-between">
+                  <span class="text-xs font-bold text-gray-900 dark:text-white">Rating Pembaca</span>
+                  <div id="rating-summary" class="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300"></div>
+                </div>
+
+                <!-- Form -->
+                <div class="sidebar-card">
+                  <h4 class="font-bold text-gray-900 dark:text-white text-base mb-4">Tulis Komentar</h4>
+                  <form id="comment-form" novalidate>
+                    <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                    <label for="comment-name" class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">Nama yang ditampilkan</label>
+                    <input type="text" id="comment-name" maxlength="60" placeholder="Misalnya: Danur Wenda" class="comment-input mb-4" required />
+
+                    <label class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">Beri rating (opsional)</label>
+                    <div id="star-input" class="relative flex gap-1 text-2xl mb-4" data-value="0">
+                      <button type="button" class="star-btn" data-star="1" aria-label="1 bintang"><i class="fa-solid fa-star"></i></button>
+                      <button type="button" class="star-btn" data-star="2" aria-label="2 bintang"><i class="fa-solid fa-star"></i></button>
+                      <button type="button" class="star-btn" data-star="3" aria-label="3 bintang"><i class="fa-solid fa-star"></i></button>
+                      <button type="button" class="star-btn" data-star="4" aria-label="4 bintang"><i class="fa-solid fa-star"></i></button>
+                      <button type="button" class="star-btn" data-star="5" aria-label="5 bintang"><i class="fa-solid fa-star"></i></button>
+                    </div>
+
+                    <label for="comment-text" class="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">Komentar</label>
+                    <textarea id="comment-text" maxlength="1000" rows="4" placeholder="Tulis pendapatmu..." class="comment-input mb-4 resize-none" required></textarea>
+
+                    <label class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-4 cursor-pointer">
+                      <input type="checkbox" id="remember-name" class="rounded" /> Ingat nama saya di perangkat ini
+                    </label>
+
+                    <p id="comment-form-error" class="text-xs text-red-500 mb-3 hidden"></p>
+
+                    <button type="submit" class="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-xs font-semibold transition inline-flex items-center gap-2 w-full justify-center">
+                      <span id="comment-submit-label">Kirim Komentar</span>
+                    </button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
 
@@ -418,5 +643,323 @@ const breadcrumbJsonLd = {
         }
       });
     });
+  </script>
+
+  <script is:inline define:vars={{ slug: post.slug }}>
+    (function () {
+      const section = document.getElementById('comments-section');
+      if (!section) return;
+
+      const listEl = document.getElementById('comments-list');
+      const countEl = document.getElementById('comment-count');
+      const ratingSummaryEl = document.getElementById('rating-summary');
+      const form = document.getElementById('comment-form');
+      const nameInput = document.getElementById('comment-name');
+      const textInput = document.getElementById('comment-text');
+      const websiteInput = form.querySelector('input[name="website"]');
+      const rememberCheckbox = document.getElementById('remember-name');
+      const errorEl = document.getElementById('comment-form-error');
+      const starInput = document.getElementById('star-input');
+      const starButtons = Array.from(starInput.querySelectorAll('.star-btn'));
+      const submitLabel = document.getElementById('comment-submit-label');
+      const NAME_KEY = 'synvora_comment_name';
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str == null ? '' : String(str);
+        return div.innerHTML;
+      }
+
+      function initials(name) {
+        const parts = String(name || '?').trim().split(/\s+/).filter(Boolean);
+        if (parts.length === 0) return '?';
+        if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+        return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+      }
+
+      function formatDate(iso) {
+        try {
+          return new Date(iso).toLocaleString('id-ID', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+          });
+        } catch {
+          return '';
+        }
+      }
+
+      function starsHtml(rating) {
+        if (!rating) return '';
+        let out = '<span class="text-amber-500 text-[11px]">';
+        for (let i = 1; i <= 5; i++) {
+          out += `<i class="fa-solid fa-star${i > rating ? ' text-gray-200 dark:text-white/10' : ''}"></i>`;
+        }
+        return out + '</span>';
+      }
+
+      // Restore remembered name.
+      try {
+        const saved = localStorage.getItem(NAME_KEY);
+        if (saved) {
+          nameInput.value = saved;
+          rememberCheckbox.checked = true;
+        }
+      } catch {}
+
+      // Star rating input: staggered reveal on scroll-into-view, a little
+      // "pop" bounce per click, a hover preview, and a confetti-ish sprinkle
+      // burst when someone lands on a full 5-star rating.
+      let selectedRating = 0;
+
+      function renderStars(previewValue) {
+        const upTo = previewValue != null ? previewValue : selectedRating;
+        starButtons.forEach((btn) => {
+          const val = Number(btn.dataset.star);
+          btn.classList.toggle('active', previewValue == null && val <= selectedRating);
+          btn.classList.toggle('preview', previewValue != null && val <= upTo);
+        });
+      }
+
+      function popStar(btn) {
+        btn.classList.remove('pop');
+        // Force reflow so the animation restarts even on repeated clicks.
+        void btn.offsetWidth;
+        btn.classList.add('pop');
+      }
+
+      const SPRINKLE_COLORS = ['#f59e0b', '#0066ff', '#22c55e', '#ec4899', '#a855f7'];
+      function sprinkleBurst() {
+        const rect = starInput.getBoundingClientRect();
+        const count = 16;
+        for (let i = 0; i < count; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'sprinkle-dot';
+          const angle = Math.random() * Math.PI * 2;
+          const distance = 30 + Math.random() * 40;
+          dot.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+          dot.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+          dot.style.background = SPRINKLE_COLORS[i % SPRINKLE_COLORS.length];
+          dot.style.left = `${(rect.width / 2)}px`;
+          starInput.appendChild(dot);
+          dot.addEventListener('animationend', () => dot.remove());
+        }
+      }
+
+      starButtons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          const val = Number(btn.dataset.star);
+          selectedRating = selectedRating === val ? 0 : val;
+          renderStars();
+          popStar(btn);
+          if (selectedRating === 5) sprinkleBurst();
+        });
+        btn.addEventListener('mouseenter', () => renderStars(Number(btn.dataset.star)));
+        btn.addEventListener('mouseleave', () => renderStars());
+      });
+
+      // Reveal the stars with a little stagger once the comment form
+      // actually scrolls into view, instead of all popping in at once.
+      const starObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            starButtons.forEach((btn, i) => {
+              setTimeout(() => btn.classList.add('revealed'), i * 90);
+            });
+            starObserver.disconnect();
+          });
+        },
+        { threshold: 0.4 }
+      );
+      starObserver.observe(starInput);
+
+      function replyFormHtml(commentId) {
+        return `
+          <form class="reply-form mt-3 space-y-2" data-parent-id="${commentId}">
+            <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="text" class="comment-input reply-name" placeholder="Nama kamu" maxlength="60" required />
+            <textarea class="comment-input reply-text" rows="2" placeholder="Tulis balasan..." maxlength="1000" required></textarea>
+            <div class="flex items-center gap-2">
+              <button type="submit" class="bg-primary hover:bg-blue-700 text-white px-4 py-1.5 rounded-full text-[11px] font-semibold transition">Kirim Balasan</button>
+              <button type="button" class="reply-cancel-btn text-[11px] text-gray-400 hover:text-gray-600">Batal</button>
+            </div>
+            <p class="reply-error text-[11px] text-red-500 hidden"></p>
+          </form>
+        `;
+      }
+
+      function replyHtml(reply) {
+        return `
+          <div class="flex items-start gap-2.5">
+            <div class="comment-avatar" style="width:28px;height:28px;font-size:10px;">${escapeHtml(initials(reply.name))}</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-bold text-xs text-gray-900 dark:text-white">${escapeHtml(reply.name)}</span>
+                <span class="text-[10px] text-gray-400">${formatDate(reply.createdAt)}</span>
+              </div>
+              <p class="text-xs text-gray-600 dark:text-gray-300 mt-0.5">${escapeHtml(reply.text)}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      function commentHtml(comment) {
+        const replies = (comment.replies || []).map(replyHtml).join('');
+        return `
+          <div class="border-b border-gray-100 dark:border-white/10 pb-5" data-comment-id="${escapeHtml(comment.id)}">
+            <div class="flex items-start gap-3">
+              <div class="comment-avatar">${escapeHtml(initials(comment.name))}</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-bold text-sm text-gray-900 dark:text-white">${escapeHtml(comment.name)}</span>
+                  ${starsHtml(comment.rating)}
+                  <span class="text-[10px] text-gray-400">${formatDate(comment.createdAt)}</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">${escapeHtml(comment.text)}</p>
+                <button type="button" class="reply-toggle-btn text-[11px] font-semibold text-primary mt-1.5">Balas</button>
+                <div class="reply-form-slot"></div>
+                ${replies ? `<div class="replies mt-3 space-y-3 pl-4 border-l-2 border-gray-100 dark:border-white/10">${replies}</div>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      async function loadComments() {
+        try {
+          const res = await fetch(`/api/comments?slug=${encodeURIComponent(slug)}`);
+          if (!res.ok) throw new Error('failed');
+          const data = await res.json();
+          const comments = data.comments || [];
+          const summary = data.summary || { average: 0, count: 0 };
+
+          countEl.textContent = comments.length ? `(${comments.length})` : '';
+          ratingSummaryEl.innerHTML = summary.count
+            ? `<i class="fa-solid fa-star text-amber-500"></i> <strong class="text-gray-900 dark:text-white">${summary.average}</strong> dari ${summary.count} ulasan`
+            : '';
+
+          listEl.innerHTML = comments.length
+            ? comments.map(commentHtml).join('')
+            : '<p class="text-sm text-gray-400">Belum ada komentar. Jadilah yang pertama berkomentar!</p>';
+        } catch {
+          listEl.innerHTML = '<p class="text-sm text-red-400">Gagal memuat komentar. Coba muat ulang halaman.</p>';
+        }
+      }
+
+      // Main comment form submit.
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.classList.add('hidden');
+
+        const name = nameInput.value.trim();
+        const text = textInput.value.trim();
+        if (!name || !text) {
+          errorEl.textContent = 'Nama dan komentar wajib diisi.';
+          errorEl.classList.remove('hidden');
+          return;
+        }
+
+        submitLabel.textContent = 'Mengirim...';
+        try {
+          const res = await fetch('/api/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              slug,
+              name,
+              text,
+              rating: selectedRating || undefined,
+              website: websiteInput.value,
+            }),
+          });
+          const data = await res.json();
+          if (!res.ok || !data.ok) {
+            throw new Error(data.error || 'Gagal mengirim komentar.');
+          }
+
+          try {
+            if (rememberCheckbox.checked) {
+              localStorage.setItem(NAME_KEY, name);
+            } else {
+              localStorage.removeItem(NAME_KEY);
+            }
+          } catch {}
+
+          textInput.value = '';
+          selectedRating = 0;
+          renderStars();
+          await loadComments();
+        } catch (err) {
+          errorEl.textContent = err.message || 'Terjadi kesalahan. Coba lagi nanti.';
+          errorEl.classList.remove('hidden');
+        } finally {
+          submitLabel.textContent = 'Kirim Komentar';
+        }
+      });
+
+      // Event delegation for "Balas" buttons, reply forms, and cancel buttons
+      // rendered dynamically inside the comments list.
+      listEl.addEventListener('click', (e) => {
+        const toggleBtn = e.target.closest('.reply-toggle-btn');
+        if (toggleBtn) {
+          const slot = toggleBtn.parentElement.querySelector('.reply-form-slot');
+          const commentEl = toggleBtn.closest('[data-comment-id]');
+          const commentId = commentEl.dataset.commentId;
+          if (slot.innerHTML) {
+            slot.innerHTML = '';
+          } else {
+            slot.innerHTML = replyFormHtml(commentId);
+          }
+          return;
+        }
+        const cancelBtn = e.target.closest('.reply-cancel-btn');
+        if (cancelBtn) {
+          cancelBtn.closest('.reply-form-slot').innerHTML = '';
+        }
+      });
+
+      listEl.addEventListener('submit', async (e) => {
+        const replyForm = e.target.closest('.reply-form');
+        if (!replyForm) return;
+        e.preventDefault();
+
+        const parentId = replyForm.dataset.parentId;
+        const nameEl = replyForm.querySelector('.reply-name');
+        const textEl = replyForm.querySelector('.reply-text');
+        const websiteEl = replyForm.querySelector('input[name="website"]');
+        const errEl = replyForm.querySelector('.reply-error');
+        const submitBtn = replyForm.querySelector('button[type="submit"]');
+
+        const name = nameEl.value.trim();
+        const text = textEl.value.trim();
+        errEl.classList.add('hidden');
+        if (!name || !text) {
+          errEl.textContent = 'Nama dan balasan wajib diisi.';
+          errEl.classList.remove('hidden');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        try {
+          const res = await fetch('/api/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ slug, name, text, parentId, website: websiteEl.value }),
+          });
+          const data = await res.json();
+          if (!res.ok || !data.ok) throw new Error(data.error || 'Gagal mengirim balasan.');
+          await loadComments();
+        } catch (err) {
+          errEl.textContent = err.message || 'Terjadi kesalahan. Coba lagi nanti.';
+          errEl.classList.remove('hidden');
+          submitBtn.disabled = false;
+        }
+      });
+
+      loadComments();
+    })();
   </script>
 </Layout>

@@ -45,7 +45,7 @@ export const portfolioProjects: PortfolioProject[] = [
       'Setiap skor kecocokan bisa dijawab "Mengapa?", rincian bobot per kriteria (skill 30%, pendidikan 20%, lokasi 20%, pengalaman 15%, minat 10%, usia 5%) ditampilkan transparan ke pengguna',
       'Scraper modular per sumber sehingga sumber lowongan baru bisa ditambahkan tanpa mengubah sistem inti',
     ],
-    team: ['Ahda Firly Barori', 'Danur Wenda'],
+    team: ['Ahda Firly Barori', 'Danur Wenda', 'Ilham Maulana'],
   },
   {
     id: 'belajar-bahasa-madura',
