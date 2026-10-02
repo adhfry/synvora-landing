@@ -1,0 +1,86 @@
+# Synvora landing: build + secret scan on every push/PR; deploy main to the VPS.
+# Deploy is OFF until repo variable DEPLOY_ENABLED=true and these secrets exist
+# (repo or `production` environment): DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY
+# (CI-only key, forced command on the VPS), DEPLOY_KNOWN_HOSTS. See DEPLOYMENT.md.
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Build (no secrets: public keys left empty on purpose)
+        run: npm run build
+
+      - name: Check build output
+        run: test -f dist/server/entry.mjs && test -d dist/client
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    name: Deploy to production
+    needs: [build, secret-scan]
+    if: vars.DEPLOY_ENABLED == 'true' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://synvorateknologiindonesia.web.id
+    concurrency:
+      group: synvora-deploy-production
+      cancel-in-progress: false
+    steps:
+      - name: Deploy this exact commit over SSH (forced-command key)
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            "$DEPLOY_USER@$DEPLOY_HOST" deploy "$GITHUB_SHA"
+          rm -f ~/.ssh/deploy_key
+
+      - name: Smoke test
+        run: |
+          for path in / /hubungi-kami /sitemap-index.xml; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://synvorateknologiindonesia.web.id$path") || true
+            echo "$code $path"; [ "$code" = 200 ] || exit 1
+          done
