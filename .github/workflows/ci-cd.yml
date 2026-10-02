@@ -34,7 +34,7 @@ jobs:
       - name: Install
         run: npm ci --no-audit --no-fund
 
-      - name: Build (no secrets: public keys left empty on purpose)
+      - name: Build (no secrets, public keys left empty on purpose)
         run: npm run build
 
       - name: Check build output
