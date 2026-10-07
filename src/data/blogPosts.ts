@@ -21,6 +21,22 @@ export interface BlogPostMeta {
 // across the blog listing and the topics page.
 export const blogPosts: BlogPostMeta[] = [
   {
+    slug: 'synctappy-produk-saas-nfc-qr-synvora',
+    title: 'Synctappy, Produk SaaS NFC dan QR dari Ekosistem SYNVORA',
+    excerpt:
+      'Di luar solusi teknologi yang kami kerjakan untuk klien dan instansi, SYNVORA juga membangun produk digital sendiri. Synctappy adalah salah satunya: platform digital engagement berbasis NFC dan QR dengan profil bisnis pintar, dynamic link, review generation, dan analitik, kini sudah live dengan uji coba gratis terbuka.',
+    metaDescription:
+      'Synctappy: produk SaaS NFC dan QR dari ekosistem SYNVORA untuk digital engagement bisnis, kini live dengan uji coba gratis 14 hari.',
+    image: '/images/portfolio/synctappy-cover.png',
+    category: 'Berita',
+    tags: ['Berita', 'Produk', 'Synctappy', 'SaaS', 'Inovasi'],
+    author: 'Ahda Firly Barori',
+    authorImage: '/images/team/Ahda-Jas.png',
+    publishedAt: '2026-10-08',
+    publishedDisplay: '8 Oktober 2026',
+    readTime: '6 menit baca',
+  },
+  {
     slug: 'aira-sistem-peringatan-dini-banjir-sumenep',
     title: 'AIRA, Sistem Peringatan Dini Banjir Berbasis AI dan IoT untuk Sumenep',
     excerpt:
@@ -218,6 +234,8 @@ export const TOPIC_ICONS: Record<string, string> = {
   Kebencanaan: 'fa-solid fa-house-flood-water',
   Pertanian: 'fa-solid fa-seedling',
   IoT: 'fa-solid fa-satellite-dish',
+  Produk: 'fa-solid fa-cube',
+  SaaS: 'fa-solid fa-cloud',
   'Tips & Tutorial': 'fa-solid fa-lightbulb',
   Karier: 'fa-solid fa-briefcase',
   Berita: 'fa-regular fa-newspaper',

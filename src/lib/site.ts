@@ -1,7 +1,11 @@
 export const SITE = {
   url: 'https://synvorateknologiindonesia.web.id',
   name: 'SYNVORA Teknologi Indonesia',
-  email: 'synvorateknologiindonesia@gmail.com',
+  legalName: 'PT Perorangan Synvora Teknologi Indonesia',
+  founderName: 'Ahda Firly Barori',
+  foundedDisplay: 'September 2026',
+  foundedISO: '2026-09',
+  email: 'admin@synvorateknologiindonesia.web.id',
   phoneDisplay: '+62 812-3310-7475',
   whatsappUrl: 'https://wa.me/6281233107475',
   address: 'Jl. Diponegoro No.109 B, Pajinggaan, Bangselok, Kec. Kota Sumenep, Kabupaten Sumenep, Jawa Timur 69416',

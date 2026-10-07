@@ -18,7 +18,7 @@ interface Props {
 
 const {
   title,
-  description = 'SYNVORA Teknologi Indonesia adalah mitra terpercaya dalam pembuatan sistem informasi yang inovatif, andal, dan berdampak nyata bagi organisasi Anda.',
+  description = 'SYNVORA Teknologi Indonesia adalah perusahaan teknologi berbasis di Sumenep yang membangun sistem perangkat lunak, produk digital, dan solusi teknologi untuk organisasi.',
   navVariant = 'light',
   footerVariant = 'default',
   active = '',
@@ -47,6 +47,9 @@ const organizationJsonLd = {
   '@type': 'Organization',
   '@id': `${SITE.url}/#organization`,
   name: SITE.name,
+  legalName: SITE.legalName,
+  foundingDate: SITE.foundedISO,
+  founder: { '@type': 'Person', name: SITE.founderName },
   url: SITE.url,
   logo: `${SITE.url}/images/logo/synvora-teknologi-indonesia-logo-bluetext.png`,
   email: SITE.email,

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team';
+import { SITE } from '../lib/site';
 ---
 
 <Layout
@@ -116,24 +117,12 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
         </div>
       </div>
 
-      <!-- Right Image (Placeholder) -->
+      <!-- Right: real photo from a team working session -->
       <div class="hidden lg:block relative">
-        <div class="rounded-xl overflow-hidden shadow-2xl border border-white/10">
-          <!-- Replace this URL with your actual office wall image -->
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="SYNVORA Office Wall" class="w-full h-[400px] object-cover opacity-80">
-          <!-- Overlay Text to mimic the image -->
-          <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8 bg-black/40">
-            <img
-              src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png"
-              alt="SYNVORA Teknologi Indonesia"
-              class="h-14 w-auto max-w-[320px] object-contain mb-6"
-            />
-            <div class="text-white text-lg font-light tracking-wide space-y-2">
-              <div>Ideas</div>
-              <div>Systems</div>
-              <div>People</div>
-              <div class="font-bold">A Better Tomorrow</div>
-            </div>
+        <div class="rounded-xl overflow-hidden shadow-2xl border border-white/10 relative h-[400px]">
+          <img src="/images/team/pertemuan-1-synvora.jpg" alt="Tim SYNVORA dalam sesi kerja" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end items-start text-left p-6">
+            <div class="text-white text-sm font-semibold leading-tight">Tim SYNVORA, dalam sesi kerja langsung.</div>
           </div>
         </div>
       </div>
@@ -143,11 +132,16 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
   <!-- ================= SIAPA KAMI ================= -->
   <section class="py-24 bg-white px-8">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <!-- Left Image -->
+      <!-- Left: abstract brand panel (no office/building photo - we don't have one yet) -->
       <div class="relative">
-        <div class="rounded-2xl overflow-hidden shadow-lg">
-          <!-- Replace with building image -->
-          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="Gedung SYNVORA" class="w-full h-[400px] object-cover">
+        <div class="rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-[#0f1a3d] to-[#0A1128] h-[400px] relative flex items-center justify-center">
+          <div class="absolute top-0 left-0 w-56 h-56 bg-primary rounded-full filter blur-[90px] opacity-25"></div>
+          <div class="absolute bottom-0 right-0 w-40 h-40 bg-primary rounded-full filter blur-[70px] opacity-20"></div>
+          <img
+            src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png"
+            alt="SYNVORA Teknologi Indonesia"
+            class="h-16 w-auto max-w-[300px] object-contain relative z-10"
+          />
         </div>
         <!-- Floating text box -->
         <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg max-w-[240px] border-l-4 border-primary">
@@ -164,11 +158,35 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
         </div>
         <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">SYNVORA Teknologi Indonesia</h2>
         <p class="text-sm text-gray-600 leading-relaxed mb-6">
-          SYNVORA Teknologi Indonesia adalah perusahaan teknologi dan sistem informasi yang berfokus pada pengembangan solusi digital yang inovatif, andal, dan berdampak nyata bagi organisasi di berbagai sektor.
+          Teknologi semestinya lebih dari sekadar mendigitalkan proses yang sudah ada. Teknologi semestinya menciptakan cara kerja yang lebih baik, menghubungkan orang dan informasi, dan membuka kemungkinan baru.
         </p>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Kami lahir dari semangat sekelompok individu yang percaya bahwa teknologi dapat menjadi katalis perubahan. Dengan menggabungkan pengalaman, kreativitas, dan keahlian, kami hadir untuk membantu organisasi menghadapi tantangan era digital dan meraih peluang masa depan.
+        <p class="text-sm text-gray-600 leading-relaxed mb-8">
+          SYNVORA Teknologi Indonesia adalah perusahaan teknologi tahap awal (early-stage) yang berbasis di Sumenep, Jawa Timur. Kami bekerja di dua arah: membangun solusi teknologi untuk organisasi dan instansi, serta membangun produk digital milik kami sendiri dan menjajaki teknologi baru lewat riset mandiri.
         </p>
+
+        <!-- Company Information -->
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 grid grid-cols-2 gap-5">
+          <div>
+            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Badan Hukum</div>
+            <div class="text-sm font-semibold text-gray-900">{SITE.legalName}</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Didirikan</div>
+            <div class="text-sm font-semibold text-gray-900">{SITE.foundedDisplay}</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Berbasis di</div>
+            <div class="text-sm font-semibold text-gray-900">{SITE.addressShort}, Indonesia</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Pendiri & Direktur</div>
+            <div class="text-sm font-semibold text-gray-900">{SITE.founderName}</div>
+          </div>
+          <div class="col-span-2">
+            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Industri</div>
+            <div class="text-sm font-semibold text-gray-900">Teknologi / Software & SaaS</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -183,7 +201,7 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
         </div>
         <h3 class="font-bold text-gray-900 text-lg mb-4">Visi</h3>
         <p class="text-sm text-gray-500 leading-relaxed">
-          Menjadi perusahaan teknologi terdepan yang dikenal sebagai mitra utama dalam pembuatan sistem informasi di Indonesia.
+          Membangun solusi teknologi yang relevan bagi organisasi di Indonesia, sembari mengembangkan produk digital kami sendiri.
         </p>
       </div>
 
@@ -253,34 +271,30 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
     </div>
   </section>
 
-  <!-- ================= DALAM ANGKA ================= -->
+  <!-- ================= COMPANY SNAPSHOT ================= -->
   <section class="py-16 px-8">
     <div class="max-w-7xl mx-auto stat-bg rounded-3xl p-12 text-white flex flex-col lg:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
-      <!-- Stats Grid -->
+      <!-- Facts Grid -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-2/3 mb-12 lg:mb-0">
-        <!-- Stat 1 -->
+        <div class="flex flex-col items-center lg:items-start">
+          <i class="fa-solid fa-building-columns text-3xl text-blue-300 mb-4"></i>
+          <div class="text-xl font-extrabold mb-1">{SITE.foundedDisplay}</div>
+          <div class="text-xs text-gray-300 text-center lg:text-left">Didirikan</div>
+        </div>
+        <div class="flex flex-col items-center lg:items-start">
+          <i class="fa-solid fa-location-dot text-3xl text-blue-300 mb-4"></i>
+          <div class="text-xl font-extrabold mb-1">Sumenep</div>
+          <div class="text-xs text-gray-300 text-center lg:text-left">Berbasis di Jawa Timur</div>
+        </div>
+        <div class="flex flex-col items-center lg:items-start">
+          <i class="fa-solid fa-cube text-3xl text-blue-300 mb-4"></i>
+          <div class="text-xl font-extrabold mb-1">Produk & Solusi</div>
+          <div class="text-xs text-gray-300 text-center lg:text-left">Fokus utama kami</div>
+        </div>
         <div class="flex flex-col items-center lg:items-start">
           <i class="fa-solid fa-users text-3xl text-blue-300 mb-4"></i>
-          <div class="text-3xl font-extrabold mb-1">20+</div>
-          <div class="text-xs text-gray-300 text-center lg:text-left">Klien Dipercaya</div>
-        </div>
-        <!-- Stat 2 -->
-        <div class="flex flex-col items-center lg:items-start">
-          <i class="fa-solid fa-box text-3xl text-blue-300 mb-4"></i>
-          <div class="text-3xl font-extrabold mb-1">50+</div>
-          <div class="text-xs text-gray-300 text-center lg:text-left">Proyek Diselesaikan</div>
-        </div>
-        <!-- Stat 3 -->
-        <div class="flex flex-col items-center lg:items-start">
-          <i class="fa-regular fa-clock text-3xl text-blue-300 mb-4"></i>
-          <div class="text-3xl font-extrabold mb-1">2+</div>
-          <div class="text-xs text-gray-300 text-center lg:text-left">Tahun Perjalanan</div>
-        </div>
-        <!-- Stat 4 -->
-        <div class="flex flex-col items-center lg:items-start">
-          <i class="fa-regular fa-star text-3xl text-blue-300 mb-4"></i>
-          <div class="text-3xl font-extrabold mb-1">100%</div>
-          <div class="text-xs text-gray-300 text-center lg:text-left">Komitmen untuk Dampak Nyata</div>
+          <div class="text-xl font-extrabold mb-1">Multidisiplin</div>
+          <div class="text-xs text-gray-300 text-center lg:text-left">Tim yang membangunnya</div>
         </div>
       </div>
 
@@ -318,8 +332,7 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
       <!-- Right Image Grid -->
       <div class="grid grid-cols-2 gap-4">
         <div class="col-span-2 relative rounded-2xl overflow-hidden shadow-lg h-64">
-          <!-- Replace with team image -->
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Tim SYNVORA" class="w-full h-full object-cover">
+          <img src="/images/team/pertemuan-2-synvora.jpg" alt="Tim SYNVORA dalam pertemuan kerja" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
             <div class="text-white">
               <div class="text-lg font-bold leading-tight">Great<br>People<br>Build<br>Great<br>Solutions</div>
@@ -345,7 +358,7 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
       </div>
       <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">Orang-Orang di Balik SYNVORA</h2>
       <p class="text-sm text-gray-600 leading-relaxed mb-16 max-w-2xl">
-        Sekelompok individu yang berdedikasi untuk menghadirkan solusi teknologi terbaik bagi setiap klien kami.
+        Sekelompok individu yang membangun solusi teknologi dan produk digital SYNVORA, dari perancangan hingga rilis.
       </p>
 
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
@@ -449,12 +462,12 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
           <!-- 2024 -->
           <div class="text-center">
-            <div class="timeline-dot active">
+            <div class="timeline-dot">
               <i class="fa-solid fa-flag text-sm"></i>
             </div>
             <div class="text-primary font-bold text-lg mb-2">2024</div>
-            <div class="font-bold text-gray-900 mb-1">Awal Ide</div>
-            <div class="text-xs text-gray-500">Gagasan dan visi SYNVORA lahir.</div>
+            <div class="font-bold text-gray-900 mb-1">Eksplorasi Teknologi Awal</div>
+            <div class="text-xs text-gray-500">Gagasan dan visi di balik SYNVORA mulai terbentuk.</div>
           </div>
           <!-- 2025 -->
           <div class="text-center">
@@ -462,26 +475,26 @@ import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../data/team'
               <i class="fa-regular fa-file-lines text-sm"></i>
             </div>
             <div class="text-primary font-bold text-lg mb-2">2025</div>
-            <div class="font-bold text-gray-900 mb-1">Persiapan</div>
-            <div class="text-xs text-gray-500">Tim terbentuk dan strategi disusun.</div>
+            <div class="font-bold text-gray-900 mb-1">Proyek & Eksplorasi Produk</div>
+            <div class="text-xs text-gray-500">Tim menjajaki proyek, teknologi, dan produk digital.</div>
           </div>
-          <!-- 2026 -->
+          <!-- September 2026 -->
           <div class="text-center">
-            <div class="timeline-dot">
+            <div class="timeline-dot active">
               <i class="fa-solid fa-rocket text-sm"></i>
             </div>
-            <div class="text-primary font-bold text-lg mb-2">2026</div>
-            <div class="font-bold text-gray-900 mb-1">Resmi Berdiri</div>
-            <div class="text-xs text-gray-500">SYNVORA Teknologi Indonesia didirikan.</div>
+            <div class="text-primary font-bold text-lg mb-2">Sep 2026</div>
+            <div class="font-bold text-gray-900 mb-1">Resmi Didirikan</div>
+            <div class="text-xs text-gray-500">{SITE.legalName} resmi berdiri.</div>
           </div>
-          <!-- Masa Depan -->
+          <!-- 2026+ -->
           <div class="text-center">
             <div class="timeline-dot">
               <i class="fa-solid fa-chart-line text-sm"></i>
             </div>
-            <div class="text-primary font-bold text-lg mb-2">Masa Depan</div>
-            <div class="font-bold text-gray-900 mb-1">Terus Bertumbuh</div>
-            <div class="text-xs text-gray-500">Menjadi perusahaan teknologi terdepan di Indonesia.</div>
+            <div class="text-primary font-bold text-lg mb-2">2026+</div>
+            <div class="font-bold text-gray-900 mb-1">Membangun Produk & Solusi</div>
+            <div class="text-xs text-gray-500">Mengembangkan solusi teknologi dan produk digital kami sendiri.</div>
           </div>
         </div>
       </div>

@@ -1,10 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { teamMembers } from '../data/team';
-
-const pyepit = teamMembers.find((m) => m.name === 'Pyepit Rineksoa Andriyanto')!;
-const danur = teamMembers.find((m) => m.name === 'Danur Wenda')!;
-const muqtafi = teamMembers.find((m) => m.name === 'Ahmad Muqtafi')!;
 ---
 
 <Layout
@@ -155,16 +150,11 @@ const muqtafi = teamMembers.find((m) => m.name === 'Ahmad Muqtafi')!;
           Jelajahi peluang karier di SYNVORA dan jadilah bagian dari tim yang membangun masa depan dengan teknologi.
         </p>
 
-        <!-- Office Image -->
+        <!-- Real photo from a team working session -->
         <div class="relative rounded-2xl overflow-hidden shadow-lg mb-6 h-48">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" alt="SYNVORA Office" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center p-6">
-            <div class="text-white text-lg font-light tracking-wide space-y-1">
-              <div>Ideas</div>
-              <div>Systems</div>
-              <div>People</div>
-              <div class="font-bold">A Better Tomorrow</div>
-            </div>
+          <img src="/images/team/pertemuan-2-synvora.jpg" alt="Tim SYNVORA dalam pertemuan kerja" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent flex flex-col justify-end items-start text-left p-6">
+            <div class="text-white text-sm font-semibold">Tim SYNVORA, bekerja langsung.</div>
           </div>
         </div>
 
@@ -272,73 +262,32 @@ const muqtafi = teamMembers.find((m) => m.name === 'Ahmad Muqtafi')!;
     </div>
   </section>
 
-  <!-- ================= TESTIMONIALS SECTION ================= -->
+  <!-- ================= WHY JOIN SECTION ================= -->
   <section class="py-24 bg-white px-8">
     <div class="max-w-7xl mx-auto">
-      <!-- Header -->
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-        <div>
-          <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
-            <span class="w-2 h-2 bg-primary rounded-full"></span> TESTIMONI KARYAWAN
-          </div>
-          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">Apa Kata Tim Kami?</h2>
+      <div class="mb-12">
+        <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+          <span class="w-2 h-2 bg-primary rounded-full"></span> KENAPA SYNVORA
         </div>
-        <a href="#" class="text-primary text-sm font-semibold hover:underline flex items-center gap-2 mt-4 md:mt-0">
-          Lihat Cerita Lainnya <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">Bergabung di Tahap Awal</h2>
+        <p class="text-sm text-gray-500 max-w-xl">SYNVORA masih perusahaan tahap awal. Bergabung sekarang berarti ikut membentuk arah tim, produk, dan cara kerja kami sejak tahap formatif.</p>
       </div>
 
-      <!-- Testimonial Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Testimonial 1 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
-          <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
-          <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">"Di SYNVORA, saya merasa didukung untuk terus belajar dan berkembang. Timnya solid dan visi perusahaannya sangat jelas."</p>
-          <div class="flex items-center gap-4">
-            {pyepit.photo ? (
-              <img src={pyepit.photo} alt={pyepit.name} class="w-12 h-12 rounded-full object-cover">
-            ) : (
-              <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-sm">{pyepit.initials}</div>
-            )}
-            <div>
-              <div class="font-bold text-sm text-gray-900">{pyepit.name}</div>
-              <div class="text-[10px] text-gray-500">{pyepit.role}</div>
-            </div>
-          </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+          <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-layer-group"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Kerja Lintas Peran</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Tim yang masih kecil berarti kesempatan terlibat langsung di solusi klien, produk sendiri, maupun riset dan inovasi.</p>
         </div>
-
-        <!-- Testimonial 2 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
-          <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
-          <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">"Lingkungan kerja yang positif dan penuh kolaborasi membuat saya semakin termotivasi untuk memberikan hasil terbaik."</p>
-          <div class="flex items-center gap-4">
-            {danur.photo ? (
-              <img src={danur.photo} alt={danur.name} class="w-12 h-12 rounded-full object-cover">
-            ) : (
-              <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-sm">{danur.initials}</div>
-            )}
-            <div>
-              <div class="font-bold text-sm text-gray-900">{danur.name}</div>
-              <div class="text-[10px] text-gray-500">{danur.role}</div>
-            </div>
-          </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+          <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-seedling"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Ikut Membentuk Arah</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Keputusan tentang produk, proses, dan budaya kerja masih terbuka untuk dibentuk bersama di tahap ini.</p>
         </div>
-
-        <!-- Testimonial 3 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
-          <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
-          <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">"SYNVORA memberikan kesempatan untuk terlibat dalam proyek-proyek menarik yang berdampak langsung bagi masyarakat."</p>
-          <div class="flex items-center gap-4">
-            {muqtafi.photo ? (
-              <img src={muqtafi.photo} alt={muqtafi.name} class="w-12 h-12 rounded-full object-cover">
-            ) : (
-              <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-sm">{muqtafi.initials}</div>
-            )}
-            <div>
-              <div class="font-bold text-sm text-gray-900">{muqtafi.name}</div>
-              <div class="text-[10px] text-gray-500">{muqtafi.role}</div>
-            </div>
-          </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+          <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-handshake"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Transparan Apa Adanya</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Kami jujur soal posisi kami sebagai perusahaan baru: masih membangun, bukan berpura-pura sudah besar.</p>
         </div>
       </div>
     </div>

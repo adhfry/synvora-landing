@@ -1,0 +1,149 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'synctappy-produk-saas-nfc-qr-synvora')!;
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="CEO & Founder SYNVORA"
+  overlayLines={['NFC', '&', 'QR']}
+  overlayDark={true}
+  quote="Synctappy adalah salah satu produk yang sedang kami bangun di ekosistem SYNVORA. Selain mengerjakan solusi untuk klien dan instansi, kami juga ingin membuktikan bahwa tim kami bisa membangun dan mengoperasikan produk sendiri."
+  tags={post.tags}
+  tocItems={[
+    'Kenalkan Synctappy: Salah Satu Produk Ekosistem SYNVORA',
+    'Kenapa Bisnis Butuh Digital Engagement Tanpa Aplikasi?',
+    'Bagaimana Synctappy Bekerja?',
+    'Fitur-Fitur Utama Synctappy',
+    'Status Saat Ini: Live, Uji Coba Gratis Dibuka',
+    'Synctappy dalam Ekosistem SYNVORA',
+    'Langkah Selanjutnya',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenalkan Synctappy: Salah Satu Produk Ekosistem SYNVORA</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4"><strong>SUMENEP, 08/10/2026</strong> - Di luar solusi teknologi yang kami kerjakan untuk klien dan instansi, serta inisiatif riset dan inovasi mandiri seperti AIRA, AgriVita, JOS, BBM, dan SEP, SYNVORA juga membangun produk digital milik kami sendiri. <strong>Synctappy</strong> adalah salah satunya: produk SaaS yang menggabungkan NFC dan QR untuk digital engagement bisnis.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Synctappy bukan identitas utama SYNVORA, melainkan satu dari beberapa arah yang sedang kami kembangkan: solusi teknologi untuk organisasi, produk digital milik sendiri, serta riset dan inovasi. Synctappy mewakili arah produk tersebut.</p>
+    <a href="https://synctappy.biz.id/" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+      Kunjungi Synctappy <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+    </a>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Kenapa Bisnis Butuh Digital Engagement Tanpa Aplikasi?</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Pelaku usaha sering ingin pelanggan bisa langsung mengakses profil bisnis, katalog, tautan media sosial, atau form ulasan, tanpa pelanggan harus memasang aplikasi apa pun. Kartu nama fisik cepat usang begitu nomor telepon atau tautan berubah, sementara mengelola banyak tautan terpisah (Instagram, WhatsApp, Google Maps, katalog) merepotkan untuk dibagikan satu per satu.</p>
+
+    <div class="border-l-4 border-primary bg-[#F8FAFC] dark:bg-white/5 p-6 rounded-r-xl">
+      <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed"><strong>Synctappy menjawab ini dengan satu touchpoint:</strong></p>
+      <ul class="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-300 list-disc pl-5">
+        <li>Satu tap NFC atau satu scan QR langsung membuka halaman profil/tautan, tanpa aplikasi.</li>
+        <li>Tujuan tautan bisa diubah kapan saja (dynamic link), tanpa perlu mencetak ulang kartu atau stiker.</li>
+        <li>Data penggunaan (tap, scan, klik) tercatat sebagai analitik, bukan sekadar kartu nama statis.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Bagaimana Synctappy Bekerja?</h2>
+    <ol class="space-y-4">
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Siapkan touchpoint NFC atau QR</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Kartu NFC, stiker tag, atau stand meja yang bisa ditap atau discan pelanggan.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Atur profil dan tautan di dashboard</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Susun profil bisnis, multi-link, dan call-to-action utama yang ingin ditampilkan.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-blue-50 text-primary rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Pelanggan tap atau scan</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Halaman profil/tautan terbuka seketika di peramban pelanggan, tanpa aplikasi.</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4">
+        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0"><i class="fa-solid fa-check text-xs"></i></div>
+        <div>
+          <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Pantau hasilnya</h4>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Lihat analitik tap/scan/klik, kumpulkan ulasan, dan jalankan kampanye terjadwal.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">Fitur-Fitur Utama Synctappy</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-wifi"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Touchpoint NFC & QR</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Membuka halaman profil/tautan secara instan tanpa aplikasi.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-id-badge"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Smart Profile</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Profil bisnis multi-link dengan satu call-to-action utama.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-link"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Dynamic Link</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Ubah tujuan tautan kapan saja tanpa cetak ulang kartu atau stiker.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Review Generation</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Mempermudah pelanggan meninggalkan ulasan setelah bertransaksi.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Analitik</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Data tap, scan, dan klik untuk memahami interaksi pelanggan.</p>
+      </div>
+      <div class="card-shadow rounded-2xl p-5">
+        <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-3">
+          <i class="fa-solid fa-bullhorn"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-1">Kampanye & Promo</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Menjadwalkan kampanye dan promo langsung dari dashboard.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Status Saat Ini: Live, Uji Coba Gratis Dibuka</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Synctappy saat ini sudah live dengan uji coba gratis 14 hari untuk satu perangkat. Paket berbayar (Basic, Pro, Premium) masih berstatus segera hadir, dengan harga final yang akan diumumkan saat peluncuran. Untuk kebutuhan skala besar, tersedia jalur Enterprise yang bisa langsung menghubungi tim SYNVORA.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Perangkat kerasnya pun sudah tersedia: stand meja, kartu NFC, dan stiker tag, sebagai satu paket pengalaman bersama platform digitalnya. Synctappy juga tersedia dalam Bahasa Indonesia dan Inggris.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Synctappy dalam Ekosistem SYNVORA</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Penting untuk digarisbawahi: Synctappy adalah satu produk yang sedang kami bangun, bukan satu-satunya hal yang kami kerjakan. SYNVORA tetap mengerjakan solusi teknologi untuk klien dan instansi (seperti website UPTD Labkesda Sumenep, Produli, SiLACARE, dan chatbot Kancana BRIDA), sekaligus menjalankan inisiatif riset dan inovasi mandiri untuk Sumenep (AIRA, AgriVita, JOS, BBM, SEP).</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Produk digital lain masih kami jajaki dan kembangkan di dalam ekosistem SYNVORA, tetapi kami tidak akan mengumumkannya sebelum benar-benar siap.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Langkah Selanjutnya</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Synctappy akan terus dikembangkan secara bertahap, mulai dari menyempurnakan paket berbayar hingga memperluas fitur analitik dan kampanye. Ikuti terus perjalanan SYNVORA membangun solusi teknologi sekaligus produk digital kami sendiri.</p>
+    <a href="https://synctappy.biz.id/" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+      Coba Synctappy Gratis <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+    </a>
+  </div>
+</BlogArticleLayout>

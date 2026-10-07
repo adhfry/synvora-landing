@@ -1,11 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroSlider from '../components/HeroSlider.astro';
+import { SITE } from '../lib/site';
+import { blogPosts } from '../data/blogPosts';
+import { portfolioProjects } from '../data/portfolioProjects';
+
+const latestPosts = blogPosts.slice(0, 3);
+const selectedWork = ['synctappy', 'aira-artificial-intelligence-response-banjir', 'labkesda-sumenep']
+  .map((id) => portfolioProjects.find((p) => p.id === id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
 ---
 
 <Layout
   title="SYNVORA Teknologi Indonesia"
-  description="SYNVORA Teknologi Indonesia adalah mitra terpercaya dalam pengembangan sistem informasi, integrasi sistem, aplikasi web & mobile, hingga konsultasi IT untuk organisasi di seluruh Indonesia."
+  description="SYNVORA Teknologi Indonesia adalah perusahaan teknologi berbasis di Sumenep yang membangun sistem perangkat lunak, solusi teknologi untuk organisasi, dan produk digital sendiri."
   navVariant="dark"
   footerVariant="landing"
   active="beranda"
@@ -78,29 +86,29 @@ import HeroSlider from '../components/HeroSlider.astro';
           <span class="w-2 h-2 bg-primary rounded-full"></span> SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
         </div>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-          Teknologi untuk<br />Masa Depan yang<br /><span class="text-primary">Lebih Baik</span>
+          Membangun Solusi Digital.<br />Menciptakan <span class="text-primary">Produk Teknologi.</span>
         </h1>
         <p class="text-gray-400 text-sm md:text-base mb-8 max-w-lg leading-relaxed">
-          SYNVORA Teknologi Indonesia adalah mitra terpercaya dalam pembuatan sistem informasi yang inovatif, andal, dan berdampak nyata bagi organisasi Anda.
+          SYNVORA Teknologi Indonesia membangun sistem perangkat lunak, solusi teknologi untuk organisasi, serta produk digital sendiri, dari Sumenep, Indonesia.
         </p>
         <div class="flex flex-wrap gap-4 mb-12">
-          <a href="/konsultasi-gratis" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold transition flex items-center gap-2">
-            Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+          <a href="/portfolio" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold transition flex items-center gap-2">
+            Jelajahi Karya Kami <i class="fa-solid fa-arrow-right text-xs"></i>
           </a>
-          <a href="/portfolio" class="btn-outline px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2">
-            Lihat Portofolio <i class="fa-regular fa-circle-play"></i>
+          <a href="/konsultasi-gratis" class="btn-outline px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2">
+            Konsultasi Gratis <i class="fa-regular fa-calendar"></i>
           </a>
         </div>
         <!-- Checkmarks -->
         <div class="flex flex-wrap gap-6 text-xs text-gray-300">
           <div class="flex items-center gap-2">
-            <i class="fa-solid fa-bolt text-primary"></i> Solusi Terukur
+            <i class="fa-solid fa-building-columns text-primary"></i> Berdiri {SITE.foundedDisplay}
           </div>
           <div class="flex items-center gap-2">
-            <i class="fa-solid fa-user-tie text-primary"></i> Tim Profesional
+            <i class="fa-solid fa-location-dot text-primary"></i> Berbasis di Sumenep
           </div>
           <div class="flex items-center gap-2">
-            <i class="fa-solid fa-headset text-primary"></i> Dukungan Berkelanjutan
+            <i class="fa-solid fa-cube text-primary"></i> Berfokus pada Produk
           </div>
         </div>
       </div>
@@ -162,7 +170,7 @@ import HeroSlider from '../components/HeroSlider.astro';
   <!-- ================= TRUSTED BY ================= -->
   <section class="py-16 bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-8">
-      <h2 class="text-center text-sm font-bold text-gray-900 mb-10">Dipercaya oleh Organisasi di Berbagai Sektor</h2>
+      <h2 class="text-center text-sm font-bold text-gray-900 mb-10">Sektor yang Pernah Kami Kerjakan</h2>
       <div class="flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition duration-500">
         <div class="flex items-center gap-3 text-sm font-semibold text-gray-700">
           <i class="fa-solid fa-building-columns text-xl"></i> Pemerintahan
@@ -174,7 +182,7 @@ import HeroSlider from '../components/HeroSlider.astro';
           <i class="fa-solid fa-graduation-cap text-xl"></i> Pendidikan
         </div>
         <div class="flex items-center gap-3 text-sm font-semibold text-gray-700">
-          <i class="fa-solid fa-building text-xl"></i> Perusahaan
+          <i class="fa-solid fa-seedling text-xl"></i> Pertanian
         </div>
         <div class="flex items-center gap-3 text-sm font-semibold text-gray-700">
           <i class="fa-solid fa-users text-xl"></i> Komunitas
@@ -183,58 +191,94 @@ import HeroSlider from '../components/HeroSlider.astro';
     </div>
   </section>
 
-  <!-- ================= SERVICES ================= -->
+  <!-- ================= WHAT WE DO ================= -->
   <section class="py-24 bg-white px-8">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-end mb-12">
         <div>
           <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> LAYANAN KAMI
+            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> APA YANG KAMI KERJAKAN
           </div>
-          <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Solusi Digital untuk<br />Setiap Kebutuhan Anda</h2>
-          <p class="text-sm text-gray-500 mt-4 max-w-xl">Kami menghadirkan layanan pengembangan sistem informasi yang disesuaikan dengan kebutuhan dan tujuan organisasi Anda.</p>
+          <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Kemampuan Teknologi yang<br />Benar-Benar Kami Kerjakan</h2>
+          <p class="text-sm text-gray-500 mt-4 max-w-xl">Kami bekerja di dua arah: membangun solusi teknologi untuk organisasi, dan membangun produk digital kami sendiri.</p>
         </div>
         <a href="/layanan" class="text-primary text-sm font-semibold hover:underline flex items-center gap-2 mt-4 md:mt-0">
           Lihat Semua Layanan <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Card 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
           <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
             <i class="fa-solid fa-code"></i>
           </div>
-          <h3 class="font-bold text-gray-900 mb-3">Pengembangan Sistem Informasi</h3>
-          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Custom software yang sesuai dengan proses bisnis Anda.</p>
-          <a href="/layanan" class="text-primary text-xs font-semibold flex items-center gap-2">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          <h3 class="font-bold text-gray-900 mb-3">Software & Sistem Digital</h3>
+          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Merancang dan membangun perangkat lunak serta sistem informasi khusus sesuai kebutuhan organisasi.</p>
         </div>
-        <!-- Card 2 -->
         <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
           <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
-            <i class="fa-solid fa-cloud"></i>
+            <i class="fa-solid fa-arrows-spin"></i>
           </div>
-          <h3 class="font-bold text-gray-900 mb-3">Integrasi & Modernisasi Sistem</h3>
-          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Menghubungkan sistem lama dengan teknologi terbaru.</p>
-          <a href="/layanan" class="text-primary text-xs font-semibold flex items-center gap-2">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          <h3 class="font-bold text-gray-900 mb-3">Transformasi Digital</h3>
+          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Mengubah proses kerja manual menjadi alur digital yang saling terhubung.</p>
         </div>
-        <!-- Card 3 -->
         <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
           <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
-            <i class="fa-solid fa-mobile-screen"></i>
+            <i class="fa-solid fa-microchip"></i>
           </div>
-          <h3 class="font-bold text-gray-900 mb-3">Aplikasi Web & Mobile</h3>
-          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Solusi lintas platform yang responsif dan user-friendly.</p>
-          <a href="/layanan" class="text-primary text-xs font-semibold flex items-center gap-2">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          <h3 class="font-bold text-gray-900 mb-3">AI & Otomatisasi</h3>
+          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Menerapkan kecerdasan buatan dan otomatisasi pada alur kerja nyata, bukan sekadar label.</p>
         </div>
-        <!-- Card 4 -->
         <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
           <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
-            <i class="fa-solid fa-gear"></i>
+            <i class="fa-solid fa-cube"></i>
           </div>
-          <h3 class="font-bold text-gray-900 mb-3">Konsultasi IT</h3>
-          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Pendampingan strategis untuk transformasi digital Anda.</p>
-          <a href="/layanan" class="text-primary text-xs font-semibold flex items-center gap-2">Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i></a>
+          <h3 class="font-bold text-gray-900 mb-3">Pengembangan Produk</h3>
+          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Membangun produk SaaS dan digital dari konsep hingga rilis, termasuk produk kami sendiri.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+            <i class="fa-solid fa-diagram-project"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-3">Integrasi Sistem</h3>
+          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Menghubungkan aplikasi, layanan, perangkat, dan sistem yang sudah ada menjadi satu alur kerja.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6">
+            <i class="fa-solid fa-flask"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-3">Riset & Inovasi</h3>
+          <p class="text-sm text-gray-500 mb-6 leading-relaxed">Menjajaki teknologi baru dan peluang produk digital lewat inisiatif riset mandiri.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTS ================= -->
+  <section class="py-24 bg-gray-50 px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> PRODUK
+      </div>
+      <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Produk yang Sedang Kami Bangun</h2>
+      <p class="text-sm text-gray-500 max-w-xl mb-12">Selain mengerjakan solusi untuk klien, SYNVORA juga membangun produk digital milik kami sendiri.</p>
+
+      <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 text-[11px] font-bold px-3 py-1 rounded-full mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> LIVE &mdash; UJI COBA GRATIS DIBUKA
+          </div>
+          <h3 class="text-2xl font-extrabold text-gray-900 mb-3">Synctappy</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-6">
+            Platform digital engagement berbasis NFC dan QR: profil bisnis pintar, dynamic link, review generation, dan analitik dalam satu produk. Uji coba gratis 14 hari sudah dibuka; paket berbayar masih berstatus segera hadir.
+          </p>
+          <a href="https://synctappy.biz.id/" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
+            Kunjungi Synctappy <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+          <p class="text-xs text-gray-400 mt-6">Produk lain masih kami jajaki dan kembangkan di dalam ekosistem SYNVORA.</p>
+        </div>
+        <div class="rounded-2xl overflow-hidden">
+          <img src="/images/portfolio/synctappy-cover.png" alt="Synctappy, produk SaaS NFC dan QR dari SYNVORA" class="w-full h-auto object-cover">
         </div>
       </div>
     </div>
@@ -248,9 +292,9 @@ import HeroSlider from '../components/HeroSlider.astro';
         <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
           <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> TENTANG SYNVORA
         </div>
-        <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">Dari Semangat Kelompok,<br />Untuk Dampak yang Lebih Besar</h2>
+        <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">Teknologi Seharusnya Membuka<br />Kemungkinan Baru</h2>
         <p class="text-sm text-gray-500 leading-relaxed mb-8">
-          SYNVORA Teknologi Indonesia lahir dari semangat sekelompok individu yang ingin membuat perubahan. Kami hadir sebagai perusahaan teknologi yang berfokus pada pengembangan sistem informasi, dengan misi menjadi top-of-mind ketika orang membutuhkan solusi digital.
+          Teknologi semestinya lebih dari sekadar mendigitalkan proses yang sudah ada. SYNVORA Teknologi Indonesia bekerja di dua arah: membangun solusi teknologi untuk organisasi, dan membangun produk digital milik kami sendiri.
         </p>
 
         <!-- Features -->
@@ -278,11 +322,28 @@ import HeroSlider from '../components/HeroSlider.astro';
         </a>
       </div>
 
-      <!-- Right Image -->
+      <!-- Right: abstract brand panel (no office photo - we don't have one yet) -->
       <div class="relative">
-        <div class="rounded-2xl overflow-hidden shadow-xl">
-          <!-- Placeholder for Office Image -->
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="SYNVORA Office" class="w-full h-[400px] object-cover">
+        <div class="rounded-2xl overflow-hidden shadow-xl bg-[#0A1128] relative h-[400px] flex flex-col items-center justify-center text-center p-10">
+          <div class="absolute top-0 right-0 w-56 h-56 bg-primary rounded-full filter blur-[90px] opacity-30"></div>
+          <div class="absolute bottom-0 left-0 w-40 h-40 bg-primary rounded-full filter blur-[70px] opacity-20"></div>
+          <img
+            src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png"
+            alt="SYNVORA Teknologi Indonesia"
+            class="h-12 w-auto max-w-[260px] object-contain mb-8 relative z-10"
+          />
+          <div class="relative z-10 grid grid-cols-2 gap-6 text-left">
+            <div>
+              <div class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-xs mb-2"><i class="fa-solid fa-handshake"></i></div>
+              <div class="text-xs font-bold text-white">Solusi Teknologi</div>
+              <div class="text-[10px] text-gray-400">Untuk organisasi &amp; klien</div>
+            </div>
+            <div>
+              <div class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-xs mb-2"><i class="fa-solid fa-cube"></i></div>
+              <div class="text-xs font-bold text-white">Produk & R&amp;D</div>
+              <div class="text-[10px] text-gray-400">Dibangun sendiri</div>
+            </div>
+          </div>
         </div>
         <!-- Floating Badge -->
         <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl max-w-[200px]">
@@ -305,8 +366,8 @@ import HeroSlider from '../components/HeroSlider.astro';
           <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
             <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> PORTOFOLIO
           </div>
-          <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Karya Nyata, Dampak Nyata</h2>
-          <p class="text-sm text-gray-500 mt-4 max-w-xl">Berbagai solusi digital yang telah kami kembangkan untuk membantu organisasi bekerja lebih efektif dan efisien.</p>
+          <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Sebagian dari yang Kami Bangun</h2>
+          <p class="text-sm text-gray-500 mt-4 max-w-xl">Satu produk kami sendiri, satu inisiatif riset mandiri, dan satu solusi yang kami bangun untuk instansi.</p>
         </div>
         <a href="/portfolio" class="text-primary text-sm font-semibold hover:underline flex items-center gap-2 mt-4 md:mt-0">
           Lihat Semua Portofolio <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -314,36 +375,17 @@ import HeroSlider from '../components/HeroSlider.astro';
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Portfolio 1 -->
-        <div class="group cursor-pointer">
-          <div class="rounded-2xl overflow-hidden mb-4 relative">
-            <img src="/images/portfolio/labkesdasumenep[labkesdasumenep.id].png" alt="Pemerintahan" class="w-full h-48 object-cover object-top group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Pemerintahan</div>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">Website UPTD Labkesda Sumenep</h3>
-          <p class="text-xs text-gray-500 mb-3">Website resmi laboratorium kesehatan daerah dengan pendaftaran online dan informasi layanan.</p>
-          <a href="/portfolio" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <!-- Portfolio 2 -->
-        <div class="group cursor-pointer">
-          <div class="rounded-2xl overflow-hidden mb-4 relative">
-            <img src="/images/portfolio/produli[produli.labkesdasumenep.id].png" alt="Kesehatan" class="w-full h-48 object-cover object-top group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Kesehatan</div>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">Produli <span class="text-gray-400 font-normal">(Prolanis Peduli)</span></h3>
-          <p class="text-xs text-gray-500 mb-3">Platform kesehatan preventif berbasis data laboratorium dengan analisis risiko otomatis.</p>
-          <a href="/portfolio" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <!-- Portfolio 3 -->
-        <div class="group cursor-pointer">
-          <div class="rounded-2xl overflow-hidden mb-4 relative">
-            <img src="/images/portfolio/silacare[silacare.labkesdasumenep.id].png" alt="Aplikasi Mobile" class="w-full h-48 object-cover object-top group-hover:scale-105 transition duration-500">
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">Aplikasi Mobile</div>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">SiLACARE</h3>
-          <p class="text-xs text-gray-500 mb-3">Portal digital pasien untuk riwayat pemeriksaan lab dan antrean online.</p>
-          <a href="/portfolio" class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
+        {selectedWork.map((project) => (
+          <a href="/portfolio" class="group cursor-pointer">
+            <div class="rounded-2xl overflow-hidden mb-4 relative">
+              <img src={project.image} alt={project.title} class="w-full h-48 object-cover object-top group-hover:scale-105 transition duration-500">
+              <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">{project.status}</div>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">{project.title}</h3>
+            <p class="text-xs text-gray-500 mb-3">{project.shortDescription}</p>
+            <span class="text-primary text-xs font-semibold flex items-center gap-2">Lihat Detail <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -400,65 +442,62 @@ import HeroSlider from '../components/HeroSlider.astro';
     </div>
   </section>
 
-  <!-- ================= TESTIMONIALS ================= -->
-  <section class="py-24 bg-gray-50 px-8">
+  <!-- ================= COMPANY SNAPSHOT ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto bg-[#0A1128] rounded-3xl p-12 text-white grid grid-cols-1 lg:grid-cols-4 gap-8 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+      <div class="lg:col-span-1 relative z-10">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">SYNVORA DALAM SINGKAT</div>
+        <h3 class="text-xl font-extrabold leading-tight">Informasi Perusahaan</h3>
+      </div>
+      <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
+        <div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Didirikan</div>
+          <div class="text-sm font-bold">{SITE.foundedDisplay}</div>
+        </div>
+        <div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Berbasis di</div>
+          <div class="text-sm font-bold">{SITE.addressShort}</div>
+        </div>
+        <div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Pendiri & Direktur</div>
+          <div class="text-sm font-bold">{SITE.founderName}</div>
+        </div>
+        <div>
+          <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Industri</div>
+          <div class="text-sm font-bold">Teknologi / Software &amp; SaaS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LATEST FROM BLOG ================= -->
+  <section class="py-24 bg-white px-8">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-end mb-12">
         <div>
           <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> TESTIMONI
+            <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> PEMBARUAN TERBARU
           </div>
-          <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Apa Kata Mereka?</h2>
+          <h2 class="text-3xl font-extrabold text-gray-900 leading-tight">Dari Blog Kami</h2>
         </div>
-        <p class="text-sm text-gray-500 mt-4 md:mt-0 max-w-sm">Kepercayaan klien adalah motivasi kami untuk terus berinovasi.</p>
+        <a href="/blog" class="text-primary text-sm font-semibold hover:underline flex items-center gap-2 mt-4 md:mt-0">
+          Lihat Semua Artikel <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Testimonial 1 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
-          <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
-          <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">SYNVORA membantu kami membangun sistem yang benar-benar sesuai dengan kebutuhan. Profesional dan responsif!</p>
-          <div class="flex items-center gap-4">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=150" alt="dr. Andini Putri" class="w-12 h-12 rounded-full object-cover">
-            <div>
-              <div class="font-bold text-sm text-gray-900">dr. Andini Putri</div>
-              <div class="text-[10px] text-gray-500">Kepala Labkesda</div>
-              <div class="text-yellow-400 text-[10px] mt-1">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {latestPosts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="group cursor-pointer">
+            <div class="rounded-2xl overflow-hidden mb-4 relative">
+              <img src={post.image} alt={post.title} class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+              <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800">{post.category}</div>
             </div>
-          </div>
-        </div>
-        <!-- Testimonial 2 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
-          <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
-          <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">Proses pengembangan sangat terstruktur dan komunikatif. Hasilnya melebihi ekspektasi kami.</p>
-          <div class="flex items-center gap-4">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=150" alt="Budi Santoso" class="w-12 h-12 rounded-full object-cover">
-            <div>
-              <div class="font-bold text-sm text-gray-900">Budi Santoso</div>
-              <div class="text-[10px] text-gray-500">Kepala Dinas</div>
-              <div class="text-yellow-400 text-[10px] mt-1">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Testimonial 3 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
-          <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-6 left-6"></i>
-          <p class="text-sm text-gray-600 leading-relaxed mb-8 relative z-10 pt-6">Tim SYNVORA sangat memahami kebutuhan kami dan memberikan solusi yang inovatif dan mudah digunakan.</p>
-          <div class="flex items-center gap-4">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150" alt="Rina Meliani" class="w-12 h-12 rounded-full object-cover">
-            <div>
-              <div class="font-bold text-sm text-gray-900">Rina Meliani</div>
-              <div class="text-[10px] text-gray-500">Manajer Operasional</div>
-              <div class="text-yellow-400 text-[10px] mt-1">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+            <h3 class="font-bold text-gray-900 mb-2 leading-snug">{post.title}</h3>
+            <p class="text-xs text-gray-500 mb-3">{post.publishedDisplay}</p>
+            <span class="text-primary text-xs font-semibold flex items-center gap-2">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+        ))}
       </div>
     </div>
   </section>

@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../lib/site';
+
+const lastUpdated = '8 Oktober 2026';
+---
+
+<Layout
+  title="Syarat & Ketentuan - SYNVORA Teknologi Indonesia"
+  description="Syarat dan ketentuan penggunaan situs SYNVORA Teknologi Indonesia, termasuk aturan komentar blog, penggunaan konten, dan batasan tanggung jawab."
+  navVariant="light"
+  footerVariant="default"
+  bodyClass="bg-white"
+>
+  <section class="pt-32 pb-20 px-8 bg-[#0A1128] text-white">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+        <a href="/" class="hover:text-white">Beranda</a>
+        <i class="fa-solid fa-chevron-right text-[8px]"></i>
+        <span class="text-white">Syarat & Ketentuan</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">Syarat & Ketentuan</h1>
+      <p class="text-sm text-gray-400">Terakhir diperbarui: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="py-20 px-8">
+    <div class="max-w-3xl mx-auto prose-sm text-sm text-gray-600 leading-relaxed space-y-8">
+      <p>
+        Dengan mengakses dan menggunakan situs {SITE.url} ("Situs"), milik {SITE.legalName}, Anda dianggap menyetujui syarat dan ketentuan berikut. Jika Anda tidak setuju, mohon untuk tidak melanjutkan penggunaan Situs.
+      </p>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">1. Tentang Situs Ini</h2>
+        <p>
+          Situs ini dioperasikan oleh {SITE.legalName} ({SITE.name}), perusahaan teknologi yang didirikan {SITE.foundedDisplay} dan berbasis di {SITE.addressShort}. Situs ini berisi informasi mengenai layanan, produk, portofolio, dan artikel blog kami.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">2. Penggunaan Konten</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Seluruh teks, gambar, logo, dan materi lain di Situs ini adalah milik {SITE.name} atau digunakan dengan izin, kecuali dinyatakan lain.</li>
+          <li>Anda boleh membaca, membagikan tautan, dan mengutip artikel blog kami untuk tujuan non-komersial dengan mencantumkan sumber, selama tidak disalin secara utuh tanpa izin.</li>
+          <li>Penggunaan logo, nama produk (termasuk Synctappy), atau identitas visual kami untuk tujuan komersial memerlukan izin tertulis dari kami.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">3. Formulir Konsultasi dan Kontak</h2>
+        <p>
+          Mengirimkan formulir Konsultasi Gratis atau Hubungi Kami bukan merupakan perjanjian kerja atau komitmen mengikat dari kedua belah pihak. Formulir ini hanya sebagai sarana awal komunikasi; kesepakatan kerja sama resmi (termasuk ruang lingkup, biaya, dan jadwal) akan dituangkan secara terpisah setelah diskusi lebih lanjut.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">4. Komentar dan Ulasan pada Artikel Blog</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Kolom komentar pada artikel blog terbuka untuk pengunjung yang ingin memberi tanggapan atau ulasan terkait artikel.</li>
+          <li>Anda bertanggung jawab penuh atas isi komentar yang Anda kirimkan. Dilarang mengirim komentar yang berisi SARA, ujaran kebencian, spam, konten ilegal, atau pelanggaran hak pihak lain.</li>
+          <li>Kami berhak menghapus komentar yang melanggar ketentuan ini tanpa pemberitahuan sebelumnya.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">5. Tautan ke Situs Pihak Ketiga</h2>
+        <p>
+          Situs ini memuat tautan ke produk dan proyek kami (termasuk Synctappy dan inisiatif inovasi seperti AIRA, AgriVita, JOS, dan BBM) maupun situs pihak ketiga lain. Kami tidak bertanggung jawab atas konten, kebijakan privasi, atau praktik dari situs pihak ketiga yang berada di luar kendali kami.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">6. Batasan Tanggung Jawab</h2>
+        <p>
+          Informasi di Situs ini kami sajikan sebaik mungkin dan berusaha selalu akurat, namun disediakan "sebagaimana adanya" tanpa jaminan tersurat maupun tersirat. {SITE.name} tidak bertanggung jawab atas kerugian yang timbul dari penggunaan informasi di Situs ini di luar konteks komunikasi resmi dengan tim kami.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">7. Perubahan Ketentuan</h2>
+        <p>
+          Kami dapat memperbarui syarat dan ketentuan ini sewaktu-waktu seiring perkembangan layanan kami. Tanggal pembaruan terakhir selalu tercantum di bagian atas halaman ini.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">8. Kontak</h2>
+        <p>
+          Pertanyaan seputar syarat dan ketentuan ini dapat diajukan melalui email <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a> atau WhatsApp <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">{SITE.phoneDisplay}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

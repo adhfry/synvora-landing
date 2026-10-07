@@ -244,6 +244,52 @@ export const COMMENT_SEEDS: Record<string, CommentEntry[]> = {
     },
   ],
 
+  'synctappy-produk-saas-nfc-qr-synvora': [
+    {
+      id: 'sct-c1',
+      name: 'Rizal',
+      text: 'punya usaha kopi kecil, kartu nama sering ilang stok. kalo bisa tinggal tempel nfc gini lumayan banget buat promo',
+      rating: 5,
+      createdAt: '2026-10-08T09:10:00+07:00',
+    },
+    {
+      id: 'sct-c2',
+      name: 'Dewi Anggraini',
+      text: 'suka konsepnya, apalagi bisa ganti link tanpa cetak ulang. selama ini kalo ganti nomor wa harus cetak banner baru',
+      rating: 5,
+      createdAt: '2026-10-08T10:30:00+07:00',
+    },
+    {
+      id: 'sct-c3',
+      name: 'hendra',
+      text: 'masih nunggu harga paket berbayarnya berapa, tapi trial 14 hari lumayan buat nyoba dulu',
+      rating: 4,
+      createdAt: '2026-10-08T12:15:00+07:00',
+      replies: [
+        {
+          id: 'sct-c3-r1',
+          name: 'Ahda Firly Barori',
+          text: 'Siap pak, harga final memang baru diumumkan pas launch nanti, biar matang dulu persiapannya',
+          createdAt: '2026-10-08T12:40:00+07:00',
+        },
+      ],
+    },
+    {
+      id: 'sct-c4',
+      name: 'Nurul Fadilah',
+      text: 'baru tau synvora juga bikin produk sendiri selain proyek2 buat pemerintah, keren juga arahnya makin luas',
+      rating: 5,
+      createdAt: '2026-10-08T14:05:00+07:00',
+    },
+    {
+      id: 'sct-c5',
+      name: 'yoga',
+      text: 'fitur review generation nya menarik, biasanya susah minta pelanggan kasih ulasan google',
+      rating: 4,
+      createdAt: '2026-10-08T16:20:00+07:00',
+    },
+  ],
+
   'aira-sistem-peringatan-dini-banjir-sumenep': [
     {
       id: 'aira-c1',
