@@ -5,6 +5,26 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* Native <button> defaults to an arrow cursor (not pointer) in most
+   browsers, unlike <a href>. Make every clickable control show the hand
+   cursor consistently, and fall back to not-allowed when disabled. */
+a[href],
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+[role="button"] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type="button"]:disabled,
+[type="submit"]:disabled,
+[type="reset"]:disabled,
+[role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 /* Shared brand utility classes (unified across all pages, sourced from the SYNVORA logo palette) */
 .text-primary {
   color: #0066FF;
