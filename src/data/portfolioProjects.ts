@@ -266,6 +266,40 @@ export const portfolioProjects: PortfolioProject[] = [
 
   // ================= SOLUTIONS (client / institutional work) =================
   {
+    id: 'ds-studio',
+    title: 'DS Studio',
+    kind: 'solution',
+    status: 'Live',
+    categories: ['Website', 'UMKM'],
+    image: '/images/portfolio/dsstudio[ds-studio.vercel.app].png',
+    shortDescription:
+      'Website resmi DS Studio, studio foto dan videografi di Sumenep, lengkap dengan galeri portofolio, alur booking, dan FAQ.',
+    link: 'https://ds-studio.vercel.app',
+    overview:
+      'Website resmi DS Studio, studio foto dan videografi di Kota Sumenep, Madura. Website ini menampilkan sembilan kategori layanan (wedding & akad nikah, prewedding, wisuda, maternity & tujuh bulanan, portrait & personal branding, foto studio couple & keluarga, event & instansi, video dokumentasi, serta undangan digital), galeri portofolio per kategori, halaman Tentang, alur Cara Booking, FAQ, dan kontak langsung via WhatsApp dan Instagram.',
+    problem:
+      'DS Studio belum punya kanal digital resmi untuk menampilkan portofolio dan menjelaskan layanan, sehingga calon klien harus menanyakan hal yang sama berulang kali lewat chat sebelum booking.',
+    solution:
+      'Website satu halaman dengan galeri portofolio per kategori, penjelasan layanan, alur booking 4 langkah, dan FAQ, yang mengarahkan calon klien langsung ke WhatsApp untuk kelanjutan transaksi.',
+    role: 'Perancangan dan pengembangan website untuk DS Studio.',
+    features: [
+      'Galeri portofolio dengan kategori Wedding, Prewedding, Wisuda, Maternity, Portrait, Studio, dan Event',
+      'Penjelasan 9 kategori layanan, dari wedding & akad nikah hingga undangan digital',
+      'Alur Cara Booking 4 langkah: chat WhatsApp, pilih paket, kunci jadwal, sesi & terima hasil',
+      'Halaman FAQ yang menjawab pertanyaan umum soal lokasi, harga, foto outdoor, dan area layanan',
+      'Peta lokasi studio dan tombol kontak langsung via WhatsApp dan Instagram',
+    ],
+    benefits: [
+      'Calon klien bisa melihat portofolio dan memahami cakupan layanan sebelum menghubungi studio',
+      'Alur booking yang jelas memangkas pertanyaan berulang di WhatsApp',
+      'Desain responsif yang nyaman diakses dari ponsel, perangkat utama calon klien',
+    ],
+    coolFeatures: [
+      'Tombol WhatsApp mengambang yang selalu terlihat di setiap halaman untuk mempercepat kontak',
+      'FAQ yang ditulis dari pertanyaan nyata calon klien soal lokasi, harga, dan area layanan, bukan daftar generik',
+    ],
+  },
+  {
     id: 'labkesda-sumenep',
     title: 'Website UPTD Labkesda Sumenep',
     kind: 'solution',

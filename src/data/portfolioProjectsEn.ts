@@ -173,6 +173,31 @@ export const portfolioProjectsEn: Record<string, PortfolioProjectEn> = {
       'Every recommendation can be answered with "Why?", traceable down to its scoring components and original data source',
     ],
   },
+  'ds-studio': {
+    categories: ['Website', 'Small Business'],
+    shortDescription: 'The official website for DS Studio, a photo and videography studio in Sumenep, with a category-based portfolio gallery, booking flow, and FAQ.',
+    problem: "DS Studio had no official digital channel to showcase its portfolio and explain its services, so prospective clients had to ask the same questions over and over in chat before booking.",
+    solution: 'A one-page website with a category-based portfolio gallery, service descriptions, a 4-step booking flow, and an FAQ, routing prospective clients straight to WhatsApp to continue the transaction.',
+    role: 'Design and development of the website for DS Studio.',
+    overview:
+      'The official website for DS Studio, a photo and videography studio in Sumenep, Madura. The site presents nine service categories (wedding & akad nikah, prewedding, graduation, maternity & seven-month pregnancy, portrait & personal branding, studio couple & family photos, event & institutional documentation, video documentation, and digital invitations), a category-based portfolio gallery, an About page, a Cara Booking (how to book) flow, an FAQ, and direct contact via WhatsApp and Instagram.',
+    features: [
+      'Portfolio gallery with Wedding, Prewedding, Graduation, Maternity, Portrait, Studio, and Event categories',
+      'Descriptions of 9 service categories, from wedding & akad nikah to digital invitations',
+      '4-step booking flow: WhatsApp chat, pick a package, lock in the schedule, session & receive results',
+      'An FAQ page answering common questions about location, pricing, outdoor shoots, and service area',
+      'A studio location map and direct contact buttons for WhatsApp and Instagram',
+    ],
+    benefits: [
+      'Prospective clients can see the portfolio and understand the service scope before contacting the studio',
+      'A clear booking flow cuts down on repeated questions over WhatsApp',
+      'A responsive design that works well on mobile, the primary device of prospective clients',
+    ],
+    coolFeatures: [
+      'A floating WhatsApp button visible on every page to speed up contact',
+      "An FAQ written from prospective clients' real questions about location, pricing, and service area, not a generic list",
+    ],
+  },
   'labkesda-sumenep': {
     categories: ['Website', 'Government'],
     shortDescription: 'The official website for UPTD Labkesda Sumenep (the regional health laboratory), with online registration and service information.',
