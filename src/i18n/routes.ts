@@ -17,9 +17,14 @@ export const ROUTES: Record<string, { id: string; en: string }> = {
   portfolio: { id: '/portfolio', en: '/en/portfolio' },
   careers: { id: '/karier', en: '/en/careers' },
   contact: { id: '/hubungi-kami', en: '/en/contact' },
-  // No standalone English consultation-form page exists yet - its nearest
-  // equivalent is the Contact page, so hreflang/the switcher point there
-  // instead of a route that doesn't exist.
+  // /konsultasi-gratis (the full date/time-picker consultation form, wired
+  // to its own API flow) has no English translation yet - building one is
+  // real new work, not a trivial copy, so it's deliberately out of scope
+  // for now rather than half-built. hreflang/the language switcher instead
+  // point English visitors to /en/contact, a real page covering the same
+  // "get in touch" need. If an EN consultation page is built later, prefer
+  // the path /en/free-consultation and update this single line - every
+  // hreflang tag and switcher link across the site reads from here.
   consultation: { id: '/konsultasi-gratis', en: '/en/contact' },
   blog: { id: '/blog', en: '/en/blog' },
   privacy: { id: '/kebijakan-privasi', en: '/en/privacy-policy' },

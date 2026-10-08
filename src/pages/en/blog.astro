@@ -104,7 +104,7 @@ function truncate(text: string, max: number): string {
             <div class="md:w-1/2 relative">
               <img src={featured.image} alt={en(featured.slug)?.title ?? featured.title} class="w-full h-full object-cover min-h-[250px]">
               <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">{en(featured.slug)?.category ?? featured.category}</div>
-              <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[9px] font-bold text-gray-500">Article in ID</div>
+              <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded text-[9px] font-bold text-gray-600">Article available in Indonesian</div>
             </div>
             <div class="md:w-1/2 p-8 flex flex-col justify-center">
               <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
@@ -150,7 +150,7 @@ function truncate(text: string, max: number): string {
                   <div class="h-44 relative overflow-hidden">
                     <img src={post.image} alt={e?.title ?? post.title} class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">{e?.category ?? post.category}</div>
-                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[9px] font-bold text-gray-500">ID</div>
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[9px] font-bold text-gray-600" title="This article is currently available in Indonesian only">In Indonesian</div>
                   </div>
                   <div class="p-5 flex-1 flex flex-col">
                     <div class="text-[10px] text-gray-400 mb-2">{post.publishedDisplay}</div>
@@ -172,7 +172,7 @@ function truncate(text: string, max: number): string {
 
           <p id="no-results" class="hidden text-center text-sm text-gray-500 dark:text-gray-400 py-12">No articles match this search or category.</p>
           <p class="text-center text-[11px] text-gray-400 pt-2">
-            Article previews are in English; full articles are currently published in Bahasa Indonesia only, marked <span class="font-semibold">ID</span> above. English article bodies are on our roadmap.
+            Article titles and summaries are in English; the full articles themselves are currently published in Bahasa Indonesia only, marked <span class="font-semibold">"In Indonesian"</span> above. English article translations are on our roadmap.
           </p>
           <div id="pagination" class="flex items-center justify-center flex-wrap gap-2 pt-2"></div>
         </div>

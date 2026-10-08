@@ -41,8 +41,13 @@ const {
   hreflangEn,
 } = Astro.props;
 
-const idPath = hreflangId ?? (routeKey ? pathFor(routeKey, 'id') : '/');
-const enPath = hreflangEn !== undefined ? hreflangEn : routeKey ? pathFor(routeKey, 'en') : null;
+// Pages with no routeKey (e.g. blog articles, which aren't in ROUTES) and no
+// explicit override must still self-reference their own language in
+// hreflang - falling back to '/' here would make every such page claim the
+// homepage as its Indonesian version, which is wrong per Google's hreflang
+// spec (every page needs a self-referencing entry).
+const idPath = hreflangId ?? (routeKey ? pathFor(routeKey, 'id') : (lang === 'id' ? Astro.url.pathname : '/'));
+const enPath = hreflangEn !== undefined ? hreflangEn : routeKey ? pathFor(routeKey, 'en') : (lang === 'en' ? Astro.url.pathname : null);
 const switcherRouteKey = routeKey ?? 'home';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);

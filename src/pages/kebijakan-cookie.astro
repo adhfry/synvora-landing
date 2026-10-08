@@ -23,9 +23,10 @@ const toc = [
 ];
 
 const cookieTable = [
-  { name: 'synvora_cookie_consent', category: 'Necessary', purpose: 'Menyimpan pilihan consent cookie Anda (necessary, preferences, analytics, marketing).', duration: '180 hari' },
-  { name: 'synvora_locale', category: 'Preferences', purpose: 'Mengingat pilihan bahasa (Indonesia/English) untuk kunjungan berikutnya.', duration: '1 tahun (dihapus bila kategori Preferences dinonaktifkan)' },
-  { name: '_ga, _ga_*', category: 'Analytics', purpose: 'Google Analytics 4 - membedakan pengunjung untuk statistik kunjungan agregat.', duration: 'Hingga 2 tahun (ditentukan oleh Google), hanya dipasang setelah Anda mengizinkan Analytics' },
+  { name: 'synvora_cookie_consent', provider: 'SYNVORA (first-party)', category: 'Necessary', purpose: 'Menyimpan pilihan consent cookie Anda (necessary, preferences, analytics, marketing).', duration: '180 hari' },
+  { name: 'synvora_locale', provider: 'SYNVORA (first-party)', category: 'Preferences', purpose: 'Mengingat pilihan bahasa (Indonesia/English) untuk kunjungan berikutnya.', duration: '1 tahun (dihapus bila kategori Preferences dinonaktifkan)' },
+  { name: '_ga', provider: 'Google Analytics', category: 'Analytics (bersyarat)', purpose: 'Membedakan pengunjung untuk statistik kunjungan agregat.', duration: 'Hingga 2 tahun (ditentukan oleh Google)' },
+  { name: '_ga_*', provider: 'Google Analytics', category: 'Analytics (bersyarat)', purpose: 'Menyimpan status sesi untuk properti Google Analytics 4 tertentu.', duration: 'Hingga 2 tahun (ditentukan oleh Google)' },
 ];
 ---
 
@@ -90,7 +91,7 @@ const cookieTable = [
 
   <div id="marketing">
     <h2 class="text-lg font-bold text-gray-900 mb-3">7. Marketing Cookies</h2>
-    <p>Kami tidak menggunakan cookie pemasaran, piksel iklan, atau pelacak kampanye apa pun saat ini. Kategori ini kami tampilkan di pengaturan cookie agar siap digunakan secara transparan apabila di masa depan kami benar-benar mengimplementasikan fitur semacam itu.</p>
+    <p><strong>Cookie pemasaran tidak digunakan di website ini saat ini.</strong> Kami tidak memasang cookie pemasaran, piksel iklan, atau pelacak kampanye apa pun. Kategori ini tetap kami tampilkan di pengaturan cookie agar siap digunakan secara transparan apabila di masa depan kami benar-benar mengimplementasikan fitur semacam itu.</p>
   </div>
 
   <div id="first-party">
@@ -106,15 +107,18 @@ const cookieTable = [
       <li><strong>Google Maps embed</strong> pada halaman Hubungi Kami dapat memasang cookie dari Google saat peta dimuat, di luar sistem consent kami karena merupakan embed langsung dari Google.</li>
       <li><strong>Cloudflare Turnstile</strong> pada formulir Konsultasi Gratis dan Hubungi Kami dapat memasang cookie teknis untuk verifikasi anti-spam, dikategorikan sebagai necessary untuk keamanan formulir.</li>
     </ul>
+    <p class="mt-3">Situs ini juga memuat beberapa resource pihak ketiga yang sejauh kami ketahui tidak memasang cookie, yaitu pustaka Flatpickr (CDN jsdelivr) pada halaman Konsultasi Gratis dan gambar ilustrasi dari Unsplash pada sejumlah artikel blog. Daftar lengkap layanan pihak ketiga ada pada <a href="/kebijakan-privasi#pihak-ketiga" class="text-primary font-semibold">Kebijakan Privasi</a>.</p>
   </div>
 
   <div id="durasi">
     <h2 class="text-lg font-bold text-gray-900 mb-3">10. Durasi Cookie</h2>
+    <p class="mb-4">Tabel ini mencantumkan setiap cookie yang benar-benar dapat terpasang oleh Situs. Baris berkategori <strong>"Analytics (bersyarat)"</strong> hanya dipasang setelah Anda secara eksplisit mengizinkan kategori Analytics; tidak ada cookie Google Analytics yang dipasang sebelum izin tersebut diberikan.</p>
     <div class="overflow-x-auto">
       <table class="w-full text-xs border-collapse">
         <thead>
           <tr class="bg-gray-50">
             <th class="p-3 border border-gray-200 text-left font-bold">Nama Cookie</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Penyedia</th>
             <th class="p-3 border border-gray-200 text-left font-bold">Kategori</th>
             <th class="p-3 border border-gray-200 text-left font-bold">Tujuan</th>
             <th class="p-3 border border-gray-200 text-left font-bold">Durasi</th>
@@ -124,6 +128,7 @@ const cookieTable = [
           {cookieTable.map((c) => (
             <tr>
               <td class="p-3 border border-gray-200"><code class="text-[11px]">{c.name}</code></td>
+              <td class="p-3 border border-gray-200">{c.provider}</td>
               <td class="p-3 border border-gray-200">{c.category}</td>
               <td class="p-3 border border-gray-200">{c.purpose}</td>
               <td class="p-3 border border-gray-200">{c.duration}</td>

@@ -81,7 +81,8 @@ export const ui = {
         },
         marketing: {
           title: 'Marketing / Pemasaran',
-          desc: 'Cookie untuk aktivitas pemasaran atau pengukuran kampanye. Saat ini kami tidak menggunakan cookie pemasaran apa pun.',
+          badge: 'Tidak Digunakan Saat Ini',
+          desc: 'Cookie pemasaran TIDAK digunakan di website ini saat ini. Kategori ini ditampilkan agar siap digunakan secara transparan apabila di masa depan kami benar-benar mengimplementasikan fitur pemasaran semacam itu.',
         },
       },
     },
@@ -167,7 +168,8 @@ export const ui = {
         },
         marketing: {
           title: 'Marketing',
-          desc: 'Cookies used for marketing activity or campaign measurement. We do not currently use any marketing cookies.',
+          badge: 'Not Currently Used',
+          desc: 'Marketing cookies are NOT currently used on this website. This category is shown so it is ready to be used transparently if we actually implement a marketing feature like this in the future.',
         },
       },
     },

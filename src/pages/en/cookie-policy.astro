@@ -23,9 +23,10 @@ const toc = [
 ];
 
 const cookieTable = [
-  { name: 'synvora_cookie_consent', category: 'Necessary', purpose: 'Stores your cookie consent choices (necessary, preferences, analytics, marketing).', duration: '180 days' },
-  { name: 'synvora_locale', category: 'Preferences', purpose: 'Remembers your language choice (Indonesian/English) for future visits.', duration: '1 year (deleted if the Preferences category is turned off)' },
-  { name: '_ga, _ga_*', category: 'Analytics', purpose: 'Google Analytics 4 - distinguishes visitors for aggregate visit statistics.', duration: 'Up to 2 years (set by Google), only installed after you grant Analytics consent' },
+  { name: 'synvora_cookie_consent', provider: 'SYNVORA (first-party)', category: 'Necessary', purpose: 'Stores your cookie consent choices (necessary, preferences, analytics, marketing).', duration: '180 days' },
+  { name: 'synvora_locale', provider: 'SYNVORA (first-party)', category: 'Preferences', purpose: 'Remembers your language choice (Indonesian/English) for future visits.', duration: '1 year (deleted if the Preferences category is turned off)' },
+  { name: '_ga', provider: 'Google Analytics', category: 'Analytics (conditional)', purpose: 'Distinguishes visitors for aggregate visit statistics.', duration: 'Up to 2 years (set by Google)' },
+  { name: '_ga_*', provider: 'Google Analytics', category: 'Analytics (conditional)', purpose: 'Stores session state for a specific Google Analytics 4 property.', duration: 'Up to 2 years (set by Google)' },
 ];
 ---
 
@@ -90,7 +91,7 @@ const cookieTable = [
 
   <div id="marketing">
     <h2 class="text-lg font-bold text-gray-900 mb-3">7. Marketing Cookies</h2>
-    <p>We do not currently use any marketing cookies, ad pixels, or campaign trackers. We still show this category in our cookie settings so it's ready to be used transparently if we ever actually implement such a feature.</p>
+    <p><strong>Marketing cookies are not currently used on this website.</strong> We do not set any marketing cookies, ad pixels, or campaign trackers. We still show this category in our cookie settings so it's ready to be used transparently if we ever actually implement such a feature.</p>
   </div>
 
   <div id="first-party">
@@ -106,15 +107,18 @@ const cookieTable = [
       <li><strong>Google Maps embed</strong> on the Contact page may set its own cookies from Google when the map loads, outside our consent system since it's a direct embed from Google.</li>
       <li><strong>Cloudflare Turnstile</strong> on the Free Consultation and Contact forms may set technical cookies for anti-spam verification, categorized as necessary for form security.</li>
     </ul>
+    <p class="mt-3">The Site also loads a few third-party resources that, as far as we know, do not set any cookies: the Flatpickr library (jsdelivr CDN) on the Free Consultation page, and illustrative images from Unsplash on some blog articles. The full list of third-party services is in our <a href="/en/privacy-policy#third-party-providers" class="text-primary font-semibold">Privacy Policy</a>.</p>
   </div>
 
   <div id="duration">
     <h2 class="text-lg font-bold text-gray-900 mb-3">10. Cookie Duration</h2>
+    <p class="mb-4">This table lists every cookie the Site can actually set. Rows categorized <strong>"Analytics (conditional)"</strong> are only installed once you explicitly grant Analytics consent; no Google Analytics cookie is set before that consent is given.</p>
     <div class="overflow-x-auto">
       <table class="w-full text-xs border-collapse">
         <thead>
           <tr class="bg-gray-50">
             <th class="p-3 border border-gray-200 text-left font-bold">Cookie Name</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Provider</th>
             <th class="p-3 border border-gray-200 text-left font-bold">Category</th>
             <th class="p-3 border border-gray-200 text-left font-bold">Purpose</th>
             <th class="p-3 border border-gray-200 text-left font-bold">Duration</th>
@@ -124,6 +128,7 @@ const cookieTable = [
           {cookieTable.map((c) => (
             <tr>
               <td class="p-3 border border-gray-200"><code class="text-[11px]">{c.name}</code></td>
+              <td class="p-3 border border-gray-200">{c.provider}</td>
               <td class="p-3 border border-gray-200">{c.category}</td>
               <td class="p-3 border border-gray-200">{c.purpose}</td>
               <td class="p-3 border border-gray-200">{c.duration}</td>
