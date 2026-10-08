@@ -246,7 +246,7 @@ function searchText(project: PortfolioProject): string {
                 <h3 class="font-bold text-gray-900 text-sm mb-2">{project.title}</h3>
                 <p class="text-[11px] text-gray-500 mb-4 leading-relaxed"><span class="font-semibold text-gray-700">Solusi:</span> {project.solution}</p>
                 <div class="flex items-center justify-between gap-3 mt-auto">
-                  <button type="button" data-modal-target={project.id} class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                  <button type="button" data-modal-target={project.id} class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer">
                     Lihat Detail <i class="fa-solid fa-arrow-right"></i>
                   </button>
                   {project.link ? (
