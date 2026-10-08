@@ -1,0 +1,176 @@
+---
+import LegalLayout from '../../components/LegalLayout.astro';
+import { SITE } from '../../lib/site';
+
+const lastUpdated = 'October 8, 2026';
+const toc = [
+  { id: 'what-is-a-cookie', label: '1. What Is a Cookie' },
+  { id: 'why-we-use', label: '2. Why We Use Cookies' },
+  { id: 'cookie-types', label: '3. Cookie Types' },
+  { id: 'necessary', label: '4. Necessary Cookies' },
+  { id: 'preference', label: '5. Preference Cookies' },
+  { id: 'analytics', label: '6. Analytics Cookies' },
+  { id: 'marketing', label: '7. Marketing Cookies' },
+  { id: 'first-party', label: '8. First-Party Cookies' },
+  { id: 'third-party', label: '9. Third-Party Cookies' },
+  { id: 'duration', label: '10. Cookie Duration' },
+  { id: 'how-to-change', label: '11. How to Change Your Preferences' },
+  { id: 'how-to-withdraw', label: '12. How to Withdraw Consent' },
+  { id: 'browser-controls', label: '13. Browser Controls' },
+  { id: 'changes', label: '14. Changes to This Cookie Policy' },
+  { id: 'contact', label: '15. Contact' },
+  { id: 'last-updated', label: '16. Last Updated' },
+];
+
+const cookieTable = [
+  { name: 'synvora_cookie_consent', category: 'Necessary', purpose: 'Stores your cookie consent choices (necessary, preferences, analytics, marketing).', duration: '180 days' },
+  { name: 'synvora_locale', category: 'Preferences', purpose: 'Remembers your language choice (Indonesian/English) for future visits.', duration: '1 year (deleted if the Preferences category is turned off)' },
+  { name: '_ga, _ga_*', category: 'Analytics', purpose: 'Google Analytics 4 - distinguishes visitors for aggregate visit statistics.', duration: 'Up to 2 years (set by Google), only installed after you grant Analytics consent' },
+];
+---
+
+<LegalLayout
+  title="Cookie Policy - SYNVORA Teknologi Indonesia"
+  description="SYNVORA Teknologi Indonesia's Cookie Policy: the cookies we actually use, their categories, duration, and how to change or withdraw your consent."
+  lang="en"
+  routeKey="cookies"
+  pageTitle="Cookie Policy"
+  lastUpdated={lastUpdated}
+  toc={toc}
+>
+  <div id="what-is-a-cookie">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">1. What Is a Cookie</h2>
+    <p>
+      A cookie is a small text file stored in your browser when you visit a website. Cookies let a site remember certain information, such as your language preference or consent choices, on your next visit.
+    </p>
+  </div>
+
+  <div id="why-we-use">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">2. Why We Use Cookies</h2>
+    <p>
+      We keep cookie use to a minimum: to support core Site functionality (remembering your cookie and language preferences), and, if you allow it, to understand how the Site is used via Google Analytics 4. We do not currently set any marketing cookies.
+    </p>
+  </div>
+
+  <div id="cookie-types">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">3. Cookie Types</h2>
+    <p>We group cookies into four categories: Necessary, Preferences, Analytics, and Marketing. Current status of each category on this Site:</p>
+    <div class="overflow-x-auto mt-4">
+      <table class="w-full text-xs border-collapse">
+        <thead>
+          <tr class="bg-gray-50">
+            <th class="p-3 border border-gray-200 text-left font-bold">Category</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="p-3 border border-gray-200">Necessary</td><td class="p-3 border border-gray-200">Always active</td></tr>
+          <tr><td class="p-3 border border-gray-200">Preferences</td><td class="p-3 border border-gray-200">Active if you allow it (used for language preference)</td></tr>
+          <tr><td class="p-3 border border-gray-200">Analytics</td><td class="p-3 border border-gray-200">Active if you allow it (Google Analytics 4)</td></tr>
+          <tr><td class="p-3 border border-gray-200">Marketing</td><td class="p-3 border border-gray-200">Not currently used</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="necessary">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">4. Necessary Cookies</h2>
+    <p>Cookies required for core Site functionality, such as storing your own cookie consent choices. These cannot be disabled, since the Site cannot function properly without them.</p>
+  </div>
+
+  <div id="preference">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">5. Preference Cookies</h2>
+    <p>Currently used for one thing: remembering your language choice (Indonesian/English). This cookie is only set when you actively pick a language via the language switcher, and only if your Preferences category is turned on.</p>
+  </div>
+
+  <div id="analytics">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">6. Analytics Cookies</h2>
+    <p>We use Google Analytics 4 to understand which pages are visited most, in aggregate and anonymized form. This cookie is only installed after you grant Analytics consent via the banner or cookie settings; before that, no Google Analytics script is loaded at all.</p>
+  </div>
+
+  <div id="marketing">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">7. Marketing Cookies</h2>
+    <p>We do not currently use any marketing cookies, ad pixels, or campaign trackers. We still show this category in our cookie settings so it's ready to be used transparently if we ever actually implement such a feature.</p>
+  </div>
+
+  <div id="first-party">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">8. First-Party Cookies</h2>
+    <p><code class="bg-gray-100 px-1.5 py-0.5 rounded text-[11px]">synvora_cookie_consent</code> and <code class="bg-gray-100 px-1.5 py-0.5 rounded text-[11px]">synvora_locale</code> are first-party cookies set directly by this Site, not by a third party.</p>
+  </div>
+
+  <div id="third-party">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">9. Third-Party Cookies</h2>
+    <p class="mb-3">Cookies set by third parties, only active per their related consent category:</p>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>Google Analytics 4</strong> (Analytics category) - only after you grant consent.</li>
+      <li><strong>Google Maps embed</strong> on the Contact page may set its own cookies from Google when the map loads, outside our consent system since it's a direct embed from Google.</li>
+      <li><strong>Cloudflare Turnstile</strong> on the Free Consultation and Contact forms may set technical cookies for anti-spam verification, categorized as necessary for form security.</li>
+    </ul>
+  </div>
+
+  <div id="duration">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">10. Cookie Duration</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-xs border-collapse">
+        <thead>
+          <tr class="bg-gray-50">
+            <th class="p-3 border border-gray-200 text-left font-bold">Cookie Name</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Category</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Purpose</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cookieTable.map((c) => (
+            <tr>
+              <td class="p-3 border border-gray-200"><code class="text-[11px]">{c.name}</code></td>
+              <td class="p-3 border border-gray-200">{c.category}</td>
+              <td class="p-3 border border-gray-200">{c.purpose}</td>
+              <td class="p-3 border border-gray-200">{c.duration}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="how-to-change">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">11. How to Change Your Preferences</h2>
+    <p>
+      Click <strong>"Cookie Settings"</strong> in the footer of any page to reopen the preferences panel and change your choices at any time.
+    </p>
+  </div>
+
+  <div id="how-to-withdraw">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">12. How to Withdraw Consent</h2>
+    <p>
+      Open "Cookie Settings" in the footer, turn off any category you no longer want (Preferences, Analytics, and/or Marketing), then save. Necessary cookies cannot be turned off since they're required for the Site to function. You don't need to manually clear browser cookies to do this.
+    </p>
+  </div>
+
+  <div id="browser-controls">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">13. Browser Controls</h2>
+    <p>
+      In addition to this Site's own cookie settings, most browsers let you block or delete cookies through their privacy settings. Note that blocking all cookies (including Necessary ones) at the browser level can affect core Site functionality, such as its ability to remember your own cookie preferences.
+    </p>
+  </div>
+
+  <div id="changes">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">14. Changes to This Cookie Policy</h2>
+    <p>
+      We may update this policy as the technology we actually use on the Site changes. The date at the top of this page always reflects the most recent update.
+    </p>
+  </div>
+
+  <div id="contact">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">15. Contact</h2>
+    <p>
+      Questions about this policy can be sent to <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a>.
+    </p>
+  </div>
+
+  <div id="last-updated">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">16. Last Updated</h2>
+    <p>{lastUpdated}. This policy is also available in <a href="/kebijakan-cookie" class="text-primary font-semibold">Bahasa Indonesia</a>.</p>
+  </div>
+</LegalLayout>

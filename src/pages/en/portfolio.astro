@@ -1,12 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { portfolioProjects, getProjectsByKind, type PortfolioProject, type ProjectStatus } from '../data/portfolioProjects';
-import { teamMembers, founder } from '../data/team';
+import Layout from '../../layouts/Layout.astro';
+import { portfolioProjects, getProjectsByKind, type PortfolioProject, type ProjectStatus } from '../../data/portfolioProjects';
+import { portfolioProjectsEn } from '../../data/portfolioProjectsEn';
+import { teamMembers, founder } from '../../data/team';
 
 const allPeople = [founder, ...teamMembers];
 function findPerson(name: string) {
   return allPeople.find((p) => p.name === name);
 }
+
+// Merge each project with its English translation (categories, descriptions,
+// features, etc.) - id/status/year/link/image/team stay from the source of
+// truth in portfolioProjects.ts, only the prose is swapped.
+function localize(project: PortfolioProject): PortfolioProject {
+  const en = portfolioProjectsEn[project.id];
+  return en ? { ...project, ...en } : project;
+}
+const localizedProjects = portfolioProjects.map(localize);
 
 const statusBadge: Record<ProjectStatus, string> = {
   Live: 'bg-green-50 text-green-700 dark:bg-green-400/10 dark:text-green-400',
@@ -15,74 +25,63 @@ const statusBadge: Record<ProjectStatus, string> = {
   Completed: 'bg-gray-100 text-gray-600 dark:bg-white/10 dark:text-gray-300',
 };
 
-const products = getProjectsByKind('product');
-const innovations = getProjectsByKind('innovation');
-const solutions = getProjectsByKind('solution');
+const products = localizedProjects.filter((p) => getProjectsByKind('product').some((x) => x.id === p.id));
+const innovations = localizedProjects.filter((p) => getProjectsByKind('innovation').some((x) => x.id === p.id));
+const solutions = localizedProjects.filter((p) => getProjectsByKind('solution').some((x) => x.id === p.id));
 
 const groups: { key: string; eyebrow: string; title: string; description: string; items: PortfolioProject[] }[] = [
   {
     key: 'product',
-    eyebrow: 'PRODUK',
-    title: 'Produk yang Kami Bangun Sendiri',
-    description: 'Produk SaaS milik SYNVORA sendiri, dikembangkan dan dioperasikan langsung oleh tim kami.',
+    eyebrow: 'PRODUCTS',
+    title: 'Products We Build Ourselves',
+    description: "SaaS products owned by SYNVORA, developed and operated directly by our team.",
     items: products,
   },
   {
     key: 'solution',
-    eyebrow: 'SOLUSI TEKNOLOGI TERPILIH',
-    title: 'Sistem yang Kami Bangun untuk Klien & Instansi',
-    description: 'Website dan sistem yang dibangun untuk kebutuhan klien dan instansi tertentu.',
+    eyebrow: 'SELECTED TECHNOLOGY SOLUTIONS',
+    title: 'Systems We Build for Clients & Institutions',
+    description: 'Websites and systems built for specific client and institutional needs.',
     items: solutions,
   },
   {
     key: 'innovation',
-    eyebrow: 'INOVASI & R&D',
-    title: 'Inisiatif Riset dan Inovasi Mandiri',
-    description: 'Proyek riset dan inovasi yang kami gagas sendiri untuk Sumenep, bukan pesanan klien, beberapa diajukan ke program inovasi daerah.',
+    eyebrow: 'INNOVATION & R&D',
+    title: 'Self-Directed Research & Innovation Initiatives',
+    description: "Research and innovation projects we initiated ourselves for Sumenep, not commissioned work, some submitted to regional innovation programs.",
     items: innovations,
   },
 ];
 
 const kindFilters: { value: string; label: string }[] = [
-  { value: 'all', label: 'Semua' },
-  { value: 'product', label: 'Produk' },
-  { value: 'solution', label: 'Solusi' },
-  { value: 'innovation', label: 'Inovasi & R&D' },
+  { value: 'all', label: 'All' },
+  { value: 'product', label: 'Products' },
+  { value: 'solution', label: 'Solutions' },
+  { value: 'innovation', label: 'Innovation & R&D' },
 ];
 
 const statusFilters: { value: string; label: string }[] = [
-  { value: 'all', label: 'Semua Status' },
+  { value: 'all', label: 'All Status' },
   { value: 'Live', label: 'Live' },
   { value: 'Completed', label: 'Completed' },
   { value: 'In Development', label: 'In Development' },
   { value: 'Prototype', label: 'Prototype' },
 ];
 
-// Searchable text per project: name, description, category, technology
-// (feature bullets double as this - many name specific tech), tags, status.
 function searchText(project: PortfolioProject): string {
-  return [
-    project.title,
-    project.shortDescription,
-    project.overview,
-    project.problem,
-    project.solution,
-    project.status,
-    ...project.categories,
-    ...project.features,
-  ]
+  return [project.title, project.shortDescription, project.overview, project.problem, project.solution, project.status, ...project.categories, ...project.features]
     .join(' ')
     .toLowerCase();
 }
 ---
 
 <Layout
-  title="Portofolio - SYNVORA Teknologi Indonesia"
-  description="Portofolio SYNVORA Teknologi Indonesia: produk yang kami bangun sendiri, solusi teknologi untuk klien & instansi, dan inisiatif riset & inovasi mandiri di Sumenep."
+  title="Portfolio - SYNVORA Teknologi Indonesia"
+  description="SYNVORA Teknologi Indonesia's portfolio: products we build ourselves, technology solutions for clients & institutions, and self-directed research & innovation initiatives in Sumenep."
   navVariant="light"
   footerVariant="default"
   active="portfolio"
-  lang="id"
+  lang="en"
   routeKey="portfolio"
   bodyClass="bg-white"
 >
@@ -92,22 +91,15 @@ function searchText(project: PortfolioProject): string {
         background-color: #0a1128;
         background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.8) 40%, rgba(10, 17, 40, 0.4) 100%),
           url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600');
-        background-size: cover;
-        background-position: center;
+        background-size: cover; background-position: center;
       }
-      .card-shadow {
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        border: 1px solid #f3f4f6;
-      }
+      .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; }
       .cta-bg {
         background-color: #0a1128;
         background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
-        background-size: cover;
-        background-position: center;
+        background-size: cover; background-position: center;
       }
-      .dark .card-shadow {
-        border-color: rgba(255, 255, 255, 0.08);
-      }
+      .dark .card-shadow { border-color: rgba(255, 255, 255, 0.08); }
     </style>
   </Fragment>
 
@@ -116,43 +108,29 @@ function searchText(project: PortfolioProject): string {
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
       <div>
         <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
-          <a href="/" class="hover:text-white cursor-pointer">Beranda</a>
+          <a href="/en/" class="hover:text-white cursor-pointer">Home</a>
           <i class="fa-solid fa-chevron-right text-[8px]"></i>
           <span class="text-white">Portfolio</span>
         </div>
-
-        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-          Portofolio <span class="text-primary">Kami</span>
-        </h1>
-
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">Our <span class="text-primary">Portfolio</span></h1>
         <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
-          Produk yang kami bangun sendiri, solusi teknologi yang kami kembangkan untuk klien dan instansi, serta inisiatif riset dan inovasi mandiri di Sumenep.
+          Products we build ourselves, technology solutions we develop for clients and institutions, and self-directed research and innovation initiatives in Sumenep.
         </p>
-
         <div class="border-l-4 border-primary pl-4">
-          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">
-            SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA
-          </div>
-          <div class="text-xs text-gray-400">
-            A Better Tomorrow Through Technology
-          </div>
+          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA</div>
+          <div class="text-xs text-gray-400">A Better Tomorrow Through Technology</div>
         </div>
       </div>
 
       <div class="hidden lg:flex justify-end relative">
         <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl max-w-sm relative z-20">
-          <div class="text-3xl font-extrabold text-white leading-tight mb-4">
-            Produk,<br>Solusi,<br>dan<br>Inovasi
-          </div>
+          <div class="text-3xl font-extrabold text-white leading-tight mb-4">Products,<br>Solutions,<br>and<br>Innovation</div>
           <div class="w-12 h-1 bg-primary mb-6"></div>
-
           <div class="bg-[#0A1128]/80 p-4 rounded-xl border border-white/10 flex items-start gap-3">
-            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shrink-0">
-              <i class="fa-solid fa-lightbulb text-white"></i>
-            </div>
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shrink-0"><i class="fa-solid fa-lightbulb text-white"></i></div>
             <div>
-              <div class="text-xs font-bold text-white mb-1">Tiga Jalur, Satu Arah</div>
-              <div class="text-[10px] text-gray-400 leading-tight">Produk sendiri, solusi untuk klien, dan riset mandiri - semuanya kami kerjakan secara terbuka.</div>
+              <div class="text-xs font-bold text-white mb-1">Three Tracks, One Direction</div>
+              <div class="text-[10px] text-gray-400 leading-tight">Our own products, solutions for clients, and self-directed research - all built in the open.</div>
             </div>
           </div>
         </div>
@@ -165,25 +143,14 @@ function searchText(project: PortfolioProject): string {
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between mb-4">
         <div class="relative flex-1 lg:max-w-md">
-          <label for="portfolio-search" class="sr-only">Cari proyek, produk, atau teknologi</label>
+          <label for="portfolio-search" class="sr-only">Search projects, products, or technologies</label>
           <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-          <input
-            type="text"
-            id="portfolio-search"
-            placeholder="Search projects, products, technologies..."
-            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-full text-xs focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-            autocomplete="off"
-          />
+          <input type="text" id="portfolio-search" placeholder="Search projects, products, technologies..." class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-full text-xs focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" autocomplete="off" />
         </div>
 
-        <div class="flex flex-wrap gap-2" role="group" aria-label="Filter kategori">
+        <div class="flex flex-wrap gap-2" role="group" aria-label="Category filter">
           {kindFilters.map((f) => (
-            <button
-              type="button"
-              class="filter-kind-btn px-4 py-2 rounded-full text-xs font-semibold border border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition aria-pressed:bg-primary aria-pressed:text-white aria-pressed:border-primary"
-              data-kind={f.value}
-              aria-pressed={f.value === 'all' ? 'true' : 'false'}
-            >
+            <button type="button" class="filter-kind-btn px-4 py-2 rounded-full text-xs font-semibold border border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition aria-pressed:bg-primary aria-pressed:text-white aria-pressed:border-primary" data-kind={f.value} aria-pressed={f.value === 'all' ? 'true' : 'false'}>
               {f.label}
             </button>
           ))}
@@ -191,10 +158,7 @@ function searchText(project: PortfolioProject): string {
 
         <div class="flex items-center gap-2">
           <label for="portfolio-status" class="text-xs font-semibold text-gray-500 whitespace-nowrap">Status</label>
-          <select
-            id="portfolio-status"
-            class="border border-gray-200 rounded-full text-xs font-semibold text-gray-600 px-4 py-2.5 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-          >
+          <select id="portfolio-status" class="border border-gray-200 rounded-full text-xs font-semibold text-gray-600 px-4 py-2.5 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20">
             {statusFilters.map((s) => <option value={s.value}>{s.label}</option>)}
           </select>
         </div>
@@ -222,39 +186,28 @@ function searchText(project: PortfolioProject): string {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {group.items.map((project) => (
-            <div
-              class="portfolio-card bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group"
-              data-kind={group.key}
-              data-status={project.status}
-              data-search={searchText(project)}
-            >
+            <div class="portfolio-card bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group" data-kind={group.key} data-status={project.status} data-search={searchText(project)}>
               <div class="h-44 relative overflow-hidden">
                 <img src={project.image} alt={project.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500">
-                <div class="absolute top-3 left-3">
-                  <span class={`px-3 py-1 rounded-full text-[10px] font-bold backdrop-blur ${statusBadge[project.status]}`}>{project.status}</span>
-                </div>
-                {project.year && (
-                  <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded text-[10px] font-bold text-gray-700">{project.year}</div>
-                )}
+                <div class="absolute top-3 left-3"><span class={`px-3 py-1 rounded-full text-[10px] font-bold backdrop-blur ${statusBadge[project.status]}`}>{project.status}</span></div>
+                {project.year && <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded text-[10px] font-bold text-gray-700">{project.year}</div>}
               </div>
               <div class="p-6 flex-1 flex flex-col">
                 <div class="flex flex-wrap gap-1.5 mb-3">
-                  {project.categories.map((cat) => (
-                    <span class="bg-gray-100 dark:bg-white/5 px-2.5 py-0.5 rounded text-[10px] font-semibold text-gray-600 dark:text-gray-300">{cat}</span>
-                  ))}
+                  {project.categories.map((cat) => <span class="bg-gray-100 dark:bg-white/5 px-2.5 py-0.5 rounded text-[10px] font-semibold text-gray-600 dark:text-gray-300">{cat}</span>)}
                 </div>
                 <h3 class="font-bold text-gray-900 text-sm mb-2">{project.title}</h3>
-                <p class="text-[11px] text-gray-500 mb-4 leading-relaxed"><span class="font-semibold text-gray-700">Solusi:</span> {project.solution}</p>
+                <p class="text-[11px] text-gray-500 mb-4 leading-relaxed"><span class="font-semibold text-gray-700">Solution:</span> {project.solution}</p>
                 <div class="flex items-center justify-between gap-3 mt-auto">
                   <button type="button" data-modal-target={project.id} class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Lihat Detail <i class="fa-solid fa-arrow-right"></i>
+                    View Details <i class="fa-solid fa-arrow-right"></i>
                   </button>
                   {project.link ? (
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition" aria-label="Kunjungi situs">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition" aria-label="Visit site">
                       <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                     </a>
                   ) : (
-                    <span class="text-gray-400 text-[10px] font-semibold flex items-center gap-1.5" title="Belum ada tautan publik"><i class="fa-solid fa-lock"></i></span>
+                    <span class="text-gray-400 text-[10px] font-semibold flex items-center gap-1.5" title="No public link yet"><i class="fa-solid fa-lock"></i></span>
                   )}
                 </div>
               </div>
@@ -270,18 +223,18 @@ function searchText(project: PortfolioProject): string {
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="bg-white rounded-2xl card-shadow p-6">
         <div class="w-10 h-10 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-cube"></i></div>
-        <h3 class="font-bold text-gray-900 text-sm mb-2">Produk</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">Produk SaaS yang kami bangun dan operasikan sendiri, seperti Synctappy.</p>
+        <h3 class="font-bold text-gray-900 text-sm mb-2">Products</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">SaaS products we build and operate ourselves, like Synctappy.</p>
       </div>
       <div class="bg-white rounded-2xl card-shadow p-6">
         <div class="w-10 h-10 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-handshake"></i></div>
-        <h3 class="font-bold text-gray-900 text-sm mb-2">Solusi Teknologi</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">Sistem dan website yang kami bangun untuk kebutuhan klien dan instansi.</p>
+        <h3 class="font-bold text-gray-900 text-sm mb-2">Technology Solutions</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">Systems and websites we build for client and institutional needs.</p>
       </div>
       <div class="bg-white rounded-2xl card-shadow p-6">
         <div class="w-10 h-10 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-flask"></i></div>
-        <h3 class="font-bold text-gray-900 text-sm mb-2">Inovasi & R&D</h3>
-        <p class="text-xs text-gray-500 leading-relaxed">Inisiatif riset dan inovasi yang kami gagas sendiri untuk Sumenep.</p>
+        <h3 class="font-bold text-gray-900 text-sm mb-2">Innovation & R&D</h3>
+        <p class="text-xs text-gray-500 leading-relaxed">Research and innovation initiatives we started ourselves for Sumenep.</p>
       </div>
     </div>
   </section>
@@ -289,10 +242,10 @@ function searchText(project: PortfolioProject): string {
   <!-- ================= PROJECT DETAIL MODAL ================= -->
   <div id="project-modal-overlay" class="hidden fixed inset-0 bg-black/60 z-[100] items-center justify-center p-4">
     <div class="bg-white dark:bg-[#0f1a3d] rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto relative shadow-2xl">
-      <button type="button" class="modal-close-btn absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 dark:bg-white/10 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-white/20 transition z-10" aria-label="Tutup">
+      <button type="button" class="modal-close-btn absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 dark:bg-white/10 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-white/20 transition z-10" aria-label="Close">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      {portfolioProjects.map((project) => (
+      {localizedProjects.map((project) => (
         <div class="project-modal-panel hidden" id={`modal-${project.id}`}>
           <div class="h-56 relative overflow-hidden rounded-t-2xl">
             <img src={project.image} alt={project.title} class="w-full h-full object-cover object-top">
@@ -301,9 +254,7 @@ function searchText(project: PortfolioProject): string {
               {project.year && <span class="bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-700">{project.year}</span>}
             </div>
             <div class="absolute bottom-3 left-6 flex flex-wrap gap-1.5">
-              {project.categories.map((cat) => (
-                <span class="bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">{cat}</span>
-              ))}
+              {project.categories.map((cat) => <span class="bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">{cat}</span>)}
             </div>
           </div>
           <div class="p-8">
@@ -312,76 +263,50 @@ function searchText(project: PortfolioProject): string {
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <div class="bg-gray-50 dark:bg-white/5 rounded-xl p-4">
-                <h4 class="text-[11px] font-bold text-primary tracking-widest mb-2">MASALAH</h4>
+                <h4 class="text-[11px] font-bold text-primary tracking-widest mb-2">PROBLEM</h4>
                 <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">{project.problem}</p>
               </div>
               <div class="bg-gray-50 dark:bg-white/5 rounded-xl p-4">
-                <h4 class="text-[11px] font-bold text-primary tracking-widest mb-2">SOLUSI</h4>
+                <h4 class="text-[11px] font-bold text-primary tracking-widest mb-2">SOLUTION</h4>
                 <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">{project.solution}</p>
               </div>
             </div>
 
             <div class="mb-6">
-              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
-                <i class="fa-solid fa-user-gear"></i> PERAN SYNVORA
-              </h4>
+              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2"><i class="fa-solid fa-user-gear"></i> SYNVORA'S ROLE</h4>
               <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">{project.role}</p>
             </div>
 
             <div class="mb-6">
-              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
-                <i class="fa-solid fa-list-check"></i> FITUR UTAMA
-              </h4>
+              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2"><i class="fa-solid fa-list-check"></i> KEY FEATURES</h4>
               <ul class="space-y-2">
-                {project.features.map((f) => (
-                  <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300">
-                    <i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {f}
-                  </li>
-                ))}
+                {project.features.map((f) => <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300"><i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {f}</li>)}
               </ul>
             </div>
 
             <div class="mb-6">
-              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
-                <i class="fa-solid fa-thumbs-up"></i> KELEBIHAN
-              </h4>
+              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2"><i class="fa-solid fa-thumbs-up"></i> BENEFITS</h4>
               <ul class="space-y-2">
-                {project.benefits.map((b) => (
-                  <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300">
-                    <i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {b}
-                  </li>
-                ))}
+                {project.benefits.map((b) => <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300"><i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {b}</li>)}
               </ul>
             </div>
 
             <div class="mb-8">
-              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
-                <i class="fa-solid fa-star"></i> FITUR UNGGULAN
-              </h4>
+              <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2"><i class="fa-solid fa-star"></i> STANDOUT FEATURES</h4>
               <ul class="space-y-2">
-                {project.coolFeatures.map((c) => (
-                  <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300">
-                    <i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {c}
-                  </li>
-                ))}
+                {project.coolFeatures.map((c) => <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300"><i class="fa-solid fa-circle-check text-primary mt-0.5 text-[10px]"></i> {c}</li>)}
               </ul>
             </div>
 
             {project.team && project.team.length > 0 && (
               <div class="mb-8">
-                <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-users"></i> TIM PENGEMBANG
-                </h4>
+                <h4 class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2"><i class="fa-solid fa-users"></i> DEVELOPMENT TEAM</h4>
                 <div class="flex flex-wrap gap-3">
                   {project.team.map((name) => {
                     const person = findPerson(name);
                     return (
                       <div class="flex items-center gap-2 bg-gray-50 dark:bg-white/5 rounded-full pl-1 pr-4 py-1">
-                        {person?.photo ? (
-                          <img src={person.photo} alt={name} class="w-7 h-7 rounded-full object-cover">
-                        ) : (
-                          <div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[9px] font-bold">{person?.initials ?? name.charAt(0)}</div>
-                        )}
+                        {person?.photo ? <img src={person.photo} alt={name} class="w-7 h-7 rounded-full object-cover"> : <div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[9px] font-bold">{person?.initials ?? name.charAt(0)}</div>}
                         <span class="text-xs font-semibold text-gray-700 dark:text-gray-200">{name}</span>
                       </div>
                     );
@@ -392,11 +317,11 @@ function searchText(project: PortfolioProject): string {
 
             {project.link ? (
               <a href={project.link} target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition">
-                Kunjungi Situs <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                Visit Site <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
             ) : (
               <span class="text-gray-400 text-xs font-semibold inline-flex items-center gap-2 border border-gray-200 dark:border-white/10 px-6 py-3 rounded-full">
-                <i class="fa-solid fa-lock text-[10px]"></i> Belum Ada Tautan Publik
+                <i class="fa-solid fa-lock text-[10px]"></i> No Public Link Yet
               </span>
             )}
           </div>
@@ -407,7 +332,6 @@ function searchText(project: PortfolioProject): string {
 
   <script is:inline>
     (function () {
-      // ---- Search & filter ----
       const searchInput = document.getElementById('portfolio-search');
       const statusSelect = document.getElementById('portfolio-status');
       const kindButtons = Array.from(document.querySelectorAll('.filter-kind-btn'));
@@ -435,18 +359,14 @@ function searchText(project: PortfolioProject): string {
               if (visible) visibleInGroup++;
             });
           } else {
-            section.querySelectorAll('.portfolio-card').forEach((card) => {
-              card.style.display = 'none';
-            });
+            section.querySelectorAll('.portfolio-card').forEach((card) => { card.style.display = 'none'; });
           }
 
           section.style.display = visibleInGroup > 0 ? '' : 'none';
           totalVisible += visibleInGroup;
         });
 
-        if (resultCount) {
-          resultCount.textContent = `Showing ${totalVisible} project${totalVisible === 1 ? '' : 's'}`;
-        }
+        if (resultCount) resultCount.textContent = `Showing ${totalVisible} project${totalVisible === 1 ? '' : 's'}`;
         emptyState?.classList.toggle('hidden', totalVisible > 0);
       }
 
@@ -460,10 +380,8 @@ function searchText(project: PortfolioProject): string {
 
       searchInput?.addEventListener('input', applyFilters);
       statusSelect?.addEventListener('change', applyFilters);
-
       applyFilters();
 
-      // ---- Project detail modal ----
       const overlay = document.getElementById('project-modal-overlay');
       const panels = Array.from(document.querySelectorAll('.project-modal-panel'));
 
@@ -473,24 +391,16 @@ function searchText(project: PortfolioProject): string {
         overlay.classList.add('flex');
         document.body.style.overflow = 'hidden';
       }
-
       function closeModal() {
         overlay.classList.add('hidden');
         overlay.classList.remove('flex');
         document.body.style.overflow = '';
       }
 
-      document.querySelectorAll('[data-modal-target]').forEach((btn) => {
-        btn.addEventListener('click', () => openModal(btn.dataset.modalTarget));
-      });
-
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeModal();
-      });
+      document.querySelectorAll('[data-modal-target]').forEach((btn) => btn.addEventListener('click', () => openModal(btn.dataset.modalTarget)));
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
       document.querySelectorAll('.modal-close-btn').forEach((btn) => btn.addEventListener('click', closeModal));
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
     })();
   </script>
 
@@ -498,20 +408,14 @@ function searchText(project: PortfolioProject): string {
   <section class="py-16 px-8">
     <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
       <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
-
       <div class="z-10 mb-8 md:mb-0 max-w-2xl">
-        <div class="text-xs font-bold text-primary tracking-widest mb-2">MARI BERKOLABORASI</div>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">
-          Punya Ide Proyek?<br>Wujudkan Bersama SYNVORA
-        </h2>
-        <p class="text-sm text-gray-300">
-          Diskusikan kebutuhan Anda dan temukan solusi terbaik untuk organisasi Anda.
-        </p>
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">LET'S COLLABORATE</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">Have a Project Idea?<br>Bring It to Life with SYNVORA</h2>
+        <p class="text-sm text-gray-300">Discuss your needs and find the right solution for your organization.</p>
       </div>
-
       <div class="flex gap-4 z-10">
-        <a href="/hubungi-kami" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
-          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs"></i>
+        <a href="/en/contact" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Contact Us <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
       </div>
     </div>

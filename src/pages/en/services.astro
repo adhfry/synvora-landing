@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const services = [
+  {
+    icon: 'fa-code',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600',
+    title: 'Information Systems Development',
+    desc: 'Custom software designed around your business needs, to improve organizational efficiency and productivity.',
+    items: ['Web-based systems', 'Desktop-based systems', 'System integration', 'Maintenance and ongoing development'],
+  },
+  {
+    icon: 'fa-cloud',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=600',
+    title: 'System Integration & Modernization',
+    desc: 'Connecting legacy systems with modern technology to be more efficient, secure, and scalable.',
+    items: ['Cross-system data integration', 'Legacy system migration', 'API development', 'Infrastructure optimization'],
+  },
+  {
+    icon: 'fa-mobile-screen',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=600',
+    title: 'Web & Mobile Applications',
+    desc: 'Responsive, modern, user-friendly cross-platform solutions to reach more users.',
+    items: ['Mobile apps (Android & iOS)', 'Progressive Web App (PWA)', 'Cloud-based systems', 'Modern, intuitive UI/UX'],
+  },
+  {
+    icon: 'fa-gear',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600',
+    title: 'IT Consulting',
+    desc: 'Strategic guidance to help your organization design and implement the right technology solutions.',
+    items: ['Needs audit and analysis', 'IT strategy planning', 'Technology recommendations', 'Training and knowledge transfer'],
+  },
+  {
+    icon: 'fa-chart-simple',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
+    title: 'Business Intelligence & Data Analytics',
+    desc: 'Turning data into valuable insight to support faster, more accurate decision-making.',
+    items: ['Interactive dashboards', 'Data visualization', 'Predictive analysis', 'Multi-source data integration'],
+  },
+  {
+    icon: 'fa-shield-halved',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=600',
+    title: 'System & Infrastructure Security',
+    desc: "Protecting your organization's digital assets with up-to-date security standards.",
+    items: ['Security assessment', 'System security implementation', 'Backup & disaster recovery', 'Monitoring and support'],
+  },
+  {
+    icon: 'fa-cloud-arrow-up',
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=600',
+    title: 'Cloud & Infrastructure Services',
+    desc: 'Flexible, secure, cost-effective infrastructure solutions to support organizational growth.',
+    items: ['Cloud deployment', 'Server management', 'Scalability & high availability', 'Infrastructure cost optimization'],
+  },
+  {
+    icon: 'fa-users-gear',
+    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600',
+    title: 'Training & Capability Building',
+    desc: "Growing your team's capability through relevant, hands-on technology training.",
+    items: ['System usage training', 'Technical IT training', 'Digital transformation workshops', 'Certification and mentoring'],
+  },
+];
+---
+
+<Layout
+  title="Services - SYNVORA Teknologi Indonesia"
+  description="Information systems development, system integration & modernization, web & mobile applications, business intelligence, system security, and IT consulting from SYNVORA."
+  navVariant="light"
+  footerVariant="default"
+  active="layanan"
+  lang="en"
+  routeKey="services"
+  bodyClass="bg-white"
+>
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.8) 40%, rgba(10, 17, 40, 0.3) 100%),
+          url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover; background-position: center;
+      }
+      .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; }
+      .card-img-overlay { background: linear-gradient(to top, rgba(10, 17, 40, 0.9) 0%, rgba(10, 17, 40, 0.2) 100%); }
+      .cta-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover; background-position: center;
+      }
+      .dark .card-shadow { border-color: rgba(255, 255, 255, 0.08); }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+        <a href="/en/" class="hover:text-white cursor-pointer">Home</a>
+        <i class="fa-solid fa-chevron-right text-[8px]"></i>
+        <span class="text-white">Services</span>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">Our <span class="text-primary">Services</span></h1>
+      <p class="text-gray-300 text-sm md:text-base mb-10 max-w-2xl leading-relaxed">
+        Technology solutions designed to meet your organization's needs, from planning through implementation, with real, lasting results.
+      </p>
+      <div class="border-l-4 border-primary pl-4">
+        <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA</div>
+        <div class="text-xs text-gray-400">A Better Tomorrow Through Technology</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN SERVICES SECTION ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div class="max-w-2xl">
+          <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 bg-primary rounded-full"></span> FEATURED SERVICES
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">A Complete Solution for Your Digital Transformation</h2>
+          <p class="text-sm text-gray-500">We offer a range of information technology services that can be tailored to your organization's needs and goals.</p>
+        </div>
+        <div class="max-w-md mt-6 md:mt-0">
+          <p class="text-sm text-gray-500 leading-relaxed">
+            From information systems and mobile apps to IT consulting, SYNVORA delivers technology solutions at every step of your digital transformation, while also building our own digital products.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map((s) => (
+          <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col relative group">
+            <div class="h-40 relative">
+              <img src={s.image} alt={s.title} class="w-full h-full object-cover">
+              <div class="absolute inset-0 card-img-overlay"></div>
+              <div class="absolute -bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-xl flex items-center justify-center text-xl shadow-lg border-4 border-white z-10">
+                <i class={`fa-solid ${s.icon}`}></i>
+              </div>
+            </div>
+            <div class="p-6 pt-10 flex-1 flex flex-col">
+              <h3 class="font-bold text-gray-900 text-lg mb-3">{s.title}</h3>
+              <p class="text-xs text-gray-500 mb-4 leading-relaxed">{s.desc}</p>
+              <ul class="space-y-2 mb-6 flex-1">
+                {s.items.map((item) => (
+                  <li class="flex items-start gap-2 text-xs text-gray-600"><i class="fa-solid fa-circle-check text-primary mt-0.5"></i> {item}</li>
+                ))}
+              </ul>
+              <a href="/en/contact" class="text-primary text-xs font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">Discuss This Need <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKFLOW SECTION ================= -->
+  <section class="py-24 bg-white px-8 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+        <div class="max-w-2xl">
+          <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 bg-primary rounded-full"></span> OUR WORK PROCESS
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">From Requirements<br>to a Real Solution</h2>
+        </div>
+        <div class="max-w-md mt-6 md:mt-0 flex flex-col items-start md:items-end">
+          <p class="text-sm text-gray-500 text-left md:text-right mb-4">We follow a structured, collaborative work process to make sure every solution delivers the best results.</p>
+          <a href="/en/contact" class="text-primary text-sm font-semibold flex items-center gap-2 hover:underline">Ask About Our Process <i class="fa-solid fa-arrow-right text-xs"></i></a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-gray-200 z-0"></div>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">01</div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Needs Discussion</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Understanding your goals and challenges.</p>
+            <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20"><i class="fa-solid fa-arrow-right text-xs"></i></div>
+          </div>
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">02</div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Solution Design</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Building strategy and system design.</p>
+            <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20"><i class="fa-solid fa-arrow-right text-xs"></i></div>
+          </div>
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">03</div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Development</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Building to a high quality standard.</p>
+            <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20"><i class="fa-solid fa-arrow-right text-xs"></i></div>
+          </div>
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">04</div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Implementation</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Testing, launch, and hands-on support.</p>
+            <div class="hidden md:flex absolute top-5 -right-4 text-gray-300 z-20"><i class="fa-solid fa-arrow-right text-xs"></i></div>
+          </div>
+          <div class="relative text-center md:text-left">
+            <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg font-bold mx-auto md:mx-0 mb-6 border-4 border-white shadow-sm relative z-10">05</div>
+            <h3 class="font-bold text-gray-900 text-sm mb-2">Ongoing Support</h3>
+            <p class="text-[11px] text-gray-500 leading-relaxed">Maintenance and continued development.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+      <div class="z-10 mb-8 md:mb-0 max-w-xl">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">LET'S COLLABORATE</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">Bring Your Technology Solution to Life<br>for a Better Future.</h2>
+        <p class="text-sm text-gray-300">Discuss your needs with our expert team and find the right solution for your organization.</p>
+      </div>
+      <div class="flex gap-4 z-10">
+        <a href="/en/contact" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Contact Us <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

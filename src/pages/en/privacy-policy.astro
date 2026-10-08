@@ -1,0 +1,202 @@
+---
+import LegalLayout from '../../components/LegalLayout.astro';
+import { SITE } from '../../lib/site';
+
+const lastUpdated = 'October 8, 2026';
+const toc = [
+  { id: 'introduction', label: '1. Introduction' },
+  { id: 'about-synvora', label: '2. About SYNVORA' },
+  { id: 'scope', label: '3. Scope' },
+  { id: 'info-we-collect', label: '4. Information We May Collect' },
+  { id: 'voluntary-info', label: '5. Information Provided Voluntarily' },
+  { id: 'automatic-info', label: '6. Automatically Collected Technical Information' },
+  { id: 'cookies', label: '7. Cookies and Similar Technologies' },
+  { id: 'how-we-use', label: '8. How We Use Information' },
+  { id: 'other-purposes', label: '9. Other Operational Purposes' },
+  { id: 'data-sharing', label: '10. Data Sharing' },
+  { id: 'third-party-providers', label: '11. Third-Party Service Providers' },
+  { id: 'retention', label: '12. Data Retention' },
+  { id: 'security', label: '13. Data Security' },
+  { id: 'your-rights', label: '14. Your Rights' },
+  { id: 'international-transfer', label: '15. International Data Transfer' },
+  { id: 'childrens-privacy', label: "16. Children's Privacy" },
+  { id: 'external-links', label: '17. External Links' },
+  { id: 'changes', label: '18. Changes to This Privacy Policy' },
+  { id: 'contact', label: '19. Contact' },
+  { id: 'last-updated', label: '20. Last Updated' },
+];
+---
+
+<LegalLayout
+  title="Privacy Policy - SYNVORA Teknologi Indonesia"
+  description="SYNVORA Teknologi Indonesia's Privacy Policy: what data we collect, how it's used, the third-party services we actually rely on, and your rights over that data."
+  lang="en"
+  routeKey="privacy"
+  pageTitle="Privacy Policy"
+  lastUpdated={lastUpdated}
+  toc={toc}
+>
+  <div id="introduction">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">1. Introduction</h2>
+    <p>
+      {SITE.legalName} ("SYNVORA", "we", "us") respects the privacy of every visitor to {SITE.url} (the "Site"). This Privacy Policy explains what data we collect, how it is used, who it may be shared with, and the rights you have over that data. It reflects the Site as it actually operates today, not planned or hypothetical features.
+    </p>
+  </div>
+
+  <div id="about-synvora">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">2. About SYNVORA</h2>
+    <p>
+      {SITE.name} is the trading name of {SITE.legalName}, a technology company founded {SITE.foundedDisplay} and based in {SITE.addressShort}, Indonesia, founded by {SITE.founderName}. SYNVORA builds software systems, technology solutions for organizations, and its own digital products.
+    </p>
+  </div>
+
+  <div id="scope">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">3. Scope</h2>
+    <p>
+      This policy covers data collected through {SITE.url}, including the Free Consultation form, the Contact form, and blog article comments. It does not cover SYNVORA's separate product sites (such as Synctappy) or third-party sites linked from this Site, each of which has its own privacy policy.
+    </p>
+  </div>
+
+  <div id="info-we-collect">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">4. Information We May Collect</h2>
+    <p>We collect data in three categories: information you provide voluntarily, technical information collected automatically, and cookies. Each is detailed in sections 5, 6, and 7.</p>
+  </div>
+
+  <div id="voluntary-info">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">5. Information Provided Voluntarily</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>Free Consultation and Contact forms:</strong> name, email address, WhatsApp number, company name (optional), type of need/topic, your preferred date and time (consultation form only), and whatever message or details you write.</li>
+      <li><strong>Blog comments:</strong> the name you enter (a pseudonym is fine), your comment text, and a star rating if given. Submitted comments are displayed publicly on the related article.</li>
+    </ul>
+    <p class="mt-3">We do not request or collect precise GPS location, biometric data, financial information, health data, advertising identifiers, or behavioral profiling data.</p>
+  </div>
+
+  <div id="automatic-info">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">6. Automatically Collected Technical Information</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>IP address:</strong> logged temporarily to prevent repeated form or comment submissions within a short window (anti-spam), not to track your identity.</li>
+      <li><strong>Standard server logs:</strong> such as browser type and request time, as commonly logged by web servers in general.</li>
+      <li><strong>Aggregate analytics data (only if you grant Analytics consent):</strong> pages visited, approximate IP-based location (city/country level, not precise), device type, and referral source, via Google Analytics 4. See section 7 and our Cookie Policy for full detail.</li>
+    </ul>
+  </div>
+
+  <div id="cookies">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">7. Cookies and Similar Technologies</h2>
+    <p>
+      This Site uses cookies for language preference, to remember your own cookie preferences, and (only with your consent) Google Analytics 4. A full breakdown of every cookie, its category, and how to change your preference is available in our <a href="/en/cookie-policy" class="text-primary font-semibold">Cookie Policy</a>.
+    </p>
+  </div>
+
+  <div id="how-we-use">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">8. How We Use Information</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Responding to consultation requests or questions submitted through our forms.</li>
+      <li>Displaying the comments and ratings you submit publicly on the related article.</li>
+      <li>Preventing abuse/spam on forms and the comment section.</li>
+      <li>Understanding aggregate usage patterns of the Site (only if you've granted Analytics consent), to improve content and user experience.</li>
+    </ul>
+  </div>
+
+  <div id="other-purposes">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">9. Other Operational Purposes</h2>
+    <p>
+      We may process data as reasonably necessary to meet basic operational obligations, such as keeping correspondence records for customer support purposes, or where required by applicable Indonesian law.
+    </p>
+  </div>
+
+  <div id="data-sharing">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">10. Data Sharing</h2>
+    <p>
+      We do not sell or rent your personal data to anyone. Data is only shared with the third-party service providers listed in section 11, to the extent necessary for those services to function.
+    </p>
+  </div>
+
+  <div id="third-party-providers">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">11. Third-Party Service Providers</h2>
+    <p class="mb-3">The following third-party services are actually used by this Site today:</p>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>Email delivery (SMTP):</strong> forwards Free Consultation and Contact form submissions to our internal team email.</li>
+      <li><strong>Google Analytics 4:</strong> aggregate visit analytics, only active once you grant Analytics consent. Governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">Google's Privacy Policy</a>.</li>
+      <li><strong>Cloudflare Turnstile:</strong> anti-spam verification on the Free Consultation and Contact forms, governed by <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">Cloudflare's Privacy Policy</a>.</li>
+      <li><strong>Google Maps (embed):</strong> the location map on the Contact page, loaded directly from Google and subject to Google's privacy policy.</li>
+      <li><strong>Google Fonts &amp; Font Awesome (cdnjs):</strong> load font and icon files from third-party CDNs for the Site's appearance.</li>
+    </ul>
+  </div>
+
+  <div id="retention">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">12. Data Retention</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Free Consultation and Contact form submissions are forwarded by email and not stored in a long-term database on our servers.</li>
+      <li>IP addresses used for anti-spam are kept temporarily and only reused to compare against subsequent submissions from the same source.</li>
+      <li>Blog comments (name, text, rating) are retained for as long as the related article remains published, unless you request removal.</li>
+      <li>Cookie consent and language preference persist in your browser until they expire or you clear them yourself (see our Cookie Policy).</li>
+    </ul>
+  </div>
+
+  <div id="security">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">13. Data Security</h2>
+    <p>
+      We apply reasonable safeguards to protect the data you submit, including HTTPS, anti-spam verification on forms, and rate limiting. That said, no method of transmission over the internet is completely free of risk.
+    </p>
+  </div>
+
+  <div id="your-rights">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">14. Your Rights</h2>
+    <p class="mb-3">You have the right to:</p>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Ask us to remove a comment you previously submitted on our blog.</li>
+      <li>Ask what data we hold about you.</li>
+      <li>Request correction or deletion of data you submitted via a form, for as long as it remains in our email correspondence.</li>
+      <li>Withdraw or change Analytics cookie consent at any time via "Cookie Settings" in the Site's footer.</li>
+    </ul>
+    <p class="mt-3">
+      For any of the above, please contact us at <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a>.
+    </p>
+  </div>
+
+  <div id="international-transfer">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">15. International Data Transfer</h2>
+    <p>
+      Some of our third-party service providers (Google, Cloudflare) may process data on servers outside Indonesia as part of their global operations. Such transfers are governed by each provider's own data protection policies and mechanisms.
+    </p>
+  </div>
+
+  <div id="childrens-privacy">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">16. Children's Privacy</h2>
+    <p>
+      This Site is intended for organizations and the general public, not children. We do not knowingly collect personal data from children under 13. If you believe such data exists, please contact us so it can be removed promptly.
+    </p>
+  </div>
+
+  <div id="external-links">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">17. External Links</h2>
+    <p>
+      This Site links to our own products and initiatives (including Synctappy, AIRA, AgriVita, JOS, and BBM) as well as other third-party sites. We are not responsible for the privacy practices of sites outside our control.
+    </p>
+  </div>
+
+  <div id="changes">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">18. Changes to This Privacy Policy</h2>
+    <p>
+      We may update this policy as our Site and services evolve. The date at the top of this page always reflects the most recent update, and only changes when the content itself is actually revised.
+    </p>
+  </div>
+
+  <div id="contact">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">19. Contact</h2>
+    <p>
+      {SITE.legalName} ({SITE.name}), based in {SITE.addressShort}, Indonesia. Questions about this policy can be sent to <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a> or WhatsApp <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">{SITE.phoneDisplay}</a>.
+    </p>
+  </div>
+
+  <div id="last-updated">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">20. Last Updated</h2>
+    <p>{lastUpdated}. This policy is also available in <a href="/kebijakan-privasi" class="text-primary font-semibold">Bahasa Indonesia</a>.</p>
+  </div>
+
+  <div class="border-t border-gray-100 pt-8">
+    <p class="text-xs text-gray-400 italic">
+      Note: this document describes the privacy practices of {SITE.url} and does not constitute legal, financial, medical, or other professional advice.
+    </p>
+  </div>
+</LegalLayout>

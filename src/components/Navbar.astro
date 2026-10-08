@@ -1,19 +1,28 @@
 ---
-import { NAV_ITEMS } from '../lib/nav';
+import { getNavItems } from '../lib/nav';
 import ThemeToggle from './ThemeToggle.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { pathFor, type Locale } from '../i18n/routes';
+import { t } from '../i18n/ui';
 
 interface Props {
   variant?: 'dark' | 'light';
   active?: string;
+  lang?: Locale;
+  routeKey?: string;
 }
-const { variant = 'light', active = '' } = Astro.props;
+const { variant = 'light', active = '', lang = 'id', routeKey = 'home' } = Astro.props;
+const NAV_ITEMS = getNavItems(lang);
+const dict = t(lang);
+const homeHref = pathFor('home', lang);
+const contactHref = pathFor('contact', lang);
 ---
 
 {
   variant === 'dark' ? (
     <nav class="bg-[#0A1128] text-white py-4 px-4 sm:px-6 lg:px-8 relative z-50">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" class="flex items-center shrink-0">
+        <a href={homeHref} class="flex items-center shrink-0">
           <img
             src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png"
             alt="SYNVORA Teknologi Indonesia"
@@ -37,17 +46,20 @@ const { variant = 'light', active = '' } = Astro.props;
         </div>
 
         <div class="flex items-center gap-2 sm:gap-4">
+          <div class="hidden md:block">
+            <LanguageSwitcher locale={lang} routeKey={routeKey} variant="dark" />
+          </div>
           <ThemeToggle variant="onDark" />
           <a
-            href="/hubungi-kami"
+            href={contactHref}
             class="hidden md:flex bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold items-center gap-2 transition"
           >
-            Hubungi Kami <i class="fa-solid fa-arrow-right text-xs" />
+            {dict.nav.cta} <i class="fa-solid fa-arrow-right text-xs" />
           </a>
           <button
             id="mobile-menu-toggle"
             type="button"
-            aria-label="Buka menu navigasi"
+            aria-label={lang === 'en' ? 'Open navigation menu' : 'Buka menu navigasi'}
             aria-expanded="false"
             class="md:hidden w-9 h-9 rounded-full flex items-center justify-center border border-white/20 text-white shrink-0"
           >
@@ -67,18 +79,21 @@ const { variant = 'light', active = '' } = Astro.props;
             </a>
           ))}
         </div>
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <LanguageSwitcher locale={lang} routeKey={routeKey} variant="dark" />
+        </div>
         <a
-          href="/hubungi-kami"
-          class="mt-4 bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 transition"
+          href={contactHref}
+          class="mt-3 bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 transition"
         >
-          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs" />
+          {dict.nav.cta} <i class="fa-solid fa-arrow-right text-xs" />
         </a>
       </div>
     </nav>
   ) : (
     <nav class="bg-white dark:bg-synvora-dark border-b border-gray-100 dark:border-white/10 py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 shadow-sm transition-colors">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" class="flex items-center cursor-pointer shrink-0">
+        <a href={homeHref} class="flex items-center cursor-pointer shrink-0">
           <img
             src="/images/logo/synvora-teknologi-indonesia-logo-bluetext.png"
             alt="SYNVORA Teknologi Indonesia"
@@ -106,17 +121,20 @@ const { variant = 'light', active = '' } = Astro.props;
         </div>
 
         <div class="flex items-center gap-2 sm:gap-4">
+          <div class="hidden md:block">
+            <LanguageSwitcher locale={lang} routeKey={routeKey} variant="light" />
+          </div>
           <ThemeToggle variant="onLight" />
           <a
-            href="/hubungi-kami"
+            href={contactHref}
             class="hidden md:flex bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold items-center gap-2 transition"
           >
-            Hubungi Kami <i class="fa-solid fa-arrow-right text-xs" />
+            {dict.nav.cta} <i class="fa-solid fa-arrow-right text-xs" />
           </a>
           <button
             id="mobile-menu-toggle"
             type="button"
-            aria-label="Buka menu navigasi"
+            aria-label={lang === 'en' ? 'Open navigation menu' : 'Buka menu navigasi'}
             aria-expanded="false"
             class="md:hidden w-9 h-9 rounded-full flex items-center justify-center border border-gray-200 dark:border-white/20 text-gray-700 dark:text-gray-200 shrink-0"
           >
@@ -140,11 +158,14 @@ const { variant = 'light', active = '' } = Astro.props;
             </a>
           ))}
         </div>
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <LanguageSwitcher locale={lang} routeKey={routeKey} variant="light" />
+        </div>
         <a
-          href="/hubungi-kami"
-          class="mt-4 bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 transition"
+          href={contactHref}
+          class="mt-3 bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 transition"
         >
-          Hubungi Kami <i class="fa-solid fa-arrow-right text-xs" />
+          {dict.nav.cta} <i class="fa-solid fa-arrow-right text-xs" />
         </a>
       </div>
     </nav>

@@ -1,0 +1,319 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { founder, teamMembers, SOCIAL_ICONS, SOCIAL_IMAGES } from '../../data/team';
+import { SITE } from '../../lib/site';
+---
+
+<Layout
+  title="About Us - SYNVORA Teknologi Indonesia"
+  description="Get to know SYNVORA Teknologi Indonesia: our vision, mission, values, journey, and the culture behind how we build technology solutions with real impact."
+  navVariant="light"
+  footerVariant="default"
+  active="tentang-kami"
+  lang="en"
+  routeKey="about"
+  bodyClass="bg-white"
+>
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.8) 50%, rgba(10, 17, 40, 0.4) 100%),
+          url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+      }
+      .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; }
+      .timeline-line { position: absolute; top: 24px; left: 10%; right: 10%; height: 2px; background-color: #e5e7eb; z-index: 0; }
+      .timeline-dot {
+        position: relative; z-index: 10; background: white; border: 2px solid #e5e7eb; border-radius: 50%;
+        width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;
+      }
+      .timeline-dot.active { border-color: #0066ff; background-color: #0066ff; color: white; }
+      .timeline-dot.active i { color: white; }
+      .timeline-dot i { color: #6b7280; }
+      .stat-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover; background-position: center;
+      }
+      .dark .card-shadow { border-color: rgba(255, 255, 255, 0.08); }
+      .dark .timeline-dot { background: #0f1a3d; border-color: rgba(255, 255, 255, 0.15); }
+      .dark .timeline-dot i { color: #9ca3af; }
+      .dark .timeline-line { background-color: rgba(255, 255, 255, 0.1); }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+          <a href="/en/" class="hover:text-white cursor-pointer">Home</a>
+          <i class="fa-solid fa-chevron-right text-[8px]"></i>
+          <span class="text-white">About Us</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">About <span class="text-primary">Us</span></h1>
+        <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+          Get to know SYNVORA Teknologi Indonesia up close: our journey, values, and commitment to delivering technology solutions with real impact.
+        </p>
+        <div class="border-l-4 border-primary pl-4">
+          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA</div>
+          <div class="text-xs text-gray-400">A Better Tomorrow Through Technology</div>
+        </div>
+      </div>
+
+      <div class="hidden lg:block relative">
+        <div class="rounded-xl overflow-hidden shadow-2xl border border-white/10 relative h-[400px]">
+          <img src="/images/team/pertemuan-1-synvora.jpg" alt="The SYNVORA team in a working session" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end items-start text-left p-6">
+            <div class="text-white text-sm font-semibold leading-tight">The SYNVORA team, in an actual working session.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHO WE ARE ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-[#0f1a3d] to-[#0A1128] h-[400px] relative flex items-center justify-center">
+          <div class="absolute top-0 left-0 w-56 h-56 bg-primary rounded-full filter blur-[90px] opacity-25"></div>
+          <div class="absolute bottom-0 right-0 w-40 h-40 bg-primary rounded-full filter blur-[70px] opacity-20"></div>
+          <img src="/images/logo/synvora-teknologi-indonesia-logo-whitetext.png" alt="SYNVORA Teknologi Indonesia" class="h-16 w-auto max-w-[300px] object-contain relative z-10" />
+        </div>
+        <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg max-w-[240px] border-l-4 border-primary">
+          <div class="font-bold text-lg leading-tight" style="color:#111827">Technology Changing the Era,</div>
+          <div class="font-bold text-lg leading-tight" style="color:#111827">Let's Build with Synvora</div>
+          <div class="w-8 h-0.5 bg-primary mt-3"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> WHO WE ARE
+        </div>
+        <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">SYNVORA Teknologi Indonesia</h2>
+        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+          Technology should do more than digitize existing processes. It should create better ways to work, connect people and information, and unlock new possibilities.
+        </p>
+        <p class="text-sm text-gray-600 leading-relaxed mb-8">
+          SYNVORA Teknologi Indonesia is an early-stage technology company based in Sumenep, East Java. We work in two directions: building technology solutions for organizations and institutions, and building our own digital products while exploring new technology through self-directed research.
+        </p>
+
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 grid grid-cols-2 gap-5">
+          <div><div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Legal Entity</div><div class="text-sm font-semibold text-gray-900">{SITE.legalName}</div></div>
+          <div><div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Founded</div><div class="text-sm font-semibold text-gray-900">{SITE.foundedDisplay}</div></div>
+          <div><div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Based In</div><div class="text-sm font-semibold text-gray-900">{SITE.addressShort}, Indonesia</div></div>
+          <div><div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Founder & Director</div><div class="text-sm font-semibold text-gray-900">{SITE.founderName}</div></div>
+          <div class="col-span-2"><div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Industry</div><div class="text-sm font-semibold text-gray-900">Technology / Software &amp; SaaS</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VISION, MISSION, VALUES ================= -->
+  <section class="py-16 bg-gray-50 px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-8 rounded-2xl card-shadow">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-regular fa-eye"></i></div>
+        <h3 class="font-bold text-gray-900 text-lg mb-4">Vision</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">Building relevant technology solutions for organizations in Indonesia, while developing our own digital products.</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-2xl card-shadow">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-bullseye"></i></div>
+        <h3 class="font-bold text-gray-900 text-lg mb-4">Mission</h3>
+        <ul class="space-y-4 text-sm text-gray-500">
+          <li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0">1</span>Develop quality, relevant technology solutions.</li>
+          <li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0">2</span>Deliver professional service oriented around client satisfaction.</li>
+          <li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0">3</span>Drive continuous innovation across every line of work.</li>
+          <li class="flex gap-3"><span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0">4</span>Contribute to digital transformation for a more advanced Indonesia.</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-8 rounded-2xl card-shadow">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-gem"></i></div>
+        <h3 class="font-bold text-gray-900 text-lg mb-4">Our Values</h3>
+        <div class="space-y-4 text-sm text-gray-500">
+          <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">S</span><div><div class="font-semibold text-gray-800">Synchronous</div><div class="text-xs">Aligned in purpose and in step.</div></div></div>
+          <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">I</span><div><div class="font-semibold text-gray-800">Innovation</div><div class="text-xs">Always looking for a better way.</div></div></div>
+          <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">E</span><div><div class="font-semibold text-gray-800">Evolution</div><div class="text-xs">Continuously evolving with change.</div></div></div>
+          <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-blue-100 text-primary flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">E</span><div><div class="font-semibold text-gray-800">Era</div><div class="text-xs">Building a better future.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPANY SNAPSHOT ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto stat-bg rounded-3xl p-12 text-white flex flex-col lg:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-2/3 mb-12 lg:mb-0">
+        <div class="flex flex-col items-center lg:items-start"><i class="fa-solid fa-building-columns text-3xl text-blue-300 mb-4"></i><div class="text-xl font-extrabold mb-1">{SITE.foundedDisplay}</div><div class="text-xs text-gray-300 text-center lg:text-left">Founded</div></div>
+        <div class="flex flex-col items-center lg:items-start"><i class="fa-solid fa-location-dot text-3xl text-blue-300 mb-4"></i><div class="text-xl font-extrabold mb-1">Sumenep</div><div class="text-xs text-gray-300 text-center lg:text-left">Based in East Java</div></div>
+        <div class="flex flex-col items-center lg:items-start"><i class="fa-solid fa-cube text-3xl text-blue-300 mb-4"></i><div class="text-xl font-extrabold mb-1">Products & Solutions</div><div class="text-xs text-gray-300 text-center lg:text-left">Our main focus</div></div>
+        <div class="flex flex-col items-center lg:items-start"><i class="fa-solid fa-users text-3xl text-blue-300 mb-4"></i><div class="text-xl font-extrabold mb-1">Multidisciplinary</div><div class="text-xs text-gray-300 text-center lg:text-left">The team behind it</div></div>
+      </div>
+      <div class="w-full lg:w-1/3 relative pl-8 border-l border-white/20">
+        <div class="relative">
+          <i class="fa-solid fa-quote-left text-4xl text-white/20 absolute -top-4 -left-4"></i>
+          <p class="text-sm text-gray-200 italic leading-relaxed relative z-10 mb-4">"Innovation isn't just about technology — it's about people and a better future."</p>
+          <div class="w-12 h-0.5 bg-primary mb-3"></div>
+          <div class="text-xs font-bold tracking-widest text-gray-400">SYNVORA TEKNOLOGI INDONESIA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OUR CULTURE ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> OUR CULTURE
+        </div>
+        <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">Growing Together<br>with Strong Values</h2>
+        <p class="text-sm text-gray-600 leading-relaxed mb-8">
+          We believe the best results come from collaboration, trust, and a positive work environment. SYNVORA is a place where ideas are valued, innovation is encouraged, and every individual has a meaningful role in creating impact.
+        </p>
+        <a href="/en/careers" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition">
+          Join Us <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="col-span-2 relative rounded-2xl overflow-hidden shadow-lg h-64">
+          <img src="/images/team/pertemuan-2-synvora.jpg" alt="The SYNVORA team in a working meeting" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+            <div class="text-white"><div class="text-lg font-bold leading-tight">Great<br>People<br>Build<br>Great<br>Solutions</div></div>
+          </div>
+        </div>
+        <div class="col-span-2 relative rounded-2xl overflow-hidden shadow-lg h-40 bg-[#0A1128] p-6 flex items-center">
+          <div>
+            <i class="fa-solid fa-quote-left text-2xl text-primary mb-2"></i>
+            <p class="text-sm md:text-lg lg:text-xl text-gray-300 italic mb-2 leading-snug">"A solid team is the foundation of every great innovation."</p>
+            <div class="w-6 h-0.5 bg-primary"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OUR TEAM ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> OUR TEAM
+      </div>
+      <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-6">The People Behind SYNVORA</h2>
+      <p class="text-sm text-gray-600 leading-relaxed mb-16 max-w-2xl">
+        A small team building SYNVORA's technology solutions and digital products, from design through release.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
+        <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {teamMembers.map((member) => (
+            <div class="bg-white p-8 rounded-2xl card-shadow text-center flex flex-col items-center">
+              {member.photo ? (
+                <img src={member.photo} alt={member.name} class="w-16 h-16 rounded-full object-cover mb-5" />
+              ) : (
+                <div class="w-16 h-16 rounded-full bg-blue-50 text-primary flex items-center justify-center text-xl font-bold mb-5">{member.initials}</div>
+              )}
+              <div class="font-bold text-gray-900 text-base mb-1">{member.name}</div>
+              <div class="text-xs text-gray-500 mb-3">{member.role}</div>
+              {member.socials && member.socials.length > 0 && (
+                <div class="flex items-center gap-3 mt-auto pt-2">
+                  {member.socials.map((social) => (
+                    <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} - ${social.platform}`} class="w-8 h-8 rounded-full overflow-hidden border border-gray-200 text-gray-400 flex items-center justify-center hover:border-primary hover:text-primary transition text-xs">
+                      {SOCIAL_IMAGES[social.platform] ? <img src={SOCIAL_IMAGES[social.platform]} alt={social.platform} class="w-full h-full object-cover" /> : <i class={SOCIAL_ICONS[social.platform]}></i>}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div class="lg:col-span-2 bg-[#0A1128] rounded-2xl p-10 text-white relative overflow-hidden flex flex-col">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-primary rounded-full filter blur-[70px] opacity-30"></div>
+          <div class="relative z-10 flex flex-col items-center text-center flex-1">
+            <img src={founder.photo} alt={founder.name} class="w-32 h-32 rounded-full object-cover border-4 border-white/10 mb-6" />
+            <div class="font-extrabold text-2xl mb-1">{founder.name}</div>
+            <div class="text-xs font-bold text-primary tracking-widest mb-6">FOUNDER & DIRECTOR</div>
+            <div class="relative mb-8">
+              <i class="fa-solid fa-quote-left text-3xl text-white/10 absolute -top-3 -left-4"></i>
+              <p class="text-sm text-gray-300 italic leading-relaxed relative z-10">Every journey in life carries meaning. Honor each process and its lessons with calm and persistence, because a solid foundation is always built from the quiet details most people overlook.</p>
+            </div>
+            <div class="w-full mb-8 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+              <img src="/images/team/kartunama-ahda.jpeg" alt={`${founder.name}'s business card - Founder & Director`} class="w-full h-auto object-cover" />
+            </div>
+            <div class="flex items-center gap-3 mt-auto">
+              {founder.socials?.map((social) => (
+                <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`${founder.name} - ${social.platform}`} class="w-10 h-10 rounded-full overflow-hidden bg-white/10 text-white flex items-center justify-center hover:bg-primary transition">
+                  {SOCIAL_IMAGES[social.platform] ? <img src={SOCIAL_IMAGES[social.platform]} alt={social.platform} class="w-full h-full object-cover" /> : <i class={SOCIAL_ICONS[social.platform]}></i>}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OUR JOURNEY ================= -->
+  <section class="py-24 bg-gray-50 px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> OUR JOURNEY
+      </div>
+      <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-16">Key Milestones</h2>
+
+      <div class="relative">
+        <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-gray-200 z-0"></div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+          <div class="text-center">
+            <div class="timeline-dot"><i class="fa-solid fa-flag text-sm"></i></div>
+            <div class="text-primary font-bold text-lg mb-2">2024</div>
+            <div class="font-bold text-gray-900 mb-1">Early Technology Exploration</div>
+            <div class="text-xs text-gray-500">The idea and vision behind SYNVORA began to take shape.</div>
+          </div>
+          <div class="text-center">
+            <div class="timeline-dot"><i class="fa-regular fa-file-lines text-sm"></i></div>
+            <div class="text-primary font-bold text-lg mb-2">2025</div>
+            <div class="font-bold text-gray-900 mb-1">Projects & Product Exploration</div>
+            <div class="text-xs text-gray-500">The team explored projects, technologies, and digital products.</div>
+          </div>
+          <div class="text-center">
+            <div class="timeline-dot active"><i class="fa-solid fa-rocket text-sm"></i></div>
+            <div class="text-primary font-bold text-lg mb-2">Sep 2026</div>
+            <div class="font-bold text-gray-900 mb-1">Officially Incorporated</div>
+            <div class="text-xs text-gray-500">{SITE.legalName} was officially established.</div>
+          </div>
+          <div class="text-center">
+            <div class="timeline-dot"><i class="fa-solid fa-chart-line text-sm"></i></div>
+            <div class="text-primary font-bold text-lg mb-2">2026+</div>
+            <div class="font-bold text-gray-900 mb-1">Building Products & Solutions</div>
+            <div class="text-xs text-gray-500">Developing technology solutions and our own digital products.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto bg-[#0A1128] rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+      <div class="z-10 mb-8 md:mb-0">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">LET'S COLLABORATE</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight">Together with SYNVORA, Let's Build<br>Technology Solutions for a Better Future.</h2>
+      </div>
+      <div class="flex gap-4 z-10">
+        <a href="/en/contact" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Contact Us <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

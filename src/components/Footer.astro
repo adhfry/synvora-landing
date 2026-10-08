@@ -1,12 +1,17 @@
 ---
-import { NAV_ITEMS } from '../lib/nav';
+import { getNavItems } from '../lib/nav';
 import { SITE } from '../lib/site';
+import { pathFor, type Locale } from '../i18n/routes';
+import { t } from '../i18n/ui';
 
 interface Props {
   active?: string;
   variant?: 'landing' | 'default';
+  lang?: Locale;
 }
-const { active = '', variant = 'default' } = Astro.props;
+const { active = '', variant = 'default', lang = 'id' } = Astro.props;
+const dict = t(lang);
+const NAV_ITEMS = getNavItems(lang);
 
 const isLanding = variant === 'landing';
 const navListClass = isLanding ? 'space-y-3 text-sm text-gray-500 dark:text-gray-400' : 'space-y-3 text-xs text-gray-500 dark:text-gray-400';
@@ -16,15 +21,24 @@ const headingClass = isLanding
 const contactListClass = isLanding ? 'space-y-4 text-sm text-gray-500 dark:text-gray-400' : 'space-y-4 text-xs text-gray-500 dark:text-gray-400';
 const contactIconMt = isLanding ? 'mt-1' : 'mt-0.5';
 const bottomBarClass = isLanding
-  ? 'max-w-7xl mx-auto border-t border-gray-100 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400'
-  : 'max-w-7xl mx-auto border-t border-gray-100 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400';
+  ? 'max-w-7xl mx-auto border-t border-gray-100 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400'
+  : 'max-w-7xl mx-auto border-t border-gray-100 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400';
 
-const services = [
-  { label: 'Sistem Informasi', href: '/layanan' },
-  { label: 'Integrasi Sistem', href: '/layanan' },
-  { label: 'Aplikasi Web & Mobile', href: '/layanan' },
-  { label: 'Konsultasi IT', href: '/layanan' },
-];
+const servicesHref = pathFor('services', lang);
+const services =
+  lang === 'en'
+    ? [
+        { label: 'Information Systems', href: servicesHref },
+        { label: 'System Integration', href: servicesHref },
+        { label: 'Web & Mobile Apps', href: servicesHref },
+        { label: 'IT Consulting', href: servicesHref },
+      ]
+    : [
+        { label: 'Sistem Informasi', href: servicesHref },
+        { label: 'Integrasi Sistem', href: servicesHref },
+        { label: 'Aplikasi Web & Mobile', href: servicesHref },
+        { label: 'Konsultasi IT', href: servicesHref },
+      ];
 
 const contactInfo = [
   { icon: 'fa-solid fa-location-dot', text: SITE.address },
@@ -49,7 +63,7 @@ const contactInfo = [
         />
       </div>
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-sm">
-        Teknologi yang menyatukan, menginspirasi, dan menciptakan masa depan yang lebih baik.
+        {dict.footer.tagline}
       </p>
       <div class="flex gap-4 text-gray-400">
         <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition"><i class="fa-brands fa-linkedin-in" /></a>
@@ -63,7 +77,7 @@ const contactInfo = [
 
     <!-- Navigasi -->
     <div>
-      <h4 class={headingClass}>Navigasi</h4>
+      <h4 class={headingClass}>{dict.footer.navHeading}</h4>
       <ul class={navListClass}>
         {NAV_ITEMS.map((item) => (
           <li>
@@ -79,7 +93,7 @@ const contactInfo = [
 
     <!-- Layanan -->
     <div>
-      <h4 class={headingClass}>Layanan</h4>
+      <h4 class={headingClass}>{dict.footer.servicesHeading}</h4>
       <ul class={navListClass}>
         {services.map((s) => (
           <li><a href={s.href} class="hover:text-primary transition">{s.label}</a></li>
@@ -89,7 +103,7 @@ const contactInfo = [
 
     <!-- Kontak -->
     <div>
-      <h4 class={headingClass}>Kontak</h4>
+      <h4 class={headingClass}>{dict.footer.contactHeading}</h4>
       <ul class={contactListClass}>
         {contactInfo.map((c) => (
           <li class="flex items-start gap-3">
@@ -103,7 +117,7 @@ const contactInfo = [
         </li>
         <li class="flex items-start gap-3">
           <i class={`fa-regular fa-clock text-primary ${contactIconMt}`} />
-          <span>Senin - Jumat<br />08.00 - 17.00 WIB</span>
+          <span set:html={dict.footer.hours.replace('\n', '<br />')} />
         </li>
       </ul>
     </div>
@@ -111,10 +125,12 @@ const contactInfo = [
 
   <!-- Bottom Bar -->
   <div class={bottomBarClass}>
-    <div class="mb-4 md:mb-0">&copy; 2026 SYNVORA Teknologi Indonesia. All rights reserved.</div>
-    <div class="flex gap-6">
-      <a href="/kebijakan-privasi" class="hover:text-primary transition">Kebijakan Privasi</a>
-      <a href="/syarat-ketentuan" class="hover:text-primary transition">Syarat & Ketentuan</a>
+    <div>&copy; 2026 {SITE.name}. {dict.footer.rights}</div>
+    <div class="flex flex-wrap gap-x-6 gap-y-2">
+      <a href={pathFor('privacy', lang)} class="hover:text-primary transition">{dict.footer.privacy}</a>
+      <a href={pathFor('terms', lang)} class="hover:text-primary transition">{dict.footer.terms}</a>
+      <a href={pathFor('cookies', lang)} class="hover:text-primary transition">{dict.footer.cookiePolicy}</a>
+      <button type="button" id="cookie-settings-trigger" class="hover:text-primary transition cursor-pointer">{dict.footer.cookieSettings}</button>
     </div>
   </div>
 </footer>

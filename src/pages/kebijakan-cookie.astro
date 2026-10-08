@@ -1,0 +1,176 @@
+---
+import LegalLayout from '../components/LegalLayout.astro';
+import { SITE } from '../lib/site';
+
+const lastUpdated = '8 Oktober 2026';
+const toc = [
+  { id: 'apa-itu-cookie', label: '1. Apa Itu Cookie' },
+  { id: 'mengapa', label: '2. Mengapa Kami Menggunakan Cookie' },
+  { id: 'jenis-cookie', label: '3. Jenis Cookie' },
+  { id: 'necessary', label: '4. Necessary Cookies' },
+  { id: 'preference', label: '5. Preference Cookies' },
+  { id: 'analytics', label: '6. Analytics Cookies' },
+  { id: 'marketing', label: '7. Marketing Cookies' },
+  { id: 'first-party', label: '8. First-Party Cookies' },
+  { id: 'third-party', label: '9. Third-Party Cookies' },
+  { id: 'durasi', label: '10. Durasi Cookie' },
+  { id: 'cara-mengubah', label: '11. Cara Mengubah Preferensi' },
+  { id: 'cara-menarik', label: '12. Cara Menarik Consent' },
+  { id: 'browser-controls', label: '13. Browser Controls' },
+  { id: 'perubahan', label: '14. Perubahan Kebijakan Cookie' },
+  { id: 'kontak', label: '15. Kontak' },
+  { id: 'terakhir-diperbarui', label: '16. Terakhir Diperbarui' },
+];
+
+const cookieTable = [
+  { name: 'synvora_cookie_consent', category: 'Necessary', purpose: 'Menyimpan pilihan consent cookie Anda (necessary, preferences, analytics, marketing).', duration: '180 hari' },
+  { name: 'synvora_locale', category: 'Preferences', purpose: 'Mengingat pilihan bahasa (Indonesia/English) untuk kunjungan berikutnya.', duration: '1 tahun (dihapus bila kategori Preferences dinonaktifkan)' },
+  { name: '_ga, _ga_*', category: 'Analytics', purpose: 'Google Analytics 4 - membedakan pengunjung untuk statistik kunjungan agregat.', duration: 'Hingga 2 tahun (ditentukan oleh Google), hanya dipasang setelah Anda mengizinkan Analytics' },
+];
+---
+
+<LegalLayout
+  title="Kebijakan Cookie - SYNVORA Teknologi Indonesia"
+  description="Kebijakan cookie SYNVORA Teknologi Indonesia: cookie apa yang benar-benar kami gunakan, kategorinya, durasinya, dan cara mengubah atau menarik persetujuan Anda."
+  lang="id"
+  routeKey="cookies"
+  pageTitle="Kebijakan Cookie"
+  lastUpdated={lastUpdated}
+  toc={toc}
+>
+  <div id="apa-itu-cookie">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">1. Apa Itu Cookie</h2>
+    <p>
+      Cookie adalah berkas teks kecil yang disimpan di peramban Anda saat mengunjungi sebuah situs web. Cookie memungkinkan situs mengingat informasi tertentu, seperti preferensi bahasa atau pilihan consent Anda, pada kunjungan berikutnya.
+    </p>
+  </div>
+
+  <div id="mengapa">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">2. Mengapa Kami Menggunakan Cookie</h2>
+    <p>
+      Kami menggunakan cookie seminimal mungkin: untuk menjaga fungsi dasar Situs (seperti mengingat preferensi cookie dan bahasa Anda), dan jika Anda mengizinkan, untuk memahami bagaimana Situs digunakan lewat Google Analytics 4. Kami tidak memasang cookie pemasaran apa pun saat ini.
+    </p>
+  </div>
+
+  <div id="jenis-cookie">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">3. Jenis Cookie</h2>
+    <p>Kami mengelompokkan cookie ke dalam empat kategori: Necessary, Preferences, Analytics, dan Marketing. Status setiap kategori pada Situs ini saat ini:</p>
+    <div class="overflow-x-auto mt-4">
+      <table class="w-full text-xs border-collapse">
+        <thead>
+          <tr class="bg-gray-50">
+            <th class="p-3 border border-gray-200 text-left font-bold">Kategori</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="p-3 border border-gray-200">Necessary</td><td class="p-3 border border-gray-200">Selalu aktif</td></tr>
+          <tr><td class="p-3 border border-gray-200">Preferences</td><td class="p-3 border border-gray-200">Aktif bila Anda mengizinkan (digunakan untuk preferensi bahasa)</td></tr>
+          <tr><td class="p-3 border border-gray-200">Analytics</td><td class="p-3 border border-gray-200">Aktif bila Anda mengizinkan (Google Analytics 4)</td></tr>
+          <tr><td class="p-3 border border-gray-200">Marketing</td><td class="p-3 border border-gray-200">Tidak digunakan saat ini</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="necessary">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">4. Necessary Cookies</h2>
+    <p>Cookie yang diperlukan agar fungsi dasar Situs berjalan dengan benar, seperti menyimpan pilihan consent cookie Anda sendiri. Cookie ini tidak dapat dinonaktifkan karena Situs tidak dapat berfungsi dengan baik tanpanya.</p>
+  </div>
+
+  <div id="preference">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">5. Preference Cookies</h2>
+    <p>Saat ini digunakan untuk satu hal: mengingat pilihan bahasa (Indonesia/English) Anda. Cookie ini hanya terpasang saat Anda secara aktif memilih bahasa melalui language switcher, dan hanya jika kategori Preferences Anda izinkan.</p>
+  </div>
+
+  <div id="analytics">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">6. Analytics Cookies</h2>
+    <p>Kami menggunakan Google Analytics 4 untuk memahami halaman mana yang paling banyak dikunjungi, secara agregat dan anonim. Cookie ini baru dipasang setelah Anda memberikan izin Analytics melalui banner atau pengaturan cookie; sebelum itu, tidak ada skrip Google Analytics yang dimuat sama sekali.</p>
+  </div>
+
+  <div id="marketing">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">7. Marketing Cookies</h2>
+    <p>Kami tidak menggunakan cookie pemasaran, piksel iklan, atau pelacak kampanye apa pun saat ini. Kategori ini kami tampilkan di pengaturan cookie agar siap digunakan secara transparan apabila di masa depan kami benar-benar mengimplementasikan fitur semacam itu.</p>
+  </div>
+
+  <div id="first-party">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">8. First-Party Cookies</h2>
+    <p><code class="bg-gray-100 px-1.5 py-0.5 rounded text-[11px]">synvora_cookie_consent</code> dan <code class="bg-gray-100 px-1.5 py-0.5 rounded text-[11px]">synvora_locale</code> adalah cookie first-party yang dipasang langsung oleh Situs ini, bukan oleh pihak ketiga.</p>
+  </div>
+
+  <div id="third-party">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">9. Third-Party Cookies</h2>
+    <p class="mb-3">Cookie yang dipasang oleh pihak ketiga, hanya aktif sesuai kategori consent terkait:</p>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>Google Analytics 4</strong> (kategori Analytics) - hanya setelah Anda mengizinkan.</li>
+      <li><strong>Google Maps embed</strong> pada halaman Hubungi Kami dapat memasang cookie dari Google saat peta dimuat, di luar sistem consent kami karena merupakan embed langsung dari Google.</li>
+      <li><strong>Cloudflare Turnstile</strong> pada formulir Konsultasi Gratis dan Hubungi Kami dapat memasang cookie teknis untuk verifikasi anti-spam, dikategorikan sebagai necessary untuk keamanan formulir.</li>
+    </ul>
+  </div>
+
+  <div id="durasi">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">10. Durasi Cookie</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-xs border-collapse">
+        <thead>
+          <tr class="bg-gray-50">
+            <th class="p-3 border border-gray-200 text-left font-bold">Nama Cookie</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Kategori</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Tujuan</th>
+            <th class="p-3 border border-gray-200 text-left font-bold">Durasi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cookieTable.map((c) => (
+            <tr>
+              <td class="p-3 border border-gray-200"><code class="text-[11px]">{c.name}</code></td>
+              <td class="p-3 border border-gray-200">{c.category}</td>
+              <td class="p-3 border border-gray-200">{c.purpose}</td>
+              <td class="p-3 border border-gray-200">{c.duration}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="cara-mengubah">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">11. Cara Mengubah Preferensi</h2>
+    <p>
+      Klik <strong>"Pengaturan Cookie"</strong> di footer halaman mana pun untuk membuka kembali panel preferensi dan mengubah pilihan Anda kapan saja.
+    </p>
+  </div>
+
+  <div id="cara-menarik">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">12. Cara Menarik Consent</h2>
+    <p>
+      Buka "Pengaturan Cookie" di footer, matikan kategori yang tidak lagi Anda inginkan (Preferences, Analytics, dan/atau Marketing), lalu simpan. Cookie Necessary tidak dapat dinonaktifkan karena diperlukan agar Situs berfungsi. Anda tidak perlu menghapus cookie peramban secara manual untuk melakukan ini.
+    </p>
+  </div>
+
+  <div id="browser-controls">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">13. Browser Controls</h2>
+    <p>
+      Selain pengaturan cookie di Situs ini, sebagian besar peramban memungkinkan Anda memblokir atau menghapus cookie melalui pengaturan privasi peramban. Perlu diperhatikan bahwa memblokir seluruh cookie (termasuk Necessary) di level peramban dapat memengaruhi fungsi dasar Situs, seperti kemampuan mengingat preferensi cookie Anda sendiri.
+    </p>
+  </div>
+
+  <div id="perubahan">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">14. Perubahan Kebijakan Cookie</h2>
+    <p>
+      Kebijakan ini dapat diperbarui seiring perubahan teknologi yang benar-benar kami gunakan di Situs. Tanggal pembaruan terakhir selalu tercantum di bagian atas halaman ini.
+    </p>
+  </div>
+
+  <div id="kontak">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">15. Kontak</h2>
+    <p>
+      Pertanyaan seputar kebijakan ini dapat diajukan melalui email <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a>.
+    </p>
+  </div>
+
+  <div id="terakhir-diperbarui">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">16. Terakhir Diperbarui</h2>
+    <p>{lastUpdated}. Kebijakan ini tersedia juga dalam <a href="/en/cookie-policy" class="text-primary font-semibold">Bahasa Inggris</a>.</p>
+  </div>
+</LegalLayout>

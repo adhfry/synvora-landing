@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Careers - SYNVORA Teknologi Indonesia"
+  description="Get to know the work culture and benefits at SYNVORA Teknologi Indonesia. No open positions right now, but we're always open to meeting great talent."
+  navVariant="light"
+  footerVariant="default"
+  active="karier"
+  lang="en"
+  routeKey="careers"
+  bodyClass="bg-white"
+>
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.8) 40%, rgba(10, 17, 40, 0.4) 100%),
+          url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover; background-position: center;
+      }
+      .benefit-card { transition: all 0.3s ease; }
+      .benefit-card:hover { transform: translateY(-5px); }
+      .cta-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover; background-position: center;
+      }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
+          <a href="/en/" class="hover:text-white cursor-pointer">Home</a>
+          <i class="fa-solid fa-chevron-right text-[8px]"></i>
+          <span class="text-white">Careers</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">Build Your Future<br><span class="text-primary">with SYNVORA</span></h1>
+        <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+          At SYNVORA, we believe great talent is key to creating technology solutions with real impact for Indonesia.
+        </p>
+        <div class="border-l-4 border-primary pl-4">
+          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA</div>
+          <div class="text-xs text-gray-400">A Better Tomorrow Through Technology</div>
+        </div>
+      </div>
+
+      <div class="hidden lg:flex justify-end relative">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl max-w-xs relative z-20">
+          <div class="text-3xl font-extrabold text-white leading-tight mb-4">Great<br>People<br>Build<br>Greater<br>Solutions</div>
+          <div class="w-12 h-1 bg-primary mb-6"></div>
+          <div class="text-sm text-gray-200 leading-relaxed mb-4">Grow<br>Develop<br>Make an Impact</div>
+          <div class="w-12 h-0.5 bg-primary"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CULTURE & PERKS ================= -->
+  <section class="py-16 bg-white px-8 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-3/4">
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-rocket"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">A Collaborative Environment</h3>
+          <p class="text-[11px] text-gray-500 leading-relaxed">Grow together with a supportive team.</p>
+        </div>
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-regular fa-lightbulb"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Room to Grow</h3>
+          <p class="text-[11px] text-gray-500 leading-relaxed">Full support for your career development.</p>
+        </div>
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-users"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Meaningful Projects</h3>
+          <p class="text-[11px] text-gray-500 leading-relaxed">Work on technology solutions with real impact.</p>
+        </div>
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-heart"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Work-Life Balance</h3>
+          <p class="text-[11px] text-gray-500 leading-relaxed">We believe productivity comes from balance.</p>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-1/4 relative pl-6 border-l-2 border-primary">
+        <i class="fa-solid fa-quote-left text-2xl text-blue-100 absolute -top-2 left-2"></i>
+        <p class="text-xs text-gray-500 italic relative z-10 mb-3">"Happy talent creates exceptional solutions."</p>
+        <div class="text-[10px] font-bold tracking-widest text-primary">SYNVORA TEKNOLOGI INDONESIA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= JOB OPENINGS SECTION ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-1">
+        <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+          <span class="w-2 h-2 bg-primary rounded-full"></span> OPEN POSITIONS
+        </div>
+        <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Find Your<br>Opportunity</h2>
+        <p class="text-sm text-gray-500 mb-8 leading-relaxed">Explore career opportunities at SYNVORA and become part of a team building the future with technology.</p>
+
+        <div class="relative rounded-2xl overflow-hidden shadow-lg mb-6 h-48">
+          <img src="/images/team/pertemuan-2-synvora.jpg" alt="The SYNVORA team in a working meeting" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent flex flex-col justify-end items-start text-left p-6">
+            <div class="text-white text-sm font-semibold">The SYNVORA team, hard at work.</div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 relative">
+          <i class="fa-solid fa-quote-left text-2xl text-blue-100 absolute top-4 left-4"></i>
+          <p class="text-xs text-gray-600 italic relative z-10 mb-4 pl-4">"The right place to learn, build, and make a real impact."</p>
+          <div class="w-8 h-0.5 bg-primary mb-2 ml-4"></div>
+          <div class="text-[9px] font-bold tracking-widest text-primary ml-4">SYNVORA TEKNOLOGI INDONESIA</div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl p-12 h-full flex flex-col items-center justify-center text-center">
+          <div class="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center text-3xl mb-6"><i class="fa-regular fa-clock"></i></div>
+          <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 bg-primary rounded-full"></span> COMING SOON
+          </div>
+          <h3 class="text-2xl font-extrabold text-gray-900 mb-4">No Open Positions Right Now</h3>
+          <p class="text-sm text-gray-500 max-w-md leading-relaxed mb-8">
+            SYNVORA isn't hiring for any new roles at the moment. We're always open to meeting great talent, so check back on this page for updates.
+          </p>
+          <a href="/en/contact" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+            Contact Us <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BENEFITS SECTION ================= -->
+  <section class="py-16 bg-gray-50 px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center justify-center gap-2">
+          <span class="w-2 h-2 bg-primary rounded-full"></span> BENEFITS
+        </div>
+        <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">More Than<br>Just a Job</h2>
+        <p class="text-sm text-gray-500 max-w-2xl mx-auto">We offer a range of benefits to support your wellbeing and career growth.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="benefit-card">
+          <div class="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm border border-gray-100"><i class="fa-regular fa-credit-card"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Competitive Salary</h3>
+        </div>
+        <div class="benefit-card">
+          <div class="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm border border-gray-100"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Health Benefits</h3>
+        </div>
+        <div class="benefit-card">
+          <div class="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm border border-gray-100"><i class="fa-solid fa-house"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Work from Anywhere</h3>
+        </div>
+        <div class="benefit-card">
+          <div class="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm border border-gray-100"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Training & Certification</h3>
+        </div>
+        <div class="benefit-card">
+          <div class="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm border border-gray-100"><i class="fa-solid fa-laptop"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Modern Work Equipment</h3>
+        </div>
+        <div class="benefit-card">
+          <div class="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm border border-gray-100"><i class="fa-solid fa-people-group"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Team Building</h3>
+        </div>
+        <div class="benefit-card">
+          <div class="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm border border-gray-100"><i class="fa-regular fa-calendar-check"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Flexible Leave</h3>
+        </div>
+        <div class="benefit-card">
+          <div class="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm border border-gray-100"><i class="fa-solid fa-chart-line"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Clear Career Path</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY JOIN SECTION ================= -->
+  <section class="py-24 bg-white px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12">
+        <div class="text-xs font-bold text-primary tracking-widest mb-3 flex items-center gap-2">
+          <span class="w-2 h-2 bg-primary rounded-full"></span> WHY SYNVORA
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">Join at an Early Stage</h2>
+        <p class="text-sm text-gray-500 max-w-xl">SYNVORA is still an early-stage company. Joining now means helping shape the team's direction, our products, and how we work from the ground up.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+          <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-layer-group"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Cross-Functional Work</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">A small team means a chance to be directly involved in client solutions, our own products, and research and innovation.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+          <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-seedling"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Help Shape the Direction</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Decisions about our products, processes, and culture are still open to being shaped together at this stage.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+          <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-handshake"></i></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-2">Honestly Transparent</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">We're upfront about where we are as a new company: still building, not pretending to be bigger than we are.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+      <div class="z-10 mb-8 md:mb-0 max-w-2xl">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2">READY TO JOIN?</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">Realize Your Potential<br>with SYNVORA</h2>
+        <p class="text-sm text-gray-300">Let's build better technology solutions for Indonesia together. Find the right fit and start your career journey with us.</p>
+      </div>
+      <div class="flex gap-4 z-10">
+        <a href="/en/contact" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Contact Us <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

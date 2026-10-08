@@ -1,0 +1,368 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogPosts } from '../../data/blogPosts';
+import { blogPostsEn } from '../../data/blogPostsEn';
+import { SITE } from '../../lib/site';
+
+function en(slug: string) {
+  return blogPostsEn[slug];
+}
+
+const featuredSlug = 'bbm-belajar-bahasa-madura-inovasi-synvora';
+const featured = blogPosts.find((p) => p.slug === featuredSlug)!;
+const rest = blogPosts;
+const categories = [...new Set(blogPosts.map((p) => en(p.slug)?.category ?? p.category))];
+
+const EXCERPT_MAX = 110;
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text;
+  return `${text.slice(0, max).trimEnd()}...`;
+}
+---
+
+<Layout
+  title="Blog & Insights - SYNVORA Teknologi Indonesia"
+  description="Articles, news, and insights on technology, digital transformation, information systems, and application development tips from the SYNVORA Teknologi Indonesia team."
+  navVariant="light"
+  footerVariant="default"
+  active="blog"
+  lang="en"
+  routeKey="blog"
+  bodyClass="bg-[#F8FAFC] dark:bg-synvora-dark"
+>
+  <Fragment slot="head">
+    <style is:global>
+      .hero-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(to right, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.85) 50%, rgba(10, 17, 40, 0.4) 100%),
+          url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover; background-position: center;
+      }
+      .filter-btn { transition: all 0.2s ease; white-space: nowrap; }
+      .filter-btn.active { background-color: #0066ff; color: white; border-color: #0066ff; }
+      .filter-btn:not(.active):hover { border-color: #0066ff; color: #0066ff; }
+      .page-btn { min-width: 32px; height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid #e5e7eb; background: white; color: #4b5563; font-size: 11px; font-weight: 600; transition: all 0.2s ease; cursor: pointer; }
+      .page-btn:hover:not(.disabled) { border-color: #0066ff; color: #0066ff; }
+      .page-btn.active { background-color: #0066ff; color: white; border-color: #0066ff; }
+      .page-btn.disabled { opacity: 0.4; cursor: not-allowed; }
+      .dark .page-btn { background: #0f1a3d; border-color: rgba(255, 255, 255, 0.12); color: #9ca3af; }
+      .card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); border: 1px solid #f3f4f6; background: white; }
+      .sidebar-card { background: white; border: 1px solid #f3f4f6; border-radius: 16px; padding: 24px; }
+      .cta-bg {
+        background-color: #0a1128;
+        background-image: linear-gradient(rgba(10, 17, 40, 0.85), rgba(10, 17, 40, 0.85)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover; background-position: center;
+      }
+      .dark .card-shadow { background: #0f1a3d; border-color: rgba(255, 255, 255, 0.08); }
+      .dark .sidebar-card { background: #0f1a3d; border-color: rgba(255, 255, 255, 0.08); }
+      .dark .filter-btn:not(.active) { background: #0f1a3d; border-color: rgba(255, 255, 255, 0.12); color: #9ca3af; }
+    </style>
+  </Fragment>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-bg text-white pt-20 pb-32 px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">Insights &amp; Stories<br>from <span class="text-primary">SYNVORA</span></h1>
+        <p class="text-gray-300 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+          Articles, news, and insights on technology, digital innovation, and organizational transformation for a better future.
+        </p>
+        <div class="border-l-4 border-primary pl-4">
+          <div class="text-xs font-bold tracking-[0.2em] text-white mb-2">SYNCHRONOUS &bull; INNOVATION &bull; EVOLUTION &bull; ERA</div>
+          <div class="text-xs text-gray-400">A Better Tomorrow Through Technology</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT SECTION ================= -->
+  <section class="py-16 px-8 -mt-16 relative z-20">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-center gap-4 mb-10 bg-white dark:bg-[#0f1a3d] p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-white/10">
+        <div id="category-filters" class="flex flex-wrap gap-2 w-full lg:w-auto">
+          <button type="button" data-filter="All" class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-xs font-semibold border border-primary">All</button>
+          {categories.map((cat) => (
+            <button type="button" data-filter={cat} class="filter-btn bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold border border-gray-200">{cat}</button>
+          ))}
+        </div>
+        <div class="relative w-full lg:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+          <input id="article-search" type="text" placeholder="Search articles..." class="w-full pl-10 pr-4 py-2.5 border border-gray-200 dark:border-white/10 dark:bg-transparent rounded-full text-xs focus:outline-none focus:border-primary">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- LEFT COLUMN -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Featured Post -->
+          <a
+            href={`/blog/${featured.slug}`}
+            data-category={en(featured.slug)?.category ?? featured.category}
+            data-search={`${en(featured.slug)?.title ?? featured.title} ${en(featured.slug)?.excerpt ?? featured.excerpt}`.toLowerCase()}
+            class="featured-card bg-white rounded-2xl card-shadow overflow-hidden flex flex-col md:flex-row block"
+          >
+            <div class="md:w-1/2 relative">
+              <img src={featured.image} alt={en(featured.slug)?.title ?? featured.title} class="w-full h-full object-cover min-h-[250px]">
+              <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">{en(featured.slug)?.category ?? featured.category}</div>
+              <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[9px] font-bold text-gray-500">Article in ID</div>
+            </div>
+            <div class="md:w-1/2 p-8 flex flex-col justify-center">
+              <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> FEATURED ARTICLE
+              </div>
+              <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">{en(featured.slug)?.title ?? featured.title}</h2>
+              <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-6">{en(featured.slug)?.excerpt ?? featured.excerpt}</p>
+              <div class="flex items-center justify-between border-t border-gray-100 dark:border-white/10 pt-4">
+                <div class="flex items-center gap-3">
+                  {featured.authorImage ? <img src={featured.authorImage} alt={featured.author} class="w-8 h-8 rounded-full object-cover"> : <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">{featured.author.charAt(0)}</div>}
+                  <div><div class="text-[10px] font-bold text-gray-900 dark:text-white">{featured.author}</div><div class="text-[9px] text-gray-500 dark:text-gray-400">CEO &amp; Founder</div></div>
+                </div>
+                <div class="text-[9px] text-gray-400 text-right"><div>{featured.publishedDisplay}</div><div>{featured.readTime}</div></div>
+                <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition shrink-0"><i class="fa-solid fa-arrow-right text-xs"></i></span>
+              </div>
+            </div>
+          </a>
+
+          <div class="flex justify-between items-center">
+            <h3 class="text-xl font-extrabold text-gray-900 dark:text-white">Latest Articles</h3>
+            <div class="relative">
+              <select id="sort-select" class="appearance-none bg-white dark:bg-[#0f1a3d] dark:border-white/10 border border-gray-200 rounded-lg px-4 py-2 text-xs font-semibold text-gray-600 dark:text-gray-300 focus:outline-none focus:border-primary pr-8 cursor-pointer">
+                <option value="newest">Sort: Newest</option>
+                <option value="oldest">Sort: Oldest</option>
+                <option value="popular">Sort: Popular</option>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
+            </div>
+          </div>
+
+          <div id="article-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            {rest.map((post) => {
+              const e = en(post.slug);
+              return (
+                <a
+                  href={`/blog/${post.slug}`}
+                  data-category={e?.category ?? post.category}
+                  data-search={`${e?.title ?? post.title} ${e?.excerpt ?? post.excerpt}`.toLowerCase()}
+                  data-slug={post.slug}
+                  data-published={post.publishedAt}
+                  class="article-card bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group block"
+                >
+                  <div class="h-44 relative overflow-hidden">
+                    <img src={post.image} alt={e?.title ?? post.title} class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold text-gray-800 shadow-sm">{e?.category ?? post.category}</div>
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[9px] font-bold text-gray-500">ID</div>
+                  </div>
+                  <div class="p-5 flex-1 flex flex-col">
+                    <div class="text-[10px] text-gray-400 mb-2">{post.publishedDisplay}</div>
+                    <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-2 leading-tight">{e?.title ?? post.title}</h3>
+                    <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-4 flex-1 leading-relaxed">{truncate(e?.excerpt ?? post.excerpt, EXCERPT_MAX)}</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 dark:border-white/10 pt-3">
+                      <div class="flex items-center gap-2">
+                        {post.authorImage ? <img src={post.authorImage} alt={post.author} class="w-6 h-6 rounded-full object-cover"> : <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[8px] font-bold">{post.author.charAt(0)}</div>}
+                        <div class="text-[9px] font-semibold text-gray-700 dark:text-gray-300">{post.author}</div>
+                      </div>
+                      <div class="text-[9px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> {post.readTime}</div>
+                      <i class="fa-solid fa-arrow-right text-primary text-[10px]"></i>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+
+          <p id="no-results" class="hidden text-center text-sm text-gray-500 dark:text-gray-400 py-12">No articles match this search or category.</p>
+          <p class="text-center text-[11px] text-gray-400 pt-2">
+            Article previews are in English; full articles are currently published in Bahasa Indonesia only, marked <span class="font-semibold">ID</span> above. English article bodies are on our roadmap.
+          </p>
+          <div id="pagination" class="flex items-center justify-center flex-wrap gap-2 pt-2"></div>
+        </div>
+
+        <!-- RIGHT COLUMN (SIDEBAR) -->
+        <div class="lg:col-span-1 space-y-8">
+          <div class="bg-[#0A1128] rounded-2xl p-6 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-primary rounded-full filter blur-[50px] opacity-20"></div>
+            <div class="relative z-10">
+              <div class="text-[10px] font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+                <span class="w-2 h-2 bg-primary rounded-full"></span> SUBSCRIBE
+              </div>
+              <h3 class="font-bold text-lg leading-tight mb-3">Get the Latest Insights from SYNVORA</h3>
+              <p class="text-[11px] text-gray-300 mb-6 leading-relaxed">Subscribe to our newsletter to get articles, news, and technology insights straight to your inbox.</p>
+              <div class="relative mb-3">
+                <input type="email" placeholder="Enter your email" class="w-full pl-4 pr-4 py-3 border border-white/20 bg-white/10 rounded-xl text-xs text-white placeholder-gray-400 focus:outline-none focus:border-primary">
+              </div>
+              <button class="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
+                Subscribe <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+              <div class="flex items-center gap-2 mt-4 text-[9px] text-gray-400"><i class="fa-solid fa-lock"></i> We will not share your email with anyone else.</div>
+            </div>
+          </div>
+
+          <div class="relative rounded-2xl overflow-hidden shadow-lg h-64">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=600" alt="Mountain" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0A1128] via-[#0A1128]/80 to-transparent flex flex-col justify-end p-6">
+              <h3 class="text-xl font-extrabold text-white leading-tight mb-4">From an Idea<br>to an Impactful<br>Solution</h3>
+              <a href="/en/about" class="bg-white text-gray-900 hover:bg-gray-100 px-5 py-2.5 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition self-start">
+                About Us <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3 class="font-bold text-gray-900 dark:text-white text-base mb-1">Follow Us</h3>
+            <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-5 leading-relaxed">Follow the latest news and behind-the-scenes stories from SYNVORA on our social media.</p>
+            <div class="flex items-center gap-3">
+              <a href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="SYNVORA LinkedIn" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="SYNVORA Instagram" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+              <a href={SITE.social.github} target="_blank" rel="noopener noreferrer" aria-label="SYNVORA GitHub" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-github"></i></a>
+              <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="SYNVORA WhatsApp" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-primary hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <div class="sidebar-card !p-0 overflow-hidden">
+            <div class="p-6 pb-4">
+              <h3 class="font-bold text-gray-900 dark:text-white text-base mb-1">Our Location</h3>
+              <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">{SITE.addressShort}</p>
+            </div>
+            <div class="h-40 w-full">
+              <iframe src={SITE.mapsEmbedUrl} class="w-full h-full border-0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="PT Synvora Teknologi Indonesia location"></iframe>
+            </div>
+            <a href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 text-primary text-[11px] font-semibold py-3 hover:bg-gray-50 dark:hover:bg-white/5 transition">
+              Open in Google Maps <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM CTA ================= -->
+  <section class="py-16 px-8">
+    <div class="max-w-7xl mx-auto cta-bg rounded-3xl p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-2xl">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[100px] opacity-20"></div>
+      <div class="z-10 mb-8 md:mb-0 max-w-2xl">
+        <div class="text-xs font-bold text-primary tracking-widest mb-2 flex items-center gap-2">
+          <span class="w-2 h-2 bg-primary rounded-full"></span> LET'S COLLABORATE
+        </div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-4">Bring Your Technology Solution to Life<br>for a Better Future.</h2>
+        <p class="text-sm text-gray-300">We're ready to be your partner in delivering digital solutions with real impact for your organization and community.</p>
+      </div>
+      <div class="flex gap-4 z-10">
+        <a href="/en/contact" class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold flex items-center gap-2 transition">
+          Contact Us <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const PAGE_SIZE = 6;
+      const filterButtons = document.querySelectorAll('#category-filters .filter-btn');
+      const searchInput = document.getElementById('article-search');
+      const sortSelect = document.getElementById('sort-select');
+      const articleGrid = document.getElementById('article-grid');
+      const featuredCard = document.querySelector('.featured-card');
+      const noResults = document.getElementById('no-results');
+      const pagination = document.getElementById('pagination');
+      let activeCategory = 'All';
+      let currentPage = 1;
+
+      function matchesFilters(el, query) {
+        const matchesCategory = activeCategory === 'All' || el.dataset.category === activeCategory;
+        const matchesSearch = !query || el.dataset.search.includes(query);
+        return matchesCategory && matchesSearch;
+      }
+
+      function renderPagination(totalPages) {
+        if (!pagination) return;
+        pagination.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        function makeBtn(label, page, disabled, active) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = label;
+          btn.className = 'page-btn' + (active ? ' active' : '') + (disabled ? ' disabled' : '');
+          if (disabled) {
+            btn.disabled = true;
+          } else {
+            btn.addEventListener('click', () => { currentPage = page; updateGrid(); });
+          }
+          return btn;
+        }
+
+        pagination.appendChild(makeBtn('Previous', currentPage - 1, currentPage === 1, false));
+        for (let i = 1; i <= totalPages; i++) pagination.appendChild(makeBtn(String(i), i, false, i === currentPage));
+        pagination.appendChild(makeBtn('Next', currentPage + 1, currentPage === totalPages, false));
+      }
+
+      function updateGrid() {
+        const query = (searchInput?.value || '').trim().toLowerCase();
+        let featuredVisible = false;
+        if (featuredCard) {
+          featuredVisible = matchesFilters(featuredCard, query);
+          featuredCard.style.display = featuredVisible ? '' : 'none';
+        }
+
+        const allCards = Array.from(articleGrid.querySelectorAll('.article-card'));
+        const matching = allCards.filter((card) => matchesFilters(card, query));
+        const totalPages = Math.max(1, Math.ceil(matching.length / PAGE_SIZE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        const start = (currentPage - 1) * PAGE_SIZE;
+        const pageSet = new Set(matching.slice(start, start + PAGE_SIZE));
+        allCards.forEach((card) => { card.style.display = pageSet.has(card) ? '' : 'none'; });
+
+        if (noResults) noResults.classList.toggle('hidden', matching.length > 0 || featuredVisible);
+        renderPagination(totalPages);
+      }
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCategory = btn.dataset.filter || 'All';
+          currentPage = 1;
+          updateGrid();
+        });
+      });
+
+      searchInput?.addEventListener('input', () => { currentPage = 1; updateGrid(); });
+
+      let viewCounts = null;
+      async function fetchViewCounts() {
+        if (viewCounts) return viewCounts;
+        try {
+          const res = await fetch('/api/blog-views');
+          const data = await res.json();
+          viewCounts = data.counts || {};
+        } catch {
+          viewCounts = {};
+        }
+        return viewCounts;
+      }
+
+      async function sortArticles(mode) {
+        if (!articleGrid) return;
+        const cards = Array.from(articleGrid.querySelectorAll('.article-card'));
+
+        if (mode === 'popular') {
+          const counts = await fetchViewCounts();
+          cards.sort((a, b) => (counts[b.dataset.slug] || 0) - (counts[a.dataset.slug] || 0));
+        } else if (mode === 'oldest') {
+          cards.sort((a, b) => new Date(a.dataset.published).getTime() - new Date(b.dataset.published).getTime());
+        } else {
+          cards.sort((a, b) => new Date(b.dataset.published).getTime() - new Date(a.dataset.published).getTime());
+        }
+
+        cards.forEach((card) => articleGrid.appendChild(card));
+        currentPage = 1;
+        updateGrid();
+      }
+
+      sortSelect?.addEventListener('change', () => sortArticles(sortSelect.value));
+      updateGrid();
+    })();
+  </script>
+</Layout>

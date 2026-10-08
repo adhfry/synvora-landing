@@ -1,0 +1,184 @@
+---
+import LegalLayout from '../../components/LegalLayout.astro';
+import { SITE } from '../../lib/site';
+
+const lastUpdated = 'October 8, 2026';
+const toc = [
+  { id: 'introduction', label: '1. Introduction' },
+  { id: 'definitions', label: '2. Definitions' },
+  { id: 'acceptance', label: '3. Acceptance of Terms' },
+  { id: 'use-of-website', label: '4. Use of Website' },
+  { id: 'permitted-use', label: '5. Permitted Use' },
+  { id: 'prohibited-use', label: '6. Prohibited Use' },
+  { id: 'intellectual-property', label: '7. Intellectual Property' },
+  { id: 'website-content', label: '8. Website Content' },
+  { id: 'third-party-links', label: '9. Third-Party Links' },
+  { id: 'product-info', label: '10. Product/Service Information' },
+  { id: 'user-responsibilities', label: '11. User Responsibilities' },
+  { id: 'availability', label: '12. Availability and Changes' },
+  { id: 'disclaimer', label: '13. Disclaimer' },
+  { id: 'limitation-liability', label: '14. Limitation of Liability' },
+  { id: 'indemnification', label: '15. Indemnification' },
+  { id: 'privacy-reference', label: '16. Privacy Reference' },
+  { id: 'governing-law', label: '17. Governing Law' },
+  { id: 'changes-to-terms', label: '18. Changes to Terms' },
+  { id: 'contact', label: '19. Contact' },
+  { id: 'last-updated', label: '20. Last Updated' },
+];
+---
+
+<LegalLayout
+  title="Terms of Service - SYNVORA Teknologi Indonesia"
+  description="Terms of Service for the SYNVORA Teknologi Indonesia website: user rights and obligations, content use, blog comments, and limitation of liability."
+  lang="en"
+  routeKey="terms"
+  pageTitle="Terms of Service"
+  lastUpdated={lastUpdated}
+  toc={toc}
+>
+  <div id="introduction">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">1. Introduction</h2>
+    <p>
+      These Terms of Service ("Terms") govern your use of {SITE.url} (the "Site"), owned by {SITE.legalName}. By accessing or using the Site, you agree to these Terms.
+    </p>
+  </div>
+
+  <div id="definitions">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">2. Definitions</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>"We", "SYNVORA"</strong> refers to {SITE.legalName}.</li>
+      <li><strong>"You", "User"</strong> refers to anyone accessing or using the Site.</li>
+      <li><strong>"Content"</strong> refers to the text, images, logos, and other material available on the Site.</li>
+      <li><strong>"Services"</strong> refers to the technology service information, portfolio, and forms made available through the Site.</li>
+    </ul>
+  </div>
+
+  <div id="acceptance">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">3. Acceptance of Terms</h2>
+    <p>
+      If you do not agree with any part of these Terms, please discontinue use of the Site. Continued use of the Site after updated Terms are published constitutes acceptance of those changes.
+    </p>
+  </div>
+
+  <div id="use-of-website">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">4. Use of Website</h2>
+    <p>
+      This Site provides information about {SITE.name}'s services, products, portfolio, blog articles, and contact/consultation forms. Submitting the Free Consultation or Contact form does not create a working agreement or binding commitment; it is only an initial point of contact, and any formal engagement (scope, cost, timeline) is agreed separately after further discussion.
+    </p>
+  </div>
+
+  <div id="permitted-use">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">5. Permitted Use</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Reading, browsing, and sharing links to Site content for non-commercial purposes.</li>
+      <li>Quoting our blog articles with attribution, as long as content is not reproduced in full without permission.</li>
+      <li>Submitting forms and comments honestly and for their intended purpose.</li>
+    </ul>
+  </div>
+
+  <div id="prohibited-use">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">6. Prohibited Use</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Reproducing Site Content in full for commercial purposes without written permission.</li>
+      <li>Submitting spam, unlawful content, hate speech, or discriminatory content through forms or comments.</li>
+      <li>Attempting to access non-public parts of the Site or interfering with its normal operation (including attempts to bypass anti-spam verification).</li>
+      <li>Using SYNVORA's identity or logo in a way that misleads others.</li>
+    </ul>
+  </div>
+
+  <div id="intellectual-property">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">7. Intellectual Property</h2>
+    <p>
+      All Site Content is owned by {SITE.name} or used with permission, unless stated otherwise. Using our logo, product names (including Synctappy), or visual identity for commercial purposes requires our prior written consent.
+    </p>
+  </div>
+
+  <div id="website-content">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">8. Website Content</h2>
+    <p>
+      We aim to keep Site Content accurate and current, including portfolio information, project status, and blog articles. That said, Content may change at any time without prior notice as our projects and services genuinely evolve.
+    </p>
+  </div>
+
+  <div id="third-party-links">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">9. Third-Party Links</h2>
+    <p>
+      This Site links to our own products and projects (including Synctappy, AIRA, AgriVita, JOS, and BBM) as well as other third-party sites. We are not responsible for the content, policies, or practices of third-party sites outside our control.
+    </p>
+  </div>
+
+  <div id="product-info">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">10. Product/Service Information</h2>
+    <p>
+      Product and service descriptions on this Site (including "Live", "In Development", or "Prototype" status on the Portfolio page) reflect the actual status known to us at the time of publication. Features, pricing, and availability of our products (including Synctappy) may change; current information should be confirmed directly on the relevant product site or by contacting us.
+    </p>
+  </div>
+
+  <div id="user-responsibilities">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">11. User Responsibilities</h2>
+    <p>
+      You are fully responsible for the accuracy of data you submit through our forms, and for the content of any comments you post on the blog. We reserve the right to remove comments that violate these Terms without prior notice.
+    </p>
+  </div>
+
+  <div id="availability">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">12. Availability and Changes</h2>
+    <p>
+      We aim to keep the Site accessible, but do not guarantee it will always be free of interruption or error. We reserve the right to modify, suspend, or discontinue all or part of the Site at any time.
+    </p>
+  </div>
+
+  <div id="disclaimer">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">13. Disclaimer</h2>
+    <p>
+      Information on this Site is provided "as is" for general informational purposes about {SITE.name} and our services. It should not be treated as legal, financial, medical, or other professional advice, unless specific content expressly states otherwise.
+    </p>
+  </div>
+
+  <div id="limitation-liability">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">14. Limitation of Liability</h2>
+    <p>
+      To the extent permitted by applicable law, {SITE.name} is not liable for indirect, incidental, or consequential losses arising from use of the Site outside the context of official communication with our team.
+    </p>
+  </div>
+
+  <div id="indemnification">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">15. Indemnification</h2>
+    <p>
+      You agree to indemnify {SITE.name} against third-party claims arising from your breach of these Terms, including submitting unlawful content through a form or comment.
+    </p>
+  </div>
+
+  <div id="privacy-reference">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">16. Privacy Reference</h2>
+    <p>
+      Collection and use of your personal data is governed by our <a href="/en/privacy-policy" class="text-primary font-semibold">Privacy Policy</a> and <a href="/en/cookie-policy" class="text-primary font-semibold">Cookie Policy</a>, which form an integral part of these Terms.
+    </p>
+  </div>
+
+  <div id="governing-law">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">17. Governing Law</h2>
+    <p>
+      These Terms are governed by and construed in accordance with the laws of the Republic of Indonesia, applicable to {SITE.legalName}, headquartered in {SITE.addressShort}.
+    </p>
+  </div>
+
+  <div id="changes-to-terms">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">18. Changes to Terms</h2>
+    <p>
+      We may update these Terms from time to time as our services evolve. The date at the top of this page always reflects the most recent update, and only changes when the content itself is actually revised.
+    </p>
+  </div>
+
+  <div id="contact">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">19. Contact</h2>
+    <p>
+      Questions about these Terms can be sent to <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a> or WhatsApp <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">{SITE.phoneDisplay}</a>.
+    </p>
+  </div>
+
+  <div id="last-updated">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">20. Last Updated</h2>
+    <p>{lastUpdated}. This document is also available in <a href="/syarat-ketentuan" class="text-primary font-semibold">Bahasa Indonesia</a>.</p>
+  </div>
+</LegalLayout>

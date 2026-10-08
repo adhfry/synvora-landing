@@ -2,7 +2,9 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { SITE } from '../lib/site';
+import { pathFor, type Locale } from '../i18n/routes';
 
 interface Props {
   title: string;
@@ -14,6 +16,13 @@ interface Props {
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: 'website' | 'article';
+  lang?: Locale;
+  // Key into i18n/routes.ts ROUTES - resolves both hreflang alternates and
+  // the language switcher's target path. Omit it (blog articles do) and
+  // pass hreflangId/hreflangEn explicitly instead.
+  routeKey?: string;
+  hreflangId?: string;
+  hreflangEn?: string | null;
 }
 
 const {
@@ -26,7 +35,15 @@ const {
   ogImage = '/og-image.png',
   ogImageAlt = SITE.name,
   ogType = 'website',
+  lang = 'id',
+  routeKey,
+  hreflangId,
+  hreflangEn,
 } = Astro.props;
+
+const idPath = hreflangId ?? (routeKey ? pathFor(routeKey, 'id') : '/');
+const enPath = hreflangEn !== undefined ? hreflangEn : routeKey ? pathFor(routeKey, 'en') : null;
+const switcherRouteKey = routeKey ?? 'home';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const absoluteOgImage = new URL(ogImage, Astro.site);
@@ -39,9 +56,13 @@ const ogImageType = /\.png$/i.test(ogImage)
       : undefined;
 const fullTitle = title.includes('SYNVORA') ? title : `${title} | ${SITE.name}`;
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const ogLocale = lang === 'en' ? 'en_US' : 'id_ID';
 
 // Sitewide structured data - lets search engines show SYNVORA as a known
 // entity (knowledge panel eligibility) and surface accurate contact info.
+// Deliberately NOT localized per-language (same facts regardless of which
+// page language fetched it), so it stays a single source of truth instead
+// of two schemas that could drift out of sync.
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -76,12 +97,12 @@ const websiteJsonLd = {
   url: SITE.url,
   name: SITE.name,
   publisher: { '@id': `${SITE.url}/#organization` },
-  inLanguage: 'id-ID',
+  inLanguage: lang === 'en' ? 'en-US' : 'id-ID',
 };
 ---
 
 <!doctype html>
-<html lang="id">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <script is:inline>
@@ -100,6 +121,9 @@ const websiteJsonLd = {
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    {idPath && <link rel="alternate" hreflang="id" href={new URL(idPath, Astro.site)} />}
+    {enPath && <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site)} />}
+    {idPath && <link rel="alternate" hreflang="x-default" href={new URL(idPath, Astro.site)} />}
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -113,7 +137,7 @@ const websiteJsonLd = {
     <meta property="og:image" content={absoluteOgImage} />
     <meta property="og:image:alt" content={ogImageAlt} />
     {ogImageType && <meta property="og:image:type" content={ogImageType} />}
-    <meta property="og:locale" content="id_ID" />
+    <meta property="og:locale" content={ogLocale} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -133,17 +157,13 @@ const websiteJsonLd = {
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <!-- Google Analytics 4 - only loads when PUBLIC_GA_MEASUREMENT_ID is set -->
+    <!-- Google Analytics 4 - the measurement ID is exposed as data only; the
+    actual gtag.js script is injected by CookieConsent.astro, and only once
+    the visitor has granted Analytics consent (see cookie preferences). -->
     {gaMeasurementId && (
-      <Fragment>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
-        <script is:inline define:vars={{ gaMeasurementId }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag('js', new Date());
-          gtag('config', gaMeasurementId);
-        </script>
-      </Fragment>
+      <script is:inline define:vars={{ gaMeasurementId }}>
+        window.__SYNVORA_GA_ID__ = gaMeasurementId;
+      </script>
     )}
 
     <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
@@ -152,8 +172,9 @@ const websiteJsonLd = {
     <slot name="head" />
   </head>
   <body class:list={['text-gray-800 dark:text-gray-200 antialiased transition-colors', bodyClass]}>
-    <Navbar variant={navVariant} active={active} />
+    <Navbar variant={navVariant} active={active} lang={lang} routeKey={switcherRouteKey} />
     <slot />
-    <Footer active={active} variant={footerVariant} />
+    <Footer active={active} variant={footerVariant} lang={lang} />
+    <CookieConsent locale={lang} />
   </body>
 </html>

@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../lib/site';
+import { pathFor } from '../i18n/routes';
+import { t } from '../i18n/ui';
+
+// One file handles both languages: Astro's 404.astro is a single catch-all,
+// so instead of two separate 404 pages this detects the locale from the
+// path that actually 404'd and renders accordingly.
+const isEnglish = Astro.url.pathname.startsWith('/en');
+const lang = isEnglish ? 'en' : 'id';
+const dict = t(lang).notFound;
+const homeHref = pathFor('home', lang);
+---
+
+<Layout
+  title={`${dict.title} - ${SITE.name}`}
+  description={dict.description}
+  navVariant="light"
+  footerVariant="default"
+  lang={lang}
+  routeKey="home"
+  bodyClass="bg-white"
+>
+  <section class="min-h-[70vh] flex items-center justify-center px-8 py-24">
+    <div class="max-w-lg text-center">
+      <div class="text-7xl font-extrabold text-primary mb-4">404</div>
+      <h1 class="text-2xl font-extrabold text-gray-900 mb-3">{dict.title}</h1>
+      <p class="text-sm text-gray-500 mb-8">{dict.description}</p>
+      <a href={homeHref} class="bg-primary hover:bg-blue-700 text-white px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition">
+        {dict.cta} <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+  </section>
+</Layout>

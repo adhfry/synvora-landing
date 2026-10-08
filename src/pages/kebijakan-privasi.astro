@@ -1,95 +1,202 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LegalLayout from '../components/LegalLayout.astro';
 import { SITE } from '../lib/site';
 
 const lastUpdated = '8 Oktober 2026';
+const toc = [
+  { id: 'pendahuluan', label: '1. Pendahuluan' },
+  { id: 'tentang-synvora', label: '2. Tentang SYNVORA' },
+  { id: 'ruang-lingkup', label: '3. Ruang Lingkup' },
+  { id: 'informasi-dikumpulkan', label: '4. Informasi yang Kami Kumpulkan' },
+  { id: 'informasi-sukarela', label: '5. Informasi yang Diberikan Secara Sukarela' },
+  { id: 'informasi-otomatis', label: '6. Informasi Teknis Otomatis' },
+  { id: 'cookie', label: '7. Cookie dan Teknologi Serupa' },
+  { id: 'penggunaan', label: '8. Bagaimana Kami Menggunakan Informasi' },
+  { id: 'tujuan-operasional', label: '9. Tujuan Operasional Lain' },
+  { id: 'berbagi-data', label: '10. Berbagi Data' },
+  { id: 'pihak-ketiga', label: '11. Penyedia Layanan Pihak Ketiga' },
+  { id: 'retensi', label: '12. Retensi Data' },
+  { id: 'keamanan', label: '13. Keamanan Data' },
+  { id: 'hak-pengguna', label: '14. Hak Anda' },
+  { id: 'transfer-internasional', label: '15. Transfer Data Internasional' },
+  { id: 'privasi-anak', label: '16. Privasi Anak' },
+  { id: 'tautan-eksternal', label: '17. Tautan Eksternal' },
+  { id: 'perubahan', label: '18. Perubahan Kebijakan' },
+  { id: 'kontak', label: '19. Kontak' },
+  { id: 'terakhir-diperbarui', label: '20. Terakhir Diperbarui' },
+];
 ---
 
-<Layout
+<LegalLayout
   title="Kebijakan Privasi - SYNVORA Teknologi Indonesia"
-  description="Kebijakan privasi SYNVORA Teknologi Indonesia: data apa yang kami kumpulkan melalui formulir dan komentar di situs ini, untuk apa data itu dipakai, dan bagaimana cara menghubungi kami."
-  navVariant="light"
-  footerVariant="default"
-  bodyClass="bg-white"
+  description="Kebijakan privasi SYNVORA Teknologi Indonesia: data apa yang kami kumpulkan, untuk apa data itu dipakai, layanan pihak ketiga yang benar-benar kami gunakan, dan hak Anda atas data tersebut."
+  lang="id"
+  routeKey="privacy"
+  pageTitle="Kebijakan Privasi"
+  lastUpdated={lastUpdated}
+  toc={toc}
 >
-  <section class="pt-32 pb-20 px-8 bg-[#0A1128] text-white">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-xs font-semibold text-gray-400 mb-6 flex items-center gap-2">
-        <a href="/" class="hover:text-white">Beranda</a>
-        <i class="fa-solid fa-chevron-right text-[8px]"></i>
-        <span class="text-white">Kebijakan Privasi</span>
-      </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">Kebijakan Privasi</h1>
-      <p class="text-sm text-gray-400">Terakhir diperbarui: {lastUpdated}</p>
-    </div>
-  </section>
+  <div id="pendahuluan">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">1. Pendahuluan</h2>
+    <p>
+      {SITE.legalName} ("SYNVORA", "kami") menghargai privasi setiap pengunjung situs {SITE.url} ("Situs"). Kebijakan Privasi ini menjelaskan data apa yang kami kumpulkan, bagaimana data itu digunakan, dengan siapa data itu dapat dibagikan, dan hak apa yang Anda miliki atas data tersebut. Kebijakan ini mencerminkan implementasi Situs yang sebenarnya berjalan saat ini, bukan rencana atau fitur yang belum ada.
+    </p>
+  </div>
 
-  <section class="py-20 px-8">
-    <div class="max-w-3xl mx-auto prose-sm text-sm text-gray-600 leading-relaxed space-y-8">
-      <p>
-        Kebijakan ini menjelaskan data apa saja yang kami kumpulkan melalui situs {SITE.url}, untuk apa data itu dipakai, dan bagaimana cara menghubungi kami terkait data Anda. Kami hanya mengumpulkan data yang benar-benar diperlukan untuk merespons permintaan Anda, bukan untuk dijual atau dibagikan ke pihak ketiga untuk kepentingan pemasaran.
-      </p>
+  <div id="tentang-synvora">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">2. Tentang SYNVORA</h2>
+    <p>
+      {SITE.name} adalah badan usaha {SITE.legalName}, perusahaan teknologi yang didirikan {SITE.foundedDisplay} dan berbasis di {SITE.addressShort}, Indonesia, didirikan oleh {SITE.founderName}. SYNVORA membangun sistem perangkat lunak, solusi teknologi untuk organisasi, serta produk digital sendiri.
+    </p>
+  </div>
 
-      <div>
-        <h2 class="text-lg font-bold text-gray-900 mb-3">1. Data yang Kami Kumpulkan</h2>
-        <p class="mb-3">Kami mengumpulkan data dalam tiga situasi berikut:</p>
-        <ul class="list-disc pl-5 space-y-2">
-          <li><strong>Formulir Konsultasi Gratis dan Hubungi Kami:</strong> nama, email, nomor WhatsApp, nama perusahaan (opsional), kebutuhan/topik, dan pesan/detail yang Anda tulis sendiri.</li>
-          <li><strong>Komentar artikel blog:</strong> nama yang Anda isi sendiri, isi komentar, dan rating bintang (jika diberikan). Komentar yang Anda kirim akan tampil secara publik di halaman artikel terkait.</li>
-          <li><strong>Data teknis otomatis:</strong> alamat IP (digunakan untuk mencegah pengiriman formulir atau komentar yang berulang/spam dalam waktu singkat), serta data kunjungan anonim seperti jumlah tampilan halaman.</li>
-        </ul>
-      </div>
+  <div id="ruang-lingkup">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">3. Ruang Lingkup</h2>
+    <p>
+      Kebijakan ini berlaku untuk data yang dikumpulkan melalui Situs {SITE.url}, termasuk formulir Konsultasi Gratis, formulir Hubungi Kami, dan kolom komentar artikel blog. Kebijakan ini tidak berlaku untuk situs produk terpisah milik SYNVORA (seperti Synctappy) atau situs pihak ketiga yang ditautkan dari Situs ini, yang masing-masing memiliki kebijakan privasinya sendiri.
+    </p>
+  </div>
 
-      <div>
-        <h2 class="text-lg font-bold text-gray-900 mb-3">2. Bagaimana Data Digunakan</h2>
-        <ul class="list-disc pl-5 space-y-2">
-          <li>Data formulir Konsultasi Gratis dan Hubungi Kami dikirim melalui email ke tim internal kami untuk ditindaklanjuti, dan tidak disimpan dalam basis data jangka panjang di server kami. Alamat IP pengirim disimpan sementara khusus untuk mencegah pengiriman berulang dari sumber yang sama dalam waktu singkat.</li>
-          <li>Komentar blog (nama, isi, rating) disimpan di server kami dan ditampilkan secara publik pada artikel terkait, karena memang berfungsi sebagai ruang diskusi terbuka.</li>
-          <li>Preferensi tampilan (mode terang/gelap) disimpan di penyimpanan lokal (localStorage) peramban Anda sendiri, tidak pernah dikirim ke server kami.</li>
-          <li>Jika Google Analytics aktif di situs ini, data kunjungan anonim dapat dipakai untuk memahami halaman mana yang paling banyak dikunjungi. Kami tidak menggunakannya untuk mengidentifikasi pengunjung secara personal.</li>
-        </ul>
-      </div>
+  <div id="informasi-dikumpulkan">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">4. Informasi yang Kami Kumpulkan</h2>
+    <p>Kami mengumpulkan data dalam tiga kategori: informasi yang Anda berikan secara sukarela, informasi teknis yang terekam otomatis, dan cookie. Masing-masing dijelaskan pada bagian 5, 6, dan 7.</p>
+  </div>
 
-      <div>
-        <h2 class="text-lg font-bold text-gray-900 mb-3">3. Berbagi Data dengan Pihak Ketiga</h2>
-        <p>
-          Kami tidak menjual atau menyewakan data pribadi Anda kepada pihak ketiga mana pun. Data formulir hanya diteruskan melalui layanan pengiriman email (SMTP) ke alamat email internal tim kami. Jika Google Analytics aktif, Google dapat memproses data kunjungan anonim sesuai kebijakan privasi mereka sendiri.
-        </p>
-      </div>
+  <div id="informasi-sukarela">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">5. Informasi yang Diberikan Secara Sukarela</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>Formulir Konsultasi Gratis dan Hubungi Kami:</strong> nama, alamat email, nomor WhatsApp, nama perusahaan (opsional), jenis kebutuhan/topik, tanggal dan waktu pilihan (khusus formulir konsultasi), serta pesan atau detail yang Anda tulis sendiri.</li>
+      <li><strong>Komentar artikel blog:</strong> nama yang Anda isi sendiri (bisa nama samaran), isi komentar, dan rating bintang jika diberikan. Komentar yang dikirim tampil secara publik di halaman artikel terkait.</li>
+    </ul>
+    <p class="mt-3">Kami tidak meminta dan tidak mengumpulkan data lokasi presisi (GPS), data biometrik, informasi keuangan, data kesehatan, advertising ID, atau profil perilaku pengguna.</p>
+  </div>
 
-      <div>
-        <h2 class="text-lg font-bold text-gray-900 mb-3">4. Hak Anda atas Data</h2>
-        <p class="mb-3">Anda berhak untuk:</p>
-        <ul class="list-disc pl-5 space-y-2">
-          <li>Meminta kami menghapus komentar yang pernah Anda kirim di blog kami.</li>
-          <li>Menanyakan data apa yang kami simpan terkait Anda.</li>
-          <li>Meminta koreksi atau penghapusan data yang Anda kirimkan melalui formulir, selama data tersebut masih tersimpan dalam korespondensi email kami.</li>
-        </ul>
-        <p class="mt-3">
-          Untuk permintaan di atas, silakan hubungi kami melalui email <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a>.
-        </p>
-      </div>
+  <div id="informasi-otomatis">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">6. Informasi Teknis yang Dikumpulkan Otomatis</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>Alamat IP:</strong> dicatat sementara untuk mencegah pengiriman formulir atau komentar yang berulang dalam waktu singkat (anti-spam), bukan untuk melacak identitas Anda.</li>
+      <li><strong>Log server standar:</strong> seperti jenis peramban dan waktu permintaan, sebagaimana lazim dicatat oleh server web pada umumnya.</li>
+      <li><strong>Data analitik agregat (jika Anda memberikan izin Analytics):</strong> halaman yang dikunjungi, perkiraan lokasi berbasis IP (tingkat kota/negara, bukan presisi), jenis perangkat, dan sumber rujukan, melalui Google Analytics 4. Lihat bagian 7 dan Kebijakan Cookie kami untuk detail lengkap.</li>
+    </ul>
+  </div>
 
-      <div>
-        <h2 class="text-lg font-bold text-gray-900 mb-3">5. Keamanan Data</h2>
-        <p>
-          Kami menerapkan langkah wajar untuk melindungi data yang Anda kirimkan, termasuk pembatasan laju pengiriman formulir (rate limiting) dan validasi input untuk mencegah penyalahgunaan. Meski demikian, tidak ada metode transmisi data melalui internet yang sepenuhnya bebas risiko.
-        </p>
-      </div>
+  <div id="cookie">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">7. Cookie dan Teknologi Serupa</h2>
+    <p>
+      Situs ini menggunakan cookie untuk preferensi bahasa, menyimpan preferensi cookie Anda sendiri, dan (hanya dengan izin Anda) Google Analytics 4. Penjelasan lengkap tentang setiap cookie, kategorinya, dan cara mengubah preferensi tersedia di <a href="/kebijakan-cookie" class="text-primary font-semibold">Kebijakan Cookie</a> kami.
+    </p>
+  </div>
 
-      <div>
-        <h2 class="text-lg font-bold text-gray-900 mb-3">6. Perubahan Kebijakan</h2>
-        <p>
-          Kebijakan ini dapat diperbarui seiring perkembangan situs dan layanan kami. Tanggal pembaruan terakhir selalu tercantum di bagian atas halaman ini.
-        </p>
-      </div>
+  <div id="penggunaan">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">8. Bagaimana Kami Menggunakan Informasi</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Merespons permintaan konsultasi atau pertanyaan yang Anda ajukan melalui formulir.</li>
+      <li>Menampilkan komentar dan rating yang Anda kirimkan secara publik di artikel terkait.</li>
+      <li>Mencegah penyalahgunaan/spam pada formulir dan kolom komentar.</li>
+      <li>Memahami pola penggunaan Situs secara agregat (hanya jika Anda mengizinkan Analytics), untuk meningkatkan konten dan pengalaman pengguna.</li>
+    </ul>
+  </div>
 
-      <div>
-        <h2 class="text-lg font-bold text-gray-900 mb-3">7. Kontak</h2>
-        <p>
-          {SITE.legalName} ({SITE.name}), berbasis di {SITE.addressShort}. Pertanyaan seputar kebijakan ini dapat diajukan melalui email <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a> atau WhatsApp <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">{SITE.phoneDisplay}</a>.
-        </p>
-      </div>
-    </div>
-  </section>
-</Layout>
+  <div id="tujuan-operasional">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">9. Tujuan Operasional Lain</h2>
+    <p>
+      Kami dapat memproses data seperlunya untuk memenuhi kewajiban operasional dasar, seperti pencatatan korespondensi untuk tujuan dukungan pelanggan, atau jika diwajibkan oleh hukum yang berlaku di Indonesia.
+    </p>
+  </div>
+
+  <div id="berbagi-data">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">10. Berbagi Data</h2>
+    <p>
+      Kami tidak menjual atau menyewakan data pribadi Anda kepada pihak mana pun. Data hanya dibagikan ke penyedia layanan pihak ketiga yang disebutkan pada bagian 11, sejauh yang diperlukan agar layanan tersebut berfungsi.
+    </p>
+  </div>
+
+  <div id="pihak-ketiga">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">11. Penyedia Layanan Pihak Ketiga</h2>
+    <p class="mb-3">Berikut layanan pihak ketiga yang benar-benar digunakan Situs ini saat ini:</p>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>Penyedia email (SMTP):</strong> meneruskan isi formulir Konsultasi Gratis dan Hubungi Kami ke alamat email internal tim kami.</li>
+      <li><strong>Google Analytics 4:</strong> analitik kunjungan agregat, hanya aktif setelah Anda memberikan izin Analytics. Diatur oleh <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">Kebijakan Privasi Google</a>.</li>
+      <li><strong>Cloudflare Turnstile:</strong> verifikasi anti-spam pada formulir Konsultasi Gratis dan Hubungi Kami, diatur oleh <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">Kebijakan Privasi Cloudflare</a>.</li>
+      <li><strong>Google Maps (embed):</strong> peta lokasi pada halaman Hubungi Kami, dimuat langsung dari Google dan tunduk pada kebijakan privasi Google.</li>
+      <li><strong>Google Fonts &amp; Font Awesome (cdnjs):</strong> memuat berkas font dan ikon dari CDN pihak ketiga untuk tampilan Situs.</li>
+    </ul>
+  </div>
+
+  <div id="retensi">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">12. Retensi Data</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Isi formulir Konsultasi Gratis dan Hubungi Kami diteruskan via email dan tidak disimpan dalam basis data jangka panjang di server kami.</li>
+      <li>Alamat IP untuk anti-spam disimpan sementara dan digunakan ulang hanya untuk membandingkan pengiriman berikutnya dari sumber yang sama.</li>
+      <li>Komentar blog (nama, isi, rating) disimpan selama artikel terkait masih dipublikasikan, kecuali Anda meminta penghapusan.</li>
+      <li>Cookie consent dan preferensi bahasa tersimpan di peramban Anda hingga masa berlakunya habis atau Anda menghapusnya sendiri (lihat Kebijakan Cookie).</li>
+    </ul>
+  </div>
+
+  <div id="keamanan">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">13. Keamanan Data</h2>
+    <p>
+      Kami menerapkan langkah wajar untuk melindungi data yang Anda kirimkan, termasuk koneksi HTTPS, verifikasi anti-spam pada formulir, dan pembatasan laju pengiriman (rate limiting). Meski demikian, tidak ada metode transmisi data melalui internet yang sepenuhnya bebas risiko.
+    </p>
+  </div>
+
+  <div id="hak-pengguna">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">14. Hak Anda</h2>
+    <p class="mb-3">Anda berhak untuk:</p>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Meminta kami menghapus komentar yang pernah Anda kirim di blog kami.</li>
+      <li>Menanyakan data apa yang kami simpan terkait Anda.</li>
+      <li>Meminta koreksi atau penghapusan data yang Anda kirimkan melalui formulir, selama masih tersimpan dalam korespondensi email kami.</li>
+      <li>Menarik atau mengubah persetujuan cookie Analytics kapan saja melalui "Pengaturan Cookie" di footer Situs.</li>
+    </ul>
+    <p class="mt-3">
+      Untuk permintaan di atas, silakan hubungi kami melalui email <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a>.
+    </p>
+  </div>
+
+  <div id="transfer-internasional">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">15. Transfer Data Internasional</h2>
+    <p>
+      Sebagian penyedia layanan pihak ketiga kami (Google, Cloudflare) dapat memproses data pada server di luar Indonesia sebagai bagian dari operasional layanan global mereka. Transfer tersebut tunduk pada kebijakan dan mekanisme perlindungan data masing-masing penyedia.
+    </p>
+  </div>
+
+  <div id="privasi-anak">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">16. Privasi Anak</h2>
+    <p>
+      Situs ini ditujukan untuk organisasi dan khalayak umum, bukan untuk anak-anak. Kami tidak secara sengaja mengumpulkan data pribadi dari anak di bawah 13 tahun. Jika Anda mengetahui adanya data semacam itu, silakan hubungi kami agar dapat segera dihapus.
+    </p>
+  </div>
+
+  <div id="tautan-eksternal">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">17. Tautan Eksternal</h2>
+    <p>
+      Situs ini memuat tautan ke produk dan inisiatif kami (termasuk Synctappy, AIRA, AgriVita, JOS, dan BBM) serta situs pihak ketiga lain. Kami tidak bertanggung jawab atas praktik privasi dari situs di luar kendali kami.
+    </p>
+  </div>
+
+  <div id="perubahan">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">18. Perubahan Kebijakan Privasi Ini</h2>
+    <p>
+      Kebijakan ini dapat diperbarui seiring perkembangan Situs dan layanan kami. Tanggal pembaruan terakhir selalu tercantum di bagian atas halaman ini, dan hanya berubah ketika isi kebijakan memang diperbarui.
+    </p>
+  </div>
+
+  <div id="kontak">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">19. Kontak</h2>
+    <p>
+      {SITE.legalName} ({SITE.name}), berbasis di {SITE.addressShort}, Indonesia. Pertanyaan seputar kebijakan ini dapat diajukan melalui email <a href={`mailto:${SITE.email}`} class="text-primary font-semibold">{SITE.email}</a> atau WhatsApp <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">{SITE.phoneDisplay}</a>.
+    </p>
+  </div>
+
+  <div id="terakhir-diperbarui">
+    <h2 class="text-lg font-bold text-gray-900 mb-3">20. Terakhir Diperbarui</h2>
+    <p>{lastUpdated}. Kebijakan ini tersedia juga dalam <a href="/en/privacy-policy" class="text-primary font-semibold">Bahasa Inggris</a>.</p>
+  </div>
+
+  <div class="border-t border-gray-100 pt-8">
+    <p class="text-xs text-gray-400 italic">
+      Catatan: dokumen ini menjelaskan praktik privasi Situs {SITE.url} dan bukan merupakan nasihat hukum, finansial, medis, atau profesional lainnya.
+    </p>
+  </div>
+</LegalLayout>

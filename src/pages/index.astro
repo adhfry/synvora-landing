@@ -17,9 +17,23 @@ const selectedWork = ['synctappy', 'aira-artificial-intelligence-response-banjir
   navVariant="dark"
   footerVariant="landing"
   active="beranda"
+  lang="id"
+  routeKey="home"
   bodyClass="bg-white"
 >
   <Fragment slot="head">
+    <script is:inline>
+      // Returning-visitor language preference: only on this root entry page
+      // (never on deep links, so we don't yank someone off a page they
+      // specifically navigated to). Runs before paint, mirroring the
+      // dark-mode flash-prevention script's pattern.
+      (function () {
+        try {
+          var m = document.cookie.match(/(?:^|; )synvora_locale=([^;]*)/);
+          if (m && decodeURIComponent(m[1]) === 'en') location.replace('/en/');
+        } catch (e) {}
+      })();
+    </script>
     <style is:global>
       .mockup-container {
         position: relative;

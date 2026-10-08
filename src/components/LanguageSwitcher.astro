@@ -1,0 +1,105 @@
+---
+import { LOCALES, alternatePath, type Locale } from '../i18n/routes';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  routeKey: string;
+  variant?: 'dark' | 'light';
+}
+const { locale, routeKey, variant = 'dark' } = Astro.props;
+const dict = t(locale).langSwitcher;
+
+const textClass = variant === 'dark' ? 'text-gray-200 hover:text-white' : 'text-gray-600 hover:text-gray-900';
+const borderClass = variant === 'dark' ? 'border-white/20' : 'border-gray-200';
+---
+
+<!-- This component can appear more than once per page (desktop nav + mobile
+nav panel), so it's wired up via a shared class, not an id - duplicate ids
+would mean getElementById only ever finds the first instance. -->
+<div class="lang-switcher-root relative">
+  <button
+    type="button"
+    class={`lang-switcher-btn flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold tracking-wide transition ${textClass} ${borderClass} hover:border-primary`}
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-label={dict.label}
+  >
+    <span>{locale.toUpperCase()}</span>
+    <i class="fa-solid fa-chevron-down text-[8px]"></i>
+  </button>
+  <div
+    class="lang-switcher-menu hidden absolute right-0 mt-2 w-44 bg-white dark:bg-[#0f1a3d] border border-gray-100 dark:border-white/10 rounded-xl shadow-xl overflow-hidden z-50"
+    role="menu"
+    aria-label={dict.label}
+  >
+    {LOCALES.map((l) => {
+      const href = l === locale ? null : (alternatePath(routeKey, l) ?? (l === 'en' ? '/en/' : '/'));
+      return (
+        <a
+          role="menuitem"
+          href={href ?? '#'}
+          data-locale={l}
+          aria-current={l === locale ? 'true' : undefined}
+          class={`block px-4 py-2.5 text-xs font-semibold transition ${
+            l === locale
+              ? 'bg-blue-50 dark:bg-primary/10 text-primary cursor-default'
+              : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5'
+          }`}
+        >
+          <span class="font-bold mr-1.5">{l.toUpperCase()}</span>
+          {t(l).langSwitcher[l]}
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    // Guard against re-running if this script tag happens to be present
+    // more than once (it isn't deduped since it's is:inline), and wires up
+    // every .lang-switcher-root on the page independently.
+    if (window.__synvoraLangSwitcherInit) return;
+    window.__synvoraLangSwitcherInit = true;
+
+    function closeMenu(root) {
+      var menu = root.querySelector('.lang-switcher-menu');
+      var btn = root.querySelector('.lang-switcher-btn');
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    function closeAll(except) {
+      document.querySelectorAll('.lang-switcher-root').forEach(function (root) {
+        if (root !== except) closeMenu(root);
+      });
+    }
+
+    document.querySelectorAll('.lang-switcher-root').forEach(function (root) {
+      var btn = root.querySelector('.lang-switcher-btn');
+      var menu = root.querySelector('.lang-switcher-menu');
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var willOpen = menu.classList.contains('hidden');
+        closeAll(root);
+        menu.classList.toggle('hidden', !willOpen);
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+
+      menu.querySelectorAll('[data-locale]').forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          var loc = opt.getAttribute('data-locale');
+          if (window.synvoraSetLocale) window.synvoraSetLocale(loc);
+        });
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.lang-switcher-root')) closeAll(null);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAll(null);
+    });
+  })();
+</script>
