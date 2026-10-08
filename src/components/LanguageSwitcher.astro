@@ -12,6 +12,9 @@ const dict = t(locale).langSwitcher;
 
 const textClass = variant === 'dark' ? 'text-gray-200 hover:text-white' : 'text-gray-600 hover:text-gray-900';
 const borderClass = variant === 'dark' ? 'border-white/20' : 'border-gray-200';
+// og:locale is en_US (see Layout.astro), so the US flag rather than the UK
+// one for consistency with that choice.
+const flags: Record<Locale, string> = { id: '🇮🇩', en: '🇺🇸' };
 ---
 
 <!-- This component can appear more than once per page (desktop nav + mobile
@@ -25,7 +28,7 @@ would mean getElementById only ever finds the first instance. -->
     aria-expanded="false"
     aria-label={dict.label}
   >
-    <span>{locale.toUpperCase()}</span>
+    <span>{flags[locale]} {locale.toUpperCase()}</span>
     <i class="fa-solid fa-chevron-down text-[8px]"></i>
   </button>
   <div
@@ -47,7 +50,7 @@ would mean getElementById only ever finds the first instance. -->
               : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5'
           }`}
         >
-          <span class="font-bold mr-1.5">{l.toUpperCase()}</span>
+          <span class="font-bold mr-1.5">{flags[l]} {l.toUpperCase()}</span>
           {t(l).langSwitcher[l]}
         </a>
       );
