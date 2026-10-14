@@ -9,6 +9,8 @@ export interface TeamMember {
   initials: string;
   photo?: string;
   socials?: SocialLink[];
+  /** Kept in the data but not rendered anywhere. */
+  hidden?: boolean;
 }
 
 // Font Awesome glyph, used when the platform has no dedicated brand image below.
@@ -44,8 +46,9 @@ export const founder: TeamMember & { quote: string; company: string; phone: stri
 
 // More team members and their social links are still being collected -
 // this list grows as they're shared.
-export const teamMembers: TeamMember[] = [
-  { name: 'Pyepit Rineksoa Andriyanto', role: 'Tim SYNVORA', initials: 'PR' },
+const allTeamMembers: TeamMember[] = [
+  // Temporarily hidden at the owner's request (2026-10-14).
+  { name: 'Pyepit Rineksoa Andriyanto', role: 'Tim SYNVORA', initials: 'PR', hidden: true },
   {
     name: 'Ahmad Muqtafi',
     role: 'Tim SYNVORA',
@@ -85,3 +88,5 @@ export const teamMembers: TeamMember[] = [
     photo: '/images/team/Abd-Rahman-Siddik.jpeg',
   },
 ];
+
+export const teamMembers: TeamMember[] = allTeamMembers.filter((m) => !m.hidden);
