@@ -12,6 +12,13 @@ export interface BlogPostEn {
 }
 
 export const blogPostsEn: Record<string, BlogPostEn> = {
+  'synvora-raih-lima-penghargaan-anugerah-inovasi-daerah-2026': {
+    title: "SYNVORA Wins Five Awards at Sumenep Regency's 2026 Regional Innovation Awards",
+    excerpt:
+      "All five innovations SYNVORA entered in the 2026 Regional Innovation Awards (Anugerah Inovasi Daerah/AID) held by BRIDA Sumenep Regency came home with an award. AgriVita took second place in the community category, while AIRA, JOS, SEP, and BBM each received a certificate of appreciation.",
+    metaDescription: 'SYNVORA wins five awards at AID 2026 Sumenep: AgriVita takes second place in the community category, while AIRA, JOS, SEP, and BBM receive certificates of appreciation.',
+    category: 'News',
+  },
   'synctappy-produk-saas-nfc-qr-synvora': {
     title: 'Synctappy, an NFC and QR SaaS Product from the SYNVORA Ecosystem',
     excerpt:

@@ -1,0 +1,138 @@
+---
+import BlogArticleLayout from '../../components/BlogArticleLayout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find((p) => p.slug === 'synvora-raih-lima-penghargaan-anugerah-inovasi-daerah-2026')!;
+
+const linkClass = 'text-primary font-semibold underline underline-offset-2 hover:text-blue-700 cursor-pointer';
+---
+
+<BlogArticleLayout
+  post={post}
+  authorRole="CEO & Founder SYNVORA"
+  overlayLines={['Lima', 'Penghargaan', 'AID 2026']}
+  quote="Inovasi daerah bisa datang dari luar instansi pemerintah: dari mahasiswa, kelompok pengembang, dan warga yang peduli pada persoalan di sekitarnya."
+  tags={post.tags}
+  tocItems={[
+    'Lima Inovasi, Lima Penghargaan',
+    'AgriVita Meraih Juara II',
+    'Empat Inovasi Penerima Piagam Apresiasi',
+    'Dukungan UNIBA Madura dan BRIDA',
+    'Setelah Penghargaan',
+  ]}
+>
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Lima Inovasi, Lima Penghargaan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4"><strong>SUMENEP, 11/11/2026</strong> - SYNVORA Teknologi Indonesia pulang dari puncak <strong>Anugerah Inovasi Daerah (AID) 2026</strong> dengan lima penghargaan. Badan Riset dan Inovasi Daerah (BRIDA) Kabupaten Sumenep mengumumkan para penerimanya pada Rabu, 11 November 2026, di Islamic Center Kabupaten Sumenep.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">SYNVORA adalah kelompok pengembang teknologi yang beranggotakan mahasiswa Program Studi Informatika, Fakultas Sains dan Teknologi, Universitas Bahaudin Mudhary (UNIBA) Madura. Kami mendaftarkan lima inovasi lewat kategori masyarakat, dan kelimanya mendapat penghargaan. <strong>AgriVita meraih Juara II</strong>, sedangkan AIRA, JOS (Job Opportunity Sumenep), SEP (Smart Event Sumenep), dan BBM (Belajar Bahasa Madura) masing-masing menerima piagam penghargaan apresiasi.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Pemerintah Kabupaten Sumenep juga mencantumkan nama SYNVORA Teknologi Indonesia dalam daftar penerima penghargaan kategori masyarakat/pelajar, seperti yang dimuat di <a href="https://sumenepkab.go.id/berita/baca/selamat-diskominfo-sumenep-raih-penghargaaan-anugerah-inovasi-daerah-2026" target="_blank" rel="noopener noreferrer" class={linkClass}>berita resmi sumenepkab.go.id <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>.</p>
+  </div>
+
+  <div class="mb-10">
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/aid-2026-bersama-warek-uniba.jpg" alt="Tim SYNVORA memegang piagam Anugerah Inovasi Daerah 2026 di panggung Islamic Center Sumenep" class="w-full object-cover" loading="lazy">
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 text-center italic">Tim SYNVORA di panggung puncak Anugerah Inovasi Daerah 2026, Islamic Center Kabupaten Sumenep.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">AgriVita Meraih Juara II</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">AgriVita adalah sistem penyimpanan hasil panen berbasis Internet of Things (IoT) yang ditenagai panel surya. Kami membangunnya untuk menjaga mutu hasil panen selama disimpan dan menekan kerusakan setelah panen.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">AgriVita menjadikan gudang penyimpanan konvensional sebagai ruang yang kondisinya terbaca sensor secara berkala. Sensor DHT22 membaca suhu dan kelembapan, MQ-135 membaca kualitas udara, dan HC-SR04 memperkirakan seberapa penuh isi bunker.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Raspberry Pi dan ESP32 mengolah data dari sensor-sensor itu, lalu mengirimkannya ke server. Kondisi bunker bisa dipantau dari dashboard web maupun mobile. Begitu kondisi ruang simpan melewati ambang batas yang ditentukan, sistem mengirim peringatan dini dan bisa menyalakan ventilasi secara otomatis.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-5">Gagasan ini sudah pernah turun ke lapangan. Purwarupa fisiknya, AgriBunker, diserahterimakan tim Innovillage UNIBA Madura kepada warga dan perangkat desa pada 24 Februari 2025. Sistem pemantauan IoT dan dashboard yang kemudian kami bangun di atas purwarupa itu menjadi bagian dari AgriVita.</p>
+    <div class="flex flex-wrap gap-3">
+      <a href="https://agrivita.synvorateknologiindonesia.web.id" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition cursor-pointer">
+        Buka Situs AgriVita <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      </a>
+      <a href="/blog/agrivita-bunker-penyimpanan-cerdas-iot-petani-sumenep" class="border border-primary text-primary hover:bg-blue-50 dark:hover:bg-white/5 px-6 py-3 rounded-full text-xs font-semibold inline-flex items-center gap-2 transition cursor-pointer">
+        Baca Ulasan Lengkap AgriVita
+      </a>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <figure>
+        <div class="rounded-2xl overflow-hidden shadow-md mb-2">
+          <img src="/images/blog/aid-2026-ceo-synvora-juara.jpg" alt="CEO SYNVORA memegang trofi Anugerah Inovasi Daerah 2026 di podium" class="w-full aspect-[3/4] object-cover" loading="lazy">
+        </div>
+        <figcaption class="text-xs text-gray-500 dark:text-gray-400 text-center italic">CEO SYNVORA dengan trofi AID 2026 di podium.</figcaption>
+      </figure>
+      <figure>
+        <div class="rounded-2xl overflow-hidden shadow-md mb-2">
+          <img src="/images/blog/aid-2026-ceo-bersama-kepala-brida.jpg" alt="CEO SYNVORA memegang piagam Juara II AgriVita bersama Kepala BRIDA Kabupaten Sumenep" class="w-full aspect-[3/4] object-cover" loading="lazy">
+        </div>
+        <figcaption class="text-xs text-gray-500 dark:text-gray-400 text-center italic">CEO SYNVORA dengan piagam Juara II AgriVita, bersama Kepala BRIDA Kabupaten Sumenep.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Empat Inovasi Penerima Piagam Apresiasi</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-6">Empat inovasi lain yang kami bawa menggarap persoalan yang berbeda-beda, dari banjir sampai bahasa daerah.</p>
+
+    <div class="space-y-8">
+      <div>
+        <h3 class="text-lg font-extrabold text-gray-900 dark:text-white mb-3">AIRA (Artificial Intelligence Response Banjir)</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">AIRA memantau kondisi rawan banjir, menganalisis risikonya, dan mengirim peringatan dini. Sistemnya menggabungkan kecerdasan buatan (AI), IoT, dan Geographic Information System (GIS).</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">Kamera CCTV, sensor ketinggian air, sensor curah hujan, data cuaca, dan informasi geospasial tampil dalam satu dashboard. Computer Vision membantu mendeteksi genangan dari tangkapan kamera, sementara analisis data membaca tren kenaikan air untuk menilai potensi banjir. Lewat dashboard dan notifikasi, kabar dari lapangan bisa sampai lebih cepat ke pemerintah daerah, petugas, dan masyarakat.</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+          <a href="https://aira.synvorateknologiindonesia.web.id" target="_blank" rel="noopener noreferrer" class={linkClass}>Buka situs AIRA <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+          <span class="mx-2 text-gray-300 dark:text-gray-600">|</span>
+          <a href="/blog/aira-sistem-peringatan-dini-banjir-sumenep" class={linkClass}>Baca ulasan lengkap AIRA</a>
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-extrabold text-gray-900 dark:text-white mb-3">JOS (Job Opportunity Sumenep)</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">Informasi lowongan kerja selama ini tersebar di banyak platform digital. JOS mengumpulkan lowongan dari sejumlah sumber publik dan sumber pemerintah ke satu portal pencarian. Pencari kerja bisa menyaring lowongan menurut posisi, lokasi, pendidikan, pengalaman, dan keahlian.</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">Fitur Rule-Based Matching di JOS mencocokkan profil pencari kerja dengan kriteria lowongan memakai aturan yang perhitungannya terbuka. Kami ingin warga Sumenep, termasuk yang tinggal di wilayah kepulauan, lebih mudah menemukan informasi pekerjaan.</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+          <a href="https://jos.synvorateknologiindonesia.web.id" target="_blank" rel="noopener noreferrer" class={linkClass}>Buka situs JOS <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+          <span class="mx-2 text-gray-300 dark:text-gray-600">|</span>
+          <a href="/blog/jos-job-opportunity-sumenep-inovasi-synvora" class={linkClass}>Baca ulasan lengkap JOS</a>
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-extrabold text-gray-900 dark:text-white mb-3">SEP (Smart Event Sumenep)</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">SEP membantu pengambilan keputusan saat daerah mengelola dan mengevaluasi kegiatan budaya serta pariwisata. Datanya datang dari tiga arah: estimasi jumlah pengunjung dengan Computer Vision YOLOv8, survei digital lewat kode QR untuk mengukur dampak ekonomi dan omzet UMKM, dan data media sosial untuk membaca antusiasme publik.</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">Hasil olahannya tampil di dashboard analitik untuk menilai dampak setiap event. SEP juga menyediakan kalender kegiatan publik, sehingga warga dan wisatawan bisa melihat agenda daerah di satu tempat. Saat menghitung pengunjung, SEP hanya menghitung objek dan tidak memakai pengenalan wajah (face recognition).</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+          <a href="/blog/synvora-anugerah-inovasi-daerah-2026-sep-smart-event-sumenep" class={linkClass}>Baca ulasan lengkap SEP</a>
+          <span class="text-xs text-gray-500 dark:text-gray-400 ml-2">(SEP masih berupa prototipe, belum ada situs publik)</span>
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-extrabold text-gray-900 dark:text-white mb-3">BBM (Belajar Bahasa Madura)</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">BBM adalah platform belajar bahasa Madura secara digital, dibuat supaya bahasa daerah tetap dipelajari dan dirawat. Isinya kamus digital, penerjemah dua arah Indonesia-Madura, pemenggalan suku kata otomatis, dan modul belajar bertahap. Materinya juga mencakup tingkatan bahasa Madura atau <em>Ondhâghen Basa</em>, dari Enjâ'-Iyâ, Engghi-Enten, sampai Engghi-Bhunten.</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">BBM bisa dipasang sebagai Progressive Web App (PWA) dan tetap berjalan tanpa internet, jadi bisa dipakai di kelas maupun untuk belajar sendiri.</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+          <a href="https://belajar-bahasa-madura.synvorateknologiindonesia.web.id/" target="_blank" rel="noopener noreferrer" class={linkClass}>Buka situs BBM <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+          <span class="mx-2 text-gray-300 dark:text-gray-600">|</span>
+          <a href="/blog/bbm-belajar-bahasa-madura-inovasi-synvora" class={linkClass}>Baca ulasan lengkap BBM</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Dukungan UNIBA Madura dan BRIDA</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">Capaian ini tidak lepas dari dukungan lingkungan akademik UNIBA Madura. Dalam dokumentasi acara, tim SYNVORA berfoto bersama Wakil Rektor II Bidang Kemahasiswaan dan Kerja Sama, <strong>Dr. H. R. Khaeru Ahmadi, S.Pt., M.H., M.M.</strong>, serta <strong>Pyepit Rinekso Andriyanto, S.Kom., M.Kom.</strong> CEO SYNVORA juga sempat berfoto bersama Kepala BRIDA Kabupaten Sumenep.</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Kami ikut lewat kategori masyarakat, dan hasilnya menunjukkan bahwa inovasi daerah bisa datang dari luar instansi pemerintah: dari mahasiswa, kelompok pengembang, dan warga yang peduli pada persoalan di sekitarnya.</p>
+  </div>
+
+  <div class="mb-10">
+    <div class="rounded-2xl overflow-hidden shadow-md mb-3">
+      <img src="/images/blog/aid-2026-juara-inovasi-daerah.jpg" alt="Para penerima Anugerah Inovasi Daerah 2026 berfoto bersama jajaran Pemerintah Kabupaten Sumenep" class="w-full object-cover" loading="lazy">
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 text-center italic">Para penerima penghargaan AID 2026 berfoto bersama di Islamic Center Kabupaten Sumenep.</p>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">Setelah Penghargaan</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">Kelima inovasi ini menyentuh bidang yang berbeda: pertanian, mitigasi bencana, ketenagakerjaan, pariwisata, dan pelestarian bahasa daerah. Bagi kami, lima penghargaan ini adalah alasan untuk terus bekerja. Langkah berikutnya adalah mematangkan setiap sistem, mengujinya dalam penerapan nyata, dan memperluas manfaatnya bagi masyarakat Kabupaten Sumenep.</p>
+  </div>
+</BlogArticleLayout>

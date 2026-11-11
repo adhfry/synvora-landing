@@ -48,7 +48,7 @@ export const founder: TeamMember & { quote: string; company: string; phone: stri
 // this list grows as they're shared.
 const allTeamMembers: TeamMember[] = [
   // Temporarily hidden at the owner's request (2026-10-14).
-  { name: 'Pyepit Rineksoa Andriyanto', role: 'Tim SYNVORA', initials: 'PR', hidden: true },
+  { name: 'Pyepit Rinekso Andriyanto, S.Kom., M.Kom.', role: 'Tim SYNVORA', initials: 'PR', hidden: true },
   {
     name: 'Ahmad Muqtafi',
     role: 'Tim SYNVORA',

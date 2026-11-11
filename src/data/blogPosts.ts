@@ -21,6 +21,22 @@ export interface BlogPostMeta {
 // across the blog listing and the topics page.
 export const blogPosts: BlogPostMeta[] = [
   {
+    slug: 'synvora-raih-lima-penghargaan-anugerah-inovasi-daerah-2026',
+    title: 'SYNVORA Raih Lima Penghargaan di Anugerah Inovasi Daerah 2026 Kabupaten Sumenep',
+    excerpt:
+      'Kelima inovasi yang SYNVORA ikutkan di Anugerah Inovasi Daerah (AID) 2026 BRIDA Kabupaten Sumenep pulang membawa penghargaan. AgriVita meraih Juara II di kategori masyarakat, sedangkan AIRA, JOS, SEP, dan BBM menerima piagam penghargaan apresiasi.',
+    metaDescription:
+      'SYNVORA raih lima penghargaan di AID 2026 Sumenep: AgriVita Juara II kategori masyarakat, AIRA, JOS, SEP, dan BBM terima piagam apresiasi.',
+    image: '/images/blog/aid-2026-juara-inovasi-daerah.jpg',
+    category: 'Berita',
+    tags: ['Berita', 'Inovasi Daerah', 'BRIDA', 'AgriVita', 'Inovasi'],
+    author: 'Ahda Firly Barori',
+    authorImage: '/images/team/Ahda-Jas.png',
+    publishedAt: '2026-11-11',
+    publishedDisplay: '11 November 2026',
+    readTime: '5 menit baca',
+  },
+  {
     slug: 'synctappy-produk-saas-nfc-qr-synvora',
     title: 'Synctappy, Produk SaaS NFC dan QR dari Ekosistem SYNVORA',
     excerpt:
